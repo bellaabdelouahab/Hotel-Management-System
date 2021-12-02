@@ -1,0 +1,14 @@
+.file:hover {
+    -fx-text-fill:rgb(241, 245, 26);
+    -fx-background-color:MediumSeaGreen;
+    
+}
+.file{
+    -fx-text-fill:rgb(205, 205, 253);
+    -fx-background-color: transparent;
+    
+
+}
+#textarea_ .content{
+    -fx-background-color:#333333;
+}
