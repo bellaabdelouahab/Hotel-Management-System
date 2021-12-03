@@ -16,14 +16,14 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Cient_side_Form_1Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Cient_side_Form_1Controller">
    <children>
       <ImageView fitHeight="640.0" fitWidth="1056.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/Home_Background.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="-4.0" layoutY="-20.0" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
+      <Pane prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
          <children>
             <HBox layoutX="548.0" layoutY="7.0" prefHeight="44.0" prefWidth="468.0">
                <children>
@@ -54,27 +54,27 @@
                         <HBox prefHeight="55.0" prefWidth="411.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Check-in Date" />
-                              <DatePicker prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #333333; -fx-text-fill: #fff; -fx-region-background: 0;" />
+                              <DatePicker fx:id="CheckInData" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
                            </children>
                         </HBox>
                         <HBox prefHeight="54.0" prefWidth="411.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Check-out Date" />
-                              <DatePicker prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #333333; -fx-text-fill: #fff; -fx-region-background: 0;" />
+                              <DatePicker fx:id="CheckOutData" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
                   <Label alignment="CENTER" layoutX="1.0" layoutY="176.0" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="X-night stay" />
-                  <HBox layoutX="42.0" layoutY="222.0" prefHeight="49.0" prefWidth="351.0" style="-fx-border-color: #aaaaaa99; -fx-border-width: 3;">
+                  <HBox layoutX="42.0" layoutY="222.0" onMouseClicked="#showNbrOfPersons" prefHeight="49.0" prefWidth="351.0" style="-fx-border-color: #aaaaaa99; -fx-border-width: 3;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
+                        <Label fx:id="AdultsNbr" alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
                         <Label alignment="CENTER" prefHeight="49.0" prefWidth="54.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Adults" />
-                        <Label alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
+                        <Label fx:id="CheldrenNbr" alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
                         <Label alignment="CENTER" prefHeight="49.0" prefWidth="62.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Cheldren" />
-                        <Label alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
+                        <Label fx:id="RoomsNbr" alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
                         <Label alignment="CENTER" prefHeight="49.0" prefWidth="54.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Rooms" />
-                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="54.0" style="-fx-background-color: #aaaaaa99;">
+                        <Button mnemonicParsing="false" onAction="#showNbrOfPersons" prefHeight="53.0" prefWidth="54.0" style="-fx-background-color: #aaaaaa99;">
                            <graphic>
                               <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -84,7 +84,7 @@
                            </graphic></Button>
                      </children>
                   </HBox>
-                  <GridPane layoutX="50.0" layoutY="267.0" prefHeight="126.0" prefWidth="335.0">
+                  <GridPane fx:id="NbrOfPersons" layoutX="50.0" layoutY="270.0" prefHeight="126.0" prefWidth="335.0" visible="false">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.33334350585938" minWidth="10.0" prefWidth="186.33334350585938" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.66665649414062" minWidth="10.0" prefWidth="55.66668701171875" />
@@ -100,25 +100,25 @@
                         <Label prefHeight="54.0" prefWidth="198.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Adults" />
                         <Label prefHeight="75.0" prefWidth="213.0" style="-fx-font-size: 18; -fx-text-fill: #fff;" text="Cheldren" GridPane.rowIndex="1" />
                         <Label prefHeight="73.0" prefWidth="229.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Rooms" GridPane.rowIndex="2" />
-                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="-" GridPane.columnIndex="1" />
-                        <Label alignment="CENTER" prefHeight="53.0" prefWidth="61.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="+" GridPane.columnIndex="3" />
-                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="+" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button minWidth="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="+" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" prefHeight="64.0" prefWidth="74.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" />
-                        <Label alignment="CENTER" prefHeight="64.0" prefWidth="62.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#decAdultsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="-" GridPane.columnIndex="1" />
+                        <Label fx:id="CheldrenNbrLable" alignment="CENTER" prefHeight="53.0" prefWidth="61.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#incAdultsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="+" GridPane.columnIndex="3" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#decCheldrenNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#incCheldrenNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="+" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#decRoomsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button minWidth="47.0" mnemonicParsing="false" onAction="#incRoomsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" text="+" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label fx:id="AdultsNbrLable" alignment="CENTER" prefHeight="64.0" prefWidth="74.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" />
+                        <Label fx:id="RoomsNbrLable" alignment="CENTER" prefHeight="64.0" prefWidth="62.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Rating layoutX="546.0" layoutY="104.0" max="6" />
+                  <Rating fx:id="RatingLable" layoutX="546.0" layoutY="104.0" max="6" rating="0.0" />
                   <Label alignment="CENTER" layoutX="415.0" layoutY="103.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Room Class" />
                   <Label alignment="CENTER" layoutX="453.0" layoutY="166.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Min price" />
                   <Label alignment="CENTER" layoutX="656.0" layoutY="166.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Max price" />
-                  <TextField alignment="CENTER" layoutX="440.0" layoutY="209.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
-                  <TextField alignment="CENTER" layoutX="633.0" layoutY="209.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
-                  <Button layoutX="440.0" layoutY="278.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad6b13;" text="Validate" />
-                  <Button layoutX="633.0" layoutY="277.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad9157;" text="Clear" />
+                  <TextField fx:id="MinPrice" alignment="CENTER" layoutX="440.0" layoutY="209.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+                  <TextField fx:id="MaxPrice" alignment="CENTER" layoutX="633.0" layoutY="209.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+                  <Button layoutX="440.0" layoutY="278.0" mnemonicParsing="false" onAction="#ValidateForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad6b13;" text="Validate" />
+                  <Button layoutX="633.0" layoutY="277.0" mnemonicParsing="false" onAction="#ClearForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad9157;" text="Clear" />
                </children>
             </Pane>
          </children>

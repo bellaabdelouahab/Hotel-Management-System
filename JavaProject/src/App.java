@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,16 +14,12 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("login_page.fxml"));
+    public void start(Stage primaryStage) throws IOException {
+            Parent root = FXMLLoader.load(getClass().getResource("Home/Cliend_side_Form_1.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Hotel BBBE");
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (Exception e) {
-            System.out.println("Errour :( " + e);
-        }
     }
 
     public static void main(String[] args) throws Exception {
