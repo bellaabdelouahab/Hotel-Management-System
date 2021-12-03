@@ -17,6 +17,9 @@ public class login {
     @FXML
     private ImageView image;
 
+    @FXML
+    private Line email_line, pass_line;
+
     // @FXML
     // private Pane image_login;
 
@@ -32,6 +35,7 @@ public class login {
     @FXML
     private Button signup_btn;
 
+    // hover de button sign in
     @FXML
     public void sign_in_hover() {
         // Stage btn_sign =(Stage) signin_btn.getScene().getWindow();
@@ -46,6 +50,7 @@ public class login {
         signin_btn.setStyle(mod2);
     }
 
+    // hover de button sign up
     @FXML
     public void lign_hover() {
         signup_btn.setStyle("-fx-text-fill:#947e00; -fx-background-color: #292929;");
@@ -56,5 +61,32 @@ public class login {
     public void lign_nonhover() {
         signup_btn.setStyle("-fx-text-fill:#fff; -fx-background-color: #292929;");
         line_e.setStyle("-fx-stroke-width:2; -fx-stroke:#fff;");
+    }
+
+    // hover sur le text area email and password
+    @FXML
+    public void lign_input_mail() {
+        if (email_text.getText().contains("@gmail.com")) {
+            email_line.setStyle("-fx-stroke:green;");
+        } else {
+            if (email_text.getText() == "") {
+                email_line.setStyle("-fx-stroke:#fff;");
+            } else {
+                email_line.setStyle("-fx-stroke:red;");
+            }
+        }
+    }
+
+    @FXML
+    public void lign_input_pass() {
+        if (password_label.getText().length() == 0) {
+            pass_line.setStyle("-fx-stroke:#fff;");
+        } else {
+            if (password_label.getText().length() < 8) {
+                pass_line.setStyle("-fx-stroke:red;");
+            } else {
+                pass_line.setStyle("-fx-stroke:green;");
+            }
+        }
     }
 }

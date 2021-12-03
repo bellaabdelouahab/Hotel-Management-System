@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login">
    <children>
       <Pane fx:id="image_login" layoutX="15.0" layoutY="7.0" prefHeight="645.0" prefWidth="488.0">
@@ -31,12 +30,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="email_text" layoutX="91.0" layoutY="228.0" prefHeight="64.0" prefWidth="355.0" promptText="Email ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+            <TextField fx:id="email_text" layoutX="91.0" layoutY="228.0" onKeyTyped="#lign_input_mail" prefHeight="64.0" prefWidth="355.0" promptText="Email ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password_label" layoutX="91.0" layoutY="398.0" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+            <PasswordField fx:id="password_label" layoutX="91.0" layoutY="398.0" onKeyTyped="#lign_input_pass" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -46,13 +45,13 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Line endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="264.0" layoutY="290.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
+            <Line fx:id="email_line" endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="264.0" layoutY="290.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
             <Label layoutX="73.0" layoutY="357.0" style="-fx-font-family: Century Gothic;" text="Password" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Line endX="141.00006103515625" endY="-3.0517578125E-5" layoutX="297.0" layoutY="457.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
+            <Line fx:id="pass_line" endX="141.00006103515625" endY="-3.0517578125E-5" layoutX="297.0" layoutY="457.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
             <Button fx:id="signin_btn" layoutX="74.0" layoutY="522.0" mnemonicParsing="false" onMouseEntered="#sign_in_hover" onMouseExited="#sign_in_out" prefHeight="49.0" prefWidth="139.0" style="-fx-background-radius: 25; -fx-background-color: #009400;" text="Sign In" textFill="WHITE">
                <font>
                   <Font size="17.0" />
