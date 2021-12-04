@@ -1,20 +1,29 @@
 package Home;
 
+import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-
 import org.controlsfx.control.Rating;
-
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 public class Cient_side_Form_1Controller implements Initializable {
+    @FXML private StackPane parentContainer;
+    @FXML private Pane ChildPane;
     @FXML private GridPane NbrOfPersons;
     @FXML private Label AdultsNbr;
     @FXML private Label AdultsNbrLable;
@@ -27,6 +36,7 @@ public class Cient_side_Form_1Controller implements Initializable {
     @FXML private Rating RatingLable; 
     @FXML private TextField MinPrice;
     @FXML private TextField MaxPrice;
+    @FXML private Button B_ValidateForm1;
 
     public void showNbrOfPersons(){
         if(NbrOfPersons.visibleProperty().get())
@@ -72,15 +82,21 @@ public class Cient_side_Form_1Controller implements Initializable {
         RoomsNbrLable.setText(""+RoomsCounter);
     }
     public void ValidateForm1(){
-        LocalDate checkindate = CheckInData.getValue();
-        LocalDate checkoutdate = CheckOutData.getValue();
-        double rating = RatingLable.getRating();
-        double maxprice = Integer.parseInt(MaxPrice.getText());
-        double minprice = Integer.parseInt(MinPrice.getText());
-        int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
-        int CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
-        int RoomsCounter = Integer.parseInt(AdultsNbr.getText());
-        System.out.println(checkindate+"\n"+checkoutdate+"\n"+rating+"\n"+minprice+"\n"+maxprice+"\n"+AdultsCounter+"\n"+CheldrenCounter+"\n"+RoomsCounter);
+        Form1_Data.checkindate=CheckInData.getValue();
+        Form1_Data.checkoutdate = CheckOutData.getValue();
+        Form1_Data.rating = RatingLable.getRating();
+        Form1_Data.maxprice = Integer.parseInt(MaxPrice.getText());
+        Form1_Data.minprice = Integer.parseInt(MinPrice.getText());
+        Form1_Data.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
+        Form1_Data.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
+        Form1_Data.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
+        /* Put Your Shitey Code Here : form 1  */
+
+        try {
+            loadSecond();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
     public void ClearForm1(){
         CheckInData.setValue(null);;
@@ -92,6 +108,24 @@ public class Cient_side_Form_1Controller implements Initializable {
         AdultsNbr.setText(null);
         AdultsNbr.setText(null);
     }
+    
+    private void loadSecond() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Client_side_Form_1_resualt.fxml"));
+        Scene scene = B_ValidateForm1.getScene();
+        root.translateXProperty().set(scene.getWidth());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(ChildPane);
+        });
+        timeline.play();
+    }
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         
