@@ -1,4 +1,4 @@
-package Home.FXMLcotnroller;
+package controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 public class Form_1Controller implements Initializable {
     @FXML private StackPane parentContainer;
@@ -41,8 +42,14 @@ public class Form_1Controller implements Initializable {
     @FXML private TextField MinPrice;
     @FXML private TextField MaxPrice;
     @FXML private Button B_ValidateForm1;
+    @FXML private VBox AccountMenu;
     // private String pattern = "dd-MM-yyyy";
-
+    public void AcountMenuShow(){
+        AccountMenu.setVisible(true);
+    }
+    public void AcountMenuHide(){
+        AccountMenu.setVisible(false);
+    }
     public void showNbrOfPersons(){
         if(NbrOfPersons.visibleProperty().get())
             NbrOfPersons.setVisible(false);
