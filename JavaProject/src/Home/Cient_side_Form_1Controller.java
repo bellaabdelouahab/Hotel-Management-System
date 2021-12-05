@@ -2,7 +2,11 @@ package Home;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
+//Make sure you have added the lib from reference library
 import org.controlsfx.control.Rating;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -31,12 +35,13 @@ public class Cient_side_Form_1Controller implements Initializable {
     @FXML private Label CheldrenNbrLable;
     @FXML private Label RoomsNbr;
     @FXML private Label RoomsNbrLable;
-    @FXML private DatePicker CheckInData;
-    @FXML private DatePicker CheckOutData;
+    @FXML private DatePicker CheckInDate;
+    @FXML private DatePicker CheckOutDate;
     @FXML private Rating RatingLable; 
     @FXML private TextField MinPrice;
     @FXML private TextField MaxPrice;
     @FXML private Button B_ValidateForm1;
+    private String pattern = "dd-MM-yyyy";
 
     public void showNbrOfPersons(){
         if(NbrOfPersons.visibleProperty().get())
@@ -45,48 +50,66 @@ public class Cient_side_Form_1Controller implements Initializable {
             NbrOfPersons.setVisible(true);
     }
     public void incAdultsNbr(){
-        int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
-        AdultsCounter++;
-        AdultsNbr.setText(""+AdultsCounter);
-        AdultsNbrLable.setText(""+AdultsCounter);
+        if(Integer.parseInt(AdultsNbr.getText())<10){
+            int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
+            AdultsCounter++;
+            AdultsNbr.setText(""+AdultsCounter);
+            AdultsNbrLable.setText(""+AdultsCounter);
+        }
     }
     public void incCheldrenNbr(){
-        int ChheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
-        ChheldrenCounter++;
-        CheldrenNbr.setText(""+ChheldrenCounter);
-        CheldrenNbrLable.setText(""+ChheldrenCounter);
+        if(Integer.parseInt(CheldrenNbr.getText())<10){
+            int ChheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
+            ChheldrenCounter++;
+            CheldrenNbr.setText(""+ChheldrenCounter);
+            CheldrenNbrLable.setText(""+ChheldrenCounter);
+        }
     }
     public void incRoomsNbr(){
+        if(Integer.parseInt(RoomsNbr.getText())<10){
         int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
         RoomsCounter++;
         RoomsNbr.setText(""+RoomsCounter);
         RoomsNbrLable.setText(""+RoomsCounter);
+        }
     }
     public void decAdultsNbr(){
-        int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
-        AdultsCounter--;
-        AdultsNbr.setText(""+AdultsCounter);
-        AdultsNbrLable.setText(""+AdultsCounter);
+        if(Integer.parseInt(AdultsNbr.getText())>0){
+            int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
+            AdultsCounter--;
+            AdultsNbr.setText(""+AdultsCounter);
+            AdultsNbrLable.setText(""+AdultsCounter);
+        }
 
     }
     public void decCheldrenNbr(){
-        int ChheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
-        ChheldrenCounter--;
-        CheldrenNbr.setText(""+ChheldrenCounter);
-        CheldrenNbrLable.setText(""+ChheldrenCounter);
+        if(Integer.parseInt(CheldrenNbr.getText())>0){
+            int ChheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
+            ChheldrenCounter--;
+            CheldrenNbr.setText(""+ChheldrenCounter);
+            CheldrenNbrLable.setText(""+ChheldrenCounter);
+        }
     }
     public void decRoomsNbr(){
-        int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
-        RoomsCounter--;
-        RoomsNbr.setText(""+RoomsCounter);
-        RoomsNbrLable.setText(""+RoomsCounter);
+        if(Integer.parseInt(RoomsNbr.getText())>0){
+            int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
+            RoomsCounter--;
+            RoomsNbr.setText(""+RoomsCounter);
+            RoomsNbrLable.setText(""+RoomsCounter);
+        }
     }
     public void ValidateForm1(){
-        Form1_Data.checkindate=CheckInData.getValue();
-        Form1_Data.checkoutdate = CheckOutData.getValue();
+        Form1_Data.checkindate=CheckInDate.getValue();
+        Form1_Data.checkoutdate = CheckOutDate.getValue();
         Form1_Data.rating = RatingLable.getRating();
-        Form1_Data.maxprice = Integer.parseInt(MaxPrice.getText());
-        Form1_Data.minprice = Integer.parseInt(MinPrice.getText());
+        if(MaxPrice.getText()==""||MaxPrice.getText()==null)
+            Form1_Data.maxprice = 0;
+        else
+            Form1_Data.maxprice = Integer.parseInt(MaxPrice.getText());
+        if(MinPrice.getText()==""||MinPrice.getText()==null)
+            Form1_Data.minprice = 0;
+        else
+            Form1_Data.minprice = Integer.parseInt(MinPrice.getText());
         Form1_Data.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
         Form1_Data.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
         Form1_Data.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
@@ -99,14 +122,14 @@ public class Cient_side_Form_1Controller implements Initializable {
         }
     }
     public void ClearForm1(){
-        CheckInData.setValue(null);;
-        CheckOutData.setValue(null);
+        CheckInDate.setValue(null);;
+        CheckOutDate.setValue(null);
         RatingLable.setRating(0);
         MaxPrice.setText(null);
         MinPrice.setText(null);
-        AdultsNbr.setText(null);
-        AdultsNbr.setText(null);
-        AdultsNbr.setText(null);
+        AdultsNbr.setText("0");
+        AdultsNbr.setText("0");
+        AdultsNbr.setText("0");
     }
     
     private void loadSecond() throws IOException {
@@ -118,8 +141,11 @@ public class Cient_side_Form_1Controller implements Initializable {
 
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        KeyValue kv1 = new KeyValue(ChildPane.translateXProperty(), -(root.translateXProperty().get()), Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1.5), kv);
+        KeyFrame kf1 = new KeyFrame(Duration.seconds(1.5), kv1);
         timeline.getKeyFrames().add(kf);
+        timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
             parentContainer.getChildren().remove(ChildPane);
         });
@@ -127,7 +153,11 @@ public class Cient_side_Form_1Controller implements Initializable {
     }
     
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        
+    public void initialize(URL arg0, ResourceBundle arg1) {    
+    String dateInString =new SimpleDateFormat(pattern).format(new Date());  
+    
+    LocalDate date = LocalDate.of(2020, 1, 8);
+    CheckInDate.setValue(date);
+
     }
 }

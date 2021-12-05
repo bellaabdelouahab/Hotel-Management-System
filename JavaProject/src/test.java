@@ -19,7 +19,6 @@ public class test {
             }
             con.close();
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println("dor tqwd2 " + e);
         }
     }
