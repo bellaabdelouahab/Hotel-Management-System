@@ -1,15 +1,15 @@
 
 import java.sql.*;
 
-public class test {
+public class DataBaseConnection {
     public static void main(String[] args) {
         Connection con = null;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            String server = "localhost";// "DESKTOP-SMO7HS9";
-            String server_port = "1521";
-            String sid = "orcl";
-            String url = "jdbc:oracle:thin:@" + server + ":" + server_port + ":orcl";
+            // String server = "localhost";// "DESKTOP-SMO7HS9";
+            // String server_port = "1521";
+            //String sid = "orcl";
+            //String url = "jdbc:oracle:thin:@" + server + ":" + server_port + ":orcl";
             con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.192:1521/orcl","yassine", "yassine2002");
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from e");

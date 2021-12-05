@@ -1,4 +1,4 @@
-package Home;
+package Home.FXMLcotnroller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 
 
 
-public class Cient_side_Form_1_resualtController implements Initializable {
+public class Form_1_resualt_Controller implements Initializable {
     @FXML private Button testshow;
     @FXML private Pane ChildPane;
     public void show_data_test(){

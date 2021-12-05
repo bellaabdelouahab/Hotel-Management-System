@@ -1,10 +1,10 @@
-package Home;
+package Home.FXMLcotnroller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+// import java.text.SimpleDateFormat;
+// import java.util.Date;
 import java.util.ResourceBundle;
 //Make sure you have added the lib from reference library
 import org.controlsfx.control.Rating;
@@ -25,7 +25,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-public class Cient_side_Form_1Controller implements Initializable {
+public class Form_1Controller implements Initializable {
     @FXML private StackPane parentContainer;
     @FXML private Pane ChildPane;
     @FXML private GridPane NbrOfPersons;
@@ -41,7 +41,7 @@ public class Cient_side_Form_1Controller implements Initializable {
     @FXML private TextField MinPrice;
     @FXML private TextField MaxPrice;
     @FXML private Button B_ValidateForm1;
-    private String pattern = "dd-MM-yyyy";
+    // private String pattern = "dd-MM-yyyy";
 
     public void showNbrOfPersons(){
         if(NbrOfPersons.visibleProperty().get())
@@ -154,7 +154,8 @@ public class Cient_side_Form_1Controller implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {    
-    String dateInString =new SimpleDateFormat(pattern).format(new Date());  
+    //todo
+    ///String dateInString =new SimpleDateFormat(pattern).format(new Date());  
     
     LocalDate date = LocalDate.of(2020, 1, 8);
     CheckInDate.setValue(date);

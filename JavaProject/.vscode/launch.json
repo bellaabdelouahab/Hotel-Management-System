@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_3e1c9e92",
+            "vmArgs": "--module-path \"C:/Program Files/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Launch test",
             "request": "launch",
             "mainClass": "test",
@@ -49,8 +57,7 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "App",
-            "projectName": "JavaProject_3e1c9e92",
-            "vmArgs": "--module-path \"C:/Program Files/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "projectName": "JavaProject_3e1c9e92"
         }
     ]
 }
