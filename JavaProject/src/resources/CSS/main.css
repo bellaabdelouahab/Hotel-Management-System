@@ -16,3 +16,9 @@
 .AddProfilePic:hover{
     -fx-text-fill:gray;
 }
+.btns:hover{
+    -fx-background-color: #202332;
+}
+.admin_button:hover{
+    -fx-background-color: #f0f0f0; 
+}

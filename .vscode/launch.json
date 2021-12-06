@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DataBaseConnection",
+            "request": "launch",
+            "mainClass": "DataBaseConnection",
+            "projectName": "java_projet_v2_77125979"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",

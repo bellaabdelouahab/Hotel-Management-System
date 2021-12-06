@@ -20,9 +20,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-
-
-
 public class Form_1_resualt_Controller implements Initializable {
     @FXML private Button testshow;
     @FXML private Pane ChildPane;

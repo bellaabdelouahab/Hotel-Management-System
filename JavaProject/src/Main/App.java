@@ -16,8 +16,8 @@ public class App extends Application {
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
 
+    }
     public static void main(String[] args) throws Exception {
         launch(args);
     }

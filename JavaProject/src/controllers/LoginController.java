@@ -1,5 +1,6 @@
 package controllers;
 
+import java.sql.*;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,17 +21,17 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
-    public void SwitchToLogin(ActionEvent event) throws IOException{
+    public void SwitchToLogin(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../resources/view/LogIn.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();    
+        stage.show();
     }
 
-    public void SwitchToSignUp(ActionEvent event) throws IOException{
+    public void SwitchToSignUp(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../resources/view/SignUp.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -112,6 +113,39 @@ public class LoginController {
             } else {
                 pass_line.setStyle("-fx-stroke:green;");
             }
+        }
+    }
+
+    // login
+    @FXML
+    public void login_formule() {
+        // System.out.println(email_text.getText().contains("@gmail.com") + "\t" +
+        // password_label.getText().length());
+        String x="";
+        if (email_text.getText().contains("@gmail.com") && password_label.getText().length() != 8) {
+            try {
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
+                        "hotel");
+                Statement st = con.createStatement();
+                System.out.println(email_text.getText().toLowerCase());
+                ResultSet rs = st.executeQuery("select email,password from compte_employee where lower(email)='"
+                        + email_text.getText().toLowerCase() + "'");
+                while (rs.next()) {
+                    // System.out.println("no_etude \t" + rs.getString(1));
+                    System.out.println("\t" + rs.getString(2).toLowerCase() + "\t" + password_label.getText().toLowerCase());
+                    x=rs.getString(2).toLowerCase();
+                    System.out.println(x.equals(password_label.getText()));
+                }
+                
+                
+                st.close();
+                con.close();
+            } catch (Exception e) {
+                System.out.println("ERREUR :( \n" + e);
+            }
+        } else {
+            System.out.println("probleme");
         }
     }
 }
