@@ -17,7 +17,7 @@
             "request": "launch",
             "mainClass": "Main.App",
             "projectName": "JavaProject_3e1c9e92",
-            "vmArgs": "--module-path cd /home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib --add-modules=javafx.controls"
+            "vmArgs": "--module-path /home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib --add-modules=javafx.controls"
         },
         {
             "type": "java",
