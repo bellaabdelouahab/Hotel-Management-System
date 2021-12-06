@@ -14,24 +14,24 @@
    <children>
       <ImageView fitHeight="640.0" fitWidth="1056.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../bin/Images/Home_Background.jpg" />
+            <Image url="@../Images/Home_Background.jpg" />
          </image>
       </ImageView>
       <Pane prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
          <children>
             <HBox layoutX="548.0" layoutY="7.0" prefHeight="44.0" prefWidth="468.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@/Styling/main.css" text="Home">
+                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="Home">
                      <font>
                         <Font name="Century Gothic" size="17.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@/Styling/main.css" text="Support">
+                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="Support">
                      <font>
                         <Font name="Century Gothic" size="17.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@/Styling/main.css" text="About">
+                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="About">
                      <font>
                         <Font name="Century Gothic" size="17.0" />
                      </font>
