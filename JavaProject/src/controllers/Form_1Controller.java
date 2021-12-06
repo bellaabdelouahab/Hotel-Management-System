@@ -140,7 +140,7 @@ public class Form_1Controller implements Initializable {
     }
     
     private void loadSecond() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Client_side_Form_1_resualt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Form_1_resualt.fxml"));
         Scene scene = B_ValidateForm1.getScene();
         root.translateXProperty().set(scene.getWidth());
 
