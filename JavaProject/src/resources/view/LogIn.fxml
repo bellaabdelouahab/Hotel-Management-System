@@ -11,19 +11,18 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Pane fx:id="image_login" layoutX="15.0" layoutY="7.0" prefHeight="645.0" prefWidth="488.0">
+      <Pane fx:id="image_login" prefHeight="640.0" prefWidth="512.0">
          <children>
-            <ImageView fx:id="image" fitHeight="787.0" fitWidth="796.0" layoutX="-260.0" layoutY="-149.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="640.0" fitWidth="512.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@login_img.jpg" />
+                  <Image url="@../Images/login_img.jpg" />
                </image>
             </ImageView>
-            <Pane layoutX="-35.0" layoutY="-16.0" prefHeight="654.0" prefWidth="535.0" style="-fx-background-color: #11111155;" />
          </children>
       </Pane>
-      <Pane layoutX="514.0" layoutY="-1.0" prefHeight="647.0" prefWidth="523.0" style="-fx-background-color: #292929;">
+      <Pane layoutX="512.0" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #292929;">
          <children>
             <Label fx:id="sign" layoutX="61.0" layoutY="61.0" prefHeight="80.0" prefWidth="359.0" style="-fx-font-family: Rockwell;" text="Login" textFill="#8062db">
                <font>
@@ -57,7 +56,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="signup_btn" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" onMouseEntered="#lign_hover" onMouseExited="#lign_nonhover" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #292929;" text="Sign Up" textFill="WHITE">
+            <Button fx:id="signup_btn" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToSignUp" onMouseEntered="#lign_hover" onMouseExited="#lign_nonhover" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #292929;" text="Sign Up" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
