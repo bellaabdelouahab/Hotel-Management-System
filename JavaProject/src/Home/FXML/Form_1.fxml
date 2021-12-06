@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.gleidson28.GNAvatarView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -17,7 +18,6 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Cient_side_Form_1Controller">
    <children>
       <Pane fx:id="ChildPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0">
@@ -29,25 +29,6 @@
             </ImageView>
             <Pane prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
                <children>
-                  <HBox layoutX="548.0" layoutY="7.0" prefHeight="44.0" prefWidth="468.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="Home">
-                           <font>
-                              <Font name="Century Gothic" size="17.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="Support">
-                           <font>
-                              <Font name="Century Gothic" size="17.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="About">
-                           <font>
-                              <Font name="Century Gothic" size="17.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="10.0" prefHeight="190.0" prefWidth="624.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #ddd; -fx-font-size: 90; -fx-opacity: 0.6;" text="HOTEL BBBE" />
                   <Label alignment="CENTER" layoutX="296.0" layoutY="148.0" prefHeight="18.0" prefWidth="376.0" style="-fx-text-fill: #ffffffee;" text="Welcome To The Art That Touches The Heart In Essaouira City" />
                   <Pane layoutX="100.0" layoutY="192.0" prefHeight="435.0" prefWidth="824.0" style="-fx-background-color: #11111199;">
@@ -58,13 +39,13 @@
                               <HBox prefHeight="55.0" prefWidth="411.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Check-in Date" />
-                                    <DatePicker fx:id="CheckInData" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
+                                    <DatePicker fx:id="CheckInDate" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="54.0" prefWidth="411.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Check-out Date" />
-                                    <DatePicker fx:id="CheckOutData" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
+                                    <DatePicker fx:id="CheckOutDate" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
                                  </children>
                               </HBox>
                            </children>
@@ -116,7 +97,6 @@
                               <Label fx:id="RoomsNbrLable" alignment="CENTER" prefHeight="64.0" prefWidth="62.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
-                        <Rating fx:id="RatingLable" layoutX="546.0" layoutY="104.0" max="6" rating="0.0" />
                         <Label alignment="CENTER" layoutX="415.0" layoutY="103.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Room Class" />
                         <Label alignment="CENTER" layoutX="453.0" layoutY="166.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Min price" />
                         <Label alignment="CENTER" layoutX="656.0" layoutY="166.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Max price" />
@@ -126,18 +106,42 @@
                         <Button layoutX="633.0" layoutY="277.0" mnemonicParsing="false" onAction="#ClearForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad9157;" text="Clear" />
                      </children>
                   </Pane>
+                  <HBox layoutX="548.0" layoutY="7.0" prefHeight="44.0" prefWidth="468.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="Home">
+                           <font>
+                              <Font name="Century Gothic" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="Support">
+                           <font>
+                              <Font name="Century Gothic" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../../../Users/Abdelouahab/Pictures/main.css" text="About">
+                           <font>
+                              <Font name="Century Gothic" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Rating fx:id="RatingLable" layoutX="640.0" layoutY="295.0" max="4" prefHeight="34.0" prefWidth="244.0" updateOnHover="true" />
                </children>
             </Pane>
-            <VBox layoutY="45.0" prefHeight="176.0" prefWidth="174.0">
+            <VBox layoutY="45.0" prefHeight="143.0" prefWidth="174.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: #11111199;" text="Profile" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: #11111199;" text="My Favorite" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: #11111199;" text="Upgrade" />
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: #11111199;" text="Effected Reservations" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: #11111199;" text="Setting" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" style="-fx-background-color: #11111199;" text="Sign out" />
                </children>
             </VBox>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="95.0" style="-fx-background-color: #11111155;" text="ACC" />
+            <Button minWidth="53.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: #33333300;" />
+            <GNAvatarView layoutX="2.0" layoutY="-1.0" prefHeight="47.0" prefWidth="46.0" stroke="#dbcece00" type="CIRCLE">
+               <image>
+                  <Image url="@../../../../../Users/Abdelouahab/Downloads/Instagram_icon-icons.com_66804.png" />
+               </image>
+            </GNAvatarView>
          </children>
       </Pane>
    </children>

@@ -1,3 +1,5 @@
+package Main;
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -10,7 +12,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("Home/Cliend_side_Form_1.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../Home/FXML/LogIn.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Hotel BBBE");
             primaryStage.setScene(scene);
