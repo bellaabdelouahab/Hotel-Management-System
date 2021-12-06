@@ -6,66 +6,24 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_d96f0f19",
-            "vmArgs": "--module-path \"C:/Users/DELL XPS/Downloads/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_3e1c9e92",
-            "vmArgs": "--module-path \"C:/Users/DELL XPS/Downloads/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
-        },
-        {
-            "type": "java",
-            "name": "Launch test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "JavaProject_3e1c9e92"
-        },
-        {
-            "name": "Java",
-            "type": "java",
-            "request": "launch",
-            "stopOnEntry": true,
-            "jdkPath": "${env:JAVA_HOME}/bin",
-            "cwd": "${fileDirname}",
-            "startupClass": "${fileBasenameNoExtension}",
-            "classpath": [
-                ".",
-                "${fileDirname}"
-            ]
-        },
-        {
-            "name": "Java Console App",
-            "type": "java",
-            "request": "launch",
-            "stopOnEntry": true,
-            "jdkPath": "${env:JAVA_HOME}/bin",
-            "cwd": "${fileDirname}",
-            "startupClass": "${fileBasenameNoExtension}",
-            "classpath": [
-                ".",
-                "${fileDirname}"
-            ],
-            "externalConsole": true
-        },
-        {
-            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
         },
         {
             "type": "java",
+            "name": "Launch DataBaseConnection",
+            "request": "launch",
+            "mainClass": "DataBaseConnection",
+            "projectName": "JavaProject_d96f0f19"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
-            "mainClass": "App",
-            "projectName": "JavaProject_3e1c9e92"
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_d96f0f19",
+            "vmArgs": "--module-path \"C:/Users/DELL XPS/Downloads/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib\" --add-modules javafx.controls,javafx.fxml",
         }
     ]
 }
