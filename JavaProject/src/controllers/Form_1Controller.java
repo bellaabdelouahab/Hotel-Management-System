@@ -153,13 +153,24 @@ public class Form_1Controller implements Initializable {
         });
         timeline.play();
     }
+    public void ShowProfile() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Profile.fxml"));
+        Scene scene = B_ValidateForm1.getScene();
+        root.translateXProperty().set(scene.getWidth());
+        parentContainer.getChildren().add(root);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), (root.translateXProperty().get()/2), Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        // timeline.setOnFinished(t -> {
+        //     parentContainer.getChildren().remove(ChildPane);
+        // });
+        timeline.play();
+    }
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {    
-    //todo
-    ///String dateInString =new SimpleDateFormat(pattern).format(new Date());  
-    
-    LocalDate date = LocalDate.of(2020, 1, 8);
-    CheckInDate.setValue(date);
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        LocalDate date = LocalDate.of(2020, 1, 8);
+        CheckInDate.setValue(date);
 
     }
 }

@@ -147,7 +147,7 @@
                </graphic></Button>
             <VBox fx:id="AccountMenu" layoutY="45.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="143.0" prefWidth="174.0" visible="false">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Profile" />
+                  <Button mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Profile" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Effected Reservations" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Setting" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Sign out" />
