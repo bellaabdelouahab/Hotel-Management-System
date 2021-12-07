@@ -40,6 +40,7 @@ public class Form_1Controller implements Initializable {
     @FXML private TextField MinPrice;
     @FXML private TextField MaxPrice;
     @FXML private Button B_ValidateForm1;
+    @FXML private Button ProfileButton;
     @FXML private VBox AccountMenu;
     // private String pattern = "dd-MM-yyyy";
     public void AcountMenuShow(){
@@ -156,15 +157,26 @@ public class Form_1Controller implements Initializable {
     public void ShowProfile() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Profile.fxml"));
         Scene scene = B_ValidateForm1.getScene();
+        ProfileButton.setDisable(true);
         root.translateXProperty().set(scene.getWidth());
         parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), (root.translateXProperty().get()/2), Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
-        // timeline.setOnFinished(t -> {
-        //     parentContainer.getChildren().remove(ChildPane);
-        // });
+        timeline.setOnFinished(t -> {
+            ChildPane.setOnMouseClicked(e->{
+                System.out.println("twst");
+                root.translateXProperty().set(scene.getWidth()/2);
+                Timeline timeline1 = new Timeline();
+                KeyValue kv1 = new KeyValue(root.translateXProperty(),root.translateXProperty().get()+512, Interpolator.EASE_IN);
+                KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
+                timeline1.getKeyFrames().add(kf1);
+                timeline1.play();
+                ProfileButton.setDisable(false);
+                ChildPane.setOnMouseClicked(e1->{});
+            });
+        });
         timeline.play();
     }
     @Override

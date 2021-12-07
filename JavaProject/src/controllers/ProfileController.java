@@ -21,22 +21,18 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 public class ProfileController implements Initializable {
+    @FXML private Pane ChildPane1;
     public void Goback(ActionEvent e) throws IOException{
         Button backbutton = (Button)e.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Form_1.fxml"));
         Scene scene = backbutton.getScene();
         StackPane parentContainer = (StackPane)scene.getRoot();
-        root.translateXProperty().set(-scene.getWidth()/2);
-        parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), root.translateXProperty().get(), Interpolator.EASE_OUT);
-        KeyValue kv1 = new KeyValue(ChildPane.translateXProperty(), -(root.translateXProperty().get()), Interpolator.EASE_BOTH);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        KeyValue kv1 = new KeyValue(ChildPane1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
-        timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(root);
+            parentContainer.getChildren().remove(ChildPane1);
+        Form_1Controller.ProfileButton.setDisable(false);
         });
         timeline.play();
     }
