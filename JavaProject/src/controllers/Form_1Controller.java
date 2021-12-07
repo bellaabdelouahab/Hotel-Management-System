@@ -41,7 +41,8 @@ public class Form_1Controller implements Initializable {
     @FXML private TextField MinPrice;
     @FXML private TextField MaxPrice;
     @FXML private Button B_ValidateForm1;
-    @FXML private Button ProfileButton;
+    @FXML
+    static Button ProfileButton;
     @FXML private VBox AccountMenu;
     // private String pattern = "dd-MM-yyyy";
     public void AcountMenuShow(){
