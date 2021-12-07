@@ -19,15 +19,15 @@
         "c:\\Users\\Abdelouahab\\Downloads\\ojdbc-full\\OJDBC-Full\\simplefan.jar",
         "c:\\Users\\Abdelouahab\\Downloads\\ojdbc-full\\OJDBC-Full\\ucp.jar",
         "c:\\Users\\Abdelouahab\\Downloads\\ojdbc-full\\OJDBC-Full\\xdb6.jar",
-        "Reference Library/controlsfx-11.1.0.jar",
+        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar",
         "Reference Library/GNAvatarView-1.0.5.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.base.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.controls.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.fxml.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.graphics.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.media.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.swing.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx.web.jar",
-        "/home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib/javafx-swt.jar"
+        "Reference Library/controlsfx-11.1.0.jar",
+        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2.jar"
     ]
 }
