@@ -8,18 +8,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
-
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        // Parent root =
-        // FXMLLoader.load(getClass().getResource("../Home/FXML/LogIn.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/LogIn.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Admin Page/AdminUser.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
     public static void main(String[] args) throws Exception {
         launch(args);

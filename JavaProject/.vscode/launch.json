@@ -14,15 +14,6 @@
         },
         {
             "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_3e1c9e92",
-            "vmArgs": "--module-path /home/hamza/Downloads/openjfx-17.0.1_linux-aarch64_bin-sdk/javafx-sdk-17.0.1/lib--add-modules javafx.controls,javafx.fxml",
-
-        },
-        {
-            "type": "java",
             "name": "Launch test",
             "request": "launch",
             "mainClass": "test",
@@ -55,13 +46,5 @@
             "mainClass": "DataBaseConnection",
             "projectName": "JavaProject_d96f0f19"
         },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_d96f0f19",
-            "vmArgs": "--module-path \"C:/Users/DELL XPS/Downloads/openjfx-17.0.1_windows-x64_bin-sdk/javafx-sdk-17.0.1/lib\" --add-modules javafx.controls,javafx.fxml",
-        }
     ]
 }
