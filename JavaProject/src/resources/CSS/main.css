@@ -13,6 +13,9 @@
 .Sign_in:hover{
     -fx-background-color: #03f803;
 }
+.AddProfilePic:hover{
+    -fx-text-fill:gray;
+}
 .btns:hover{
     -fx-background-color: #202332;
 }

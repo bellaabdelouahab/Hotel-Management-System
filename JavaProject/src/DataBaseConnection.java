@@ -6,12 +6,12 @@ public class DataBaseConnection {
         String username = "hotel_bd";
 
         String password = "hotel";// "insert into employee values (1,'admin','hotel',null,null,null,'admin')",
-        String[] j = {
-                "insert into compte_employee values (1,'yassine@gmail.com','yassine',2)",
-                "insert into compte_employee values (2,'bella@gmail.com','abdelwahab',3)",
-                "insert into compte_employee values (3,'bousslama@gmail.com','hamza',4)",
-                "insert into compte_employee values (4,'el_bazzi@gmail.com','hiba',5)"
-        };
+        // String[] j = {
+        //         "insert into compte_employee values (1,'yassine@gmail.com','yassine',2)",
+        //         "insert into compte_employee values (2,'bella@gmail.com','abdelwahab',3)",
+        //         "insert into compte_employee values (3,'bousslama@gmail.com','hamza',4)",
+        //         "insert into compte_employee values (4,'el_bazzi@gmail.com','hiba',5)"
+        // };
 
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");

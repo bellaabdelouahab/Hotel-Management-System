@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidson28.GNAvatarView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane prefHeight="401.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="550.0" fitWidth="415.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.1;">
+         <image>
+            <Image url="@../Images/login_img.jpg" />
+         </image>
+      </ImageView>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="415.0" style="-fx-background-color: #66666655; -fx-opacity: 0.8;">
+         <children>
+            <GNAvatarView layoutX="55.0" layoutY="30.0" prefHeight="50.0" prefWidth="54.0" stroke="#d3ad7d42" style="-fx-background-color: #00000000;" type="CIRCLE">
+               <image>
+                  <Image url="@../Images/Down-arrow.png" />
+               </image>
+            </GNAvatarView>
+            <TextField layoutX="125.0" layoutY="40.0" prefHeight="29.0" prefWidth="109.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 5; -fx-border-width: 2;" />
+            <TextField layoutX="125.0" layoutY="157.0" prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 5; -fx-border-width: 2;" />
+            <TextField layoutX="125.0" layoutY="108.0" prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 5; -fx-border-width: 2;" />
+            <Button layoutX="125.0" layoutY="68.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="95.0" style="-fx-background-color: #11111100;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Add a Profile Picture">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="113.0" prefHeight="19.0" prefWidth="85.0" text="CIN" />
+            <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="212.0" prefHeight="19.0" prefWidth="85.0" text="Phone Number" />
+            <TextField layoutX="125.0" layoutY="207.0" prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 5; -fx-border-width: 2;" />
+            <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="162.0" prefHeight="19.0" prefWidth="85.0" text="Address" />
+            <TextArea layoutX="125.0" layoutY="259.0" prefHeight="59.0" prefWidth="225.0" />
+            <Button layoutX="152.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #11111122; -fx-background-radius: 20;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Change Password" />
+            <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="259.0" prefHeight="19.0" prefWidth="85.0" text="About Me" />
+            <Button layoutX="15.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #43e84c; -fx-background-radius: 10;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Update Profile" />
+            <TextField layoutX="257.0" layoutY="40.0" prefHeight="29.0" prefWidth="109.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 5; -fx-border-width: 2;" />
+            <Button layoutX="292.0" layoutY="350.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #5599ee; -fx-background-radius: 10;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Cancel" />
+            <GridPane layoutX="46.0" layoutY="220.0" prefHeight="113.0" prefWidth="328.0" style="-fx-background-color: #dddddd; -fx-border-color: #aaa;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="105.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="210.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="120.0" text="Old Password" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="120.0" text="New Password" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="120.0" text="confirme Password" GridPane.rowIndex="2" />
+                  <TextField prefHeight="31.0" prefWidth="179.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 0; -fx-border-width: 2.5;" GridPane.columnIndex="1" />
+                  <TextField prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 0; -fx-border-width: 2.5;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #11111100; -fx-border-color: #11111155; -fx-border-radius: 0; -fx-border-width: 2.5;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

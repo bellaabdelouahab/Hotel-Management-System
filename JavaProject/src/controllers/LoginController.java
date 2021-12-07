@@ -2,6 +2,11 @@ package controllers;
 
 import java.sql.*;
 import java.io.IOException;
+
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +16,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.Node;
 
 public class LoginController {
@@ -50,6 +58,11 @@ public class LoginController {
 
     // @FXML
     // private Pane image_login;
+    @FXML
+    private Pane general_pane;
+
+    @FXML
+    private ImageView image_login;
 
     @FXML
     private PasswordField password_label;
@@ -143,11 +156,22 @@ public class LoginController {
                 if (x.equals(password_label.getText())) {
                     try {
                         System.out.println("abdo");
-                        root = FXMLLoader.load(getClass().getResource("../resources/view/SignUp.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
+                        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/SignUp.fxml"));
+                        Scene scene = signin_btn.getScene();
+                        root.translateXProperty().set(scene.getWidth());
+                        StackPane achnopane = (StackPane) scene.getRoot();// .getChildren().add(root);
+                        Timeline timeline = new Timeline();
+                        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+                        KeyValue kv1 = new KeyValue(general_pane.translateXProperty(),
+                                -(root.translateXProperty().get()), Interpolator.EASE_IN);
+                        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+                        KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
+                        timeline.getKeyFrames().add(kf);
+                        timeline.getKeyFrames().add(kf1);
+                        timeline.setOnFinished(t -> {
+                            achnopane.getChildren().remove(general_pane);
+                        });
+                        timeline.play();
                     } catch (Exception e) {
                         System.out.println(e);
                     }
