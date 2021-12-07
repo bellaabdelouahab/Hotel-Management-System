@@ -24,6 +24,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
+
 public class Form_1Controller implements Initializable {
     @FXML private StackPane parentContainer;
     @FXML private Pane ChildPane;
@@ -46,80 +47,89 @@ public class Form_1Controller implements Initializable {
     public void AcountMenuShow(){
         AccountMenu.setVisible(true);
     }
-    public void AcountMenuHide(){
+
+    public void AcountMenuHide() {
         AccountMenu.setVisible(false);
     }
-    public void showNbrOfPersons(){
-        if(NbrOfPersons.visibleProperty().get())
+
+    public void showNbrOfPersons() {
+        if (NbrOfPersons.visibleProperty().get())
             NbrOfPersons.setVisible(false);
-        else 
+        else
             NbrOfPersons.setVisible(true);
     }
-    public void incAdultsNbr(){
-        if(Integer.parseInt(AdultsNbr.getText())<10){
+
+    public void incAdultsNbr() {
+        if (Integer.parseInt(AdultsNbr.getText()) < 10) {
             int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
             AdultsCounter++;
-            AdultsNbr.setText(""+AdultsCounter);
-            AdultsNbrLable.setText(""+AdultsCounter);
+            AdultsNbr.setText("" + AdultsCounter);
+            AdultsNbrLable.setText("" + AdultsCounter);
         }
     }
-    public void incCheldrenNbr(){
-        if(Integer.parseInt(CheldrenNbr.getText())<10){
+
+    public void incCheldrenNbr() {
+        if (Integer.parseInt(CheldrenNbr.getText()) < 10) {
             int ChheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
             ChheldrenCounter++;
-            CheldrenNbr.setText(""+ChheldrenCounter);
-            CheldrenNbrLable.setText(""+ChheldrenCounter);
+            CheldrenNbr.setText("" + ChheldrenCounter);
+            CheldrenNbrLable.setText("" + ChheldrenCounter);
         }
     }
-    public void incRoomsNbr(){
-        if(Integer.parseInt(RoomsNbr.getText())<10){
-        int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
-        RoomsCounter++;
-        RoomsNbr.setText(""+RoomsCounter);
-        RoomsNbrLable.setText(""+RoomsCounter);
+
+    public void incRoomsNbr() {
+        if (Integer.parseInt(RoomsNbr.getText()) < 10) {
+            int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
+            RoomsCounter++;
+            RoomsNbr.setText("" + RoomsCounter);
+            RoomsNbrLable.setText("" + RoomsCounter);
         }
     }
-    public void decAdultsNbr(){
-        if(Integer.parseInt(AdultsNbr.getText())>0){
+
+    public void decAdultsNbr() {
+        if (Integer.parseInt(AdultsNbr.getText()) > 0) {
             int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
             AdultsCounter--;
-            AdultsNbr.setText(""+AdultsCounter);
-            AdultsNbrLable.setText(""+AdultsCounter);
+            AdultsNbr.setText("" + AdultsCounter);
+            AdultsNbrLable.setText("" + AdultsCounter);
         }
 
     }
-    public void decCheldrenNbr(){
-        if(Integer.parseInt(CheldrenNbr.getText())>0){
+
+    public void decCheldrenNbr() {
+        if (Integer.parseInt(CheldrenNbr.getText()) > 0) {
             int ChheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
             ChheldrenCounter--;
-            CheldrenNbr.setText(""+ChheldrenCounter);
-            CheldrenNbrLable.setText(""+ChheldrenCounter);
+            CheldrenNbr.setText("" + ChheldrenCounter);
+            CheldrenNbrLable.setText("" + ChheldrenCounter);
         }
     }
-    public void decRoomsNbr(){
-        if(Integer.parseInt(RoomsNbr.getText())>0){
+
+    public void decRoomsNbr() {
+        if (Integer.parseInt(RoomsNbr.getText()) > 0) {
             int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
             RoomsCounter--;
-            RoomsNbr.setText(""+RoomsCounter);
-            RoomsNbrLable.setText(""+RoomsCounter);
+            RoomsNbr.setText("" + RoomsCounter);
+            RoomsNbrLable.setText("" + RoomsCounter);
         }
     }
-    public void ValidateForm1(){
-        Form1_Data.checkindate=CheckInDate.getValue();
+
+    public void ValidateForm1() {
+        Form1_Data.checkindate = CheckInDate.getValue();
         Form1_Data.checkoutdate = CheckOutDate.getValue();
         Form1_Data.rating = RatingLable.getRating();
-        if(MaxPrice.getText()==""||MaxPrice.getText()==null)
+        if (MaxPrice.getText() == "" || MaxPrice.getText() == null)
             Form1_Data.maxprice = 0;
         else
             Form1_Data.maxprice = Integer.parseInt(MaxPrice.getText());
-        if(MinPrice.getText()==""||MinPrice.getText()==null)
+        if (MinPrice.getText() == "" || MinPrice.getText() == null)
             Form1_Data.minprice = 0;
         else
             Form1_Data.minprice = Integer.parseInt(MinPrice.getText());
         Form1_Data.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
         Form1_Data.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
         Form1_Data.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
-        /* Put Your Shitey Code Here : form 1  */
+        /* Put Your Shitey Code Here : form 1 */
 
         try {
             startAnimation();
@@ -127,8 +137,10 @@ public class Form_1Controller implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    public void ClearForm1(){
-        CheckInDate.setValue(null);;
+
+    public void ClearForm1() {
+        CheckInDate.setValue(null);
+        ;
         CheckOutDate.setValue(null);
         RatingLable.setRating(0);
         MaxPrice.setText(null);

@@ -7,6 +7,15 @@
         {
             "name": "Java",
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_7a54a8d7",
+            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml",
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
             "request": "launch",
             "stopOnEntry": true,
             "jdkPath": "${env:JAVA_HOME}/bin",
@@ -44,13 +53,5 @@
             "mainClass": "DataBaseConnection",
             "projectName": "JavaProject_3e1c9e92"
         },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_3e1c9e92",
-            "vmArgs": "--module-path \"C:/Program Files/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
-        }
     ]
 }

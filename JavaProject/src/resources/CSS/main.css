@@ -1,6 +1,7 @@
 .file:hover {
     -fx-background-color:#444444aa;
     -fx-text-fill:rgb(165, 165, 139);
+    -fx-background-color:#11111199;
 }
 .file{
     -fx-text-fill:rgb(205, 205, 253);

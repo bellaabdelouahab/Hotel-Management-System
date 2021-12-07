@@ -32,12 +32,12 @@
             </PasswordField>
             <Line fx:id="email_line" endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="267.0" layoutY="202.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
             <Line fx:id="pass_line" endX="141.00006103515625" endY="-3.0517578125E-5" layoutX="296.0" layoutY="367.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
-            <Button fx:id="signin_btn2" layoutX="94.0" layoutY="519.0" mnemonicParsing="false" onMouseEntered="#sign_in_hover" onMouseExited="#sign_in_out" prefHeight="49.0" prefWidth="139.0" styleClass="Sign_in" stylesheets="@../CSS/main.css" text="Sign Up" textFill="WHITE">
+            <Button fx:id="signin_btn" layoutX="94.0" layoutY="519.0" mnemonicParsing="false" onMouseEntered="#sign_in_hover" onMouseExited="#sign_in_out" prefHeight="49.0" prefWidth="139.0" styleClass="Sign_in" stylesheets="@../CSS/main.css" text="Sign Up" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="signup_btn2" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" onMouseEntered="#lign_hover" onMouseExited="#lign_nonhover" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #292929;" text="Sign In" textFill="WHITE">
+            <Button fx:id="signup_btn" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToLogin" onMouseEntered="#lign_hover" onMouseExited="#lign_nonhover" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #292929;" text="Sign In" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
