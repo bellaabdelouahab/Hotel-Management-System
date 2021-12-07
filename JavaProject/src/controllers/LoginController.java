@@ -21,21 +21,23 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
-    public void SwitchToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../resources/view/LogIn.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    // public void SwitchToLogin(ActionEvent event) throws IOException {
+    // root =
+    // FXMLLoader.load(getClass().getResource("../resources/view/LogIn.fxml"));
+    // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // scene = new Scene(root);
+    // stage.setScene(scene);
+    // stage.show();
+    // }
 
-    public void SwitchToSignUp(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../resources/view/SignUp.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    // public void SwitchToSignUp(ActionEvent event) throws IOException {
+    // root =
+    // FXMLLoader.load(getClass().getResource("../resources/view/SignUp.fxml"));
+    // stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // scene = new Scene(root);
+    // stage.setScene(scene);
+    // stage.show();
+    // }
 
     @FXML
     private TextField email_text;
@@ -118,10 +120,10 @@ public class LoginController {
 
     // login
     @FXML
-    public void login_formule() {
+    public void login_formule(ActionEvent event) {
         // System.out.println(email_text.getText().contains("@gmail.com") + "\t" +
         // password_label.getText().length());
-        String x="";
+        String x = "";
         if (email_text.getText().contains("@gmail.com") && password_label.getText().length() != 8) {
             try {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -133,12 +135,26 @@ public class LoginController {
                         + email_text.getText().toLowerCase() + "'");
                 while (rs.next()) {
                     // System.out.println("no_etude \t" + rs.getString(1));
-                    System.out.println("\t" + rs.getString(2).toLowerCase() + "\t" + password_label.getText().toLowerCase());
-                    x=rs.getString(2).toLowerCase();
-                    System.out.println(x.equals(password_label.getText()));
+                    System.out.println(
+                            "\t" + rs.getString(2).toLowerCase() + "\t" + password_label.getText().toLowerCase());
+                    x = rs.getString(2).toLowerCase();
+                    // System.out.println(x.equals(password_label.getText()));
                 }
-                
-                
+                if (x.equals(password_label.getText())) {
+                    try {
+                        System.out.println("abdo");
+                        root = FXMLLoader.load(getClass().getResource("../resources/view/SignUp.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                } else {
+                    System.out.println("mmmm");
+                }
+
                 st.close();
                 con.close();
             } catch (Exception e) {

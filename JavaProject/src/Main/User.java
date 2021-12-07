@@ -1,38 +1,24 @@
 package Main;
 
-public class User {
-    private int Id;
-    private String Name;
-    private String Last_name;
-    private String Adresse;
-    private int Salary;
-    private int Commission;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
-    public User(int id , String Name , String Last_name , String Adresse , int Salary , int Commission){
-        this.Id = id;
-        this.Name = Name;
-        this.Last_name = Last_name;
-        this.Adresse = Adresse;
-        this.Salary = Salary;
-        this.Commission = Commission;
+public class User extends Application {
+    @Override
+    public void start(Stage primary) throws Exception {
+        // Parent root =
+        // FXMLLoader.load(getClass().getResource("../Home/FXML/LogIn.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/AdminPage/AdminLogin.fxml"));
+        Scene scene = new Scene(root);
+        primary.setTitle("Hotel BBBE");
+        primary.setScene(scene);
+        primary.show();
     }
-    
-    public int getId(){
-        return Id;
-    }
-    public String getName(){
-        return Name;
-    }
-    public String getLastName(){
-        return Last_name;
-    }
-    public String getAdresse(){
-        return Adresse;
-    }
-    public int getSalary(){
-        return Salary;
-    }
-    public int getCommission(){
-        return Commission;
+
+    public static void main(String[] args) throws Exception {
+        launch(args);
     }
 }

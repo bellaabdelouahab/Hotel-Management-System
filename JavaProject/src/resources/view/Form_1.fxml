@@ -107,6 +107,7 @@
                         <Button fx:id="B_ValidateForm1" layoutX="447.0" layoutY="231.0" mnemonicParsing="false" onAction="#ValidateForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad6b13;" text="Validate" />
                         <Button layoutX="642.0" layoutY="231.0" mnemonicParsing="false" onAction="#ClearForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad9157;" text="Clear" />
                         <Rating layoutX="585.0" layoutY="76.0" updateOnHover="true" />
+                        <Button layoutX="543.0" layoutY="297.0" mnemonicParsing="false" onAction="#SwitchToLogin" text="Button" />
                      </children>
                      <effect>
                         <DisplacementMap>
