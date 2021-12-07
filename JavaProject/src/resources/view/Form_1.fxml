@@ -106,7 +106,12 @@
                         <TextField fx:id="MaxPrice" alignment="CENTER" layoutX="643.0" layoutY="170.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
                         <Button fx:id="B_ValidateForm1" layoutX="447.0" layoutY="231.0" mnemonicParsing="false" onAction="#ValidateForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad6b13;" text="Validate" />
                         <Button layoutX="642.0" layoutY="231.0" mnemonicParsing="false" onAction="#ClearForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad9157;" text="Clear" />
+<<<<<<< HEAD
                         <Rating layoutX="585.0" layoutY="76.0" updateOnHover="true" />
+                        <Button layoutX="543.0" layoutY="297.0" mnemonicParsing="false" onAction="#SwitchToLogin" text="Button" />
+=======
+                        <Rating fx:id="RatingLable" layoutX="585.0" layoutY="76.0" updateOnHover="true" />
+>>>>>>> 02e61d93f55d004c1146d7747becddec8a271e4c
                      </children>
                      <effect>
                         <DisplacementMap>
@@ -147,7 +152,7 @@
                </graphic></Button>
             <VBox fx:id="AccountMenu" layoutY="45.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="143.0" prefWidth="174.0" visible="false">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Profile" />
+                  <Button mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Profile" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Effected Reservations" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Setting" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Sign out" />

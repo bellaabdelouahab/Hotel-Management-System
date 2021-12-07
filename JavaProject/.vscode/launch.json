@@ -5,7 +5,9 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Java",
             "type": "java",
+<<<<<<< HEAD
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
@@ -15,13 +17,8 @@
         {
             "type": "java",
             "name": "Launch test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "JavaProject_3e1c9e92"
-        },
-        {
-            "name": "Java",
-            "type": "java",
+=======
+>>>>>>> 5a58f7dc80032260923f9cc93c955320eff87630
             "request": "launch",
             "stopOnEntry": true,
             "jdkPath": "${env:JAVA_HOME}/bin",
@@ -35,6 +32,19 @@
         {
             "name": "Java Console App",
             "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -44,7 +54,18 @@
             "name": "Launch DataBaseConnection",
             "request": "launch",
             "mainClass": "DataBaseConnection",
-            "projectName": "JavaProject_d96f0f19"
+            "projectName": "JavaProject_3e1c9e92"
         },
+<<<<<<< HEAD
+=======
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_3e1c9e92",
+            "vmArgs": "--module-path \"C:/Program Files/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        }
+>>>>>>> 5a58f7dc80032260923f9cc93c955320eff87630
     ]
 }
