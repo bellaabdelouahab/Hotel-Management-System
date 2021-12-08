@@ -6,6 +6,15 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_3e1c9e92",
+            "vmArgs": "--module-path \"C:/Program Files/javafx-sdk-17.0.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,14 +25,6 @@
             "request": "launch",
             "mainClass": "DataBaseConnection",
             "projectName": "JavaProject_6e56904f"
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_6e56904f",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml",
         }
     ]
 }

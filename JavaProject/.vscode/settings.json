@@ -1,19 +1,17 @@
 {
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "/home/hamza/Downloads/jar_files/fontawesomefx-commons-9.1.2.jar",
-        "/home/hamza/Downloads/jar_files/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/GNAvatarView-1.0.5.jar",
-        "/home/hamza/Downloads/jar_files/controlsfx-11.1.0.jar"
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\controlsfx-8.40.11.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.base.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.controls.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.media.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx.web.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx-swt.jar",
+        "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\mongo-java-driver-3.12.9.jar",
+        "Reference Library/controlsfx-11.1.0.jar",
+        "Reference Library/GNAvatarView-1.0.5.jar"
     ]
 }
