@@ -1,4 +1,4 @@
-package Controllers.EmployerContollers.EmployerAuthentification;
+package Controllers.Employer.EmployerAuthentification;
 
 import java.io.IOException;
 import java.sql.*;

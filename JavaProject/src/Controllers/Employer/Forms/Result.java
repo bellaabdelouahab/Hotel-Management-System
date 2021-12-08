@@ -1,4 +1,4 @@
-package Controllers.EmployerContollers.EmployerForms;
+package Controllers.Employer.Forms;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,10 +20,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-public class EmployerReserveFormController implements Initializable {
+public class Result implements Initializable {
     @FXML private Button testshow;
-    @FXML private Pane ChildPane;
+    @FXML private Pane ChildPane2;
     @FXML private VBox AccountMenu;
+    @FXML private Button ProfileButton;
 
     public void AcountMenuShow(){
         AccountMenu.setVisible(true);
@@ -32,25 +33,32 @@ public class EmployerReserveFormController implements Initializable {
         AccountMenu.setVisible(false);
     }
     public void show_data_test(){
-        System.out.println(EmployerSearchFormController.checkindate);
+        System.out.println(SearchData.checkindate);
     }
     public void Goback(ActionEvent e) throws IOException{
         Button backbutton = (Button)e.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Form_1.fxml"));
         Scene scene = backbutton.getScene();
+        System.out.println(scene);
         StackPane parentContainer = (StackPane)scene.getRoot();
-        root.translateXProperty().set(-scene.getWidth());
-        parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
-        KeyValue kv1 = new KeyValue(ChildPane.translateXProperty(), -(root.translateXProperty().get()), Interpolator.EASE_BOTH);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        KeyValue kv1 = new KeyValue(ChildPane2.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
-        timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(ChildPane);
+            parentContainer.getChildren().remove(ChildPane2);
         });
+        timeline.play();
+    }
+    public void ShowProfile1() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
+        Scene scene = ProfileButton.getScene();
+        root.translateXProperty().set(scene.getWidth());
+        StackPane parentContainer = (StackPane)scene.getRoot();
+        parentContainer.getChildren().add(root);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
         timeline.play();
     }
     @Override

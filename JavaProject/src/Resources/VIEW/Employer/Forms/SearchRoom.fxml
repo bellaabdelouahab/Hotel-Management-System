@@ -20,15 +20,14 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Form_1Controller">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Search">
    <children>
       <Pane fx:id="ChildPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0">
          <children>
             <ImageView fitHeight="640.0" fitWidth="1056.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/Home_Background.jpg" />
-               </image>
-            </ImageView>
+                  <Image url="@../../../IMAGES/Home_Background.jpg" />
+               </image></ImageView>
             <Pane prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="10.0" prefHeight="190.0" prefWidth="624.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #ddd; -fx-font-size: 90; -fx-opacity: 0.6;" text="HOTEL BBBE" />
@@ -65,9 +64,8 @@
                                  <graphic>
                                     <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Images/Down-arrow.png" />
-                                       </image>
-                                    </ImageView>
+                                          <Image url="@../../../IMAGES/Down-arrow.png" />
+                                       </image></ImageView>
                                  </graphic>
                               </Button>
                            </children>
@@ -106,12 +104,7 @@
                         <TextField fx:id="MaxPrice" alignment="CENTER" layoutX="643.0" layoutY="170.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
                         <Button fx:id="B_ValidateForm1" layoutX="447.0" layoutY="231.0" mnemonicParsing="false" onAction="#ValidateForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad6b13;" text="Validate" />
                         <Button layoutX="642.0" layoutY="231.0" mnemonicParsing="false" onAction="#ClearForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad9157;" text="Clear" />
-<<<<<<< HEAD
-                        <Rating layoutX="585.0" layoutY="76.0" updateOnHover="true" />
-                        <Button layoutX="543.0" layoutY="297.0" mnemonicParsing="false" onAction="#SwitchToLogin" text="Button" />
-=======
                         <Rating fx:id="RatingLable" layoutX="585.0" layoutY="76.0" updateOnHover="true" />
->>>>>>> 02e61d93f55d004c1146d7747becddec8a271e4c
                      </children>
                      <effect>
                         <DisplacementMap>
@@ -123,17 +116,17 @@
                   </Pane>
                   <HBox layoutX="548.0" layoutY="7.0" prefHeight="44.0" prefWidth="468.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../CSS/main.css" text="Home">
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Home">
                            <font>
                               <Font name="Century Gothic" size="17.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../CSS/main.css" text="Support">
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Support">
                            <font>
                               <Font name="Century Gothic" size="17.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../CSS/main.css" text="About">
+                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="About">
                            <font>
                               <Font name="Century Gothic" size="17.0" />
                            </font>
@@ -146,16 +139,15 @@
                <graphic>
                   <GNAvatarView stroke="#ffffff18" type="CIRCLE">
                      <image>
-                        <Image url="@../Images/Down-arrow.png" />
-                     </image>
-                  </GNAvatarView>
+                        <Image url="@../../../IMAGES/Down-arrow.png" />
+                     </image></GNAvatarView>
                </graphic></Button>
-            <VBox fx:id="AccountMenu" layoutY="45.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="143.0" prefWidth="174.0" visible="false">
+            <VBox fx:id="AccountMenu" layoutY="45.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="143.0" prefWidth="174.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Profile" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Effected Reservations" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Setting" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../CSS/main.css" text="Sign out" />
+                  <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Profile" />
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Effected Reservations" />
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Setting" />
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Sign out" />
                </children>
             </VBox>
          </children>

@@ -12,6 +12,8 @@
         "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\javafx-swt.jar",
         "c:\\Program Files\\javafx-sdk-17.0.0.1\\lib\\mongo-java-driver-3.12.9.jar",
         "Reference Library/controlsfx-11.1.0.jar",
-        "Reference Library/GNAvatarView-1.0.5.jar"
+        "Reference Library/GNAvatarView-1.0.5.jar",
+        "Reference Library/fontawesomefx-commons-9.1.2.jar",
+        "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar"
     ]
 }

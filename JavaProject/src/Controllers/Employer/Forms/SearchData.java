@@ -1,7 +1,7 @@
-package Controllers.EmployerContollers.EmployerForms;
+package Controllers.Employer.Forms;
 
 import java.time.LocalDate;
-public class EmployerSearchFormController {
+public class SearchData {
     public static LocalDate checkindate;
     public static LocalDate checkoutdate;
     public static double rating;

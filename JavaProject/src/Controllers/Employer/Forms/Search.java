@@ -1,12 +1,12 @@
-package Controllers.EmployerContollers.EmployerForms;
+package Controllers.Employer.Forms;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 //Make sure you have added the lib from reference library
-
 import org.controlsfx.control.Rating;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,7 +26,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
-public class EmployerSecondFormController implements Initializable {
+public class Search implements Initializable {
     @FXML
     private StackPane parentContainer;
     @FXML
@@ -132,20 +132,20 @@ public class EmployerSecondFormController implements Initializable {
     }
 
     public void ValidateForm1() {
-        EmployerSearchFormController.checkindate = CheckInDate.getValue();
-        EmployerSearchFormController.checkoutdate = CheckOutDate.getValue();
-        EmployerSearchFormController.rating = RatingLable.getRating();
+        SearchData.checkindate = CheckInDate.getValue();
+        SearchData.checkoutdate = CheckOutDate.getValue();
+        SearchData.rating = RatingLable.getRating();
         if (MaxPrice.getText() == "" || MaxPrice.getText() == null)
-            EmployerSearchFormController.maxprice = 0;
+            SearchData.maxprice = 0;
         else
-            EmployerSearchFormController.maxprice = Integer.parseInt(MaxPrice.getText());
+            SearchData.maxprice = Integer.parseInt(MaxPrice.getText());
         if (MinPrice.getText() == "" || MinPrice.getText() == null)
-            EmployerSearchFormController.minprice = 0;
+            SearchData.minprice = 0;
         else
-            EmployerSearchFormController.minprice = Integer.parseInt(MinPrice.getText());
-            EmployerSearchFormController.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
-            EmployerSearchFormController.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
-            EmployerSearchFormController.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
+            SearchData.minprice = Integer.parseInt(MinPrice.getText());
+            SearchData.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
+            SearchData.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
+            SearchData.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
         /* Put Your Shitey Code Here : form 1 */
 
         try {
@@ -167,7 +167,7 @@ public class EmployerSecondFormController implements Initializable {
         AdultsNbr.setText("0");
     }
     public void startAnimation() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Form_1_resualt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Scene scene = B_ValidateForm1.getScene();
         root.translateXProperty().set(scene.getWidth());
         parentContainer.getChildren().add(root);
@@ -184,12 +184,12 @@ public class EmployerSecondFormController implements Initializable {
         timeline.play();
     }
     public void ShowProfile() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Profile.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
         Scene scene = B_ValidateForm1.getScene();
         root.translateXProperty().set(scene.getWidth());
         parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), (root.translateXProperty().get()/2), Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         // timeline.setOnFinished(t -> {

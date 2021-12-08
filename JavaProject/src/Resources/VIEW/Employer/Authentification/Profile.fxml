@@ -13,25 +13,24 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="ChildPane1" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111100;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.EmployerAuthentification.Profile">
    <children>
-      <ImageView fitHeight="794.0" fitWidth="643.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
+      <Button mnemonicParsing="false" onAction="#Goback" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #11111100;" />
+      <ImageView fitHeight="794.0" fitWidth="643.0" layoutX="512.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.8;">
          <image>
-            <Image url="@../Images/login_img.jpg" />
-         </image>
-      </ImageView>
-      <Pane layoutY="118.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="513.0" style="-fx-background-color: #33333388; -fx-opacity: 1;">
+            <Image url="@../../../IMAGES/login_img.jpg" />
+         </image></ImageView>
+      <Pane layoutX="512.0" layoutY="118.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="513.0" style="-fx-background-color: #111111ee; -fx-opacity: 1;">
          <children>
-            <Button layoutX="173.0" layoutY="69.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="95.0" style="-fx-background-color: #11111100;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Add a Profile Picture">
+            <Button layoutX="173.0" layoutY="69.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="10.0" prefWidth="95.0" style="-fx-background-color: #11111100;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Add a Profile Picture">
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <GNAvatarView layoutX="103.0" layoutY="31.0" prefHeight="50.0" prefWidth="54.0" stroke="#d3ad7d42" style="-fx-background-color: #00000000;" type="CIRCLE">
+            <GNAvatarView fx:id="ProfilePicture" layoutX="103.0" layoutY="31.0" prefHeight="50.0" prefWidth="54.0" stroke="#d3ad7d42" style="-fx-background-color: #00000000;" type="CIRCLE">
                <image>
-                  <Image url="@../Images/Down-arrow.png" />
-               </image>
-            </GNAvatarView>
+                  <Image url="@../../../IMAGES/Down-arrow.png" />
+               </image></GNAvatarView>
             <TextField layoutX="173.0" layoutY="40.0" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #11111100; -fx-border-color: #eeeeee55; -fx-border-radius: 5; -fx-border-width: 2; -fx-text-fill: #eee;" />
             <TextField layoutX="298.0" layoutY="40.0" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #11111100; -fx-border-color: #eeeeee55; -fx-border-radius: 5; -fx-border-width: 2; -fx-text-fill: #eee;" />
             <TextField layoutX="173.0" layoutY="109.0" prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #11111100; -fx-border-color: #eeeeee55; -fx-border-radius: 5; -fx-border-width: 2; -fx-text-fill: #eee;" />
@@ -41,10 +40,10 @@
             <TextField layoutX="173.0" layoutY="208.0" prefHeight="29.0" prefWidth="225.0" style="-fx-background-color: #eeeeee00; -fx-border-color: #eeeeee55; -fx-border-radius: 5; -fx-border-width: 2; -fx-text-fill: #eee;" />
             <Label alignment="CENTER_RIGHT" layoutX="78.0" layoutY="163.0" prefHeight="19.0" prefWidth="85.0" text="Address" textFill="#f5f5f5" />
             <TextArea layoutX="173.0" layoutY="260.0" prefHeight="59.0" prefWidth="225.0" />
-            <Button layoutX="63.0" layoutY="351.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #43e84c; -fx-background-radius: 10;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Update Profile" />
-            <Button layoutX="200.0" layoutY="351.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #11111122; -fx-background-radius: 20;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Change Password" />
+            <Button layoutX="63.0" layoutY="351.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #43e84c; -fx-background-radius: 10;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Update Profile" />
+            <Button layoutX="200.0" layoutY="351.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #11111122; -fx-background-radius: 20;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Change Password" textFill="#ddbebe" />
             <Label alignment="CENTER_RIGHT" layoutX="78.0" layoutY="260.0" prefHeight="19.0" prefWidth="85.0" text="About Me" textFill="#f5f5f5" />
-            <Button layoutX="340.0" layoutY="351.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #5599ee; -fx-background-radius: 10;" styleClass="AddProfilePic" stylesheets="@../CSS/main.css" text="Cancel" />
+            <Button layoutX="340.0" layoutY="351.0" mnemonicParsing="false" onAction="#Goback" prefHeight="29.0" prefWidth="116.0" style="-fx-background-color: #5599ee; -fx-background-radius: 10;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Cancel" />
          </children>
       </Pane>
       <GridPane layoutX="91.0" layoutY="528.0" prefHeight="113.0" prefWidth="328.0" style="-fx-background-color: #dddddd; -fx-border-color: #aaa;" visible="false">
