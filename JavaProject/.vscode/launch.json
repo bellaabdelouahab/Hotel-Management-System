@@ -5,42 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Java",
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_7a54a8d7",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml",
-        },
-        {
-            "type": "java",
-            "name": "Launch test",
-            "request": "launch",
-            "stopOnEntry": true,
-            "jdkPath": "${env:JAVA_HOME}/bin",
-            "cwd": "${fileDirname}",
-            "startupClass": "${fileBasenameNoExtension}",
-            "classpath": [
-                ".",
-                "${fileDirname}"
-            ]
-        },
-        {
-            "name": "Java Console App",
-            "type": "java",
-            "request": "launch",
-            "stopOnEntry": true,
-            "jdkPath": "${env:JAVA_HOME}/bin",
-            "cwd": "${fileDirname}",
-            "startupClass": "${fileBasenameNoExtension}",
-            "classpath": [
-                ".",
-                "${fileDirname}"
-            ],
-            "externalConsole": true
-        },
-        {
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
@@ -51,7 +15,15 @@
             "name": "Launch DataBaseConnection",
             "request": "launch",
             "mainClass": "DataBaseConnection",
-            "projectName": "JavaProject_3e1c9e92"
+            "projectName": "JavaProject_6e56904f"
         },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_6e56904f",
+            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml",
+        }
     ]
 }

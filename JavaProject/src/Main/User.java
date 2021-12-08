@@ -16,5 +16,23 @@ public class User {
         this.Salary = Salary;
         this.Commission = Commission;
     }
+    public int getId(){
+        return Id;
+    }
+    public String getName(){
+        return Name;
+    }
+    public String getLast(){
+        return Last;
+    }
+    public String getAdresse(){
+        return Adresse;
+    }
+    public int getSalary(){
+        return Salary;
+    }
+    public int getCommission(){
+        return Commission;
+    }
 }
 
