@@ -40,7 +40,7 @@ public class Profile implements Initializable {
         timeline.play();
     }
     public void FileChooser(){
-        Image savedImage = Methodes.ImageSaver(System.getProperty("user.dir")+"\\src\\Resources\\IMAGES\\ProfilePictures\\"+"testisworking");
+        Image savedImage = Methodes.ImageSaver(System.getProperty("user.dir")+"\\src\\Resources\\IMAGES\\ProfilePictures\\"+"te");
         if(savedImage != null)
             ProfilePicture.setImage(savedImage);
         else{
