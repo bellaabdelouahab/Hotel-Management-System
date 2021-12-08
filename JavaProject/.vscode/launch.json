@@ -6,6 +6,15 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_7a54a8d7",
+            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
+
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -15,7 +24,9 @@
             "name": "Launch DataBaseConnection",
             "request": "launch",
             "mainClass": "DataBaseConnection",
-            "projectName": "JavaProject_6e56904f"
+            "projectName": "JavaProject_6e56904f",
+            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
+
         },
         {
             "type": "java",
@@ -23,7 +34,7 @@
             "request": "launch",
             "mainClass": "Main.App",
             "projectName": "JavaProject_6e56904f",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
