@@ -9,7 +9,7 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-            "projectName": "JavaProject_bd75dee1",
+            "projectName": "JavaProject_3e1c9e92",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
