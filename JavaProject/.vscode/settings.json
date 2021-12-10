@@ -1,22 +1,17 @@
 {
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/hamza/Downloads/jar_files/GNAvatarView-1.0.5.jar",
+        "/home/hamza/Downloads/jar_files/controlsfx-11.1.0.jar",
+        "/home/hamza/Downloads/jar_files/fontawesomefx-commons-9.1.2.jar",
+        "/home/hamza/Downloads/jar_files/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar"
+    ],
     "java.project.sourcePaths": [
         "Main",
         "src"
-    ],
-    "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/home/hamza/Downloads/jar_files/fontawesomefx-commons-9.1.2.jar",
-        "/home/hamza/Downloads/jar_files/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2.jar",
-        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar",
-        "/home/hamza/Downloads/jar_files/GNAvatarView-1.0.5.jar",
-        "/home/hamza/Downloads/jar_files/controlsfx-11.1.0.jar"
     ]
 }
