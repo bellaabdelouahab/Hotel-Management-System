@@ -1,4 +1,4 @@
-package Controllers.Employer.EmployerAuthentification;
+package Controllers.Employer.Authentification;
 
 import io.github.gleidson28.GNAvatarView;
 import javafx.fxml.FXML;

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="acnopane_profile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.EmployerAuthentification.profile_v2">
+<AnchorPane fx:id="acnopane_profile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Authentification.profile_v2">
    <children>
       <Pane fx:id="general_profile_pane" layoutX="-3.0" layoutY="-3.0" prefHeight="646.0" prefWidth="1029.0" style="-fx-background-color: #00003d;">
          <children>

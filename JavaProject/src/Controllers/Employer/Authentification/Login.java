@@ -1,4 +1,4 @@
-package Controllers.Employer.EmployerAuthentification;
+package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.sql.*;
@@ -57,7 +57,7 @@ public class Login {
     @FXML
     public void SwitchToSignUp(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass()
-                .getResource("../../../Resources/VIEW/Employer/Authentification/EmployerSignUp.fxml"));
+                .getResource("../../../Resources/VIEW/Employer/Authentification/SignUp.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
