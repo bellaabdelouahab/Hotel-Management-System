@@ -17,6 +17,7 @@ public class LoginController {
 
     @FXML
     public void GoToAdminPage(ActionEvent event) throws IOException {
+        
         root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
