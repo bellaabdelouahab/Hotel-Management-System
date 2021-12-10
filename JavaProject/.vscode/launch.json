@@ -9,7 +9,7 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-            "projectName": "JavaProject_3e1c9e92",
+            "projectName": "JavaProject_bd75dee1",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
@@ -20,3 +20,7 @@
         }
     ]
 }
+
+// vmargs pour settinig de git onta ahamza 3ti hadchi btissa3
+
+//  "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
