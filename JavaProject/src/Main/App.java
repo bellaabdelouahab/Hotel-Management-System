@@ -12,7 +12,7 @@ public class App extends Application{
     // Fonction Of The Main App
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);

@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
 
-public class EmployerLoginController{
+public class Login{
 
     private Stage stage;
     private Scene scene;

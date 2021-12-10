@@ -59,6 +59,8 @@ public class Search implements Initializable {
     private Button B_ValidateForm1;
     @FXML
     private VBox AccountMenu;
+    @FXML
+    private Button ProfileButton;
 
     // private String pattern = "dd-MM-yyyy";s
     public void AcountMenuShow() {
@@ -192,11 +194,11 @@ public class Search implements Initializable {
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
-        // timeline.setOnFinished(t -> {
-        //     parentContainer.getChildren().remove(ChildPane);
-        // });
+        timeline.setOnFinished(t -> {
+        });
         timeline.play();
     }
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         LocalDate date = LocalDate.of(2020, 1, 8);

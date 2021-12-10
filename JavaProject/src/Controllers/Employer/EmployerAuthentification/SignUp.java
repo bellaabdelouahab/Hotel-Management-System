@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 
-public class EmployerSignUpController {
+public class SignUp {
 
     private Stage stage;
     private Scene scene;

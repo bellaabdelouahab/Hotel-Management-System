@@ -37,12 +37,17 @@ public class Result implements Initializable {
     }
     public void Goback(ActionEvent e) throws IOException{
         Button backbutton = (Button)e.getSource();
+        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
         Scene scene = backbutton.getScene();
-        System.out.println(scene);
         StackPane parentContainer = (StackPane)scene.getRoot();
+        root.translateXProperty().set(-scene.getWidth());
+        parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv1 = new KeyValue(ChildPane2.translateXProperty(), 1024, Interpolator.EASE_BOTH);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue kv1 = new KeyValue(ChildPane2.translateXProperty(), -(root.translateXProperty().get()), Interpolator.EASE_BOTH);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
+        timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
             parentContainer.getChildren().remove(ChildPane2);
