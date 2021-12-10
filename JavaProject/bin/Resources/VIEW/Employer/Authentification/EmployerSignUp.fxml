@@ -11,11 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD:JavaProject/src/Resources/VIEW/Employer/Authentification/SignUp.fxml
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmployerContollers.EmployerAuthentification.SignUp">
-=======
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.EmployerAuthentification.EmployerSignUpController">
->>>>>>> 2aeac454df96a5a0622c0a55550714cefd7b78f1:JavaProject/src/Resources/VIEW/Employer/Authentification/EmployerSignUp.fxml
    <children>
       <Pane prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #292929;">
          <children>

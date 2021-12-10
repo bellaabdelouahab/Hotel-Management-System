@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
+<<<<<<< HEAD
         "lib\\controlsfx-8.40.11.jar",
         "lib\\javafx.base.jar",
         "lib\\javafx.controls.jar",
@@ -15,5 +16,19 @@
         "Reference Library/GNAvatarView-1.0.5.jar",
         "Reference Library/fontawesomefx-commons-9.1.2.jar",
         "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar"
+=======
+        "/home/hamza/Downloads/jar_files/GNAvatarView-1.0.5.jar",
+        "/home/hamza/Downloads/jar_files/controlsfx-11.1.0.jar",
+        "/home/hamza/Downloads/jar_files/fontawesomefx-commons-9.1.2.jar",
+        "/home/hamza/Downloads/jar_files/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar"
+    ],
+    "java.project.sourcePaths": [
+        "Main",
+        "src"
+>>>>>>> 2aeac454df96a5a0622c0a55550714cefd7b78f1
     ]
 }
