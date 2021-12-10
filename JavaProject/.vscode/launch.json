@@ -6,17 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch javaclass",
-            "request": "launch",
-            "mainClass": "javaclass",
-            "projectName": "JavaProject_3e1c9e92"
-        },
-        {
-            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-            "projectName": "JavaProject_3e1c9e92",
+            "projectName": "JavaProject_bd75dee1",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {

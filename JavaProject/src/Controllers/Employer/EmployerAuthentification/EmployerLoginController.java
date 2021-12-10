@@ -22,11 +22,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
 
-public class EmployerLoginController{
+public class EmployerLoginController {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private String compte;
 
     @FXML
     private TextField email_text;
@@ -54,8 +55,9 @@ public class EmployerLoginController{
 
     // Switch To Sign Up page of Employer
     @FXML
-    public void SwitchToSignUp(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/EmployerViews/EmployerAuthentification/EmployerSignUp.fxml"));
+    public void SwitchToSignUp(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass()
+                .getResource("../../../Resources/VIEW/Employer/Authentification/EmployerSignUp.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -63,22 +65,20 @@ public class EmployerLoginController{
     }
 
     @FXML
-    public void lign_input_mail(){
+    public void lign_input_mail() {
         if (email_text.getText().contains("@gmail.com")) {
             email_line.setStyle("-fx-stroke:green;");
-        }
-        else {
+        } else {
             if (email_text.getText() == "") {
                 email_line.setStyle("-fx-stroke:#fff;");
-            }
-            else {
+            } else {
                 email_line.setStyle("-fx-stroke:red;");
             }
         }
     }
 
     @FXML
-    public void lign_input_pass(){
+    public void lign_input_pass() {
         if (password_label.getText().length() == 0) {
             pass_line.setStyle("-fx-stroke:#fff;");
         } else {
@@ -92,7 +92,8 @@ public class EmployerLoginController{
 
     @FXML
     public void login_formule(ActionEvent event) {
-        String x = "",y="";
+        String x = "", y = "";
+        
         if (email_text.getText().contains("@gmail.com") && password_label.getText().length() != 8) {
             try {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -106,13 +107,14 @@ public class EmployerLoginController{
                     System.out.println(
                             "\t" + rs.getString(2).toLowerCase() + "\t" + password_label.getText().toLowerCase());
                     x = rs.getString(2).toLowerCase();
-                    y=rs.getString(1).toLowerCase();
+                    y = rs.getString(1).toLowerCase();
                 }
                 if (y.equals(email_text.getText())) {
-                    
                     if (x.equals(password_label.getText())) {
                         try {
-                            Parent root = FXMLLoader.load(getClass().getResource("../resources/view/Profile.fxml"));
+                            setCompte(y);
+                            Parent root = FXMLLoader.load(
+                                    getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
                             Scene scene = signin_btn.getScene();
                             root.translateXProperty().set(scene.getWidth());
                             achnopane.getChildren().add(root);
@@ -135,7 +137,7 @@ public class EmployerLoginController{
                         pass_word.setStyle("-fx-text-fill:red;");
                         pass_line.setStyle("-fx-stroke:red;");
                     }
-                }else{
+                } else {
                     emai_label.setStyle("-fx-text-fill:red;");
                     email_line.setStyle("-fx-stroke:red;");
                 }
@@ -148,5 +150,13 @@ public class EmployerLoginController{
         } else {
             System.out.println("probleme");
         }
+    }
+
+    public void setCompte(String d){
+        this.compte=d;
+    }
+
+    public String getCompte(){
+        return this.compte;
     }
 }

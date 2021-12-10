@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="achnopane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmployerContollers.EmployerAuthentification.EmployerLoginController">
+<AnchorPane fx:id="achnopane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.EmployerAuthentification.EmployerLoginController">
    <children>
       <Pane fx:id="general_pane" layoutX="512.0">
          <children>
@@ -62,7 +62,6 @@
       <ImageView fx:id="image_login" fitHeight="640.0" fitWidth="512.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../../../IMAGES/login_img.jpg" />
-         </image>
-      </ImageView>
+         </image></ImageView>
    </children>
 </AnchorPane>

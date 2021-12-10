@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.EmployerContollers.EmployerAuthentification.EmployerSignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.EmployerAuthentification.EmployerSignUpController">
    <children>
       <Pane prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #292929;">
          <children>
@@ -20,19 +20,19 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField layoutX="83.0" layoutY="139.0" prefHeight="64.0" prefWidth="355.0" promptText="Username" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+            <TextField fx:id="user" layoutX="83.0" layoutY="139.0" prefHeight="64.0" prefWidth="355.0" promptText="Username" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="85.0" layoutY="302.0" prefHeight="60.0" prefWidth="344.0" promptText="Password" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+            <PasswordField fx:id="pass" layoutX="85.0" layoutY="302.0" prefHeight="60.0" prefWidth="344.0" promptText="Password" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
             <Line endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="267.0" layoutY="202.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
             <Line endX="141.00006103515625" endY="-3.0517578125E-5" layoutX="296.0" layoutY="367.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
-            <Button layoutX="94.0" layoutY="519.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" style="-fx-background-color: #009400;" stylesheets="@../../../CSS/Employer.css" text="Sign Up" textFill="WHITE">
+            <Button layoutX="94.0" layoutY="519.0" mnemonicParsing="false" onAction="#login_return" prefHeight="49.0" prefWidth="139.0" style="-fx-background-color: #009400;" stylesheets="@../../../CSS/Employer.css" text="Sign Up" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
@@ -43,13 +43,13 @@
                </font>
             </Button>
             <Line endX="-18.33331298828125" layoutX="464.0" layoutY="559.0" startX="-156.99993896484375" stroke="WHITE" strokeWidth="2.0" />
-            <TextField layoutX="84.0" layoutY="217.0" prefHeight="64.0" prefWidth="355.0" promptText="Email" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+            <TextField fx:id="mail" layoutX="84.0" layoutY="217.0" prefHeight="64.0" prefWidth="355.0" promptText="Email" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
             <Line endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="267.0" layoutY="282.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
-            <PasswordField layoutX="85.0" layoutY="386.0" prefHeight="60.0" prefWidth="344.0" promptText="Confirm Password" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+            <PasswordField fx:id="confirme_pass" layoutX="85.0" layoutY="386.0" prefHeight="60.0" prefWidth="344.0" promptText="Confirm Password" style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                <font>
                   <Font size="18.0" />
                </font>

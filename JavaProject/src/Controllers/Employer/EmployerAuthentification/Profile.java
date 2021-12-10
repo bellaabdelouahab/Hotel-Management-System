@@ -52,5 +52,5 @@ public class Profile implements Initializable {
 
     }
 
-
+    
 }
