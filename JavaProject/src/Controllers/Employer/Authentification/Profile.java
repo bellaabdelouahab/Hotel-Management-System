@@ -1,4 +1,4 @@
-package Controllers.Employer.EmployerAuthentification;
+package Controllers.Employer.Authentification;
 
 import javafx.scene.image.Image;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package Controllers.Employer.EmployerAuthentification;
+package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.sql.*;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
-public class EmployerSignUpController {
+public class SignUp {
 
     private Stage stage;
     private Scene scene;
@@ -28,7 +28,7 @@ public class EmployerSignUpController {
     public void SwitchToSignIn(ActionEvent event) throws IOException {
 
         root = FXMLLoader.load(getClass()
-                .getResource("../../../Resources/VIEW/Employer/Authentification/EmployerLogIn.fxml"));
+                .getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
