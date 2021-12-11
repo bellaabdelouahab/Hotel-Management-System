@@ -32,6 +32,7 @@ public class Home implements Initializable{
     public void AcountMenuHide() {
         AccountMenu.setVisible(false);
     }
+
     public void ShowProfile() throws IOException{
         AcountMenuHide();
         Parent root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
@@ -43,6 +44,7 @@ public class Home implements Initializable{
         timeline.getKeyFrames().add(kf);
         timeline.play();
     }
+
     public void ShowSearchForm() throws IOException{
         AcountMenuHide();
         Parent root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));

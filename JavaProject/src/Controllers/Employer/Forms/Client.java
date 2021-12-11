@@ -23,7 +23,7 @@ import javafx.util.Duration;
 
 public class Client implements Initializable{
     @FXML private Pane ChildPaneXS;
-    @FXML private CheckComboBox RoomFeatures;
+    @FXML private CheckComboBox<String> RoomFeatures;
     public void LoadResultForm(ActionEvent e) throws IOException{
         Button backbutton = (Button)e.getSource();
         Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));

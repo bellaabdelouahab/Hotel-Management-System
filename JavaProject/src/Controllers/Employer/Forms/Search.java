@@ -158,6 +158,7 @@ public class Search implements Initializable {
         AdultsNbr.setText("0");
         AdultsNbr.setText("0");
     }
+    
     public void LoadResult(ActionEvent e) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         root.translateXProperty().set(1024);
@@ -176,23 +177,6 @@ public class Search implements Initializable {
             parentContainer.getChildren().remove(SearchForm);
         });
         timeline.play();
-    }
-        public void Goback(ActionEvent e) throws IOException{
-        // Scene scene = backbutton.getScene();
-        // StackPane parentContainer = (StackPane)scene.getRoot();
-        // root.translateXProperty().set(-scene.getWidth());
-        // parentContainer.getChildren().add(root);
-        // Timeline timeline = new Timeline();
-        // KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
-        // KeyValue kv1 = new KeyValue(ChildPane2.translateXProperty(), -(root.translateXProperty().get()), Interpolator.EASE_BOTH);
-        // KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        // KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
-        // timeline.getKeyFrames().add(kf);
-        // timeline.getKeyFrames().add(kf1);
-        // timeline.setOnFinished(t -> {
-        //     parentContainer.getChildren().remove(ChildPane2);
-        // });
-        // timeline.play();
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
