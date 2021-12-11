@@ -45,7 +45,7 @@
                   <Insets left="20.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #202332;" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
                   <Label text="DashBoard" textFill="#7c8184">
@@ -67,7 +67,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #202332;" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
                   <Label text="Rooms" textFill="#7c8184">
@@ -159,7 +159,7 @@
       </VBox>
       <VBox layoutX="300.0" prefHeight="75.0" prefWidth="724.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: black; -fx-border-width: 0px 0px 0.2px 0px;">
          <children>
-            <Label prefHeight="93.0" prefWidth="767.0" text="DASHBOARD" textFill="#909090">
+            <Label prefHeight="93.0" prefWidth="767.0" text="ROOMS" textFill="#909090">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -169,12 +169,10 @@
             </Label>
          </children>
       </VBox>
-      <TableView fx:id="ROOMSTABLE" layoutX="388.0" layoutY="165.0" prefHeight="200.0" prefWidth="511.0">
+      <TableView layoutX="333.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="asdasd" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="asdasd" prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-            <TableColumn prefWidth="75.0" text="Column X" />
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
    </children>
