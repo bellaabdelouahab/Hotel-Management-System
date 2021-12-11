@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.gleidson28.GNAvatarView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.DashBoardController">
@@ -157,9 +162,66 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="300.0" prefHeight="75.0" prefWidth="724.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: black; -fx-border-width: 0px 0px 0.2px 0px;">
+      <AnchorPane layoutX="300.0" layoutY="449.0" prefHeight="140.0" prefWidth="420.0" style="-fx-background-color: rgb(233, 229, 229);">
          <children>
-            <Label prefHeight="93.0" prefWidth="767.0" text="DASHBOARD" textFill="#909090">
+            <AnchorPane layoutY="-9.0" prefHeight="168.0" prefWidth="140.0" style="-fx-border-color: white; -fx-border-width: 2px 1px 4px 4px; -fx-background-color: #53b0cc;">
+               <children>
+                  <Circle fill="WHITE" layoutX="70.0" layoutY="88.0" radius="63.0" stroke="#9dcfdd" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Label fx:id="ROOM_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="68.0" prefHeight="40.0" prefWidth="113.0" textFill="#53b0cc">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="140.0" layoutY="-1.0" prefHeight="160.0" prefWidth="140.0" style="-fx-border-color: white; -fx-border-width: 2px 1px 4px 2px; -fx-background-color: rgb(61, 155, 116);">
+               <children>
+                  <Circle fill="WHITE" layoutX="70.0" layoutY="79.0" radius="63.0" stroke="#69c69f" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Label fx:id="EMPLOYER_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="60.0" prefHeight="40.0" prefWidth="105.0" textFill="#3d9b74">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="280.0" prefHeight="159.0" prefWidth="140.0" style="-fx-border-color: white; -fx-border-width: 2px 4px 4px 2px; -fx-background-color: rgb(243, 180, 64);">
+               <children>
+                  <Circle fill="WHITE" layoutX="70.0" layoutY="76.0" radius="63.0" stroke="#f2c477" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Label fx:id="AMOUNT_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="115.0" textFill="#f3b440">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="721.0" layoutY="451.0" prefHeight="189.0" prefWidth="304.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: white; -fx-border-width: 2px 4px 4px 2px;" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="393.0" prefHeight="56.0" prefWidth="304.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: WHITE; -fx-border-width: 0px 4px 2px 2px;" text="LAST MODIFICATION" textAlignment="CENTER" textFill="#1e1d1d">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </Label>
+      <Label alignment="CENTER" layoutX="300.0" layoutY="394.0" prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: #53b0cc; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL ROOMS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="440.0" layoutY="394.0" prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: rgb(61, 155, 116); -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL EMPLOYER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="580.0" layoutY="394.0" prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL AMOUNT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
+         <children>
+            <Label prefHeight="72.0" prefWidth="369.0" text="DASHBOARD" textFill="#909090">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -167,15 +229,79 @@
                   <Font size="21.0" />
                </font>
             </Label>
+            <AnchorPane prefHeight="72.0" prefWidth="357.0">
+               <children>
+                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="162.0" layoutY="44.0" size="1.6em" />
+                  <FontAwesomeIconView fill="#909090" glyphName="GEAR" layoutX="230.0" layoutY="45.0" size="1.7em" />
+                  <GNAvatarView layoutX="297.0" layoutY="15.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="42.0" prefWidth="43.0" stroke="#909090" strokeWidth="1.0" type="CIRCLE">
+                     <image>
+                        <Image url="@../../../IMAGES/user.png" />
+                     </image></GNAvatarView>
+                  <Pane layoutX="277.0" layoutY="1.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="68.0" prefWidth="65.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AreaChart fx:id="AREACHART" layoutX="299.0" layoutY="75.0" legendVisible="false" prefHeight="319.0" prefWidth="724.0">
+        <xAxis>
+          <CategoryAxis fx:id="AXIX" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="AXIY" forceZeroInRange="false" prefHeight="278.0" prefWidth="0.0" side="LEFT" tickLabelsVisible="false" />
+        </yAxis>
+      </AreaChart>
+      <VBox fx:id="AdminMenu" layoutX="842.0" layoutY="66.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="149.0" prefWidth="167.0" style="-fx-border-color: #909090; -fx-border-radius: 3px;">
+         <children>
+            <Label alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Hamza Bouslama" />
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Ham.bousa98@gmail.com" textFill="#909090">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="165.0" styleClass="Admin_menu" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView fill="#909090" glyphName="EDIT" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label text="Edit Profile">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#LogOut" prefHeight="42.0" prefWidth="165.0" styleClass="Admin_menu" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView fill="#909090" glyphName="ARCHIVE" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label text="Log Out">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <TableView fx:id="ROOMSTABLE" layoutX="388.0" layoutY="165.0" prefHeight="200.0" prefWidth="511.0">
-        <columns>
-          <TableColumn fx:id="asdasd" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="asdasd" prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-        </columns>
-      </TableView>
+      <Label alignment="CENTER" layoutX="300.0" layoutY="607.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #53b0cc; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL ROOMS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="440.0" layoutY="607.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(61, 155, 116); -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL EMPLOYER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="580.0" layoutY="607.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL AMOUNT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

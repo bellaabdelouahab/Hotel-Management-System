@@ -15,5 +15,9 @@
         "Reference Library/GNAvatarView-1.0.5.jar",
         "Reference Library/fontawesomefx-commons-9.1.2.jar",
         "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar"
+    ],
+    "java.project.sourcePaths": [
+        "Main",
+        "src"
     ]
 }

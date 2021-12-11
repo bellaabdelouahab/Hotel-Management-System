@@ -13,3 +13,9 @@
 .Admin_User:hover{
     -fx-background-color : #202332;
 }
+.Admin_menu{
+    -fx-background-color: #fff;
+}
+.Admin_menu:hover{
+    -fx-background-color : rgb(247, 247, 247)
+}
