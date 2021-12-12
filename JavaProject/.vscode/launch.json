@@ -6,6 +6,7 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "Launch DataBaseConnection",
             "request": "launch",
             "mainClass": "DataBaseConnection",
@@ -18,6 +19,12 @@
             "mainClass": "Main.App",
             "projectName": "JavaProject_7a54a8d7",
             "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
+=======
+            "name": "Launch tst",
+            "request": "launch",
+            "mainClass": "tst",
+            "projectName": "JavaProject_3e1c9e92"
+>>>>>>> e70f080041c049d91d783ed38c057c6c3920bbdb
         },
         {
             "type": "java",
