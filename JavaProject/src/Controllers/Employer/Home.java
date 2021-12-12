@@ -25,6 +25,7 @@ public class Home implements Initializable{
     private VBox AccountMenu;
     @FXML
     private Button ProfileButton;
+    private Parent root;
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);
     }
@@ -47,12 +48,24 @@ public class Home implements Initializable{
 
     public void ShowSearchForm() throws IOException{
         AcountMenuHide();
-        Parent root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
+        this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
         root.translateXProperty().set(1024);
         root.translateYProperty().set(70);
         parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.play();
+    }
+    public void ShowAboutPage() throws IOException{
+        parentContainer.getChildren().remove(this.root);
+        this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/About.fxml"));
+        root.translateXProperty().set(0);
+        root.translateYProperty().set(640);
+        parentContainer.getChildren().add(root);
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 90, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();

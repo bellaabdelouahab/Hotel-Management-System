@@ -3,6 +3,7 @@ package Main;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import animatefx.animation.FadeInUpBig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,6 @@ public class App extends Application {
     // Fonction Of The Main App
     @Override
     public void start(Stage primaryStage) throws IOException {
-
         Properties Prop = new Properties();
         FileInputStream config = new FileInputStream(System.getProperty("user.dir")+"/src/Config.properties");
         Prop.load(config);
@@ -34,7 +34,9 @@ public class App extends Application {
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
         primaryStage.show();
-
+        // new FadeInUp(root).play();
+        new FadeInUpBig(root).play();
+        primaryStage.setResizable(false);
     }
 
     // Launch The Main App
