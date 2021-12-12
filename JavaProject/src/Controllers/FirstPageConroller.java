@@ -18,8 +18,7 @@ public class FirstPageConroller {
     // Switch To Admin Page
     @FXML
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
-        root = FXMLLoader
-                .load(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -29,8 +28,7 @@ public class FirstPageConroller {
     // Switch To Employer Page
     @FXML
     public void SwitchToEmployerPage(ActionEvent event) throws IOException {
-        root = FXMLLoader
-                .load(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

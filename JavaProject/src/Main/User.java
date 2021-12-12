@@ -16,6 +16,7 @@ public class User {
         this.Salary = Salary;
         this.Commission = Commission;
     }
+    
     public int getId(){
         return Id;
     }

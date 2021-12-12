@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import org.controlsfx.control.Rating;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;
@@ -19,16 +20,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
 public class Search implements Initializable {
-    @FXML
-    private StackPane parentContainer;
     @FXML
     private Pane ChildPane;
     @FXML
@@ -57,19 +56,10 @@ public class Search implements Initializable {
     private TextField MaxPrice;
     @FXML
     private Button B_ValidateForm1;
-    @FXML
-    private VBox AccountMenu;
-    @FXML
-    private Button ProfileButton;
+    @FXML 
+    private Pane SearchForm;
 
     // private String pattern = "dd-MM-yyyy";s
-    public void AcountMenuShow() {
-        AccountMenu.setVisible(true);
-    }
-
-    public void AcountMenuHide() {
-        AccountMenu.setVisible(false);
-    }
 
     public void showNbrOfPersons() {
         if (NbrOfPersons.visibleProperty().get())
@@ -133,7 +123,7 @@ public class Search implements Initializable {
         }
     }
 
-    public void ValidateForm1() {
+    public void ValidateForm1(ActionEvent e) {
         SearchData.checkindate = CheckInDate.getValue();
         SearchData.checkoutdate = CheckOutDate.getValue();
         SearchData.rating = RatingLable.getRating();
@@ -151,9 +141,9 @@ public class Search implements Initializable {
         /* Put Your Shitey Code Here : form 1 */
 
         try {
-            startAnimation();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+            LoadResult(e);
+        } catch (IOException e1) {
+            System.out.println(e1.getMessage());
         }
     }
 
@@ -168,37 +158,26 @@ public class Search implements Initializable {
         AdultsNbr.setText("0");
         AdultsNbr.setText("0");
     }
-    public void startAnimation() throws IOException{
+    
+    public void LoadResult(ActionEvent e) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
-        Scene scene = B_ValidateForm1.getScene();
-        root.translateXProperty().set(scene.getWidth());
+        root.translateXProperty().set(1024);
+        root.translateYProperty().set(70);
+        Scene scene = ((Node) e.getSource()).getScene();
+        StackPane parentContainer = (StackPane)scene.getRoot();
         parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-        KeyValue kv1 = new KeyValue(ChildPane.translateXProperty(), -(root.translateXProperty().get()), Interpolator.EASE_IN);
+        KeyValue kv1 = new KeyValue(SearchForm.translateXProperty(), -824, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(ChildPane);
+            parentContainer.getChildren().remove(SearchForm);
         });
         timeline.play();
     }
-    public void ShowProfile() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
-        Scene scene = B_ValidateForm1.getScene();
-        root.translateXProperty().set(scene.getWidth());
-        parentContainer.getChildren().add(root);
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-        });
-        timeline.play();
-    }
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         LocalDate date = LocalDate.of(2020, 1, 8);

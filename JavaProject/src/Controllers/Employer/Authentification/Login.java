@@ -93,33 +93,36 @@ public class Login {
     @FXML
     public void login_formule(ActionEvent event) {
         String x = "", y = "";
-        
-        if (email_text.getText().contains("@gmail.com") && password_label.getText().length() != 8) {
+
+        if (email_text.getText().contains("@gmail.com") && password_label.getText().length() >= 8) {
             try {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
                 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
                         "hotel");
                 Statement st = con.createStatement();
                 System.out.println(email_text.getText().toLowerCase());
-                ResultSet rs = st.executeQuery("select email,password from compte_employee where lower(email)='"
-                        + email_text.getText().toLowerCase() + "'");
+                // ResultSet rs = st.executeQuery("select email,password from employee where
+                // lower(email)='"
+                // + email_text.getText().toLowerCase() + "'");
+                ResultSet rs = st.executeQuery(
+                        "select * from employee where lower(email)='" + email_text.getText().toLowerCase() + "'");
                 while (rs.next()) {
-                    System.out.println(
-                            "\t" + rs.getString(2).toLowerCase() + "\t" + password_label.getText().toLowerCase());
-                    x = rs.getString(2).toLowerCase();
-                    y = rs.getString(1).toLowerCase();
+                    y = rs.getString(4).toLowerCase();
+                    x = rs.getString(5).toLowerCase();
+                    System.out.println(x + "\n" + y);
                 }
                 if (y.equals(email_text.getText())) {
                     if (x.equals(password_label.getText())) {
                         try {
                             setCompte(y);
                             Parent root = FXMLLoader.load(
-                                    getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
+                                    getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
                             Scene scene = signin_btn.getScene();
                             root.translateXProperty().set(scene.getWidth());
                             achnopane.getChildren().add(root);
                             Timeline timeline = new Timeline();
-                            KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+                            KeyValue kv = new KeyValue(root.translateXProperty(), 0,
+                                    Interpolator.EASE_IN);
                             KeyValue kv1 = new KeyValue(general_pane.translateXProperty(),
                                     -(root.translateXProperty().get()), Interpolator.EASE_IN);
                             KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
@@ -152,11 +155,11 @@ public class Login {
         }
     }
 
-    public void setCompte(String d){
-        this.compte=d;
+    public void setCompte(String d) {
+        this.compte = d;
     }
 
-    public String getCompte(){
+    public String getCompte() {
         return this.compte;
     }
 }

@@ -18,10 +18,10 @@ public class SignUp {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    // @FXML
+    // private PasswordField confirme_pass, pass;
     @FXML
-    private PasswordField confirme_pass, pass;
-    @FXML
-    private TextField mail, user;
+    private TextField mail, user, phone;
 
     // Switch To Sign In page of Employer
     @FXML
@@ -61,4 +61,7 @@ public class SignUp {
             }
         }
     }
+
+    
+
 }

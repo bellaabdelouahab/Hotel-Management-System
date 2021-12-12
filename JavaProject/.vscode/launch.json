@@ -6,10 +6,25 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch tst",
+            "request": "launch",
+            "mainClass": "tst",
+            "projectName": "JavaProject_bd75dee1"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
             "projectName": "JavaProject_bd75dee1",
+            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JavaProject_3e1c9e92",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
