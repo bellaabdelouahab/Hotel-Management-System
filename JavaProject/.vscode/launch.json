@@ -6,18 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch tst",
+            "name": "Launch DataBaseConnection",
             "request": "launch",
-            "mainClass": "tst",
-            "projectName": "JavaProject_bd75dee1"
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_bd75dee1",
-            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
+            "mainClass": "DataBaseConnection",
+            "projectName": "JavaProject_7a54a8d7"
         },
         {
             "type": "java",

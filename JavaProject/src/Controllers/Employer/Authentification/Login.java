@@ -27,7 +27,7 @@ public class Login {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private String compte;
+    private static String compte;
 
     @FXML
     private TextField email_text;
@@ -110,11 +110,13 @@ public class Login {
                     y = rs.getString(4).toLowerCase();
                     x = rs.getString(5).toLowerCase();
                     System.out.println(x + "\n" + y);
+
                 }
                 if (y.equals(email_text.getText())) {
                     if (x.equals(password_label.getText())) {
+                        setCompte(y);
                         try {
-                            setCompte(y);
+                            System.out.println("test test " + getCompte());
                             Parent root = FXMLLoader.load(
                                     getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
                             Scene scene = signin_btn.getScene();
@@ -159,7 +161,7 @@ public class Login {
         this.compte = d;
     }
 
-    public String getCompte() {
-        return this.compte;
+    public static String getCompte() {
+        return compte;
     }
 }
