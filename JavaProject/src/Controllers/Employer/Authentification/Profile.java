@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Controllers.Employer.Forms.Methodes;
+import Main.conecter;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -36,6 +37,7 @@ public class Profile implements Initializable {
     private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
 
     Login m = new Login();
+
     private int result = 0;
 
     @FXML
@@ -131,7 +133,6 @@ public class Profile implements Initializable {
             phone = rs.getString(9);
             sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
-            this.password = rs.getString(5);
         }
         if (Adress.getText().toLowerCase().equals(adr) == false) {
             result = st.executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
@@ -182,25 +183,48 @@ public class Profile implements Initializable {
     }
 
     @FXML
-    public void update_password(ActionEvent event) throws Exception {
-        System.out.println("rr"+password+"\n"+cin);
-        if (pass.getText().equals(password)) {
-            if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                        "hotel");
-                Statement st = con.createStatement();
-                result = st.executeUpdate("update employee set password='" + new_pass.getText()
-                        + "'where id_emp='" + Integer.parseInt(cin) + "'");
-            } else {
-                new_pass.setStyle("-fx-background-color:red;");
-                check_pass.setStyle("-fx-background-color:red;");
-                new_pass.setText("");
-                check_pass.setText("");
+    public void update_password(ActionEvent event) {
+        // conecter p = new conecter();
+        System.out.println(m.getCompte());
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+                    "hotel_bd",
+                    "hotel");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "select id_emp,password from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
+            System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
+            while (rs.next()) {
+                cin = String.valueOf(rs.getInt(1));
+                password = rs.getString(5);
             }
-        } else {
-            pass.setStyle("-fx-background-color:red;");
-            pass.setText("");
+
+            if (pass.getText().equals(password)) {
+                if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
+                    // try {
+                    // Class.forName("oracle.jdbc.driver.OracleDriver");
+                    // Connection conn
+                    // =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+                    // "hotel_bd",
+                    // "hotel");
+                    // Statement stt = conn.createStatement();
+                    result = st.executeUpdate("update employee set password='" + new_pass.getText()
+                            + "'where id_emp='" + Integer.parseInt(cin) + "'");
+
+                } else {
+                    new_pass.setStyle("-fx-background-color:red;");
+                    check_pass.setStyle("-fx-background-color:red;");
+                    new_pass.setText("");
+                    check_pass.setText("");
+                }
+            } else {
+                pass.setStyle("-fx-background-color:red;");
+                pass.setText("");
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
         }
     }
 }

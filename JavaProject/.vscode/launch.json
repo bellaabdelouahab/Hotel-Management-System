@@ -5,6 +5,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch tst",
+            "request": "launch",
+            "mainClass": "tst",
+            "projectName": "JavaProject_3e1c9e92"
+        },
+        {
+            "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
