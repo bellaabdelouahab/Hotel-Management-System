@@ -14,6 +14,9 @@
 .Sign_in:hover{
     -fx-background-color: #03f803;
 }
+#textarea_ .content{
+    -fx-background-color:#333333;
+}
 .AddProfilePic:hover{
     -fx-text-fill:gray;
 }

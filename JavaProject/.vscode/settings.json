@@ -1,7 +1,6 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "lib\\controlsfx-8.40.11.jar",
         "lib\\javafx.base.jar",
         "lib\\javafx.controls.jar",
         "lib\\javafx.fxml.jar",
@@ -10,7 +9,8 @@
         "lib\\javafx.swing.jar",
         "lib\\javafx.web.jar",
         "lib\\javafx-swt.jar",
-        "lib\\mongo-java-driver-3.12.9.jar",
+        "Reference Library/controlsfx-8.40.11.jar",
+        "Reference Library/AnimateFX-1.2.1.jar",
         "Reference Library/controlsfx-11.1.0.jar",
         "Reference Library/GNAvatarView-1.0.5.jar",
         "Reference Library/fontawesomefx-commons-9.1.2.jar",
@@ -21,9 +21,9 @@
         "Reference Library/orai18n.jar",
         "Reference Library/simplefan.jar",
         "Reference Library/ucp.jar",
-        "Reference Library/xdb6.jar",
+        "Reference Library/xdb6.jar"
     ],
     "java.project.sourcePaths": [
-        "src/Main"
+        "src"
     ]
 }

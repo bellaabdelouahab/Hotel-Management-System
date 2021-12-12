@@ -1,9 +1,9 @@
-//package Main;
+package Main;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
+import animatefx.animation.FadeInUpBig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,24 +16,25 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Properties Prop = new Properties();
-        System.out.println(System.getProperty("user.dir")+"\\src\\Config.properties");
-        FileInputStream config = new FileInputStream(System.getProperty("user.dir")+"\\src\\Config.properties");
+        System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
+        FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "\\src\\Config.properties");
         Prop.load(config);
         Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
 
-        if(Prop.getProperty("MainPage").equals("1")){
+        if (Prop.getProperty("MainPage").equals("1")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
-        }
-        else if(Prop.getProperty("MainPage").equals("2")){
+        } else if (Prop.getProperty("MainPage").equals("2")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
-        }
-        else{
+        } else {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         }
         Scene scene = new Scene(root);
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
         primaryStage.show();
+        // new FadeInUp(root).play();
+        new FadeInUpBig(root).play();
+        primaryStage.setResizable(false);
     }
 
     // Launch The Main App

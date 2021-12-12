@@ -36,7 +36,7 @@
                               <Font name="Century Gothic" size="17.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../CSS/Employer.css" text="About">
+                        <Button mnemonicParsing="false" onAction="#ShowAboutPage" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../CSS/Employer.css" text="About">
                            <font>
                               <Font name="Century Gothic" size="17.0" />
                            </font>
