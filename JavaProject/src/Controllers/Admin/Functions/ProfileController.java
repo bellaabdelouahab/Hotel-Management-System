@@ -3,14 +3,12 @@ package Controllers.Admin.Functions;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -20,12 +18,9 @@ public class ProfileController implements Initializable{
     private Scene scene;
     private Parent root;
     
-    @FXML
-    private VBox AdminMenu;
 
     @FXML
     void HideMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(false);
     }
 
     @FXML
@@ -39,7 +34,6 @@ public class ProfileController implements Initializable{
 
     @FXML
     void ShowMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(true);
     }
 
     @FXML
@@ -53,7 +47,6 @@ public class ProfileController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        AdminMenu.setVisible(false);
     }
     
 }

@@ -14,7 +14,6 @@
         "Reference Library/controlsfx-11.1.0.jar",
         "Reference Library/GNAvatarView-1.0.5.jar",
         "Reference Library/fontawesomefx-commons-9.1.2.jar",
-<<<<<<< HEAD
         "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
         "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\ojdbc6.jar",
         "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\ojdbc7.jar",
@@ -23,12 +22,9 @@
         "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\simplefan.jar",
         "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\ucp.jar",
         "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\xdb6.jar"
-=======
-        "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar"
     ],
     "java.project.sourcePaths": [
         "Main",
         "src"
->>>>>>> aa65ef6976a9bfd7299430df43c48cde8f98faaf
     ]
 }

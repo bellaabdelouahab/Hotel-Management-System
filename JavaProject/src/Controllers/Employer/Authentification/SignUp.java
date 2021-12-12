@@ -21,7 +21,10 @@ public class SignUp {
     // @FXML
     // private PasswordField confirme_pass, pass;
     @FXML
-    private TextField mail, user, phone;
+    private TextField mail, user, phone ;
+
+    @FXML
+    private PasswordField pass , confirme_pass ;
 
     // Switch To Sign In page of Employer
     @FXML
