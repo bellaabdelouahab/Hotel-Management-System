@@ -8,17 +8,25 @@
             "type": "java",
             "name": "Launch App",
             "request": "launch",
+            "mainClass": "App",
+            "projectName": "JavaProject_bd75dee1",
+            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
             "mainClass": "Main.App",
             "projectName": "JavaProject_4dd8a6e8",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
-
         },
         {
             "type": "java",
             "name": "Launch tst",
             "request": "launch",
             "mainClass": "tst",
-            "projectName": "JavaProject_bd75dee1"
+            "projectName": "JavaProject_bd75dee1",
+            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
