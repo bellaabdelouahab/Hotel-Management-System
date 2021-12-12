@@ -82,7 +82,7 @@ public class DashBoardController implements Initializable{
         AdminMenu.setVisible(false);
 
         XYChart.Series<String , Double > serie1 = new XYChart.Series<String , Double>();
-        serie1.setName("Test");
+        serie1.setName("Amount");
         serie1.getData().add(new XYChart.Data<String , Double>("JAN" , 110.0));
         serie1.getData().add(new XYChart.Data<String , Double>("ASD" , 40.0));
         serie1.getData().add(new XYChart.Data<String , Double>("QLK" , 76.5));
@@ -96,5 +96,13 @@ public class DashBoardController implements Initializable{
         serie1.getData().add(new XYChart.Data<String , Double>("WER" , 65.12));
 
         AREACHART.getData().add(serie1);
+    }
+    @FXML
+    void SwitchToProfile(MouseEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
