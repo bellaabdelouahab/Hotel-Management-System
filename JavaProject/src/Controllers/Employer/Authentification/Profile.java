@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -32,18 +33,18 @@ public class Profile implements Initializable {
     @FXML
     private GridPane PasswordForm;
 
-    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "",password="";
+    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
 
     Login m = new Login();
-    private int result=0;
+    private int result = 0;
 
     @FXML
-    private TextField new_pass,pass,check_pass;
+    private TextField new_pass, pass, check_pass;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
         Scene scene = backbutton.getScene();
-        StackPane parentContainer = (StackPane) scene.getRoot();
+        AnchorPane parentContainer = (AnchorPane) scene.getRoot();
         Timeline timeline = new Timeline();
         KeyValue kv1 = new KeyValue(ChildPane1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
@@ -114,7 +115,7 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        
+
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
                 "hotel");
@@ -130,14 +131,14 @@ public class Profile implements Initializable {
             phone = rs.getString(9);
             sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
-            password=rs.getString(5);
+            this.password = rs.getString(5);
         }
         if (Adress.getText().toLowerCase().equals(adr) == false) {
             result = st.executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
                 System.out.println("oh yeah");
-                //Goback(event);
+                // Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
@@ -148,7 +149,7 @@ public class Profile implements Initializable {
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
                 System.out.println("oh yeah");
-                //Goback(event);
+                // Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
@@ -159,7 +160,7 @@ public class Profile implements Initializable {
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
                 System.out.println("oh yeah");
-                //Goback(event);
+                // Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
@@ -170,7 +171,7 @@ public class Profile implements Initializable {
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
                 System.out.println("oh yeah");
-                //Goback(event);
+                // Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
@@ -182,21 +183,22 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_password(ActionEvent event) throws Exception {
-        if(pass.getText().equals(password)){
-            if(new_pass.equals(check_pass) && new_pass.getText().length()>=8){
+        System.out.println("rr"+password+"\n"+cin);
+        if (pass.getText().equals(password)) {
+            if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
                 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
                         "hotel");
                 Statement st = con.createStatement();
                 result = st.executeUpdate("update employee set password='" + new_pass.getText()
-                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
-            }else{
+                        + "'where id_emp='" + Integer.parseInt(cin) + "'");
+            } else {
                 new_pass.setStyle("-fx-background-color:red;");
                 check_pass.setStyle("-fx-background-color:red;");
                 new_pass.setText("");
                 check_pass.setText("");
             }
-        }else{
+        } else {
             pass.setStyle("-fx-background-color:red;");
             pass.setText("");
         }

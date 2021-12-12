@@ -97,7 +97,7 @@
             <TextField fx:id="pass" prefHeight="29.0" prefWidth="337.0" style="-fx-background-color: #11111100; -fx-border-color: #eeeeee55; -fx-border-radius: 5; -fx-text-fill: #eee;" GridPane.columnIndex="1" />
             <HBox prefHeight="34.0" prefWidth="141.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" onAction="#Goback" prefHeight="100.0" prefWidth="116.0" style="-fx-background-color: #43e84c; -fx-background-radius: 0;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Confirm" />
+                  <Button mnemonicParsing="false" onAction="#update_password" prefHeight="100.0" prefWidth="116.0" style="-fx-background-color: #43e84c; -fx-background-radius: 0;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Confirm" />
                   <Button mnemonicParsing="false" onAction="#HidePassworkForm" prefHeight="100.0" prefWidth="131.0" style="-fx-background-color: #5599ee55; -fx-background-radius: 0;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Cancel" />
                </children>
             </HBox>
