@@ -14,17 +14,11 @@
             "Reference Library/AnimateFX-1.2.1.jar",
             "Reference Library/controlsfx-11.1.0.jar",
             "Reference Library/GNAvatarView-1.0.5.jar",
-            "Reference Library/fontawesomefx-commons-9.1.2.jar",
-            "Reference Library/simplefan.jar",
-            "Reference Library/ucp.jar",
-            "Reference Library/xdb6.jar",
-            "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\orai18n.jar",
-            "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\simplefan.jar",
-            "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\ucp.jar",
-            "c:\\Users\\DELL XPS\\Desktop\\ojdbc-full\\OJDBC-Full\\xdb6.jar"
+            "Reference Library/fontawesomefx-commons-9.1.2.jar"
         ],
         "exclude": [
-            "lib/ojdbc6.jar"
+            "lib/ojdbc6.jar",
+            "Reference Library/simplefan.jar"
         ]
     },
     "java.project.sourcePaths": [

@@ -17,7 +17,6 @@ public class DataBaseConnection {
 
     public void ConnectToDataBase() {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
             System.out.println("Connection Had Worked");
