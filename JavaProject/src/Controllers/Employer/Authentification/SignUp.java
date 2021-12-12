@@ -1,8 +1,6 @@
 package Controllers.Employer.Authentification;
 
 import java.io.IOException;
-import java.sql.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +16,12 @@ public class SignUp {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    // @FXML
-    private PasswordField confirme_pass, pass;
+    
     @FXML
     private TextField mail, user, phone ;
 
+    @FXML
+    private PasswordField pass , confirme_pass ;
 
     // Switch To Sign In page of Employer
     @FXML

@@ -28,6 +28,10 @@ public class App extends Application {
         } else {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         }
+         
+        DataBaseConnection Connect = new DataBaseConnection();
+        Connect.ConnectToDataBase();
+
         Scene scene = new Scene(root);
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
