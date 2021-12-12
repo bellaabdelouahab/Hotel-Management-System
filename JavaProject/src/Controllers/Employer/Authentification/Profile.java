@@ -32,9 +32,13 @@ public class Profile implements Initializable {
     @FXML
     private GridPane PasswordForm;
 
-    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "";
+    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "",password="";
 
     Login m = new Login();
+    private int result=0;
+
+    @FXML
+    private TextField new_pass,pass,check_pass;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
@@ -110,7 +114,7 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        int result;
+        
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
                 "hotel");
@@ -126,6 +130,7 @@ public class Profile implements Initializable {
             phone = rs.getString(9);
             sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
+            password=rs.getString(5);
         }
         if (Adress.getText().toLowerCase().equals(adr) == false) {
             result = st.executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
@@ -172,6 +177,28 @@ public class Profile implements Initializable {
             }
         } else {
             System.out.println("oh non");
+        }
+    }
+
+    @FXML
+    public void update_password(ActionEvent event) throws Exception {
+        if(pass.getText().equals(password)){
+            if(new_pass.equals(check_pass) && new_pass.getText().length()>=8){
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
+                        "hotel");
+                Statement st = con.createStatement();
+                result = st.executeUpdate("update employee set password='" + new_pass.getText()
+                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
+            }else{
+                new_pass.setStyle("-fx-background-color:red;");
+                check_pass.setStyle("-fx-background-color:red;");
+                new_pass.setText("");
+                check_pass.setText("");
+            }
+        }else{
+            pass.setStyle("-fx-background-color:red;");
+            pass.setText("");
         }
     }
 }
