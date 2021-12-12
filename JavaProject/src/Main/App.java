@@ -1,4 +1,4 @@
-
+//package Main;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class App extends Application {
         System.out.println(System.getProperty("user.dir")+"\\src\\Config.properties");
         FileInputStream config = new FileInputStream(System.getProperty("user.dir")+"\\src\\Config.properties");
         Prop.load(config);
-        Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
 
         if(Prop.getProperty("MainPage").equals("1")){
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
