@@ -27,7 +27,7 @@ public class App extends Application {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
         }
         else{
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
+            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/Rooms.fxml"));
         }
 
         Scene scene = new Scene(root);

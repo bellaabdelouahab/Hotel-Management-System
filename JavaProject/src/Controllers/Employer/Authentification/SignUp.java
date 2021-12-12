@@ -19,9 +19,10 @@ public class SignUp {
     private Scene scene;
     private Parent root;
     // @FXML
-    // private PasswordField confirme_pass, pass;
+    private PasswordField confirme_pass, pass;
     @FXML
-    private TextField mail, user, phone;
+    private TextField mail, user, phone ;
+
 
     // Switch To Sign In page of Employer
     @FXML
