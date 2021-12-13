@@ -36,10 +36,11 @@ public class LoginController {
     @FXML
     public void GoToAdminPage(ActionEvent event) throws IOException, SQLException {
 
-        String Nam = Email_Area.getText();
-        ResultSet ResultSet = connection.LoginWithDataBase(Nam);
-
-        if (ResultSet.next() == true) {
+        String Email = Email_Area.getText();
+        String Password = Password_Area.getText();
+        System.out.println(Email + " " +Password);
+        ResultSet ResultSet = connection.LoginWithDataBase(Email , Password);
+        if (ResultSet.next() == true){
             root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);

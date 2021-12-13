@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -24,20 +24,21 @@ public class DataBaseConnection {
         } catch (Exception e) {
             System.out.println("Data Base Connection Problem" + e);
         }
-
     }
 
-    public ResultSet LoginWithDataBase(String NAM) {
+    public ResultSet LoginWithDataBase(String EMAIL , String PASSWORD){
 
         try {
+
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT * FROM employee WHERE LOWER(full_name) = LOWER('" + NAM + "')";
+            String Sql = "SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = LOWER('"+EMAIL+"') AND LOWER(PASSWORD) = LOWER('"+PASSWORD+"')";
             result = statement.executeQuery(Sql);
-        } catch (Exception e) {
+
+        }catch (Exception e) {
             System.out.println("Not Working");
         }
+
         return result;
     }
-
 }

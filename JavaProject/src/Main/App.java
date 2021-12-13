@@ -17,7 +17,10 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         Properties Prop = new Properties();
         System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
-        FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "\\src\\Config.properties");
+        
+                //abdelouhabe rak dima ka t9ob src dir / machi \ alkhra
+
+        FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
         Prop.load(config);
         Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
 
