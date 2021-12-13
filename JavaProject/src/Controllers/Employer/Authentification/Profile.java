@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Controllers.Employer.Forms.Methodes;
-import Main.conecter;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -173,7 +172,7 @@ public class Profile implements Initializable {
         cin = "";
         password = "";
         try {
-            ResultSet rs = co.Login_employe("abdo@gmail.com");//m.getCompte().toLowerCase());
+            ResultSet rs = co.Login_employe(m.getCompte().toLowerCase());
             System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));
@@ -200,7 +199,8 @@ public class Profile implements Initializable {
             }
         } catch (Exception e) {
             // TODO: handle exception
-            e.printStackTrace();
+            System.out.println("tr\n" + e);
         }
     }
+
 }
