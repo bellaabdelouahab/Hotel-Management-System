@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Main.DataBaseConnection;
+import Main.connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ import javafx.scene.Node;
 
 public class LoginController {
 
-    DataBaseConnection connection = new DataBaseConnection();
+    connection connection = new connection();
 
     @FXML
     private TextField Email_Area;

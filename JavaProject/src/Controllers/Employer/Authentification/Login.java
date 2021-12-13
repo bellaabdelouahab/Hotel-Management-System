@@ -3,7 +3,7 @@ package Controllers.Employer.Authentification;
 import java.io.IOException;
 import java.sql.*;
 
-import Main.conecter;
+import Main.connection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -54,6 +54,7 @@ public class Login {
 
     @FXML
     private Label emai_label;
+    private connection co= new connection();
 
     // Switch To Sign Up page of Employer
     @FXML
@@ -98,9 +99,7 @@ public class Login {
 
         if (email_text.getText().contains("@gmail.com") && password_label.getText().length() >= 8) {
             try {
-                conecter p = new conecter();
-                ResultSet rs = p.getSte().executeQuery(
-                        "select * from employee where lower(email)='" + email_text.getText().toLowerCase() + "'");
+                ResultSet rs = co.Login_employ(email_text.getText().toLowerCase());
                 while (rs.next()) {
                     y = rs.getString(4).toLowerCase();
                     x = rs.getString(5).toLowerCase();
@@ -138,7 +137,7 @@ public class Login {
                     emai_label.setStyle("-fx-text-fill:red;");
                     email_line.setStyle("-fx-stroke:red;");
                 }
-                p.dormir();
+                
             } catch (Exception e) {
                 System.out.println("ERREUR :( \n" + e);
             }
