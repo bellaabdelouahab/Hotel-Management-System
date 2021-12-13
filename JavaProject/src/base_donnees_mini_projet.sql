@@ -37,7 +37,8 @@ create table reservation(
     id_emp NUMBER(4) CONSTRAINT emp_fk REFERENCES employee,
     date_de_sortir Date ,
     date_de_reserver Date,
-    cin Varchar2(8) CONSTRAINT client_fk REFERENCES client
+    cin Varchar2(8) CONSTRAINT client_fk REFERENCES client,
+    ID_ROOM NUMBER CONSTRAINT room_fk REFERENCES rooms
 );
 
 CREATE TABLE rooms(
