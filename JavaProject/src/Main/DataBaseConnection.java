@@ -1,6 +1,5 @@
 package Main;
 
-<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -29,41 +28,19 @@ public class DataBaseConnection {
 
     }
 
-    public ResultSet LoginWithDataBase(String NAM){
+    public ResultSet LoginWithDataBase(String EMAIL , String PASSWORD){
 
         try {
+
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT * FROM STUDENT WHERE LOWER(NOM) = LOWER('"+NAM+"')";
+            String Sql = "SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = LOWER('"+EMAIL+"') AND LOWER(PASSWORD) = LOWER('"+PASSWORD+"')";
             result = statement.executeQuery(Sql);
+
         }catch (Exception e) {
             System.out.println("Not Working");
         }
+
         return result;
     }
-
 }
-=======
-import java.sql.*;
-public class DataBaseConnection {
-    Connection DataBaseConnecter; 
-    public DataBaseConnection(){
-            try {
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                this.DataBaseConnecter = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd","hotel");
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-    }
-    public void Login(String Email){
-        try {
-            Statement st = this.DataBaseConnecter.createStatement();
-            ResultSet rs = st.executeQuery(
-                            "select * from employee where lower(email)='" + Email.toLowerCase() + "'");
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-}
->>>>>>> e70f080041c049d91d783ed38c057c6c3920bbdb
