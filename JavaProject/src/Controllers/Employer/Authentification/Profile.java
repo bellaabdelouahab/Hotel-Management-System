@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Controllers.Employer.Forms.Methodes;
+import Main.conecter;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -32,18 +34,19 @@ public class Profile implements Initializable {
     @FXML
     private GridPane PasswordForm;
 
-    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "",password="";
+    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
 
     Login m = new Login();
-    private int result=0;
+
+    private int result = 0;
 
     @FXML
-    private TextField new_pass,pass,check_pass;
+    private TextField new_pass, pass, check_pass;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
         Scene scene = backbutton.getScene();
-        StackPane parentContainer = (StackPane) scene.getRoot();
+        AnchorPane parentContainer = (AnchorPane) scene.getRoot();
         Timeline timeline = new Timeline();
         KeyValue kv1 = new KeyValue(ChildPane1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
@@ -84,14 +87,13 @@ public class Profile implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
-        System.out.println("mmmm " + m.getCompte());
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                    "hotel");
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(
+            // Class.forName("oracle.jdbc.driver.OracleDriver");
+            // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
+            //         "hotel");
+            // Statement st = con.createStatement();
+            conecter p=new conecter();
+            ResultSet rs = p.getSte().executeQuery(
                     "select * from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
             while (rs.next()) {
                 this.Cin.setText(String.valueOf(rs.getInt(1)));
@@ -114,12 +116,12 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                "hotel");
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(
+        conecter p=new conecter();
+        // Class.forName("oracle.jdbc.driver.OracleDriver");
+        // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
+        //         "hotel");
+        // Statement st = con.createStatement();
+        ResultSet rs = p.getSte().executeQuery(
                 "select * from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
@@ -130,47 +132,46 @@ public class Profile implements Initializable {
             phone = rs.getString(9);
             sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
-            password=rs.getString(5);
         }
         if (Adress.getText().toLowerCase().equals(adr) == false) {
-            result = st.executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
+            result = p.getSte().executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                //Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
             }
         }
         if (Nationnality.getText().toLowerCase().equals(natio) == false) {
-            result = st.executeUpdate("update employee set nationnality='" + Nationnality.getText().toLowerCase()
+            result = p.getSte().executeUpdate("update employee set nationnality='" + Nationnality.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                //Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
             }
         }
         if (Phonenumber.getText().toLowerCase().equals(phone) == false) {
-            result = st.executeUpdate("update employee set phone_number='" + Phonenumber.getText().toLowerCase()
+            result = p.getSte().executeUpdate("update employee set phone_number='" + Phonenumber.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                //Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
             }
         }
         if (Age.getText().toLowerCase().equals(age) == false) {
-            result = st.executeUpdate("update employee set age='" + Integer.parseInt(Age.getText())
+            result = p.getSte().executeUpdate("update employee set age='" + Integer.parseInt(Age.getText())
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                //Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
@@ -181,24 +182,48 @@ public class Profile implements Initializable {
     }
 
     @FXML
-    public void update_password(ActionEvent event) throws Exception {
-        if(pass.getText().equals(password)){
-            if(new_pass.equals(check_pass) && new_pass.getText().length()>=8){
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                        "hotel");
-                Statement st = con.createStatement();
-                result = st.executeUpdate("update employee set password='" + new_pass.getText()
-                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
-            }else{
-                new_pass.setStyle("-fx-background-color:red;");
-                check_pass.setStyle("-fx-background-color:red;");
-                new_pass.setText("");
-                check_pass.setText("");
+    public void update_password(ActionEvent event) {
+        // conecter p = new conecter();
+        System.out.println(m.getCompte());
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+                    "hotel_bd",
+                    "hotel");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(
+                    "select id_emp,password from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
+            System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
+            while (rs.next()) {
+                cin = String.valueOf(rs.getInt(1));
+                password = rs.getString(5);
             }
-        }else{
-            pass.setStyle("-fx-background-color:red;");
-            pass.setText("");
+
+            if (pass.getText().equals(password)) {
+                if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
+                    // try {
+                    // Class.forName("oracle.jdbc.driver.OracleDriver");
+                    // Connection conn
+                    // =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+                    // "hotel_bd",
+                    // "hotel");
+                    // Statement stt = conn.createStatement();
+                    result = st.executeUpdate("update employee set password='" + new_pass.getText()
+                            + "'where id_emp='" + Integer.parseInt(cin) + "'");
+
+                } else {
+                    new_pass.setStyle("-fx-background-color:red;");
+                    check_pass.setStyle("-fx-background-color:red;");
+                    new_pass.setText("");
+                    check_pass.setText("");
+                }
+            } else {
+                pass.setStyle("-fx-background-color:red;");
+                pass.setText("");
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
         }
     }
 }

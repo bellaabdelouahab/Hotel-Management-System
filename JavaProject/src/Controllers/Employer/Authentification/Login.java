@@ -2,6 +2,8 @@ package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.sql.*;
+
+import Main.conecter;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -96,27 +98,17 @@ public class Login {
 
         if (email_text.getText().contains("@gmail.com") && password_label.getText().length() >= 8) {
             try {
-                Class.forName("oracle.jdbc.driver.OracleDriver");
-                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                        "hotel");
-                Statement st = con.createStatement();
-                System.out.println(email_text.getText().toLowerCase());
-                // ResultSet rs = st.executeQuery("select email,password from employee where
-                // lower(email)='"
-                // + email_text.getText().toLowerCase() + "'");
-                ResultSet rs = st.executeQuery(
+                conecter p = new conecter();
+                ResultSet rs = p.getSte().executeQuery(
                         "select * from employee where lower(email)='" + email_text.getText().toLowerCase() + "'");
                 while (rs.next()) {
                     y = rs.getString(4).toLowerCase();
                     x = rs.getString(5).toLowerCase();
-                    System.out.println(x + "\n" + y);
-
                 }
                 if (y.equals(email_text.getText())) {
                     if (x.equals(password_label.getText())) {
                         setCompte(y);
                         try {
-                            System.out.println("test test " + getCompte());
                             Parent root = FXMLLoader.load(
                                     getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
                             Scene scene = signin_btn.getScene();
@@ -146,14 +138,15 @@ public class Login {
                     emai_label.setStyle("-fx-text-fill:red;");
                     email_line.setStyle("-fx-stroke:red;");
                 }
-
-                st.close();
-                con.close();
+                p.dormir();
             } catch (Exception e) {
                 System.out.println("ERREUR :( \n" + e);
             }
         } else {
-            System.out.println("probleme");
+            emai_label.setStyle("-fx-text-fill:red;");
+            email_line.setStyle("-fx-stroke:red;");
+            pass_word.setStyle("-fx-text-fill:red;");
+            pass_line.setStyle("-fx-stroke:red;");
         }
     }
 

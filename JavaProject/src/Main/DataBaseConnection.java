@@ -8,24 +8,22 @@ import java.sql.Statement;
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "system";
-    String password = "oracle";
+    String username = "hotel_bd";
+    String password = "hotel";
 
     Connection connection;
     Statement statement;
     ResultSet result;
 
-    public void ConnectToDataBase(){
+    public void ConnectToDataBase() {
         try {
-
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
             System.out.println("Connection Had Worked");
 
         } catch (Exception e) {
-            System.out.println("Data Base Connection Problem");
+            System.out.println("Data Base Connection Problem" + e);
         }
-
     }
 
     public ResultSet LoginWithDataBase(String EMAIL , String PASSWORD){

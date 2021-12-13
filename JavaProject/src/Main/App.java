@@ -16,20 +16,22 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Properties Prop = new Properties();
-        FileInputStream config = new FileInputStream(System.getProperty("user.dir")+"/src/Config.properties");
-        Prop.load(config);
-        Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
+        System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
+        
+                //abdelouhabe rak dima ka t9ob src dir / machi \ alkhra
 
-        if(Prop.getProperty("MainPage").equals("1")){
+        FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
+        Prop.load(config);
+        Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
+
+        if (Prop.getProperty("MainPage").equals("1")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
-        }
-        else if(Prop.getProperty("MainPage").equals("2")){
+        } else if (Prop.getProperty("MainPage").equals("2")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
-        }
-        else{
+        } else {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         }
-
+         
         DataBaseConnection Connect = new DataBaseConnection();
         Connect.ConnectToDataBase();
 

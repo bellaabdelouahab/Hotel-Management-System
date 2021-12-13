@@ -28,7 +28,7 @@ public class LoginController {
 
     @FXML
     private PasswordField Password_Area;
-    
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -46,8 +46,7 @@ public class LoginController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
-        else {
+        } else {
             Error_Message.setText("Invalid Information Please Try Again");
         }
     }
