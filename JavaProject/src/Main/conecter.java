@@ -13,7 +13,10 @@ public class conecter {
     }
 
     public Statement getSte() throws Exception{
-        
         return this.st=con.createStatement();
     }
+    public void dormir() throws Exception{
+        this.con.close();
+        this.st.close();
+    } 
 }

@@ -87,14 +87,13 @@ public class Profile implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
-        System.out.println("mmmm " + m.getCompte());
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                    "hotel");
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(
+            // Class.forName("oracle.jdbc.driver.OracleDriver");
+            // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
+            //         "hotel");
+            // Statement st = con.createStatement();
+            conecter p=new conecter();
+            ResultSet rs = p.getSte().executeQuery(
                     "select * from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
             while (rs.next()) {
                 this.Cin.setText(String.valueOf(rs.getInt(1)));
@@ -117,12 +116,12 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-                "hotel");
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(
+        conecter p=new conecter();
+        // Class.forName("oracle.jdbc.driver.OracleDriver");
+        // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
+        //         "hotel");
+        // Statement st = con.createStatement();
+        ResultSet rs = p.getSte().executeQuery(
                 "select * from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
@@ -135,44 +134,44 @@ public class Profile implements Initializable {
             age = String.valueOf(rs.getInt(8));
         }
         if (Adress.getText().toLowerCase().equals(adr) == false) {
-            result = st.executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
+            result = p.getSte().executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                // Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
             }
         }
         if (Nationnality.getText().toLowerCase().equals(natio) == false) {
-            result = st.executeUpdate("update employee set nationnality='" + Nationnality.getText().toLowerCase()
+            result = p.getSte().executeUpdate("update employee set nationnality='" + Nationnality.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                // Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
             }
         }
         if (Phonenumber.getText().toLowerCase().equals(phone) == false) {
-            result = st.executeUpdate("update employee set phone_number='" + Phonenumber.getText().toLowerCase()
+            result = p.getSte().executeUpdate("update employee set phone_number='" + Phonenumber.getText().toLowerCase()
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                // Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
             }
         }
         if (Age.getText().toLowerCase().equals(age) == false) {
-            result = st.executeUpdate("update employee set age='" + Integer.parseInt(Age.getText())
+            result = p.getSte().executeUpdate("update employee set age='" + Integer.parseInt(Age.getText())
                     + "'where id_emp='" + Integer.parseInt(cin) + "'");
             if (result > 0) {
-                System.out.println("oh yeah");
-                // Goback(event);
+                //System.out.println("oh yeah");
+                Goback(event);
                 result = 0;
             } else {
                 System.out.println("laaaaaaaaaa");
