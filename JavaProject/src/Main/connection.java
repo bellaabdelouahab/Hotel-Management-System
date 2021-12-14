@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class connection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 

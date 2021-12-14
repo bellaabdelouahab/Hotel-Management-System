@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
 
@@ -34,8 +35,8 @@ public class App extends Application {
          
         connection Connect = new connection();
         Connect.ConnectToDataBase();
-
         Scene scene = new Scene(root);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -2,6 +2,9 @@ package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.concurrent.TimeUnit;
+
+import org.controlsfx.control.MaskerPane;
 
 import Main.connection;
 import javafx.animation.Interpolator;
@@ -95,57 +98,81 @@ public class Login {
 
     @FXML
     public void login_formule(ActionEvent event) {
+        MaskerPane login_animation = new MaskerPane();
+        login_animation.setText("Connecting");
+        login_animation.setProgress(-1);
+        login_animation.setLayoutX(450);
+        login_animation.setLayoutY(256);
         String x = "", y = "";
-
         if (email_text.getText().contains("@gmail.com") && password_label.getText().length() >= 8) {
-            try {
-                ResultSet rs = co.Login_employ(email_text.getText().toLowerCase());
-                while (rs.next()) {
-                    y = rs.getString(4).toLowerCase();
-                    x = rs.getString(5).toLowerCase();
-                }
-                if (y.equals(email_text.getText())) {
-                    if (x.equals(password_label.getText())) {
-                        setCompte(y);
-                        try {
-                            Parent root = FXMLLoader.load(
-                                    getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
-                            Scene scene = signin_btn.getScene();
-                            root.translateXProperty().set(scene.getWidth());
-                            achnopane.getChildren().add(root);
-                            Timeline timeline = new Timeline();
-                            KeyValue kv = new KeyValue(root.translateXProperty(), 0,
-                                    Interpolator.EASE_IN);
-                            KeyValue kv1 = new KeyValue(general_pane.translateXProperty(),
-                                    -(root.translateXProperty().get()), Interpolator.EASE_IN);
-                            KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-                            KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
-                            timeline.getKeyFrames().add(kf);
-                            timeline.getKeyFrames().add(kf1);
-                            timeline.setOnFinished(t -> {
-                                achnopane.getChildren().remove(general_pane);
-                            });
-                            timeline.play();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }
-                    } else {
-                        pass_word.setStyle("-fx-text-fill:red;");
-                        pass_line.setStyle("-fx-stroke:red;");
-                    }
-                } else {
-                    emai_label.setStyle("-fx-text-fill:red;");
-                    email_line.setStyle("-fx-stroke:red;");
-                }
-                
-            } catch (Exception e) {
-                System.out.println("ERREUR :( \n" + e);
-            }
+            StartConnection(login_animation, x, y);
         } else {
             emai_label.setStyle("-fx-text-fill:red;");
             email_line.setStyle("-fx-stroke:red;");
             pass_word.setStyle("-fx-text-fill:red;");
             pass_line.setStyle("-fx-stroke:red;");
+        }
+    }
+
+    private void StartConnection(MaskerPane login_animation, String x, String y) {
+        achnopane.getChildren().add(login_animation);
+        Timeline timeline1 = new Timeline();
+        KeyValue kvs = new KeyValue(login_animation.progressProperty(),-1, Interpolator.EASE_IN);
+        KeyFrame kfs = new KeyFrame(Duration.seconds(1), kvs);
+        timeline1.getKeyFrames().add(kfs);
+        try {
+            ResultSet rs = co.Login_employ(email_text.getText().toLowerCase());
+            while (rs.next()) {
+                y = rs.getString(4).toLowerCase();
+                x = rs.getString(5).toLowerCase();
+            }
+            if (y.equals(email_text.getText())) {
+                if (x.equals(password_label.getText())) {
+                    setCompte(y);
+                    timeline1.setOnFinished(ep->{
+                        achnopane.getChildren().remove(login_animation);
+                        SwitchToHomePage();
+                    });
+                    timeline1.play();
+                } else {
+                    achnopane.getChildren().remove(login_animation);
+                    pass_word.setStyle("-fx-text-fill:red;");
+                    pass_line.setStyle("-fx-stroke:red;");
+                }
+        
+            } else {
+                achnopane.getChildren().remove(login_animation);
+                emai_label.setStyle("-fx-text-fill:red;");
+                email_line.setStyle("-fx-stroke:red;");
+            }
+            
+        } catch (Exception e) {
+            System.out.println("ERREUR :( \n" + e);
+        }
+    }
+
+    private void SwitchToHomePage() {
+        try {
+            Parent root = FXMLLoader.load(
+            getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
+            Scene scene = signin_btn.getScene();
+            root.translateXProperty().set(scene.getWidth());
+            achnopane.getChildren().add(root);
+            Timeline timeline = new Timeline();
+            KeyValue kv = new KeyValue(root.translateXProperty(), 0,Interpolator.EASE_IN);
+            KeyValue kv1 = new KeyValue(general_pane.translateXProperty(),
+            -(root.translateXProperty().get()), Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+            KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
+            timeline.getKeyFrames().add(kf);
+            timeline.getKeyFrames().add(kf1);
+            timeline.setOnFinished(t -> {
+                achnopane.getChildren().remove(general_pane);
+            });
+            
+            timeline.play();
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 

@@ -17,10 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import Main.connection;
 
@@ -45,7 +44,7 @@ public class Profile implements Initializable {
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
         Scene scene = backbutton.getScene();
-        AnchorPane parentContainer = (AnchorPane) scene.getRoot();
+        FlowPane parentContainer = (FlowPane) scene.getRoot();
         Timeline timeline = new Timeline();
         KeyValue kv1 = new KeyValue(ChildPane1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
@@ -58,7 +57,7 @@ public class Profile implements Initializable {
 
     public void ShowPassworkForm() {
         Timeline timeline = new Timeline();
-        KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), -93, Interpolator.EASE_BOTH);
+        KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), -100, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf1);
         timeline.play();

@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -14,6 +16,14 @@ public class FirstPageConroller {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private AnchorPane AdminPane;
+
+    @FXML
+    private AnchorPane EmployerPane;
+
+    @FXML
+    private FlowPane ParentPane;
 
     // Switch To Admin Page
     @FXML
@@ -28,10 +38,9 @@ public class FirstPageConroller {
     // Switch To Employer Page
     @FXML
     public void SwitchToEmployerPage(ActionEvent event) throws IOException {
+        ParentPane.getChildren().remove(AdminPane);
+        ParentPane.getChildren().remove(EmployerPane);
         root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        ParentPane.getChildren().add(root);
     }
 }
