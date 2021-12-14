@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import io.github.gleidson28.GNAvatarView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.AddUserController">
    <children>
       <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
          <children>
-            <Label prefHeight="72.0" prefWidth="369.0" text="EDIT PROFILE" textFill="#909090">
+            <Label prefHeight="72.0" prefWidth="369.0" text="ADD USERS" textFill="#909090">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -26,23 +25,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <AnchorPane prefHeight="72.0" prefWidth="357.0">
-               <children>
-                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="162.0" layoutY="44.0" size="1.6em" />
-                  <FontAwesomeIconView fill="#909090" glyphName="GEAR" layoutX="230.0" layoutY="45.0" size="1.7em" />
-                  <GNAvatarView layoutX="297.0" layoutY="15.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="42.0" prefWidth="43.0" stroke="#909090" strokeWidth="1.0" type="CIRCLE">
-                     <image>
-                        <Image url="@../../../IMAGES/user.png" />
-                     </image>
-                  </GNAvatarView>
-                  <Pane layoutX="277.0" layoutY="1.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="68.0" prefWidth="65.0">
-                     <children>
-                        <Pane layoutX="19.0" layoutY="17.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="72.0" prefWidth="52.0" />
-                        <Pane layoutX="-1.0" layoutY="13.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="72.0" prefWidth="62.0" />
-                     </children>
-                  </Pane>
-               </children>
-            </AnchorPane>
+            <AnchorPane prefHeight="72.0" prefWidth="357.0" />
          </children>
       </HBox>
       <VBox prefHeight="640.0" prefWidth="300.0" style="-fx-background-color: #333645;">
@@ -189,60 +172,79 @@
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="USERSTABLE" layoutX="300.0" layoutY="142.0" prefHeight="498.0" prefWidth="724.0">
-        <columns>
-          <TableColumn fx:id="ID" prefWidth="103.0" text="ID" />
-          <TableColumn fx:id="NAME" prefWidth="103.0" text="NAME" />
-            <TableColumn fx:id="LAST_NAME" prefWidth="103.0" text="LAST NAME" />
-            <TableColumn fx:id="ADRESSE" prefWidth="103.0" text="ADRESSE" />
-            <TableColumn fx:id="SALARY" prefWidth="103.0" text="SALARY" />
-            <TableColumn fx:id="COMMISSION" prefWidth="103.0" text="COMMISSION" />
-        </columns>
-      </TableView>
-      <VBox fx:id="AdminMenu" layoutX="842.0" layoutY="65.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="149.0" prefWidth="167.0" style="-fx-border-color: #909090; -fx-border-radius: 3px;">
+      <Pane layoutX="301.0" layoutY="73.0" prefHeight="574.0" prefWidth="717.0">
          <children>
-            <Label alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Hamza Bouslama" />
-            <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Ham.bousa98@gmail.com" textFill="#909090">
+            <Label contentDisplay="CENTER" layoutY="3.0" prefHeight="72.0" prefWidth="358.0" text="GENERALE INFORMATION" textFill="#909090">
                <font>
-                  <Font size="10.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </Label>
-            <HBox alignment="CENTER_LEFT" onMouseClicked="#SwitchToProfile" prefHeight="42.0" prefWidth="165.0" styleClass="Admin_menu" stylesheets="@../../../CSS/Admin.css">
-               <children>
-                  <FontAwesomeIconView fill="#909090" glyphName="EDIT" size="1.5em">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </FontAwesomeIconView>
-                  <Label text="Edit Profile">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" onMouseClicked="#LogOut" prefHeight="42.0" prefWidth="165.0" styleClass="Admin_menu" stylesheets="@../../../CSS/Admin.css">
-               <children>
-                  <FontAwesomeIconView fill="#909090" glyphName="ARCHIVE" size="1.5em">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </FontAwesomeIconView>
-                  <Label text="Log Out">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <Pane layoutX="300.0" layoutY="76.0" prefHeight="65.0" prefWidth="375.0">
-         <children>
-            <FontAwesomeIconView fill="RED" glyphName="USER" layoutX="21.0" layoutY="43.0" onMouseClicked="#DeleteUser" size="2.8em" wrappingWidth="39.0" />
-            <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" layoutX="81.0" layoutY="44.0" onMouseClicked="#SwitchToAddUser" size="2.8em" wrappingWidth="39.0" />
-            <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" layoutX="141.0" layoutY="44.0" size="2.8em" wrappingWidth="39.0" />
-            <FontAwesomeIconView fill="#00c0ff" glyphName="" layoutX="198.0" layoutY="41.0" size="2.8em" wrappingWidth="39.0" />
+            <TextField fx:id="First_name" layoutX="19.0" layoutY="94.0" prefHeight="43.0" prefWidth="319.0" promptText="FIRST NAME">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Last_name" layoutX="384.0" layoutY="95.0" prefHeight="43.0" prefWidth="319.0" promptText="LAST NAME">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Email" layoutX="384.0" layoutY="162.0" prefHeight="43.0" prefWidth="319.0" promptText="EMAIL">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Salary" layoutX="20.0" layoutY="362.0" prefHeight="43.0" prefWidth="319.0" promptText="SALARY">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="ADD USER" />
+            <Label fx:id="Message" layoutX="19.0" layoutY="60.0" prefHeight="22.0" prefWidth="319.0" textFill="#06e812" />
+            <PasswordField fx:id="Password" layoutX="20.0" layoutY="228.0" prefHeight="44.0" prefWidth="318.0" promptText="PASSWORD">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </PasswordField>
+            <PasswordField fx:id="Con_password" layoutX="384.0" layoutY="227.0" prefHeight="44.0" prefWidth="318.0" promptText="CONFIRME PASSWORD">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </PasswordField>
+            <TextField fx:id="Adresse" layoutX="19.0" layoutY="162.0" prefHeight="43.0" prefWidth="319.0" promptText="ADRESSE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <ChoiceBox fx:id="Sex" layoutX="385.0" layoutY="293.0" prefHeight="44.0" prefWidth="133.0" />
+            <TextField fx:id="Phone" layoutX="20.0" layoutY="426.0" prefHeight="43.0" prefWidth="319.0" promptText="PHONE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Commission" layoutX="383.0" layoutY="362.0" prefHeight="43.0" prefWidth="319.0" promptText="COMMISSION">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Work_type" layoutX="383.0" layoutY="424.0" prefHeight="43.0" prefWidth="319.0" promptText="WORK TYPE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Nationality" layoutX="21.0" layoutY="297.0" prefHeight="43.0" prefWidth="319.0" promptText="NATIONALITY">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Age" layoutX="541.0" layoutY="293.0" prefHeight="43.0" prefWidth="159.0" promptText="AGE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
          </children>
       </Pane>
    </children>

@@ -66,3 +66,18 @@ create table client(
 
 
 
+
+update employee
+set FULL_NAME = 'ADMIN BBBE',
+    EMAIL = 'admin@gmail.com',
+    PASSWORD = 'admin',
+    PHONE_NUMBER = 0682975957
+WHERE ID_EMP = 1;
+
+UPDATE employee SET FULL_NAME = 'asdasdasd',EMAIL = 'asdasd',PASSWORD = 'asdasd',PHONE_NUMBER = '068846554' WHERE ID_EMP = 1;
+
+SELECT SUM(SALAIRE)
+FROM EMPLOYEE;
+INSERT INTO EMPLOYEE VALUES((SELECT COUNT(*) FROM EMPLOYEE) + 1 , 'ASDASD' , 'ASDASD', 'ASDASSD' , 'SDFSDFF', 'SDFSDF' , 'F' , 15 , '6546546554' , 1500 , 12 , resserve);  
+
+insert into employee values ((SELECT COUNT(*) FROM EMPLOYEE) + 1,'yassine boujrada','casa','yassine@gmail.com','yassine2','marocaine','h',18,null,1000.00,2,'reserve');
