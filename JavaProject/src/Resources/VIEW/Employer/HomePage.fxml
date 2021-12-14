@@ -57,7 +57,7 @@
             <VBox fx:id="AccountMenu" layoutY="45.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="143.0" prefWidth="174.0">
                <children>
                   <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Profile" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Effected Reservations" />
+                  <Button fx:id="reservation_label" mnemonicParsing="false" onAction="#reservation" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Effected Reservations" />
                   <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Sign out" />
                </children>
             </VBox>

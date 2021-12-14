@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import Controllers.Employer.Forms.Methodes;
-import Main.conecter;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -23,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import Main.connection;
 
 public class Profile implements Initializable {
     @FXML
@@ -33,11 +33,10 @@ public class Profile implements Initializable {
     private TextField FullName, Sex, email, Adress, Age, Cin, Nationnality, Phonenumber;
     @FXML
     private GridPane PasswordForm;
-
-    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
-
+    private connection co = new connection();
     Login m = new Login();
 
+    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
     private int result = 0;
 
     @FXML
@@ -88,13 +87,7 @@ public class Profile implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
-            // Class.forName("oracle.jdbc.driver.OracleDriver");
-            // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-            //         "hotel");
-            // Statement st = con.createStatement();
-            conecter p=new conecter();
-            ResultSet rs = p.getSte().executeQuery(
-                    "select * from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
+            ResultSet rs = co.Login_employ(m.getCompte().toLowerCase());
             while (rs.next()) {
                 this.Cin.setText(String.valueOf(rs.getInt(1)));
                 this.FullName.setText(rs.getString(2));
@@ -116,13 +109,7 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        conecter p=new conecter();
-        // Class.forName("oracle.jdbc.driver.OracleDriver");
-        // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-        //         "hotel");
-        // Statement st = con.createStatement();
-        ResultSet rs = p.getSte().executeQuery(
-                "select * from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
+        ResultSet rs = co.Login_employ(m.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
             nom = rs.getString(2);
@@ -133,11 +120,11 @@ public class Profile implements Initializable {
             sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
         }
+
         if (Adress.getText().toLowerCase().equals(adr) == false) {
-            result = p.getSte().executeUpdate("update employee set adresse='" + Adress.getText().toLowerCase()
-                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
+            result = co.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
-                //System.out.println("oh yeah");
+                // System.out.println("oh yeah");
                 Goback(event);
                 result = 0;
             } else {
@@ -145,10 +132,9 @@ public class Profile implements Initializable {
             }
         }
         if (Nationnality.getText().toLowerCase().equals(natio) == false) {
-            result = p.getSte().executeUpdate("update employee set nationnality='" + Nationnality.getText().toLowerCase()
-                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
+            result = co.natio_profile_change(Nationnality.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
-                //System.out.println("oh yeah");
+                // System.out.println("oh yeah");
                 Goback(event);
                 result = 0;
             } else {
@@ -156,10 +142,9 @@ public class Profile implements Initializable {
             }
         }
         if (Phonenumber.getText().toLowerCase().equals(phone) == false) {
-            result = p.getSte().executeUpdate("update employee set phone_number='" + Phonenumber.getText().toLowerCase()
-                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
+            result = co.phone_profile_change(Phonenumber.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
-                //System.out.println("oh yeah");
+                // System.out.println("oh yeah");
                 Goback(event);
                 result = 0;
             } else {
@@ -167,10 +152,9 @@ public class Profile implements Initializable {
             }
         }
         if (Age.getText().toLowerCase().equals(age) == false) {
-            result = p.getSte().executeUpdate("update employee set age='" + Integer.parseInt(Age.getText())
-                    + "'where id_emp='" + Integer.parseInt(cin) + "'");
+            result = co.age_profile_change(Integer.parseInt(Age.getText()), Integer.parseInt(cin));
             if (result > 0) {
-                //System.out.println("oh yeah");
+                // System.out.println("oh yeah");
                 Goback(event);
                 result = 0;
             } else {
@@ -185,14 +169,10 @@ public class Profile implements Initializable {
     public void update_password(ActionEvent event) {
         // conecter p = new conecter();
         System.out.println(m.getCompte());
+        cin = "";
+        password = "";
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
-                    "hotel_bd",
-                    "hotel");
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(
-                    "select id_emp,password from employee where lower(email)='" + m.getCompte().toLowerCase() + "'");
+            ResultSet rs = co.Login_employe(m.getCompte().toLowerCase());
             System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));
@@ -201,16 +181,12 @@ public class Profile implements Initializable {
 
             if (pass.getText().equals(password)) {
                 if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
-                    // try {
-                    // Class.forName("oracle.jdbc.driver.OracleDriver");
-                    // Connection conn
-                    // =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
-                    // "hotel_bd",
-                    // "hotel");
-                    // Statement stt = conn.createStatement();
-                    result = st.executeUpdate("update employee set password='" + new_pass.getText()
-                            + "'where id_emp='" + Integer.parseInt(cin) + "'");
-
+                    result = co.change_password(new_pass.getText(), Integer.parseInt(cin));
+                    if (result > 0) {
+                        Goback(event);
+                    } else {
+                        System.out.println("hola");
+                    }
                 } else {
                     new_pass.setStyle("-fx-background-color:red;");
                     check_pass.setStyle("-fx-background-color:red;");
@@ -218,12 +194,13 @@ public class Profile implements Initializable {
                     check_pass.setText("");
                 }
             } else {
-                pass.setStyle("-fx-background-color:red;");
+                pass.setStyle("-fx-border-color:red;");
                 pass.setText("");
             }
         } catch (Exception e) {
             // TODO: handle exception
-            e.printStackTrace();
+            System.out.println("tr\n" + e);
         }
     }
+
 }

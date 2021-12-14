@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Properties Prop = new Properties();
-        System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
+        System.out.println(System.getProperty("user.dir") + "/src/Config.properties");
         
                 //abdelouhabe rak dima ka t9ob src dir / machi \ alkhra
 
@@ -32,7 +32,7 @@ public class App extends Application {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         }
          
-        DataBaseConnection Connect = new DataBaseConnection();
+        connection Connect = new connection();
         Connect.ConnectToDataBase();
 
         Scene scene = new Scene(root);

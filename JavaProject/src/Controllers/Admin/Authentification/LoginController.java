@@ -3,7 +3,6 @@ package Controllers.Admin.Authentification;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInUpBig;
 import javafx.event.ActionEvent;
@@ -50,7 +49,6 @@ public class LoginController {
             stage.show();
             new FadeInUpBig(root).play();
 
-            
         } else {
             Error_Message.setText("Invalid Information Please Try Again");
         }
