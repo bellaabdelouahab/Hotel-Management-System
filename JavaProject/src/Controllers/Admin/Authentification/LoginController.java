@@ -5,26 +5,20 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import Controllers.Admin.Functions.DashBoardController;
 import Controllers.Admin.Functions.LeaderBord;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
-import animatefx.animation.FadeInUpBig;
 import animatefx.animation.FadeOutLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 
 public class LoginController implements Initializable{
 
@@ -38,9 +32,6 @@ public class LoginController implements Initializable{
 
     @FXML
     private PasswordField Password_Area;
-
-    private Stage stage;
-    private Scene scene;
     private Parent root;
     @FXML
     public Pane ParentPane;
@@ -60,6 +51,7 @@ public class LoginController implements Initializable{
             LeaderBord controller = loder.getController();
             controller.ParentPane=ParentPane;
             controller.connection=connection;
+            controller.ShowDashBoard();
             FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
             FideOut.play();
             FideOut.setOnFinished(e->{
@@ -74,7 +66,6 @@ public class LoginController implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
         Email_Area.setText("admin@gmail.com");
         Password_Area.setText("admin@1234");
     }

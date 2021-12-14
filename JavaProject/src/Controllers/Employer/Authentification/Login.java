@@ -2,7 +2,6 @@ package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.concurrent.TimeUnit;
 
 import org.controlsfx.control.MaskerPane;
 
@@ -27,13 +26,12 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
-
 public class Login {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private static String compte;
+    private String compte;
 
     @FXML
     private TextField email_text;
@@ -184,7 +182,7 @@ public class Login {
         this.compte = d;
     }
 
-    public static String getCompte() {
+    public String getCompte() {
         return compte;
     }
 }

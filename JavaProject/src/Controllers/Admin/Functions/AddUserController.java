@@ -9,21 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 
 
 public class AddUserController {
-
-    private Stage stage;
-    private Scene scene;
     private Parent root;
     
     DataBaseConnection connection = new DataBaseConnection();
@@ -71,6 +64,7 @@ public class AddUserController {
     private TextField Work_type;
     public Pane CurrentTab;
     public Pane LeaderBoardData;
+    public Pane ChildUser;
 
 
     @FXML

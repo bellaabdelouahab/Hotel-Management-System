@@ -35,7 +35,9 @@ public class Profile implements Initializable {
     public DataBaseConnection connection;
     Login m = new Login();
 
-    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
+    private String adr = "", natio = "", phone = "", cin = "", age = "", password = "";
+    ////Once You need them enable
+    //private String sex = "", nom = "", mail = "";
     private int result = 0;
 
     @FXML
@@ -111,12 +113,12 @@ public class Profile implements Initializable {
         ResultSet rs = connection.Login_employ(m.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
-            nom = rs.getString(2);
+            //nom = rs.getString(2);
             adr = rs.getString(3);
-            mail = rs.getString(4);
+            //mail = rs.getString(4);
             natio = rs.getString(6);
             phone = rs.getString(9);
-            sex = rs.getString(7);
+            //sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
         }
 
@@ -197,7 +199,6 @@ public class Profile implements Initializable {
                 pass.setText("");
             }
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println("tr\n" + e);
         }
     }
