@@ -97,7 +97,7 @@ public class ProfileController implements Initializable{
         System.out.println(Pass);
         System.out.println(Con_pass);
 
-        if(String.valueOf(Pass) != String.valueOf(Con_pass)){
+        if(!String.valueOf(Pass).equals(String.valueOf(Con_pass))){
             Message.setText("Invalid Operation");
         }
         else{

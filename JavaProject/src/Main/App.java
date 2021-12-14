@@ -3,6 +3,8 @@ package Main;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+import animatefx.animation.FadeIn;
 import animatefx.animation.FadeInUpBig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Properties Prop = new Properties();
-        System.out.println(System.getProperty("user.dir") + "/src/Config.properties");
+        System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
         
                 //abdelouhabe rak dima ka t9ob src dir / machi \ alkhra
 
@@ -41,7 +43,7 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        new FadeInUpBig(root).play();
+        new FadeIn(root).play();
         primaryStage.setResizable(false);
     }
 
