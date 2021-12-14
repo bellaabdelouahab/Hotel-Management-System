@@ -16,9 +16,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import Main.DataBaseConnection;
 
 public class DashBoardController implements Initializable{
+
+    DataBaseConnection connection = new DataBaseConnection();
 
     @FXML
     private AreaChart<String, Double> AREACHART;
@@ -74,11 +79,19 @@ public class DashBoardController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ResultSet Result = connection.ReturnCount("employee");
+            
+            try {
 
-        ROOM_ID.setText("200");
-        AMOUNT_ID.setText("4500");
-        EMPLOYER_ID.setText("176");
+                ROOM_ID.setText("200");
+                AMOUNT_ID.setText("4500");
+                Result.next();
+                EMPLOYER_ID.setText(String.valueOf(Result.getInt("count(*)")));
 
+            } catch (SQLException e) {
+                System.out.println("WTF" +e);
+            }
+        
         AdminMenu.setVisible(false);
 
         XYChart.Series<String , Double > serie1 = new XYChart.Series<String , Double>();
