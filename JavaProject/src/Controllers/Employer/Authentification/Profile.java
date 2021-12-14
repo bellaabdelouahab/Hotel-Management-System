@@ -21,7 +21,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import Main.connection;
+import Main.DataBaseConnection;
 
 public class Profile implements Initializable {
     @FXML
@@ -32,7 +32,7 @@ public class Profile implements Initializable {
     private TextField FullName, Sex, email, Adress, Age, Cin, Nationnality, Phonenumber;
     @FXML
     private GridPane PasswordForm;
-    private connection co = new connection();
+    public DataBaseConnection connection;
     Login m = new Login();
 
     private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
@@ -86,7 +86,7 @@ public class Profile implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
-            ResultSet rs = co.Login_employ(m.getCompte().toLowerCase());
+            ResultSet rs = connection.Login_employ(m.getCompte().toLowerCase());
             while (rs.next()) {
                 this.Cin.setText(String.valueOf(rs.getInt(1)));
                 this.FullName.setText(rs.getString(2));
@@ -108,7 +108,7 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        ResultSet rs = co.Login_employ(m.getCompte().toLowerCase());
+        ResultSet rs = connection.Login_employ(m.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
             nom = rs.getString(2);
@@ -121,7 +121,7 @@ public class Profile implements Initializable {
         }
 
         if (Adress.getText().toLowerCase().equals(adr) == false) {
-            result = co.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
+            result = connection.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -131,7 +131,7 @@ public class Profile implements Initializable {
             }
         }
         if (Nationnality.getText().toLowerCase().equals(natio) == false) {
-            result = co.natio_profile_change(Nationnality.getText().toLowerCase(), Integer.parseInt(cin));
+            result = connection.natio_profile_change(Nationnality.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -141,7 +141,7 @@ public class Profile implements Initializable {
             }
         }
         if (Phonenumber.getText().toLowerCase().equals(phone) == false) {
-            result = co.phone_profile_change(Phonenumber.getText().toLowerCase(), Integer.parseInt(cin));
+            result = connection.phone_profile_change(Phonenumber.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -151,7 +151,7 @@ public class Profile implements Initializable {
             }
         }
         if (Age.getText().toLowerCase().equals(age) == false) {
-            result = co.age_profile_change(Integer.parseInt(Age.getText()), Integer.parseInt(cin));
+            result = connection.age_profile_change(Integer.parseInt(Age.getText()), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -171,7 +171,7 @@ public class Profile implements Initializable {
         cin = "";
         password = "";
         try {
-            ResultSet rs = co.Login_employe(m.getCompte().toLowerCase());
+            ResultSet rs = connection.Login_employe(m.getCompte().toLowerCase());
             System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));
@@ -180,7 +180,7 @@ public class Profile implements Initializable {
 
             if (pass.getText().equals(password)) {
                 if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
-                    result = co.change_password(new_pass.getText(), Integer.parseInt(cin));
+                    result = connection.change_password(new_pass.getText(), Integer.parseInt(cin));
                     if (result > 0) {
                         Goback(event);
                     } else {

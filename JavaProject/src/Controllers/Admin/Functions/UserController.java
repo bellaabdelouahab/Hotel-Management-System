@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import Main.DataBaseConnection;
 import Main.User;
+import animatefx.animation.FadeInRightBig;
+import animatefx.animation.FadeOutLeft;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -24,7 +27,7 @@ import javafx.scene.Scene;
 
 public class UserController implements Initializable{
 
-    DataBaseConnection connection = new DataBaseConnection();
+    DataBaseConnection connection;
     ResultSet Lest = connection.GetAllEmployers();    
     ObservableList<User> List = FXCollections.observableArrayList();
 
@@ -35,41 +38,41 @@ public class UserController implements Initializable{
     private Scene scene;
     private Parent root;
 
-    public void SwitchToDashBoard(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    // public void SwitchToDashBoard(MouseEvent event) throws IOException {
+    //     root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
+    //     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    //     scene = new Scene(root);
+    //     stage.setScene(scene);
+    //     stage.show();
+    // }
 
-    @FXML
-    void SwitchToProfile(MouseEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    // @FXML
+    // void SwitchToProfile(MouseEvent event) throws IOException{
+    //     root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
+    //     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    //     scene = new Scene(root);
+    //     stage.setScene(scene);
+    //     stage.show();
+    // }
 
-    @FXML
-    void LogOut(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    // @FXML
+    // void LogOut(MouseEvent event) throws IOException {
+    //     root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
+    //     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    //     scene = new Scene(root);
+    //     stage.setScene(scene);
+    //     stage.show();
+    // }
 
-    @FXML
-    void ShowMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(true);
-    }
+    // @FXML
+    // void ShowMenuBar(MouseEvent event) {
+    //     AdminMenu.setVisible(true);
+    // }
 
-    @FXML
-    void HideMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(false);
-    }
+    // @FXML
+    // void HideMenuBar(MouseEvent event) {
+    //     AdminMenu.setVisible(false);
+    // }
 
     @FXML
     private TableView<User> USERSTABLE;
@@ -91,6 +94,8 @@ public class UserController implements Initializable{
 
     @FXML
     private TableColumn<User, Integer> COMMISSION;
+    public Pane CurrentTab;
+    public Pane LeaderBoardData;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -105,7 +110,7 @@ public class UserController implements Initializable{
         System.out.println("No Data Found");
     }
     
-        AdminMenu.setVisible(false);
+        // AdminMenu.setVisible(false);
         ID.setCellValueFactory(new PropertyValueFactory<User , Integer>("id"));
         NAME.setCellValueFactory(new PropertyValueFactory<User , String>("Name"));
         LAST_NAME.setCellValueFactory(new PropertyValueFactory<User , String>("Last"));
@@ -122,10 +127,22 @@ public class UserController implements Initializable{
 
     @FXML
     void SwitchToAddUser(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+        root = loder.load();
+        AddUserController controller = loder.getController();
+        controller.LeaderBoardData=LeaderBoardData;
+        controller.CurrentTab=CurrentTab;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+        });
     }
 }

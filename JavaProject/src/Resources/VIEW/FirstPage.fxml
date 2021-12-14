@@ -45,11 +45,11 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="FIRSTPAGE">
+      <Pane fx:id="ParentPane">
          <children>
-            <Pane fx:id="FIRSTPAGE" layoutY="1.1789817810058594" prefHeight="640.0" prefWidth="512.0">
+            <Pane fx:id="ChiledStage" layoutY="1.1789817810058594" prefHeight="640.0" prefWidth="512.0">
                <children>
-                  <AnchorPane prefHeight="649.0" prefWidth="512.0" style="-fx-background-color: #202332;">
+                  <AnchorPane layoutY="-2.0" prefHeight="649.0" prefWidth="512.0" style="-fx-background-color: #202332;">
                      <children>
                         <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" layoutX="177.0" layoutY="253.0" size="10em" />
                         <Button layoutX="134.0" layoutY="355.0" mnemonicParsing="false" onAction="#SwitchToAdminPage" prefHeight="75.0" prefWidth="245.0" styleClass="Admin_page" stylesheets="@../CSS/Admin.css" text="ADMIN PAGE">

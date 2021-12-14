@@ -3,6 +3,8 @@ package Controllers.Admin.Functions;
 import java.io.IOException;
 
 import Main.DataBaseConnection;
+import animatefx.animation.FadeInRightBig;
+import animatefx.animation.FadeOutLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -66,15 +69,9 @@ public class AddUserController {
 
     @FXML
     private TextField Work_type;
+    public Pane CurrentTab;
+    public Pane LeaderBoardData;
 
-    @FXML
-    void SwitchToDashBoard(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     void AddUser(ActionEvent event) throws IOException {
@@ -92,11 +89,25 @@ public class AddUserController {
         String work = Work_type.getText();
         connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Ag, Phon, sal, comm, work);
         
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        SwitchToUser(event);
     }
-
+    void SwitchToUser(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+        root = loder.load();
+        UserController controller = loder.getController();
+        controller.LeaderBoardData=LeaderBoardData;
+        controller.CurrentTab=CurrentTab;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+        });
+    }
 }

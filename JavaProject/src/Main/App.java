@@ -34,9 +34,7 @@ public class App extends Application {
         } else {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         }
-         
-        connection Connect = new connection();
-        Connect.ConnectToDataBase();
+        
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Hotel BBBE");

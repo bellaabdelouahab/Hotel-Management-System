@@ -1,24 +1,34 @@
 package Controllers.Admin.Authentification;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+import Controllers.Admin.Functions.DashBoardController;
+import Controllers.Admin.Functions.LeaderBord;
 import Main.DataBaseConnection;
+import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeInUpBig;
+import animatefx.animation.FadeOutLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
-public class LoginController {
+public class LoginController implements Initializable{
 
-    DataBaseConnection connection = new DataBaseConnection();
+    public DataBaseConnection connection ;
 
     @FXML
     private TextField Email_Area;
@@ -32,7 +42,10 @@ public class LoginController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    @FXML
+    public Pane ParentPane;
+    @FXML
+    private BorderPane ChiledStage;
     @FXML
     public void GoToAdminPage(ActionEvent event) throws IOException, SQLException {
 
@@ -42,15 +55,27 @@ public class LoginController {
         ResultSet ResultSet = connection.LoginWithDataBase(Email , Password);
 
         if (ResultSet.next() == true){
-            root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-            new FadeInUpBig(root).play();
+            FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/LeaderBoard.fxml"));
+            root = loder.load();
+            LeaderBord controller = loder.getController();
+            controller.ParentPane=ParentPane;
+            controller.connection=connection;
+            FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
+            FideOut.play();
+            FideOut.setOnFinished(e->{
+                ParentPane.getChildren().remove(ChiledStage);
+            });
+            ParentPane.getChildren().add(root);
+            new FadeInRightBig(root).play();
 
         } else {
             Error_Message.setText("Invalid Information Please Try Again");
         }
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // TODO Auto-generated method stub
+        Email_Area.setText("admin@gmail.com");
+        Password_Area.setText("admin@1234");
     }
 }

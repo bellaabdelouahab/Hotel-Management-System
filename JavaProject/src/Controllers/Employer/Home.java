@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -31,6 +32,7 @@ public class Home implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    public DataBaseConnection connection;
 
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);

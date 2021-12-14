@@ -6,7 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.controlsfx.control.MaskerPane;
 
-import Main.connection;
+import Controllers.Employer.Home;
+import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -57,7 +58,8 @@ public class Login {
 
     @FXML
     private Label emai_label;
-    private connection co= new connection();
+    public DataBaseConnection connection;
+    public Pane ParentPane;
 
     // Switch To Sign Up page of Employer
     @FXML
@@ -121,7 +123,7 @@ public class Login {
         KeyFrame kfs = new KeyFrame(Duration.seconds(1), kvs);
         timeline1.getKeyFrames().add(kfs);
         try {
-            ResultSet rs = co.Login_employ(email_text.getText().toLowerCase());
+            ResultSet rs = connection.Login_employ(email_text.getText().toLowerCase());
             while (rs.next()) {
                 y = rs.getString(4).toLowerCase();
                 x = rs.getString(5).toLowerCase();
@@ -153,9 +155,11 @@ public class Login {
 
     private void SwitchToHomePage() {
         try {
-            Parent root = FXMLLoader.load(
-            getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/HomePage.fxml"));
             Scene scene = signin_btn.getScene();
+            Parent root = loader.load();
+            Home controller = loader.getController();
+            controller.connection=connection;
             root.translateXProperty().set(scene.getWidth());
             achnopane.getChildren().add(root);
             Timeline timeline = new Timeline();
