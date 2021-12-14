@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Main.DataBaseConnection;
+import animatefx.animation.FadeInUpBig;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,14 +39,18 @@ public class LoginController {
 
         String Email = Email_Area.getText();
         String Password = Password_Area.getText();
-        System.out.println(Email + " " +Password);
+
         ResultSet ResultSet = connection.LoginWithDataBase(Email , Password);
+
         if (ResultSet.next() == true){
             root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            new FadeInUpBig(root).play();
+
+            
         } else {
             Error_Message.setText("Invalid Information Please Try Again");
         }

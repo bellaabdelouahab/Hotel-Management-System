@@ -29,7 +29,7 @@ public class App extends Application {
         } else if (Prop.getProperty("MainPage").equals("2")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
         } else {
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
+            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         }
          
         DataBaseConnection Connect = new DataBaseConnection();
@@ -39,7 +39,7 @@ public class App extends Application {
         primaryStage.setTitle("Hotel BBBE");
         primaryStage.setScene(scene);
         primaryStage.show();
-        // new FadeInUp(root).play();
+
         new FadeInUpBig(root).play();
         primaryStage.setResizable(false);
     }
