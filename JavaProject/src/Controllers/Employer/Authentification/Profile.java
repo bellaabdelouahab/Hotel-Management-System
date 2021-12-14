@@ -33,7 +33,6 @@ public class Profile implements Initializable {
     @FXML
     private GridPane PasswordForm;
     public DataBaseConnection connection;
-    Login m = new Login();
 
     private String adr = "", natio = "", phone = "", cin = "", age = "", password = "";
     ////Once You need them enable
@@ -42,6 +41,7 @@ public class Profile implements Initializable {
 
     @FXML
     private TextField new_pass, pass, check_pass;
+    public String compte;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
@@ -87,8 +87,11 @@ public class Profile implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+    }
+
+    public void FillProfileData() {
         try {
-            ResultSet rs = connection.Login_employ(m.getCompte().toLowerCase());
+            ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
             while (rs.next()) {
                 this.Cin.setText(String.valueOf(rs.getInt(1)));
                 this.FullName.setText(rs.getString(2));
@@ -110,7 +113,7 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        ResultSet rs = connection.Login_employ(m.getCompte().toLowerCase());
+        ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
             //nom = rs.getString(2);
@@ -169,11 +172,11 @@ public class Profile implements Initializable {
     @FXML
     public void update_password(ActionEvent event) {
         // conecter p = new conecter();
-        System.out.println(m.getCompte());
+        System.out.println(connection.getCompte());
         cin = "";
         password = "";
         try {
-            ResultSet rs = connection.Login_employe(m.getCompte().toLowerCase());
+            ResultSet rs = connection.Login_employe(connection.getCompte().toLowerCase());
             System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));

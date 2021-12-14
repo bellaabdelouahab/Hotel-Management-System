@@ -128,7 +128,7 @@ public class Login {
             }
             if (y.equals(email_text.getText())) {
                 if (x.equals(password_label.getText())) {
-                    setCompte(y);
+                    connection.setCompte(y);
                     timeline1.setOnFinished(ep->{
                         achnopane.getChildren().remove(login_animation);
                         SwitchToHomePage();
@@ -158,6 +158,7 @@ public class Login {
             Parent root = loader.load();
             Home controller = loader.getController();
             controller.connection=connection;
+            controller.compte = compte;
             root.translateXProperty().set(scene.getWidth());
             achnopane.getChildren().add(root);
             Timeline timeline = new Timeline();
@@ -176,13 +177,5 @@ public class Login {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-    public void setCompte(String d) {
-        this.compte = d;
-    }
-
-    public String getCompte() {
-        return compte;
     }
 }

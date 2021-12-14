@@ -14,6 +14,7 @@ public class DataBaseConnection {
     Connection connection;
     Statement statement;
     ResultSet result;
+    private String compte;
 
     //connect to the data base
     public void ConnectToDataBase() {
@@ -165,5 +166,11 @@ public class DataBaseConnection {
         this.connection.close();
         this.statement.close();
     } 
+    public void setCompte(String d) {
+        this.compte = d;
+    }
 
+    public String getCompte() {
+        return compte;
+    }
 }
