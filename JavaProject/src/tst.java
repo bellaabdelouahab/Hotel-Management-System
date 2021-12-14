@@ -33,19 +33,15 @@ public class tst {
         // System.out.println("ooh noo");
         // }
         // }
-        String s = "create table employee(" +
-                "id_emp NUMBER(4) constraint pk_emp primary Key," +
-                "full_name VARCHAR2(45) ," +
-                "adresse VARCHAR2(40)," +
-                "email VARCHAR2(40) constraint email_unique UNIQUE not null," +
-                "password VARCHAR2(11) not null," +
-                "nationnality VARCHAR2(20)," +
-                "sex VARCHAR2(2)," +
-                "age NUMBER(2)," +
-                "phone_number VARCHAR2(16)," +
-                "salaire NUMBER(6)," +
-                "commission NUMBER(4)," +
-                "type_travaille VARCHAR2(15))";
+        String s = "create table client("+
+            "cin Varchar2(8) CONSTRAINT client_pk primary key,"+
+            "first_name varchar2(12),"+
+            "last_name  varchar2(17),"+
+            "nationality varchar2(10),"+
+            "gender varchar2(3),"+
+            "etat_civil varchar2(10),"+
+            "age number(2),"+
+            "id_reserv Number(3) CONSTRAINT reserver_fk REFERENCES reservation)";
         st.execute(s);
         System.out.println("oh yeah");
         // ResultSet rs = st.executeQuery("select count(*) as co from employee");

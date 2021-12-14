@@ -5,6 +5,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch tst",
+            "request": "launch",
+            "mainClass": "tst",
+            "projectName": "JavaProject_bd75dee1"
+        },
+        {
+            "type": "java",
             "name": "Launch DataBaseConnection",
             "request": "launch",
             "mainClass": "DataBaseConnection",

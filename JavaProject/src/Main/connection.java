@@ -106,6 +106,24 @@ public class connection {
         int res=statement.executeUpdate(rs);
         return res;
     }
+
+    // reservation
+    public ResultSet reserv(String x){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String rs = "select Distinct B.cin,B.last_name||b.first_name as full_name,C.ID_ROOM,C.CLASSE,C.DATE_ENTRE,C.prix from reservation A,client B,rooms C, employee D"+
+            "where  C.id_reserv in (select id_reserv from reservation where id_emp=(select id_emp from employee where lower(email)='"+x.toLowerCase()+"'))"+
+            "and B.id_reserv in (select id_reserv from reservation where id_emp=(select id_emp from employee where lower(email)='"+x.toLowerCase()+"'))"+
+            "and A.id_emp= (select id_emp from employee where lower(email)='"+x.toLowerCase()+"')";
+            result = statement.executeQuery(rs);
+
+        }catch (Exception e) {
+            System.out.println("Aha ahmadi");
+        }
+        return result;
+    }
+
     // arreter connexion
     public void dormir() throws Exception{
         this.connection.close();
