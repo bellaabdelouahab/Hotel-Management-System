@@ -5,20 +5,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "JavaProject_7a54a8d7",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
-
-        },
-        {
-            "type": "java",
             "name": "Launch DataBaseConnection",
             "request": "launch",
             "mainClass": "DataBaseConnection",
-            "projectName": "JavaProject_7a54a8d7",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
+            "projectName": "JavaProject_7a54a8d7"
         },
         {
             "type": "java",
