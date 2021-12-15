@@ -29,7 +29,7 @@ public class App extends Application {
         } else if (Prop.getProperty("MainPage").equals("2")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
         } else {
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         }
          
         connection Connect = new connection();

@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.AddUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.ModifyUserController">
    <children>
       <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
          <children>
-            <Label prefHeight="72.0" prefWidth="369.0" text="ADD USERS" textFill="#909090">
+            <Label prefHeight="72.0" prefWidth="369.0" text="MODIFY USERS" textFill="#909090">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -243,7 +243,7 @@
                   <Insets left="20.0" />
                </padding>
             </TextField>
-            <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="ADD USER" />
+            <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#ModifyUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="MODIFY USER" />
             <Label fx:id="Message" layoutX="19.0" layoutY="60.0" prefHeight="22.0" prefWidth="319.0" textFill="#06e812" />
          </children>
       </Pane>

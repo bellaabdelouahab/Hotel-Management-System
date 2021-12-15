@@ -18,7 +18,7 @@
    <children>
       <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
          <children>
-            <Label prefHeight="72.0" prefWidth="369.0" text="EDIT PROFILE" textFill="#909090">
+            <Label prefHeight="72.0" prefWidth="369.0" text="USERS" textFill="#909090">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -191,15 +191,15 @@
       </VBox>
       <TableView fx:id="USERSTABLE" layoutX="300.0" layoutY="142.0" prefHeight="498.0" prefWidth="724.0">
         <columns>
-          <TableColumn fx:id="ID" prefWidth="103.0" text="ID" />
-          <TableColumn fx:id="NAME" prefWidth="103.0" text="NAME" />
-            <TableColumn fx:id="LAST_NAME" prefWidth="103.0" text="LAST NAME" />
+          <TableColumn fx:id="FULL_NAME" prefWidth="135.0" text="FULL NAME" />
             <TableColumn fx:id="ADRESSE" prefWidth="103.0" text="ADRESSE" />
-            <TableColumn fx:id="SALARY" prefWidth="103.0" text="SALARY" />
-            <TableColumn fx:id="COMMISSION" prefWidth="103.0" text="COMMISSION" />
+            <TableColumn fx:id="EMAIL" prefWidth="202.0" text="EMAIL" />
+            <TableColumn fx:id="SALARY" minWidth="0.0" prefWidth="80.6666259765625" text="SALARY" />
+            <TableColumn fx:id="COMMISSION" minWidth="0.0" prefWidth="105.0" text="COMMISSION" />
+            <TableColumn fx:id="WORK_TYPE" minWidth="0.0" prefWidth="98.66668701171875" text="WORK TYPE" />
         </columns>
       </TableView>
-      <VBox fx:id="AdminMenu" layoutX="842.0" layoutY="65.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="149.0" prefWidth="167.0" style="-fx-border-color: #909090; -fx-border-radius: 3px;">
+      <VBox fx:id="AdminMenu" layoutX="842.0" layoutY="63.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="149.0" prefWidth="167.0" style="-fx-border-color: #909090; -fx-border-radius: 3px;">
          <children>
             <Label alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Hamza Bouslama" />
             <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Ham.bousa98@gmail.com" textFill="#909090">
@@ -241,8 +241,7 @@
          <children>
             <FontAwesomeIconView fill="RED" glyphName="USER" layoutX="21.0" layoutY="43.0" onMouseClicked="#DeleteUser" size="2.8em" wrappingWidth="39.0" />
             <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" layoutX="81.0" layoutY="44.0" onMouseClicked="#SwitchToAddUser" size="2.8em" wrappingWidth="39.0" />
-            <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" layoutX="141.0" layoutY="44.0" size="2.8em" wrappingWidth="39.0" />
-            <FontAwesomeIconView fill="#00c0ff" glyphName="" layoutX="198.0" layoutY="41.0" size="2.8em" wrappingWidth="39.0" />
+            <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" layoutX="141.0" layoutY="44.0" onMouseClicked="#GoToModify" size="2.8em" wrappingWidth="39.0" />
          </children>
       </Pane>
    </children>

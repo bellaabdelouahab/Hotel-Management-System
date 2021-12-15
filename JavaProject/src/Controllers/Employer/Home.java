@@ -2,14 +2,11 @@ package Controllers.Employer;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,8 +26,6 @@ public class Home implements Initializable {
     private VBox AccountMenu;
     @FXML
     private Button ProfileButton, reservation_label;
-    private Stage stage;
-    private Scene scene;
     private Parent root;
 
     public void AcountMenuShow() {

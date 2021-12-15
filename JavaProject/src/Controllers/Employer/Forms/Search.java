@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -150,7 +149,7 @@ public class Search implements Initializable {
 
     public void ClearForm1() {
         CheckInDate.setValue(null);
-        ;
+        
         CheckOutDate.setValue(null);
         RatingLable.setRating(0);
         MaxPrice.setText(null);

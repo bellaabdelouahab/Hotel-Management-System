@@ -98,5 +98,6 @@ public class AddUserController {
         stage.setScene(scene);
         stage.show();
     }
+    
 
 }

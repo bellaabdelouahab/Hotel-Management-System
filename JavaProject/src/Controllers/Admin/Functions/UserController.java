@@ -9,6 +9,7 @@ import Main.DataBaseConnection;
 import Main.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -75,16 +76,13 @@ public class UserController implements Initializable{
     private TableView<User> USERSTABLE;
 
     @FXML
-    private TableColumn<User, Integer> ID;
-
-    @FXML
-    private TableColumn<User, String> NAME;
-
-    @FXML
-    private TableColumn<User, String> LAST_NAME;
+    private TableColumn<User, String> FULL_NAME;
 
     @FXML
     private TableColumn<User, String> ADRESSE;
+
+    @FXML
+    private TableColumn<User, String> EMAIL;
 
     @FXML
     private TableColumn<User, Integer> SALARY;
@@ -92,32 +90,64 @@ public class UserController implements Initializable{
     @FXML
     private TableColumn<User, Integer> COMMISSION;
 
+    @FXML
+    private TableColumn<User, String> WORK_TYPE;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
     
-    try {
-        
-        while(Lest.next()){            
-            List.add(new User(Lest.getInt("ID_EMP") , Lest.getString("FULL_NAME") , Lest.getString("PASSWORD") , Lest.getString("ADRESSE") , Lest.getInt("SALAIRE") , Lest.getInt("COMMISSION"))); 
-        };  
+        try {
+            
+            while(Lest.next()){            
+                List.add(new User(Lest.getInt("ID_EMP") , Lest.getString("FULL_NAME") , Lest.getString("ADRESSE") ,Lest.getString("EMAIL"), Lest.getInt("SALAIRE") , Lest.getInt("COMMISSION") , Lest.getString("type_travaille"))); 
+            };  
 
-    } catch (SQLException e) {
-        System.out.println("No Data Found");
-    }
-    
+        } catch (SQLException e) {
+            System.out.println("No Data Found");
+        }
+        
         AdminMenu.setVisible(false);
-        ID.setCellValueFactory(new PropertyValueFactory<User , Integer>("id"));
-        NAME.setCellValueFactory(new PropertyValueFactory<User , String>("Name"));
-        LAST_NAME.setCellValueFactory(new PropertyValueFactory<User , String>("Last"));
+        FULL_NAME.setCellValueFactory(new PropertyValueFactory<User , String>("FullName"));
         ADRESSE.setCellValueFactory(new PropertyValueFactory<User , String>("Adresse"));
+        EMAIL.setCellValueFactory(new PropertyValueFactory<User , String>("Email"));
         SALARY.setCellValueFactory(new PropertyValueFactory<User , Integer>("Salary"));
         COMMISSION.setCellValueFactory(new PropertyValueFactory<User , Integer>("Commission"));
+        WORK_TYPE.setCellValueFactory(new PropertyValueFactory<User , String>("WorkType"));
+
 
         USERSTABLE.setItems(List);
     }
 
     @FXML
-    void DeleteUser(MouseEvent event) {
+    void DeleteUser(MouseEvent event) throws IOException{
+        User test = USERSTABLE.getSelectionModel().getSelectedItem();
+        connection.DeleteUser(test.getId());
+        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void GoToModify(ActionEvent event) throws IOException{
+        User test = USERSTABLE.getSelectionModel().getSelectedItem();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
+        root = loader.load();
+
+        ModifyUserController modify = new ModifyUserController();
+        modify.ModifyUser(event , test.getId());
+        //root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public int ReturnId(){
+        User test = USERSTABLE.getSelectionModel().getSelectedItem();
+        return test.getId();
     }
 
     @FXML
