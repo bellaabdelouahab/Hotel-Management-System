@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="ChildPane4" maxHeight="462.0" maxWidth="1024.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="1024.0" style="-fx-background-color: #11111155;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.About">
+   <children>
+      <TextArea id="textarea_" layoutY="244.0" prefHeight="202.0" prefWidth="609.0" style="-fx-background-color: #11111155; -fx-background-size: 4; -fx-text-fill: #eeeeeeee; -fx-border-width: 0;" stylesheets="@../../CSS/Employer.css" text="Carlton Highland Hotel&#10;Carlton Highland Hotel is a handsome Victorian building which stands proud,&#10; this 4 star, &#10;5 crown commended Hotel offers 197 bedrooms,&#10; each tastefully decorated and providing all the comforts expected in a hotel.&#10;In addition, guests will appreciate the leisure and entertainment facilities in &#10;the hotel itself,&#10; with entry to the exclusive Minus One nightclub.">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <ImageView fitHeight="229.0" fitWidth="516.0" layoutX="602.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../IMAGES/About2.jpg" />
+         </image>
+      </ImageView>
+      <TextArea id="textarea_" layoutX="288.0" layoutY="16.0" prefHeight="202.0" prefWidth="736.0" style="-fx-text-fill: #eeeeeeee; -fx-border-width: 0; -fx-background-color: #11111155;" stylesheets="@../../CSS/Employer.css" text="The Caledonian&#10;&#10;Discerning service and supreme comforts in the classical heart of Edinburgh, &#10;Princes Street designer shops at your door. &#10;Scotland's glorious scenery over the horizons.&#10;No other hotel in Europe charms with the Caledonian spirit.&#10;&#10;An aura of grandeur fills bedrooms and suites that satisfy every aspiration. Many include a breathtaking &#10;In a moment of quiet reflection, admire a scene that lives in your memory forever.">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <ImageView fitHeight="233.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../IMAGES/About1.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

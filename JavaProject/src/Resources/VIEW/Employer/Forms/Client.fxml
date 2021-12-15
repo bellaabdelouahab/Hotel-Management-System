@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import org.controlsfx.control.CheckComboBox?>
+
+<Pane fx:id="ChildPaneXS" maxHeight="391.0" maxWidth="824.0" prefHeight="391.0" prefWidth="824.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Client">
+   <children>
+      <Line endX="-100.0" endY="334.9000244140625" layoutX="516.0" layoutY="19.0" startX="-100.0" strokeWidth="3.0" />
+      <HBox layoutY="60.0" prefHeight="33.0" prefWidth="411.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="First Name" />
+            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="277.0" promptText="Enter First Name" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+         </children>
+      </HBox>
+      <HBox layoutY="110.0" prefHeight="33.0" prefWidth="411.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Last Name" />
+            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="277.0" promptText="Enter Last Name" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+         </children>
+      </HBox>
+      <HBox layoutY="160.0" prefHeight="33.0" prefWidth="411.0">
+         <children>
+            <Label alignment="CENTER" layoutY="179.0" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Nationality" />
+            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="277.0" promptText="Enter Nationality" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+         </children>
+      </HBox>
+      <HBox layoutY="210.0" prefHeight="33.0" prefWidth="411.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Cin" />
+            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="277.0" promptText="Enter Cin" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+         </children>
+      </HBox>
+      <HBox layoutY="270.0" prefHeight="33.0" prefWidth="411.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Gender" />
+            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="277.0" promptText="Enter Gender" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+         </children>
+      </HBox>
+      <HBox layoutY="320.0" prefHeight="33.0" prefWidth="411.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Age" />
+            <TextField alignment="CENTER" prefHeight="52.0" prefWidth="277.0" promptText="Enter Age" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
+         </children>
+      </HBox>
+      <Button fx:id="B_ValidateForm1" layoutX="482.0" layoutY="251.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #ad6b13;" text="Validate" />
+      <Button layoutX="482.0" layoutY="320.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="277.0" style="-fx-background-color: #ad9157;" text="Clear" />
+      <Label alignment="CENTER" layoutX="119.0" layoutY="8.0" prefHeight="60.0" prefWidth="174.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Client Information" />
+      <CheckComboBox fx:id="RoomFeatures" layoutX="541.0" layoutY="82.0" opacity="0.67" prefHeight="25.0" prefWidth="172.0" showCheckedCount="true" title="Room Features" />
+      <Button layoutX="1.0" layoutY="364.0" mnemonicParsing="false" onAction="#LoadResultForm" prefHeight="20.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="&lt; Go Back" textFill="#ebdcdc" />
+   </children>
+   <effect>
+      <DisplacementMap>
+         <mapData>
+            <FloatMap />
+         </mapData>
+      </DisplacementMap>
+   </effect>
+</Pane>

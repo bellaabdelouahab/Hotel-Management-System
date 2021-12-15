@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.AddUserController">
+   <children>
+      <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
+         <children>
+            <Label prefHeight="72.0" prefWidth="369.0" text="ADD USERS" textFill="#909090">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="72.0" prefWidth="357.0" />
+         </children>
+      </HBox>
+      <VBox prefHeight="640.0" prefWidth="300.0" style="-fx-background-color: #333645;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00A2D3;" text="Admin Panel" textFill="WHITE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font name="Gubbi" size="19.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <FontAwesomeIconView glyphName="SEARCH" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <TextField prefHeight="35.0" prefWidth="177.0" promptText="Search" style="-fx-background-color: transparent; -fx-text-fill: #7c8184;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </TextField>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SwitchToDashBoard" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="DashBoard" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Rooms" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #202332;">
+               <children>
+                  <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Users" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="FILE" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Resource" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="FOLDER" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Documents" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Pane layoutX="301.0" layoutY="73.0" prefHeight="574.0" prefWidth="717.0">
+         <children>
+            <Label contentDisplay="CENTER" layoutY="3.0" prefHeight="72.0" prefWidth="358.0" text="GENERALE INFORMATION" textFill="#909090">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="First_name" layoutX="19.0" layoutY="94.0" prefHeight="43.0" prefWidth="319.0" promptText="FIRST NAME">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Last_name" layoutX="384.0" layoutY="95.0" prefHeight="43.0" prefWidth="319.0" promptText="LAST NAME">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Email" layoutX="384.0" layoutY="162.0" prefHeight="43.0" prefWidth="319.0" promptText="EMAIL">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Salary" layoutX="20.0" layoutY="362.0" prefHeight="43.0" prefWidth="319.0" promptText="SALARY">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="ADD USER" />
+            <Label fx:id="Message" layoutX="19.0" layoutY="60.0" prefHeight="22.0" prefWidth="319.0" textFill="#06e812" />
+            <PasswordField fx:id="Password" layoutX="20.0" layoutY="228.0" prefHeight="44.0" prefWidth="318.0" promptText="PASSWORD">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </PasswordField>
+            <PasswordField fx:id="Con_password" layoutX="384.0" layoutY="227.0" prefHeight="44.0" prefWidth="318.0" promptText="CONFIRME PASSWORD">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </PasswordField>
+            <TextField fx:id="Adresse" layoutX="19.0" layoutY="162.0" prefHeight="43.0" prefWidth="319.0" promptText="ADRESSE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <ChoiceBox fx:id="Sex" layoutX="385.0" layoutY="293.0" prefHeight="44.0" prefWidth="133.0" />
+            <TextField fx:id="Phone" layoutX="20.0" layoutY="426.0" prefHeight="43.0" prefWidth="319.0" promptText="PHONE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Commission" layoutX="383.0" layoutY="362.0" prefHeight="43.0" prefWidth="319.0" promptText="COMMISSION">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Work_type" layoutX="383.0" layoutY="424.0" prefHeight="43.0" prefWidth="319.0" promptText="WORK TYPE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Nationality" layoutX="21.0" layoutY="297.0" prefHeight="43.0" prefWidth="319.0" promptText="NATIONALITY">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="Age" layoutX="541.0" layoutY="293.0" prefHeight="43.0" prefWidth="159.0" promptText="AGE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
