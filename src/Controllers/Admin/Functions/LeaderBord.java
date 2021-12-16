@@ -1,0 +1,119 @@
+package Controllers.Admin.Functions;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import java.io.IOException;
+import Controllers.Admin.Authentification.LoginController;
+import Main.DataBaseConnection;
+import animatefx.animation.FadeInRightBig;
+import animatefx.animation.FadeOutLeft;
+public class LeaderBord{
+
+    @FXML private VBox AdminMenu;
+
+    @FXML private Pane LeaderBoardData;
+
+    private Pane CurrentTab;
+
+    public Pane ParentPane;
+
+    @FXML private AnchorPane ChiledStage;
+
+    public DataBaseConnection connection;
+
+    @FXML
+    void SwitchToProfile(MouseEvent event) throws IOException{
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
+        Parent root = loder.load();
+        ProfileController controller = loder.getController();
+        controller.LeaderBoardData=LeaderBoardData;
+        controller.connection=connection;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            CurrentTab=(Pane) root;
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+        });
+    }
+    public void ShowDashBoard() throws IOException{
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
+        Parent root = loder.load();
+        DashBoardController controller = loder.getController();
+        controller.connection=connection;
+        controller.init();
+        if(CurrentTab != null){
+            FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+            FideOut.play();
+            FideOut.setOnFinished(e->{
+                LeaderBoardData.getChildren().remove(CurrentTab);
+            });
+        }
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+        });
+    }
+    public void SwitchToUser(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
+        Parent root = loder.load();
+        UserController controller = loder.getController();
+        controller.connection=connection;
+        controller.init();
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+            controller.CurrentTab=CurrentTab;
+        });
+        
+    }
+
+    @FXML
+    void LogOut(MouseEvent event) throws IOException{
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
+        Parent root = loder.load();
+        LoginController controller = loder.getController();
+        controller.ParentPane=ParentPane;
+        controller.connection=connection;
+        if(CurrentTab != null){
+            FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
+            FideOut.play();
+            FideOut.setOnFinished(e->{
+                ParentPane.getChildren().remove(ChiledStage);
+                CurrentTab=(Pane) root;
+            });
+        }
+        ParentPane.getChildren().add(root);
+        new FadeInRightBig(root).play();
+    }
+
+    @FXML
+    void ShowMenuBar(MouseEvent event) {
+        AdminMenu.setVisible(true);
+    }
+
+    @FXML
+    void HideMenuBar(MouseEvent event) {
+        AdminMenu.setVisible(false);
+    }
+}

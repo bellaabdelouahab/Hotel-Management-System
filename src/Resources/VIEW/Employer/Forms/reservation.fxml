@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="achno_reserv" prefHeight="306.0" prefWidth="826.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.reservation_page">
+   <children>
+      <ScrollPane layoutX="-3.0" layoutY="-3.0" prefHeight="312.0" prefWidth="833.0" />
+      <TableView fx:id="table_view" layoutX="-2.0" layoutY="-1.0" prefHeight="312.0" prefWidth="831.0">
+         <columns>
+            <TableColumn prefWidth="123.33333086967468" text="CIN" />
+            <TableColumn prefWidth="169.99999237060547" text="nom complet" />
+            <TableColumn prefWidth="136.66665649414062" text="nombre de chambre" />
+            <TableColumn prefWidth="137.77780151367188" text="classe" />
+            <TableColumn prefWidth="134.44439697265625" text="date d'entrer" />
+            <TableColumn prefWidth="136.0" text="Prix" />
+         </columns>
+      </TableView>
+   </children>
+</Pane>
