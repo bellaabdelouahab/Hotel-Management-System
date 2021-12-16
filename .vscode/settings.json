@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "java.project.referencedLibraries": {
         "include": [
             "lib/**/*.jar",
@@ -23,5 +24,26 @@
     },
     "java.project.sourcePaths": [
         "src"
+=======
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/hamza/Downloads/jar_files/AnimateFX-1.2.1.jar",
+        "/home/hamza/Downloads/jar_files/GNAvatarView-1.0.5.jar",
+        "/home/hamza/Downloads/jar_files/controlsfx-11.1.0.jar",
+        "/home/hamza/Downloads/jar_files/fontawesomefx-commons-9.1.2.jar",
+        "/home/hamza/Downloads/jar_files/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-base-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-controls-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-fxml-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2.jar",
+        "/home/hamza/Downloads/jar_files/javafx-graphics-11.0.2-linux.jar",
+        "/home/hamza/Downloads/jar_files/ojdbc7.jar",
+        "/home/hamza/Downloads/jar_files/simplefan.jar",
+        "/home/hamza/Downloads/jar_files/ucp.jar",
+        "/home/hamza/Downloads/jar_files/xdb6.jar"
+>>>>>>> 24bc285a35dd89193707a86defcef9af7ad13566
     ]
 }
