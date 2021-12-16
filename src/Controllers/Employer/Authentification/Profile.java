@@ -78,8 +78,6 @@ public class Profile implements Initializable {
         KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), 0, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf1);
-        timeline.setOnFinished(t -> {
-        });
         timeline.play();
     }
 
