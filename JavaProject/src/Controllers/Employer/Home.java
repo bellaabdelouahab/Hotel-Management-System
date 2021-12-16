@@ -40,7 +40,7 @@ public class Home implements Initializable {
     }
 
     public void ShowProfile() throws IOException {
-        AcountMenuHide(); 
+        AcountMenuHide();  
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
         Parent root = loader.load();
         Profile controller = loader.getController();
