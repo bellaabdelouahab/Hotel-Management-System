@@ -45,16 +45,16 @@
                   </HBox>
                </children>
             </Pane>
-            <Button minWidth="53.0" mnemonicParsing="false" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: #33333300;">
+            <Button minWidth="53.0" mnemonicParsing="false" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="64.0" prefWidth="80.0" style="-fx-background-color: #33333300;">
                <graphic>
-                  <GNAvatarView stroke="#ffffff18" type="CIRCLE">
+                  <GNAvatarView fx:id="ProfilePicture" stroke="#ffffff18" type="CIRCLE">
                      <image>
                         <Image url="@../../IMAGES/Down-arrow.png" />
                      </image>
                   </GNAvatarView>
                </graphic>
             </Button>
-            <VBox fx:id="AccountMenu" layoutY="45.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="143.0" prefWidth="174.0">
+            <VBox fx:id="AccountMenu" layoutY="63.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="107.0" prefWidth="174.0">
                <children>
                   <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Profile" />
                   <Button fx:id="reservation_label" mnemonicParsing="false" onAction="#reservation" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Effected Reservations" />
