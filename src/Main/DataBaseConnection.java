@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -41,7 +41,19 @@ public class DataBaseConnection {
         }
         return result;
     }
-
+    public ResultSet GetSearchedRoom(int[] INTData ,String[] StringData) {
+        try {
+            statement = connection.createStatement();
+            String Sql ="SELECT * FROM rooms WHERE NUM_ADUL = "+INTData[0]+"AND NUM_CHILD = "+INTData[1] +"AND CLASSE="+INTData[2]+" AND (PRIX BETWEEN "+INTData[3]+" AND "+INTData[4]+")"+"and DATE_ENTRE between to_date("+StringData[1]+",'MM/DD/YYYY') and to_date("+StringData[1]+",'MM/DD/YYYY'))";
+            result = statement.executeQuery(Sql);
+            while (result.next()) {
+                System.out.println(result.getInt(1)+"\t"+result.getDate(2)+result.getInt(7));
+            }
+        } catch (Exception e) {
+            System.out.println("ach ahda ahmadi"+e);
+        }
+        return result;
+    }
     // return count of DashBoard
     public ResultSet ReturnCount(String Table) {
         try {
