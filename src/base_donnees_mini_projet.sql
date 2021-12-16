@@ -92,7 +92,8 @@ alter table client add CONSTRAINT reserver_fk foreign key(id_reserv) REFERENCES 
 savepoint A;
 commit ;
 
-select Distinct B.cin,B.last_name||b.first_name,C.ID_ROOM,C.CLASSE,C.DATE_ENTRE,C.prix from reservation A,client B,rooms C, employee D
+select Distinct B.cin,B.last_name||b.first_name,C.ID_ROOM,C.CLASSE,C.DATE_ENTRE,C.prix 
+from reservation A,client B,rooms C, employee D
 where  C.id_reserv in (select id_reserv from reservation where id_emp=(select id_emp from employee where lower(email)='yassine@gmail.com'))
 and B.id_reserv in (select id_reserv from reservation where id_emp=(select id_emp from employee where lower(email)='yassine@gmail.com'))
 and A.id_emp= (select id_emp from employee where lower(email)='yassine@gmail.com');

@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import org.controlsfx.control.Rating?>
 
-<Pane fx:id="SearchForm" maxHeight="391.0" maxWidth="824.0" prefHeight="391.0" prefWidth="824.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Search">
+<Pane fx:id="SearchForm" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Search">
    <children>
       <Line endX="-100.0" endY="334.9000244140625" layoutX="516.0" layoutY="19.0" startX="-100.0" strokeWidth="3.0" />
       <VBox layoutX="-1.0" layoutY="69.0" prefHeight="103.0" prefWidth="411.0">

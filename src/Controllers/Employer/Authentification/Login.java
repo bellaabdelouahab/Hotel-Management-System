@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.*;
 
 import org.controlsfx.control.MaskerPane;
-
 import Controllers.Employer.Home;
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
@@ -34,7 +33,7 @@ public class Login {
     private String compte;
 
     @FXML
-    private TextField email_text;
+    public TextField email_text;
 
     @FXML
     private Line email_line, pass_line;
@@ -43,7 +42,7 @@ public class Login {
     private Pane general_pane;
 
     @FXML
-    private PasswordField password_label;
+    public PasswordField password_label;
 
     @FXML
     private Button signin_btn;
@@ -58,6 +57,7 @@ public class Login {
     private Label emai_label;
     public DataBaseConnection connection;
     public Pane ParentPane;
+    public DataBaseConnection Connection;
 
     // Switch To Sign Up page of Employer
     @FXML

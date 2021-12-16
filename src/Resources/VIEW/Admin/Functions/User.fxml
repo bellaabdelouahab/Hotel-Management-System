@@ -5,7 +5,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane fx:id="LeaderBoardData" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.UserController">
    <children>
       <Pane fx:id="ChildUser" prefHeight="566.0" prefWidth="725.0">
@@ -25,7 +24,7 @@
                   <FontAwesomeIconView fill="RED" glyphName="USER" layoutX="21.0" layoutY="43.0" onMouseClicked="#DeleteUser" size="2.8em" wrappingWidth="39.0" />
                   <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" layoutX="81.0" layoutY="44.0" onMouseClicked="#SwitchToAddUser" size="2.8em" wrappingWidth="39.0" />
                   <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" layoutX="141.0" layoutY="44.0" size="2.8em" wrappingWidth="39.0" />
-                  <FontAwesomeIconView fill="#00c0ff" glyphName="" layoutX="198.0" layoutY="41.0" size="2.8em" wrappingWidth="39.0" />
+                  <FontAwesomeIconView fill="#00c0ff" layoutX="198.0" layoutY="41.0" size="2.8em" wrappingWidth="39.0" />
                </children>
             </Pane>
          </children>

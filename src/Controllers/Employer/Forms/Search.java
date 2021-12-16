@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 //Make sure you have added the lib from reference library
 import org.controlsfx.control.Rating;
 
+import Main.DataBaseConnection;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -20,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -58,6 +60,8 @@ public class Search implements Initializable {
     private Button B_ValidateForm1;
     @FXML 
     private Pane SearchForm;
+    public DataBaseConnection connection;
+    public StackPane ParentPane;
 
     // private String pattern = "dd-MM-yyyy";s
 
@@ -160,23 +164,28 @@ public class Search implements Initializable {
     }
     
     public void LoadResult(ActionEvent e) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
+        GetSearchResult();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
+        Parent root = loader.load();
+        Result controller = loader.getController();
+        controller.connection=connection;
+        controller.ParentPane=ParentPane;
+        controller.SearchFormPane=SearchForm;
+        controller.Resultroot=root;
         root.translateXProperty().set(1024);
         root.translateYProperty().set(70);
-        Scene scene = ((Node) e.getSource()).getScene();
-        FlowPane parentContainer = (FlowPane)scene.getRoot();
-        parentContainer.getChildren().add(root);
+        ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-        KeyValue kv1 = new KeyValue(SearchForm.translateXProperty(), -824, Interpolator.EASE_IN);
+        KeyValue kv1 = new KeyValue(SearchForm.translateXProperty(), -924, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(SearchForm);
-        });
         timeline.play();
+    }
+    private void GetSearchResult() throws IOException{
+        
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
