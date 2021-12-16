@@ -8,9 +8,17 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
+            "projectName": "JAVAPROJECT_3f9e5aaa",
+             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
+
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
             "projectName": "JAVAPROJECT_2807e46f",
             "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
-
         },
         {
             "type": "java",
@@ -35,7 +43,6 @@
         }
     ]
 }
-
+//  "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
 // vmargs pour settinig de git onta ahamza 3ti hadchi btissa3
 
-//  "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"

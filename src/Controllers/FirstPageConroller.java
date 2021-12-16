@@ -44,7 +44,14 @@ public class FirstPageConroller implements Initializable{
     // Switch To Employer Page
     public void SwitchToEmployerPage(ActionEvent event) throws IOException {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        if(root==loder.load()){
+            System.out.println("sdffdsfsdf");
+        }
         root = loder.load();
+        
+        
+        ParentPane.getChildren().add(root);
+        System.out.println("dfg");
         Login controller = loder.getController();
         controller.ParentPane=ParentPane;
         controller.connection=Connection;
@@ -55,7 +62,6 @@ public class FirstPageConroller implements Initializable{
         FideOut.setOnFinished(e->{
             ParentPane.getChildren().remove(ChiledStage);
         });
-        ParentPane.getChildren().add(root);
         new FadeInRightBig(root).play();
     }
     public void CloseWindow(){
