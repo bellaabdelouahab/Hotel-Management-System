@@ -1,7 +1,5 @@
 package Controllers.Admin.Functions;
 
-import javax.print.attribute.standard.MediaSize.NA;
-
 import Main.DataBaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 public class ModifyUserController {
+
+    @FXML
+    public Pane ParentPane;
+    public Pane LeaderBoardData;
 
     DataBaseConnection connection = new DataBaseConnection();
     
@@ -58,19 +61,20 @@ public class ModifyUserController {
     private TextField Work_type;
 
     @FXML
-    void ModifyUser(ActionEvent event, int x) {
-    System.out.println(x);
-    String First_names = First_name.getText();
-    String Adress = Adresse.getText();
-    String Mail = Email.getText();
-    String Pass = Password.getText();
-    String Natio = Nationality.getText();
-    int ag = Age.getAnchor();
-    String Phon = Phone.getText();
-    int sal = Salary.getAnchor();
-    int Comm = Commission.getAnchor();
-    String Type = Work_type.getText();
-    connection.ModifyUser(First_names, Adress, Mail, Pass, Natio, ag, Phon, sal, Comm, Type,  x );
+    void ModifyUser(ActionEvent event) {
+
+        String First_names = First_name.getText();
+        String Adress = Adresse.getText();
+        String Mail = Email.getText();
+        String Pass = Password.getText();
+        String Natio = Nationality.getText();
+        int ag = Age.getAnchor();
+        String Phon = Phone.getText();
+        int sal = Salary.getAnchor();
+        int Comm = Commission.getAnchor();
+        String Type = Work_type.getText();
+        connection.ModifyUser(First_names, Adress, Mail, Pass, Natio, ag, Phon, sal, Comm, Type,   2);
+    
     }
 
     @FXML

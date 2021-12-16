@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.animation.Interpolator;
@@ -164,7 +164,7 @@ public class Search implements Initializable {
         root.translateXProperty().set(1024);
         root.translateYProperty().set(70);
         Scene scene = ((Node) e.getSource()).getScene();
-        AnchorPane parentContainer = (AnchorPane)scene.getRoot();
+        FlowPane parentContainer = (FlowPane)scene.getRoot();
         parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);

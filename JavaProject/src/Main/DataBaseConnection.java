@@ -83,7 +83,7 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "INSERT INTO EMPLOYEE VALUES((SELECT COUNT(*) FROM EMPLOYEE) + 1 , '"+Full_name+"','"+Adresse+"','"+Email+"','"+Password+"','"+Natio+"','h',"+age+",'"+Phone+"',"+salary+","+commition+",'"+type+"')";    
+            String Sql = "INSERT INTO EMPLOYEE VALUES(15 , '"+Full_name+"','"+Adresse+"','"+Email+"','"+Password+"','"+Natio+"','h',"+age+",'"+Phone+"',"+salary+","+commition+",'"+type+"')";    
             statement.executeUpdate(Sql);
         } catch (Exception e) {
             System.out.println("No"+e);

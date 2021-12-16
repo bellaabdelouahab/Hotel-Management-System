@@ -1,31 +1,17 @@
 package Controllers.Admin.Functions;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import Main.DataBaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 
-public class ProfileController implements Initializable{
+public class ProfileController{
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    DataBaseConnection connection = new DataBaseConnection();
+    DataBaseConnection connection;
     
     @FXML
     private Label Message;
@@ -50,39 +36,9 @@ public class ProfileController implements Initializable{
     
     @FXML
     private VBox AdminMenu;
+    public Pane ParentPane;
+    public Pane LeaderBoardData;
 
-    @FXML
-    void HideMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(false);
-    }
-
-    @FXML
-    void LogOut(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void ShowMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(true);
-    }
-
-    @FXML
-    void SwitchToUser(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        AdminMenu.setVisible(false);
-    }
     
     @FXML
     void UpdateProfile(ActionEvent event) {
@@ -97,7 +53,7 @@ public class ProfileController implements Initializable{
         System.out.println(Pass);
         System.out.println(Con_pass);
 
-        if(String.valueOf(Pass) != String.valueOf(Con_pass)){
+        if(!String.valueOf(Pass).equals(String.valueOf(Con_pass))){
             Message.setText("Invalid Operation");
         }
         else{

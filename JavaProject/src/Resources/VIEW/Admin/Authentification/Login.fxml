@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Authentification.LoginController">
+<BorderPane fx:id="ChiledStage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Authentification.LoginController">
    <left>
       <AnchorPane prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #202332;" BorderPane.alignment="CENTER">
          <children>
@@ -27,16 +27,16 @@
    <right>
       <AnchorPane prefHeight="640.0" prefWidth="512.0" BorderPane.alignment="CENTER">
          <children>
-            <PasswordField fx:id="Password_Area" layoutX="164.0" layoutY="327.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: #202332; -fx-border-width: 0px 0px 2px 0px;">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </PasswordField>
             <TextField fx:id="Email_Area" layoutX="164.0" layoutY="255.0" promptText="EMAIL" style="-fx-background-color: transparent; -fx-border-color: #202332; -fx-border-width: 0px 0px 2px 0px;">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
+            <PasswordField fx:id="Password_Area" layoutX="164.0" layoutY="327.0" promptText="PASSWORD" style="-fx-background-color: transparent; -fx-border-color: #202332; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </PasswordField>
             <FontAwesomeIconView fill="#202332" glyphName="USER" layoutX="111.0" layoutY="297.0" size="35" wrappingWidth="26.761945724487305" />
             <FontAwesomeIconView fill="#202332" glyphName="KEY" layoutX="106.0" layoutY="365.0" size="35" />
             <Button layoutX="189.0" layoutY="445.0" mnemonicParsing="false" onAction="#GoToAdminPage" prefHeight="53.0" prefWidth="158.0" styleClass="Admin_login" stylesheets="@../../../CSS/Admin.css" text="Login" textFill="WHITE">

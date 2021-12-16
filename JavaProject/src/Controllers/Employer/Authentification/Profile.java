@@ -17,12 +17,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
-import Main.connection;
+import Main.DataBaseConnection;
 
 public class Profile implements Initializable {
     @FXML
@@ -33,19 +32,21 @@ public class Profile implements Initializable {
     private TextField FullName, Sex, email, Adress, Age, Cin, Nationnality, Phonenumber;
     @FXML
     private GridPane PasswordForm;
-    private connection co = new connection();
-    Login m = new Login();
+    public DataBaseConnection connection;
 
-    private String adr = "", natio = "", sex = "", phone = "", nom = "", cin = "", mail = "", age = "", password = "";
+    private String adr = "", natio = "", phone = "", cin = "", age = "", password = "";
+    ////Once You need them enable
+    //private String sex = "", nom = "", mail = "";
     private int result = 0;
 
     @FXML
     private TextField new_pass, pass, check_pass;
+    public String compte;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
         Scene scene = backbutton.getScene();
-        AnchorPane parentContainer = (AnchorPane) scene.getRoot();
+        FlowPane parentContainer = (FlowPane) scene.getRoot();
         Timeline timeline = new Timeline();
         KeyValue kv1 = new KeyValue(ChildPane1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
@@ -58,7 +59,7 @@ public class Profile implements Initializable {
 
     public void ShowPassworkForm() {
         Timeline timeline = new Timeline();
-        KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), -93, Interpolator.EASE_BOTH);
+        KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), -100, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf1);
         timeline.play();
@@ -86,8 +87,11 @@ public class Profile implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+    }
+
+    public void FillProfileData() {
         try {
-            ResultSet rs = co.Login_employ(m.getCompte().toLowerCase());
+            ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
             while (rs.next()) {
                 this.Cin.setText(String.valueOf(rs.getInt(1)));
                 this.FullName.setText(rs.getString(2));
@@ -109,20 +113,20 @@ public class Profile implements Initializable {
 
     @FXML
     public void update_info(ActionEvent event) throws Exception {
-        ResultSet rs = co.Login_employ(m.getCompte().toLowerCase());
+        ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
-            nom = rs.getString(2);
+            //nom = rs.getString(2);
             adr = rs.getString(3);
-            mail = rs.getString(4);
+            //mail = rs.getString(4);
             natio = rs.getString(6);
             phone = rs.getString(9);
-            sex = rs.getString(7);
+            //sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
         }
 
         if (Adress.getText().toLowerCase().equals(adr) == false) {
-            result = co.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
+            result = connection.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -132,7 +136,7 @@ public class Profile implements Initializable {
             }
         }
         if (Nationnality.getText().toLowerCase().equals(natio) == false) {
-            result = co.natio_profile_change(Nationnality.getText().toLowerCase(), Integer.parseInt(cin));
+            result = connection.natio_profile_change(Nationnality.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -142,7 +146,7 @@ public class Profile implements Initializable {
             }
         }
         if (Phonenumber.getText().toLowerCase().equals(phone) == false) {
-            result = co.phone_profile_change(Phonenumber.getText().toLowerCase(), Integer.parseInt(cin));
+            result = connection.phone_profile_change(Phonenumber.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -152,7 +156,7 @@ public class Profile implements Initializable {
             }
         }
         if (Age.getText().toLowerCase().equals(age) == false) {
-            result = co.age_profile_change(Integer.parseInt(Age.getText()), Integer.parseInt(cin));
+            result = connection.age_profile_change(Integer.parseInt(Age.getText()), Integer.parseInt(cin));
             if (result > 0) {
                 // System.out.println("oh yeah");
                 Goback(event);
@@ -168,11 +172,11 @@ public class Profile implements Initializable {
     @FXML
     public void update_password(ActionEvent event) {
         // conecter p = new conecter();
-        System.out.println(m.getCompte());
+        System.out.println(connection.getCompte());
         cin = "";
         password = "";
         try {
-            ResultSet rs = co.Login_employe(m.getCompte().toLowerCase());
+            ResultSet rs = connection.Login_employe(connection.getCompte().toLowerCase());
             System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));
@@ -181,7 +185,7 @@ public class Profile implements Initializable {
 
             if (pass.getText().equals(password)) {
                 if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
-                    result = co.change_password(new_pass.getText(), Integer.parseInt(cin));
+                    result = connection.change_password(new_pass.getText(), Integer.parseInt(cin));
                     if (result > 0) {
                         Goback(event);
                     } else {
@@ -198,7 +202,6 @@ public class Profile implements Initializable {
                 pass.setText("");
             }
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println("tr\n" + e);
         }
     }

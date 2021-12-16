@@ -1,32 +1,20 @@
 package Controllers.Admin.Functions;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import java.io.IOException;
-import java.net.URL;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import Main.DataBaseConnection;
 
-public class DashBoardController implements Initializable{
+public class DashBoardController{
 
-    DataBaseConnection connection = new DataBaseConnection();
-
-    @FXML
-    private AreaChart<String, Double> AREACHART;
+    @FXML AreaChart<String, Double> AREACHART;
 
     @FXML
     private CategoryAxis AXIX;
@@ -34,66 +22,32 @@ public class DashBoardController implements Initializable{
     @FXML
     private NumberAxis AXIY;
 
+    @FXML Label AMOUNT_ID;
+
+    @FXML Label EMPLOYER_ID;
+
+    @FXML Label ROOM_ID;
+    
     @FXML
-    private Label AMOUNT_ID;
+    private AnchorPane ChiledStage;
+    
+    public Pane ParentPane;
 
-    @FXML
-    private Label EMPLOYER_ID;
+    public DataBaseConnection connection;
+    
+    public void init(){
+        ResultSet Resulta = connection.ReturnCount("employee");
+        try {
 
-    @FXML
-    private Label ROOM_ID;
+            ROOM_ID.setText("200");
+            AMOUNT_ID.setText("4500");
+            Resulta.next();
+            EMPLOYER_ID.setText(String.valueOf(Resulta.getInt("count(*)")));
 
-    @FXML
-    private VBox AdminMenu;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    public void SwitchToUser(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void LogOut(MouseEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void ShowMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(true);
-    }
-
-    @FXML
-    void HideMenuBar(MouseEvent event) {
-        AdminMenu.setVisible(false);
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        ResultSet Result = connection.ReturnCount("employee");
-            
-            try {
-
-                ROOM_ID.setText("200");
-                AMOUNT_ID.setText("4500");
-                Result.next();
-                EMPLOYER_ID.setText(String.valueOf(Result.getInt("count(*)")));
-
-            } catch (SQLException e) {
-                System.out.println("WTF" +e);
-            }
+        } catch (SQLException e) {
+            System.out.println("WTF" +e);
+        }
         
-        AdminMenu.setVisible(false);
-
         XYChart.Series<String , Double > serie1 = new XYChart.Series<String , Double>();
         serie1.setName("Amount");
         serie1.getData().add(new XYChart.Data<String , Double>("JAN" , 110.0));
@@ -109,13 +63,5 @@ public class DashBoardController implements Initializable{
         serie1.getData().add(new XYChart.Data<String , Double>("WER" , 65.12));
 
         AREACHART.getData().add(serie1);
-    }
-    @FXML
-    void SwitchToProfile(MouseEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }

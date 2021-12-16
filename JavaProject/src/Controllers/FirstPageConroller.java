@@ -1,37 +1,74 @@
 package Controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import Controllers.Admin.Authentification.LoginController;
+import Controllers.Employer.Authentification.Login;
+import Main.DataBaseConnection;
+import animatefx.animation.FadeInRightBig;
+import animatefx.animation.FadeOutLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.scene.Node;
 
-public class FirstPageConroller {
-
-    private Stage stage;
-    private Scene scene;
+public class FirstPageConroller implements Initializable{
+    /////The only Place To initialize The DataBase connection
+    DataBaseConnection connection = new DataBaseConnection();
+    @FXML
     private Parent root;
+    @FXML
+    private Pane ParentPane;
+    @FXML
+    private Pane ChiledStage;
 
     // Switch To Admin Page
-    @FXML
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
+        root = loder.load();
+        LoginController controller = loder.getController();
+        controller.ParentPane=ParentPane;
+        controller.connection=connection;
+        FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            ParentPane.getChildren().remove(ChiledStage);
+        });
+        ParentPane.getChildren().add(root);
+        new FadeInRightBig(root).play();
     }
 
     // Switch To Employer Page
-    @FXML
     public void SwitchToEmployerPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        root = loder.load();
+        Login controller = loder.getController();
+        controller.ParentPane=ParentPane;
+        controller.connection=connection;
+        FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            ParentPane.getChildren().remove(ChiledStage);
+        });
+        ParentPane.getChildren().add(root);
+        new FadeInRightBig(root).play();
+    }
+    public void CloseWindow(){
+        Stage stage = (Stage)ParentPane.getScene().getWindow();
+        stage.close();
+    }
+    public void MinimizeWindow(){
+        Stage stage = (Stage)ParentPane.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        connection.ConnectToDataBase();
     }
 }

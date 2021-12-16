@@ -7,11 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Controllers.Employer.Authentification.Profile;
+import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -27,6 +28,8 @@ public class Home implements Initializable {
     @FXML
     private Button ProfileButton, reservation_label;
     private Parent root;
+    public DataBaseConnection connection;
+    public String compte;
 
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);
@@ -38,8 +41,12 @@ public class Home implements Initializable {
 
     public void ShowProfile() throws IOException {
         AcountMenuHide();
-        Parent root = FXMLLoader
-                .load(getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
+        Parent root = loader.load();
+        Profile controller = loader.getController();
+        controller.connection=connection;
+        controller.compte = compte;
+        controller.FillProfileData();
         root.translateXProperty().set(1024);
         parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();

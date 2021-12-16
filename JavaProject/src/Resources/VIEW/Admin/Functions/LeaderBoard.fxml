@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.gleidson28.GNAvatarView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ChiledStage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.LeaderBord">
+   <children>
+      <Pane fx:id="LeaderBoardData" layoutX="300.0" layoutY="75.0" prefHeight="566.0" prefWidth="725.0" />
+      <VBox prefHeight="640.0" prefWidth="300.0" style="-fx-background-color: #333645;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00A2D3;" text="Admin Panel" textFill="WHITE">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <font>
+                  <Font name="Gubbi" size="19.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <FontAwesomeIconView glyphName="SEARCH" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <TextField prefHeight="35.0" prefWidth="177.0" promptText="Search" style="-fx-background-color: transparent; -fx-text-fill: #7c8184;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </TextField>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ShowDashBoard" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #202332;" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="DashBoard" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Rooms" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SwitchToUser" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Users" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="FILE" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Resource" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView glyphName="FOLDER" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
+                  <Label text="Documents" textFill="#7c8184">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
+         <children>
+            <Label prefHeight="72.0" prefWidth="369.0" text="DASHBOARD" textFill="#909090">
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="72.0" prefWidth="357.0">
+               <children>
+                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="162.0" layoutY="44.0" onMouseClicked="#SwitchToAddUser" size="1.6em" />
+                  <FontAwesomeIconView fill="#909090" glyphName="GEAR" layoutX="230.0" layoutY="45.0" onMouseClicked="#GoToModify" size="1.7em" />
+                  <GNAvatarView layoutX="297.0" layoutY="15.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="42.0" prefWidth="43.0" stroke="#909090" strokeWidth="1.0" type="CIRCLE">
+                     <image>
+                        <Image url="@../../../IMAGES/user.png" />
+                     </image></GNAvatarView>
+                  <Pane layoutX="277.0" layoutY="1.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="68.0" prefWidth="65.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <VBox fx:id="AdminMenu" layoutX="842.0" layoutY="66.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="149.0" prefWidth="167.0" style="-fx-border-color: #909090; -fx-border-radius: 3px;">
+         <children>
+            <Label alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Hamza Bouslama" />
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Ham.bousa98@gmail.com" textFill="#909090">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#SwitchToProfile" prefHeight="42.0" prefWidth="165.0" styleClass="Admin_menu" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView fill="#909090" glyphName="EDIT" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label text="Edit Profile">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#LogOut" prefHeight="42.0" prefWidth="165.0" styleClass="Admin_menu" stylesheets="@../../../CSS/Admin.css">
+               <children>
+                  <FontAwesomeIconView fill="#909090" glyphName="ARCHIVE" size="1.5em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label text="Log Out">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
