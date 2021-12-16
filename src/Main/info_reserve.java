@@ -7,7 +7,7 @@ public class info_reserve {
     private String name;
     private int room;
     private int classe;
-    private Date date_entre;
+    private Date dateentre;
     private int prix;
 
     public info_reserve(int int1, String string, int int2, int int3, Date date, int int4) {
@@ -15,7 +15,7 @@ public class info_reserve {
         this.name = string;
         this.room = int2;
         this.classe = int3;
-        this.date_entre = date;
+        this.dateentre = date;
         this.prix = int4;
     }
 
@@ -44,8 +44,8 @@ public class info_reserve {
         return classe;
     }
 
-    public Date getdate_entre() {
-        return date_entre;
+    public Date getdateentre() {
+        return dateentre;
     }
 
     public int getprix() {

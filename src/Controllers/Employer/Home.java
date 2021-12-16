@@ -42,10 +42,11 @@ public class Home implements Initializable {
 
     public void ShowProfile() throws IOException {
         AcountMenuHide();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
         Parent root = loader.load();
         Profile controller = loader.getController();
-        controller.connection=connection;
+        controller.connection = connection;
         controller.compte = compte;
         controller.FillProfileData();
         root.translateXProperty().set(1024);

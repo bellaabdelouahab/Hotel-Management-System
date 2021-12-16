@@ -36,6 +36,7 @@ public class DashBoardController{
 
     public DataBaseConnection connection;
     
+    
     public void init(){
         ResultSet Resulta = connection.ReturnCount("employee");
         try {
