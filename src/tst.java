@@ -59,9 +59,6 @@ public class tst {
         // }
         // }
 
-        if ("condition" instance Of Object) {
-            System.out.println("mmmm");
-        }
 
     }
 }

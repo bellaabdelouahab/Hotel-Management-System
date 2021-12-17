@@ -2,18 +2,17 @@ package Controllers.Employer;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import Controllers.Employer.Authentification.Profile;
+import Controllers.Employer.Forms.reservation_page;
 import Main.DataBaseConnection;
+import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -21,11 +20,13 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.util.Duration;
 
-public class Home implements Initializable {
+public class Home {
     @FXML
     private StackPane parentContainer;
     @FXML
     private VBox AccountMenu;
+    @FXML
+    private GNAvatarView ProfilePicture;
     @FXML
     private Button ProfileButton, reservation_label;
     private Parent root;
@@ -84,20 +85,27 @@ public class Home implements Initializable {
         timeline.play();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
         try {
+            this.ProfilePicture.setImage(new Image(System.getProperty("user.dir")
+                    + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() + "te.png"));
             ShowSearchForm();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
     public void reservation(ActionEvent e) throws Exception {
         parentContainer.getChildren().remove(this.root);
-        this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));
+        AcountMenuHide();
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));
+        Parent root = loader.load();
+        reservation_page controller = loader.getController();
+        controller.connection = connection;
+        controller.compte = compte;
+        controller.init();
         root.translateXProperty().set(1024);
         root.translateYProperty().set(70);
         parentContainer.getChildren().add(root);

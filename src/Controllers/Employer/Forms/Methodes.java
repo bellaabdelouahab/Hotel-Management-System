@@ -9,7 +9,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 public class Methodes {
-    public static Image ImageSaver(String name){
+    public static BufferedImage ImageSaver(){
         try{
             JFileChooser chooser = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -18,10 +18,7 @@ public class Methodes {
             int returnVal = chooser.showOpenDialog(null);
             if(returnVal == JFileChooser.APPROVE_OPTION) {
             BufferedImage imagebBufferedImage = ImageIO.read(chooser.getSelectedFile());
-            File imgfile = new File(name+".png");
-            ImageIO.write(imagebBufferedImage, "png", imgfile);
-            Image card = SwingFXUtils.toFXImage(imagebBufferedImage, null );
-            return card;
+            return imagebBufferedImage;
             }
         }
         catch(Exception e){

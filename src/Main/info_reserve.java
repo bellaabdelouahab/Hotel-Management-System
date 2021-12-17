@@ -3,6 +3,7 @@ package Main;
 import java.sql.Date;
 
 public class info_reserve {
+
     private int cin;
     private String name;
     private int room;
@@ -20,35 +21,40 @@ public class info_reserve {
     }
 
     // public void info_reserve(int c, String n, int r, int cl, Date d, int p) {
-    //     this.cin = c;
-    //     this.name = n;
-    //     this.room = r;
-    //     this.classe = cl;
-    //     this.date_entre = d;
-    //     this.prix = p;
+    // this.cin = c;
+    // this.name = n;
+    // this.room = r;
+    // this.classe = cl;
+    // this.date_entre = d;
+    // this.prix = p;
     // }
 
-    public int getcin() {
-        return cin ;
+    // public void affiche() {
+    // System.out.println("test alah"+cin + name + room + classe + dateentre +
+    // prix);
+    // }
+
+    public int getCin() {
+        return cin;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public int getroom() {
+    public int getRoom() {
         return room;
     }
 
-    public int getclasse() {
+    public int getClasse() {
         return classe;
     }
 
-    public Date getdateentre() {
+    public Date getDateentre() {
         return dateentre;
     }
 
-    public int getprix() {
+    public int getPrix() {
         return prix;
     }
 }

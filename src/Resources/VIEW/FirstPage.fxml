@@ -11,8 +11,7 @@
 <?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.text.Font?>
 
-
-<FlowPane fx:id="ParentPane" maxHeight="640.0" maxWidth="1024.0" prefHeight="665.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstPageConroller">
+<FlowPane fx:id="ParentPane" maxHeight="640.0" maxWidth="1024.0" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstPageConroller">
    <children>
       <Pane prefHeight="25.0" prefWidth="1024.0" style="-fx-background-color: #252525;">
          <children>
@@ -45,7 +44,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="ParentPane">
+      <Pane fx:id="ParentPane" prefHeight="640.0" prefWidth="1024.0">
          <children>
             <Pane fx:id="ChiledStage" layoutY="1.1789817810058594" prefHeight="640.0" prefWidth="512.0">
                <children>

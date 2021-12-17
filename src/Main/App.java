@@ -19,8 +19,8 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         Properties Prop = new Properties();
         System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
-        
-                //abdelouhabe rak dima ka t9ob src dir / machi \ alkhra
+
+        // abdelouhabe rak dima ka t9ob src dir / machi \ alkhra
 
         FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
         Prop.load(config);
@@ -33,7 +33,7 @@ public class App extends Application {
         } else {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         }
-        
+
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Hotel BBBE");

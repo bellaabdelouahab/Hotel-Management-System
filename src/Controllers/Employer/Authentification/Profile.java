@@ -2,15 +2,22 @@ package Controllers.Employer.Authentification;
 
 import java.sql.*;
 import javafx.scene.image.Image;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
+
 import Controllers.Employer.Forms.Methodes;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +49,7 @@ public class Profile implements Initializable {
     @FXML
     private TextField new_pass, pass, check_pass;
     public String compte;
+    BufferedImage ImagebBufferedImage;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
@@ -59,7 +67,7 @@ public class Profile implements Initializable {
 
     public void ShowPassworkForm() {
         Timeline timeline = new Timeline();
-        KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), -100, Interpolator.EASE_BOTH);
+        KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), -140, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf1);
         timeline.play();
@@ -76,10 +84,12 @@ public class Profile implements Initializable {
     }
 
     public void FileChooser() {
-        Image savedImage = Methodes
-                .ImageSaver(System.getProperty("user.dir") + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + "te");
-        if (savedImage != null)
-            ProfilePicture.setImage(savedImage);
+        ImagebBufferedImage = Methodes
+                .ImageSaver();
+        if (ImagebBufferedImage != null){
+            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null );
+            ProfilePicture.setImage(Image1);
+        }
         else {
             System.out.println("GMOV");
         }
@@ -99,6 +109,7 @@ public class Profile implements Initializable {
                 this.email.setText(rs.getString(4));
                 this.Nationnality.setText(rs.getString(6));
                 this.Phonenumber.setText(rs.getString(9));
+                this.ProfilePicture.setImage(new Image(System.getProperty("user.dir") + "\\src\\Resources\\IMAGES\\ProfilePictures\\"+connection.getCompte() + "te.png"));
                 if (rs.getString(7) == "h") {
                     this.Sex.setText("femme");
                 } else {
@@ -123,6 +134,7 @@ public class Profile implements Initializable {
             phone = rs.getString(9);
             //sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
+            ImageIO.write(ImagebBufferedImage, "png", new File(System.getProperty("user.dir") + "\\src\\Resources\\IMAGES\\ProfilePictures\\"+connection.getCompte() + "te"+".png"));
         }
 
         if (Adress.getText().toLowerCase().equals(adr) == false) {

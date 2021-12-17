@@ -161,6 +161,7 @@ public class Login {
             Home controller = loader.getController();
             controller.connection=connection;
             controller.compte = compte;
+            controller.init();
             root.translateXProperty().set(scene.getWidth());
             achnopane.getChildren().add(root);
             Timeline timeline = new Timeline();
