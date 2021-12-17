@@ -50,6 +50,7 @@ public class Profile implements Initializable {
     private TextField new_pass, pass, check_pass;
     public String compte;
     BufferedImage ImagebBufferedImage;
+    public GNAvatarView HomeProfilePicture;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
@@ -78,8 +79,6 @@ public class Profile implements Initializable {
         KeyValue kv1 = new KeyValue(this.PasswordForm.translateYProperty(), 0, Interpolator.EASE_BOTH);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf1);
-        timeline.setOnFinished(t -> {
-        });
         timeline.play();
     }
 
@@ -135,6 +134,8 @@ public class Profile implements Initializable {
             //sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
             ImageIO.write(ImagebBufferedImage, "png", new File(System.getProperty("user.dir") + "\\src\\Resources\\IMAGES\\ProfilePictures\\"+connection.getCompte() + "te"+".png"));
+            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null );
+            HomeProfilePicture.setImage(Image1);
         }
 
         if (Adress.getText().toLowerCase().equals(adr) == false) {

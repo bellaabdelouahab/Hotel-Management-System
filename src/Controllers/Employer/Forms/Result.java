@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -22,36 +23,37 @@ import javafx.util.Duration;
 
 public class Result implements Initializable {
     @FXML private Pane childPanex1;
+    public DataBaseConnection connection;
+    public StackPane ParentPane;
+    public Parent root;
+    public Parent Resultroot;
+    public Pane SearchFormPane;
     public void show_data_test(){
         System.out.println(SearchData.checkindate);
     }
     public void LoadSearchForm(ActionEvent e) throws IOException{
-        Button backbutton = (Button)e.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
-        root.translateXProperty().set(-1024);
-        root.translateYProperty().set(70);
-        Scene scene = backbutton.getScene();
-        StackPane parentContainer = (StackPane)scene.getRoot();
-        parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 0, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(childPanex1);
+            ParentPane.getChildren().remove(childPanex1);
         });
         timeline.play();
     }
     public void LoadClientForm(ActionEvent e) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/Client.fxml"));
-        root.translateXProperty().set(924);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/Client.fxml"));
+        Parent root = loader.load();
+        Client controller = loader.getController();
+        controller.connection=connection;
+        controller.ParentPane=ParentPane;
+        controller.ResultPane=childPanex1;
+        root.translateXProperty().set(1024);
         root.translateYProperty().set(70);
-        Scene scene = ((Node) e.getSource()).getScene();
-        StackPane parentContainer = (StackPane)scene.getRoot();
-        parentContainer.getChildren().add(root);
+        ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), -924, Interpolator.EASE_BOTH);
@@ -59,9 +61,6 @@ public class Result implements Initializable {
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(childPanex1);
-        });
         timeline.play();
     }
     @Override

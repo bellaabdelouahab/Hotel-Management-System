@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.controlsfx.control.CheckComboBox;
+
+import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -24,23 +26,19 @@ import javafx.util.Duration;
 public class Client implements Initializable{
     @FXML private Pane ChildPaneXS;
     @FXML private CheckComboBox<String> RoomFeatures;
+    public DataBaseConnection connection;
+    public StackPane ParentPane;
+    public Pane ResultPane;
     public void LoadResultForm(ActionEvent e) throws IOException{
-        Button backbutton = (Button)e.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
-        root.translateXProperty().set(-1024);
-        root.translateYProperty().set(70);
-        Scene scene = backbutton.getScene();
-        StackPane parentContainer = (StackPane)scene.getRoot();
-        parentContainer.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue kv = new KeyValue(ResultPane.translateXProperty(), 0, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(ChildPaneXS.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(ChildPaneXS);
+            ParentPane.getChildren().remove(ChildPaneXS);
         });
         timeline.play();
     }

@@ -5,11 +5,13 @@ import javafx.scene.Parent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 import Controllers.Employer.Authentification.Profile;
+import Controllers.Employer.Forms.Search;
 import Controllers.Employer.Forms.reservation_page;
 import Main.DataBaseConnection;
 import io.github.gleidson28.GNAvatarView;
@@ -32,6 +34,7 @@ public class Home {
     private Parent root;
     public DataBaseConnection connection;
     public String compte;
+    public Pane ParentPane;
 
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);
@@ -49,6 +52,7 @@ public class Home {
         Profile controller = loader.getController();
         controller.connection = connection;
         controller.compte = compte;
+        controller.HomeProfilePicture=ProfilePicture;
         controller.FillProfileData();
         root.translateXProperty().set(1024);
         parentContainer.getChildren().add(root);
@@ -61,7 +65,11 @@ public class Home {
 
     public void ShowSearchForm() throws IOException {
         AcountMenuHide();
-        this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
+        this.root = loader.load();
+        Search controller = loader.getController();
+        controller.connection=connection;
+        controller.ParentPane=parentContainer;
         root.translateXProperty().set(1024);
         root.translateYProperty().set(70);
         parentContainer.getChildren().add(root);
@@ -86,6 +94,10 @@ public class Home {
     }
 
     public void init() {
+        UpdateProfilePic();
+    }
+
+    private void UpdateProfilePic() {
         try {
             this.ProfilePicture.setImage(new Image(System.getProperty("user.dir")
                     + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() + "te.png"));

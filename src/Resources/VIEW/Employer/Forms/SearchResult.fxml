@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<Pane fx:id="childPanex1" maxHeight="391.0" maxWidth="824.0" prefHeight="391.0" prefWidth="824.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
+<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="368.0" prefWidth="824.0" style="-fx-background: #11111100; -fx-border-color: #11111133; -fx-border-width: 0;">
          <content>
@@ -22,7 +21,7 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Button layoutY="368.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="20.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="&lt; Go Back" textFill="#ebdcdc" />
-      <Button layoutX="724.0" layoutY="368.0" mnemonicParsing="false" onAction="#LoadClientForm" prefHeight="20.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #ad6b13;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Validate &gt;" textFill="#ebdcdc" />
+      <Button layoutX="724.0" layoutY="368.0" mnemonicParsing="false" onAction="#LoadClientForm" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #ad6b13;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Validate &gt;" textFill="#ebdcdc" />
+      <Button layoutY="368.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="&lt; Go Back" textFill="#ebdcdc" />
    </children>
 </Pane>

@@ -18,22 +18,20 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class FirstPageConroller implements Initializable{
-    /////The only Place To initialize The DataBase connection
-    DataBaseConnection connection = new DataBaseConnection();
+    DataBaseConnection Connection=new DataBaseConnection();
     @FXML
     private Parent root;
     @FXML
     private Pane ParentPane;
     @FXML
     private Pane ChiledStage;
-
     // Switch To Admin Page
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         root = loder.load();
         LoginController controller = loder.getController();
         controller.ParentPane=ParentPane;
-        controller.connection=connection;
+        controller.connection=Connection;
         FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
         FideOut.play();
         FideOut.setOnFinished(e->{
@@ -49,7 +47,9 @@ public class FirstPageConroller implements Initializable{
         root = loder.load();
         Login controller = loder.getController();
         controller.ParentPane=ParentPane;
-        controller.connection=connection;
+        controller.connection=Connection;
+        controller.email_text.setText("yassine@gmail.com");
+        controller.password_label.setText("yassine2");
         FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
         FideOut.play();
         FideOut.setOnFinished(e->{
@@ -69,6 +69,8 @@ public class FirstPageConroller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        connection.ConnectToDataBase();
+        
+    /////The only Place To initialize The DataBase connection
+    Connection.ConnectToDataBase();
     }
 }

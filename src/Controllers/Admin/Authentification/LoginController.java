@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import Controllers.Controllers;
 import Controllers.Admin.Functions.LeaderBord;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
@@ -37,6 +39,10 @@ public class LoginController implements Initializable{
     public Pane ParentPane;
     @FXML
     private BorderPane ChiledStage;
+
+    public Controllers.Controllers Controllers;
+
+    public Controllers.Controllers Controllers;
     @FXML
     public void GoToAdminPage(ActionEvent event) throws IOException, SQLException {
 
