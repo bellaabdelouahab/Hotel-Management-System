@@ -21,7 +21,7 @@ import javafx.util.Duration;
 public class Result implements Initializable {
     @FXML private Pane childPanex1;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
+    public Pane ParentPane;
     public Parent root;
     public Parent Resultroot;
     public Pane SearchFormPane;

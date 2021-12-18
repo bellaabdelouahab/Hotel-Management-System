@@ -24,7 +24,7 @@ import javafx.util.Duration;
 
 public class Home {
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private VBox AccountMenu;
     @FXML
@@ -34,7 +34,8 @@ public class Home {
     private Parent root;
     public DataBaseConnection connection;
     public String compte;
-    public Pane ParentPane;
+    @FXML
+    public Pane HomePane;
 
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);
@@ -42,6 +43,15 @@ public class Home {
 
     public void AcountMenuHide() {
         AccountMenu.setVisible(false);
+    }
+    public void ReturnToHome() {
+        HomePane.getChildren().clear();
+        try {
+            ShowSearchForm();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void ShowProfile() throws IOException {
@@ -69,25 +79,24 @@ public class Home {
         this.root = loader.load();
         Search controller = loader.getController();
         controller.connection=connection;
-        controller.ParentPane=parentContainer;
+        controller.ParentPane=HomePane;
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
-        parentContainer.getChildren().add(root);
+        HomePane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 100, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
     }
 
     public void ShowAboutPage() throws IOException {
-        parentContainer.getChildren().remove(this.root);
+        HomePane.getChildren().clear();
         this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/About.fxml"));
         this.root.translateXProperty().set(0);
         this.root.translateYProperty().set(640);
-        parentContainer.getChildren().add(root);
+        HomePane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 90, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
@@ -109,7 +118,7 @@ public class Home {
 
     @FXML
     public void reservation(ActionEvent e) throws Exception {
-        parentContainer.getChildren().remove(this.root);
+        HomePane.getChildren().clear();
         AcountMenuHide();
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));

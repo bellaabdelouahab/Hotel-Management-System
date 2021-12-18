@@ -60,7 +60,7 @@ public class Search implements Initializable {
     @FXML 
     private Pane SearchForm;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
+    public Pane ParentPane;
 
     // private String pattern = "dd-MM-yyyy";s
 
@@ -170,12 +170,10 @@ public class Search implements Initializable {
         controller.connection=connection;
         controller.ParentPane=ParentPane;
         controller.SearchFormPane=SearchForm;
-        controller.Resultroot=root;
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
         ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 100, Interpolator.EASE_IN);
         KeyValue kv1 = new KeyValue(SearchForm.translateXProperty(), -924, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);

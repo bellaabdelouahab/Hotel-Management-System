@@ -13,18 +13,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class FirstPageConroller implements Initializable{
     DataBaseConnection Connection=new DataBaseConnection();
-    @FXML
     private Parent root;
     @FXML
     private Pane ParentPane;
     @FXML
     private Pane ChiledStage;
+    private Login controller;
     // Switch To Admin Page
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
@@ -43,17 +45,11 @@ public class FirstPageConroller implements Initializable{
 
     // Switch To Employer Page
     public void SwitchToEmployerPage(ActionEvent event) throws IOException {
+        Button Btton=(Button)((Node)event.getSource());
+        Btton.setDisable(true);
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
-        if(root==loder.load()){
-            System.out.println("sdffdsfsdf");
-        }
         root = loder.load();
-        
-        
-        ParentPane.getChildren().add(root);
-        System.out.println("dfg");
-        Login controller = loder.getController();
-        controller.ParentPane=ParentPane;
+        controller = loder.getController();
         controller.connection=Connection;
         controller.email_text.setText("yassine@gmail.com");
         controller.password_label.setText("yassine2");
@@ -61,7 +57,9 @@ public class FirstPageConroller implements Initializable{
         FideOut.play();
         FideOut.setOnFinished(e->{
             ParentPane.getChildren().remove(ChiledStage);
+            Btton.setDisable(false);
         });
+        ParentPane.getChildren().add(root);
         new FadeInRightBig(root).play();
     }
     public void CloseWindow(){

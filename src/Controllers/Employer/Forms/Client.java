@@ -23,7 +23,7 @@ public class Client implements Initializable{
     @FXML private Pane ChildPaneXS;
     @FXML private CheckComboBox<String> RoomFeatures;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
+    public Pane ParentPane;
     public Pane ResultPane;
     public void LoadResultForm(ActionEvent e) throws IOException{
         Timeline timeline = new Timeline();
