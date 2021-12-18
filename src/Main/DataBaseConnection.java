@@ -194,10 +194,9 @@ public class DataBaseConnection {
 
     public ResultSet Login_employe(String x) {
         try {
-
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String rs = "select * from employee where lower(email)='" + x + "'";
+            String rs = "select * from employee where lower(email)='" + x.toLowerCase() + "'";
             result = statement.executeQuery(rs);
 
         } catch (Exception e) {
