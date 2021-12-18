@@ -191,14 +191,12 @@ public class Profile implements Initializable {
         password = "";
         try {
             ResultSet rs = connection.Login_employe(connection.getCompte().toLowerCase());
-            System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));
                 password = rs.getString(5);
             }
-            System.out.println(new_pass.getText() + "\t" + Integer.parseInt(cin));
             if (pass.getText().equals(password)) {
-                if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
+                if (new_pass.getText().equals(check_pass.getText()) && new_pass.getText().length() >= 8) {
                     result = connection.change_password(new_pass.getText(), Integer.parseInt(cin));
                     if (result > 0) {
                         Goback(event);

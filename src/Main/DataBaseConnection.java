@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import oracle.net.aso.i;
-
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -192,10 +190,9 @@ public class DataBaseConnection {
 
     public ResultSet Login_employe(String x) {
         try {
-
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String rs = "select * from employee where lower(email)='" + x + "'";
+            String rs = "select * from employee where lower(email)='" + x.toLowerCase() + "'";
             result = statement.executeQuery(rs);
 
         } catch (Exception e) {
