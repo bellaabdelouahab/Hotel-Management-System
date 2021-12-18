@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 
 import Controllers.Admin.Authentification.LoginController;
@@ -12,6 +13,7 @@ import Controllers.Employer.Authentification.Login;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeOutLeft;
+import impl.org.controlsfx.skin.AutoCompletePopup;
 import javafx.animation.FadeTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -60,7 +62,8 @@ public class FirstPageConroller implements Initializable{
         root = loder.load();
         Login controller = loder.getController();
         controller.connection=Connection;
-        TextFields.bindAutoCompletion(controller.email_text, Connection.GetEmailesHistory());
+        AutoCompletionBinding<Object> autoComplete=TextFields.bindAutoCompletion(controller.email_text, Connection.GetEmailesHistory());
+        autoComplete.prefWidthProperty().bind(controller.email_text.widthProperty());
         FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
         FideOut.play();
         FideOut.setOnFinished(e->{
@@ -81,7 +84,7 @@ public class FirstPageConroller implements Initializable{
     public void headerAnimation(){
         FadeTransition ft = new FadeTransition(Duration.millis(2000),header );
         ft.setFromValue(1.0);
-        ft.setToValue(0.95);
+        ft.setToValue(0.5);
         ft.setCycleCount(Timeline.INDEFINITE);
         ft.setAutoReverse(true);
         ft.play();
