@@ -14,11 +14,13 @@
             "Reference Library/AnimateFX-1.2.1.jar",
             "Reference Library/controlsfx-11.1.0.jar",
             "Reference Library/GNAvatarView-1.0.5.jar",
-            "Reference Library/fontawesomefx-commons-9.1.2.jar"
+            "Reference Library/fontawesomefx-commons-9.1.2.jar",
+            "Reference Library/charm-glisten-4.4.1-javadoc.jar"
         ],
         "exclude": [
             "lib/ojdbc6.jar",
-            "Reference Library/simplefan.jar"
+            "Reference Library/simplefan.jar",
+            "lib/controlsfx-11.1.0.jar"
         ]
     },
     "java.project.sourcePaths": [

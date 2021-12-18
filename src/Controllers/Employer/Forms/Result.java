@@ -21,16 +21,15 @@ import javafx.util.Duration;
 public class Result implements Initializable {
     @FXML private Pane childPanex1;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
-    public Parent root;
-    public Parent Resultroot;
+    public Pane ParentPane;
     public Pane SearchFormPane;
     public void show_data_test(){
         System.out.println(SearchData.checkindate);
     }
     public void LoadSearchForm(ActionEvent e) throws IOException{
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 0, Interpolator.EASE_OUT);
+        SearchFormPane.setStyle("-fx-opacity:1");
+        KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 100, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
@@ -45,15 +44,15 @@ public class Result implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/Client.fxml"));
         Parent root = loader.load();
         Client controller = loader.getController();
+        ParentPane.setStyle("-fx-background-color: #11111108");
         controller.connection=connection;
         controller.ParentPane=ParentPane;
         controller.ResultPane=childPanex1;
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
         ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
-        KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), -924, Interpolator.EASE_BOTH);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 100, Interpolator.EASE_OUT);
+        KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), -924, Interpolator.EASE_OUT);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);

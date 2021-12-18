@@ -5,11 +5,17 @@ import javafx.scene.Parent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import java.sql.SQLException;
 
+import org.controlsfx.control.textfield.TextFields;
+
+import animatefx.animation.FadeIn;
+import Controllers.Employer.Authentification.Login;
 import Controllers.Employer.Authentification.Profile;
 import Controllers.Employer.Forms.Search;
 import Controllers.Employer.Forms.reservation_page;
@@ -24,7 +30,7 @@ import javafx.util.Duration;
 
 public class Home {
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private VBox AccountMenu;
     @FXML
@@ -34,7 +40,9 @@ public class Home {
     private Parent root;
     public DataBaseConnection connection;
     public String compte;
-    public Pane ParentPane;
+    @FXML
+    public Pane HomePane;
+    public AnchorPane achnopane;
 
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);
@@ -42,6 +50,15 @@ public class Home {
 
     public void AcountMenuHide() {
         AccountMenu.setVisible(false);
+    }
+    public void ReturnToHome() {
+        HomePane.getChildren().clear();
+        try {
+            ShowSearchForm();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void ShowProfile() throws IOException {
@@ -69,26 +86,25 @@ public class Home {
                 getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
         this.root = loader.load();
         Search controller = loader.getController();
-        controller.connection = connection;
-        controller.ParentPane = parentContainer;
+        controller.connection=connection;
+        controller.ParentPane=HomePane;
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
-        parentContainer.getChildren().add(root);
+        HomePane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 100, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
     }
 
     public void ShowAboutPage() throws IOException {
-        parentContainer.getChildren().remove(this.root);
+        HomePane.getChildren().clear();
         this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/About.fxml"));
         this.root.translateXProperty().set(0);
         this.root.translateYProperty().set(640);
-        parentContainer.getChildren().add(root);
+        HomePane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 90, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
@@ -110,7 +126,7 @@ public class Home {
 
     @FXML
     public void reservation(ActionEvent e) throws Exception {
-        parentContainer.getChildren().remove(this.root);
+        HomePane.getChildren().clear();
         AcountMenuHide();
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));
@@ -130,5 +146,15 @@ public class Home {
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
+    }
+    public void LogOut() throws IOException, SQLException{
+        achnopane.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        Parent root = loader.load();
+        Login controller = loader.getController();
+        controller.connection=connection;
+        TextFields.bindAutoCompletion(controller.email_text, connection.GetEmailesHistory());
+        achnopane.getChildren().add(root);
+        new FadeIn(root).play();
     }
 }
