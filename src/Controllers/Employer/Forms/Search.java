@@ -204,8 +204,7 @@ public class Search implements Initializable {
         }catch(NumberFormatException e){
             Error_Message.setText("Please enter a valid number");
             return null;
-        }   
-        System.out.println("aiduf;ojl;k");
+        }
         return connection.GetSearchedRoom(INTData, StringData);
     }
     @Override
