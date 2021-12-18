@@ -42,8 +42,8 @@ public class Profile implements Initializable {
     public DataBaseConnection connection;
 
     private String adr = "", natio = "", phone = "", cin = "", age = "", password = "";
-    ////Once You need them enable
-    //private String sex = "", nom = "", mail = "";
+    //// Once You need them enable
+    // private String sex = "", nom = "", mail = "";
     private int result = 0;
 
     @FXML
@@ -85,11 +85,10 @@ public class Profile implements Initializable {
     public void FileChooser() {
         ImagebBufferedImage = Methodes
                 .ImageSaver();
-        if (ImagebBufferedImage != null){
-            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null );
+        if (ImagebBufferedImage != null) {
+            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
             ProfilePicture.setImage(Image1);
-        }
-        else {
+        } else {
             System.out.println("GMOV");
         }
     }
@@ -108,7 +107,8 @@ public class Profile implements Initializable {
                 this.email.setText(rs.getString(4));
                 this.Nationnality.setText(rs.getString(6));
                 this.Phonenumber.setText(rs.getString(9));
-                this.ProfilePicture.setImage(new Image(System.getProperty("user.dir") + "\\src\\Resources\\IMAGES\\ProfilePictures\\"+connection.getCompte() + "te.png"));
+                this.ProfilePicture.setImage(new Image(System.getProperty("user.dir")
+                        + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() + "te.png"));
                 if (rs.getString(7) == "h") {
                     this.Sex.setText("femme");
                 } else {
@@ -126,15 +126,16 @@ public class Profile implements Initializable {
         ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
-            //nom = rs.getString(2);
+            // nom = rs.getString(2);
             adr = rs.getString(3);
-            //mail = rs.getString(4);
+            // mail = rs.getString(4);
             natio = rs.getString(6);
             phone = rs.getString(9);
-            //sex = rs.getString(7);
+            // sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
-            ImageIO.write(ImagebBufferedImage, "png", new File(System.getProperty("user.dir") + "\\src\\Resources\\IMAGES\\ProfilePictures\\"+connection.getCompte() + "te"+".png"));
-            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null );
+            ImageIO.write(ImagebBufferedImage, "png", new File(System.getProperty("user.dir")
+                    + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() + "te" + ".png"));
+            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
             HomeProfilePicture.setImage(Image1);
         }
 
@@ -190,14 +191,12 @@ public class Profile implements Initializable {
         password = "";
         try {
             ResultSet rs = connection.Login_employe(connection.getCompte().toLowerCase());
-            System.out.println(rs.getInt(1) + "\n" + rs.getString(5));
             while (rs.next()) {
                 cin = String.valueOf(rs.getInt(1));
                 password = rs.getString(5);
             }
-
             if (pass.getText().equals(password)) {
-                if (new_pass.equals(check_pass) && new_pass.getText().length() >= 8) {
+                if (new_pass.getText().equals(check_pass.getText()) && new_pass.getText().length() >= 8) {
                     result = connection.change_password(new_pass.getText(), Integer.parseInt(cin));
                     if (result > 0) {
                         Goback(event);
@@ -205,8 +204,7 @@ public class Profile implements Initializable {
                         System.out.println("hola");
                     }
                 } else {
-                    new_pass.setStyle("-fx-background-color:red;");
-                    check_pass.setStyle("-fx-background-color:red;");
+                    System.out.println("makhdemech pass word");
                     new_pass.setText("");
                     check_pass.setText("");
                 }

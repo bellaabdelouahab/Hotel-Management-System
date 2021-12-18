@@ -1,9 +1,10 @@
 package Controllers.Employer.Authentification;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.ResultSet;
 
 import org.controlsfx.control.MaskerPane;
+
 import Controllers.Employer.Home;
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
@@ -25,7 +26,7 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.Node;
-public class Login {
+public class Login{
 
     private Stage stage;
     private Scene scene;
@@ -57,7 +58,6 @@ public class Login {
     private Label emai_label;
     public DataBaseConnection connection;
     public Pane ParentPane;
-    public DataBaseConnection Connection;
 
     // Switch To Sign Up page of Employer
     @FXML
@@ -129,6 +129,7 @@ public class Login {
             }
             if (y.equals(email_text.getText())) {
                 if (x.equals(password_label.getText())) {
+                    connection.AddEmailToHistory(email_text.getText());
                     connection.setCompte(y);
                     timeline1.setOnFinished(ep->{
                         achnopane.getChildren().remove(login_animation);
@@ -161,6 +162,7 @@ public class Login {
             Home controller = loader.getController();
             controller.connection=connection;
             controller.compte = compte;
+            controller.achnopane= achnopane;
             controller.init();
             root.translateXProperty().set(scene.getWidth());
             achnopane.getChildren().add(root);

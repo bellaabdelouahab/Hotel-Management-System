@@ -5,12 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "hotel_bd";
-    String password = "hotel";
+    String username = "System";
+    String password = "password";
 
     Connection connection;
     Statement statement;
@@ -42,18 +43,26 @@ public class DataBaseConnection {
         }
         return result;
     }
-    public ResultSet GetSearchedRoom(int[] INTData ,String[] StringData) {
+    public ArrayList<String[]> GetSearchedRoom(int[] INTData ,String[] StringData) {
         try {
             statement = connection.createStatement();
-            String Sql ="SELECT * FROM rooms WHERE NUM_ADUL = "+INTData[0]+"AND NUM_CHILD = "+INTData[1] +"AND CLASSE="+INTData[2]+" AND (PRIX BETWEEN "+INTData[3]+" AND "+INTData[4]+")"+"and DATE_ENTRE between to_date("+StringData[1]+",'MM/DD/YYYY') and to_date("+StringData[1]+",'MM/DD/YYYY'))";
+            //String Sql ="SELECT * FROM rooms WHERE NUM_ADUL = "+INTData[0]+"AND NUM_CHILD = "+INTData[1] +"AND CLASSE="+INTData[2]+" AND (PRIX BETWEEN "+INTData[3]+" AND "+INTData[4]+")"+"and DATE_ENTRE between to_date("+StringData[1]+",'MM/DD/YYYY') and to_date("+StringData[1]+",'MM/DD/YYYY'))";
+            String Sql="select id_room,num_adul,num_child,prix from rooms where (PRIX between "+INTData[3]+" and "+INTData[4]+") and classe="+INTData[2]+" and num_child between 0 and "+INTData[1] +" and num_adul between 1 and "+INTData[0];
             result = statement.executeQuery(Sql);
+            ArrayList<String[]> RoomData = new ArrayList<String[]>();
             while (result.next()) {
-                System.out.println(result.getInt(1)+"\t"+result.getDate(2)+result.getInt(7));
-            }
+                String[] Line = new String[4];
+                Line[0]=(String.valueOf(result.getInt("id_room")));
+                Line[1]=(String.valueOf(result.getInt("num_adul")));
+                Line[2]=(String.valueOf(result.getInt("num_child")));
+                Line[3]=(String.valueOf(result.getInt("prix")));
+                RoomData.add(Line);
+            }   
+            return RoomData;
         } catch (Exception e) {
             System.out.println("ach ahda ahmadi"+e);
+            return null ;
         }
-        return result;
     }
     
     // return count of DashBoard
@@ -80,7 +89,27 @@ public class DataBaseConnection {
             System.out.println("Not Working");
         }
     }
-
+    //Get emailes History
+    public String[] GetEmailesHistory() throws SQLException{
+        statement = connection.createStatement();
+        String rs = "select * from LOGINLOG";
+        result = statement.executeQuery(rs);
+        ArrayList<String> EmailesHistory = new ArrayList<String>();
+        while (result.next()) {
+        EmailesHistory.add(result.getString("Email"));
+        }
+        return EmailesHistory.toArray(new String[EmailesHistory.size()]);
+    }
+    //Add to Emailes History
+    public void AddEmailToHistory(String Email) throws SQLException{
+        statement = connection.createStatement();
+        String[] EmailesHistory = GetEmailesHistory();
+        for (int i = 0; i < EmailesHistory.length;i++){
+            if(EmailesHistory[i].equals(Email))
+            return ;
+        }
+        statement.executeUpdate("INSERT INTO LOGINLOG VALUES('"+ Email+"')");
+    }
     // get all employers accounts
     public ResultSet GetAllEmployers() {
         try {
@@ -178,10 +207,9 @@ public class DataBaseConnection {
 
     public ResultSet Login_employe(String x) {
         try {
-
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String rs = "select * from employee where lower(email)='" + x + "'";
+            String rs = "select * from employee where lower(email)='" + x.toLowerCase() + "'";
             result = statement.executeQuery(rs);
 
         } catch (Exception e) {

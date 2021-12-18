@@ -16,18 +16,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class Client implements Initializable{
     @FXML private Pane ChildPaneXS;
     @FXML private CheckComboBox<String> RoomFeatures;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
+    public Pane ParentPane;
     public Pane ResultPane;
     public void LoadResultForm(ActionEvent e) throws IOException{
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(ResultPane.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue kv = new KeyValue(ResultPane.translateXProperty(), 100, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(ChildPaneXS.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);

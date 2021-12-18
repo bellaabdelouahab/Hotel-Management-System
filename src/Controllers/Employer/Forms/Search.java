@@ -3,6 +3,7 @@ package Controllers.Employer.Forms;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 //Make sure you have added the lib from reference library
 import org.controlsfx.control.Rating;
@@ -18,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -60,7 +60,7 @@ public class Search implements Initializable {
     @FXML 
     private Pane SearchForm;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
+    public Pane ParentPane;
 
     // private String pattern = "dd-MM-yyyy";s
 
@@ -163,27 +163,32 @@ public class Search implements Initializable {
     }
     
     public void LoadResult(ActionEvent e) throws IOException{
-        GetSearchResult();
+        ArrayList<String[]> RoomTableData=GetSearchResult();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Parent root = loader.load();
         Result controller = loader.getController();
         controller.connection=connection;
         controller.ParentPane=ParentPane;
+        controller.init();
+        if(RoomTableData!=null)
+        for (String[] RoomLine : RoomTableData)
+        controller.CreateLineRoom(RoomLine);
         controller.SearchFormPane=SearchForm;
-        controller.Resultroot=root;
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
         ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 100, Interpolator.EASE_IN);
         KeyValue kv1 = new KeyValue(SearchForm.translateXProperty(), -924, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
+        timeline.setOnFinished(t -> {
+            SearchForm.setStyle("-fx-opacity:0");
+        });
         timeline.play();
     }
-    private void GetSearchResult() throws IOException{
+    private ArrayList<String[]> GetSearchResult(){
         int INTData[]=new int[6];
         String StringData[]=new String[2];
         INTData[2]=(int)RatingLable.getRating();
@@ -198,9 +203,10 @@ public class Search implements Initializable {
             INTData[4]=Integer.parseInt(MaxPrice.getText());
         }catch(NumberFormatException e){
             Error_Message.setText("Please enter a valid number");
-            return;
-        }
-        connection.GetSearchedRoom(INTData, StringData);
+            return null;
+        }   
+        System.out.println("aiduf;ojl;k");
+        return connection.GetSearchedRoom(INTData, StringData);
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

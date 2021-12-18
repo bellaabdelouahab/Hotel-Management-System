@@ -1,8 +1,6 @@
 package Controllers.Employer.Forms;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
@@ -12,25 +10,26 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import javafx.scene.control.Label;
 
-public class Result implements Initializable {
+public class Result{
     @FXML private Pane childPanex1;
     public DataBaseConnection connection;
-    public StackPane ParentPane;
-    public Parent root;
-    public Parent Resultroot;
+    public Pane ParentPane;
     public Pane SearchFormPane;
+    @FXML private Pane RoomDataPane;
+    @FXML private VBox VboxRoom;
     public void show_data_test(){
         System.out.println(SearchData.checkindate);
     }
     public void LoadSearchForm(ActionEvent e) throws IOException{
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 0, Interpolator.EASE_OUT);
+        SearchFormPane.setStyle("-fx-opacity:1");
+        KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 100, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
@@ -45,23 +44,28 @@ public class Result implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/Client.fxml"));
         Parent root = loader.load();
         Client controller = loader.getController();
+        ParentPane.setStyle("-fx-background-color: #11111108");
         controller.connection=connection;
         controller.ParentPane=ParentPane;
         controller.ResultPane=childPanex1;
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
         ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
-        KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), -924, Interpolator.EASE_BOTH);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 100, Interpolator.EASE_OUT);
+        KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), -924, Interpolator.EASE_OUT);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.play();
     }
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        
+    public void init() {
+        VboxRoom.getChildren().remove(RoomDataPane);
+    }
+    public void CreateLineRoom(String[] roomLine) {
+        Pane RoomPane =new Pane();
+        RoomPane = (Pane) RoomDataPane.getChildren().get(0);
+        ((Label)RoomPane.getChildren().get(0)).setText(roomLine[0]);
+        VboxRoom.getChildren().add(RoomPane);
     }
 }
