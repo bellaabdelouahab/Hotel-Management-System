@@ -36,13 +36,16 @@ public class DashBoardController{
     public DataBaseConnection connection;
     
     public void init(){
-        ResultSet Resulta = connection.ReturnCount("employee");
+        ResultSet EmResult = connection.ReturnCount("employee");
+        ResultSet RmResult = connection.ReturnCount("rooms");
         try {
 
-            ROOM_ID.setText("200");
-            AMOUNT_ID.setText("4500");
-            Resulta.next();
-            EMPLOYER_ID.setText(String.valueOf(Resulta.getInt("count(*)")));
+            while(RmResult.next()){
+                ROOM_ID.setText(String.valueOf(RmResult.getInt("count(*)")));
+                AMOUNT_ID.setText("4500");
+                EmResult.next();
+                EMPLOYER_ID.setText(String.valueOf(EmResult.getInt("count(*)")));
+            }
 
         } catch (SQLException e) {
             System.out.println("WTF" +e);

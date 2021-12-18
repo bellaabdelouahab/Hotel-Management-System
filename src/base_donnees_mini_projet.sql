@@ -43,7 +43,7 @@ CREATE TABLE reservation(
 alter table reservation DISABLE constraint client_fk;
 alter table reservation add CONSTRAINT client_fk foreign key(cin) REFERENCES client(cin);
 
-insert into reservation values (1,2,'3-10-2021','3-9-2021',2);
+insert into reservation values (1,2,to_date('03/10/2021' , 'dd/mm/yyyy'), to_date('03/09/2021', 'dd/mm/yyyy'),2);
 insert into reservation values (2,2,'13-1-2021','3-12-2020',3);
 insert into reservation values (3,2,'30-7-2021','3-6-2021',3);
 insert into reservation values (4,3,'3-11-2021','3-10-2021',1);
@@ -65,8 +65,9 @@ CREATE TABLE rooms(
     PRIX NUMERIC,
     id_reserv Number(3) 
 );
+
 alter table rooms drop column NUM_ROOM;
-insert into rooms values (1,'3-10-2021','3-11-2021',2,1,3,500,6);
+insert into rooms values (1,to_date('03/10/2021' , 'dd/mm/yyyy'),to_date('03/11/2021' , 'dd/mm/yyyy'),2,1,3,500,1);
 insert into rooms values (2,'13-12-2020','3-1-2021',3,0,4,1000,6);
 insert into rooms values (3,'3-6-2021','30-7-2021',1,0,1,250,3);
 insert into rooms values (4,'3-10-2021','3-11-2021',4,3,5,4000,1);
@@ -78,6 +79,7 @@ insert into rooms values (9,'21-8-2021','23-8-2021',3,1,2,1000,9);
 
 alter table rooms add constraint reserv_fk FOREIGN key(id_reserv) REFERENCES reservation(id_reserv);
 select * from rooms;
+
 create table client(
     cin Varchar2(8) CONSTRAINT client_pk primary key,
     first_name varchar2(12),
@@ -88,6 +90,7 @@ create table client(
     age number(2),
     id_reserv Number(3) 
 );
+
 alter table client add CONSTRAINT reserver_fk foreign key(id_reserv) REFERENCES reservation(id_reserv);
 savepoint A;
 commit ;
@@ -98,7 +101,7 @@ where  C.id_reserv in (select id_reserv from reservation where id_emp=(select id
 and B.id_reserv in (select id_reserv from reservation where id_emp=(select id_emp from employee where lower(email)='yassine@gmail.com'))
 and A.id_emp= (select id_emp from employee where lower(email)='yassine@gmail.com');
 
-insert into client values (1,'omar','hhh','francaise','h','clebatair',20,4);
+insert into client values (1,'omar','hhh','francaise','h','clebatair',20,1);
 insert into client values (2,'ilham','bbb','marocian','f','marie',22,7);
 insert into client values (3,'khalid','jjjj','tunisie','f','devorce',35,2);
 

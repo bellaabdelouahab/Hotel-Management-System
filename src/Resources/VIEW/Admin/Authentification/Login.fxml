@@ -37,13 +37,13 @@
                   <Font size="20.0" />
                </font>
             </PasswordField>
-            <FontAwesomeIconView fill="#202332" glyphName="USER" layoutX="111.0" layoutY="297.0" size="35" wrappingWidth="26.761945724487305" />
-            <FontAwesomeIconView fill="#202332" glyphName="KEY" layoutX="106.0" layoutY="365.0" size="35" />
             <Button layoutX="189.0" layoutY="445.0" mnemonicParsing="false" onAction="#GoToAdminPage" prefHeight="53.0" prefWidth="158.0" styleClass="Admin_login" stylesheets="@../../../CSS/Admin.css" text="Login" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
             </Button>
+            <FontAwesomeIconView fill="#202332" glyphName="USER" layoutX="111.0" layoutY="297.0" size="35" wrappingWidth="26.761945724487305" />
+            <FontAwesomeIconView fill="#202332" glyphName="KEY" layoutX="106.0" layoutY="365.0" size="35" />
             <Hyperlink layoutX="170.0" layoutY="583.0" style="-fx-text-fill: #202332;" text="Forget Your Password ?">
                <font>
                   <Font size="15.0" />

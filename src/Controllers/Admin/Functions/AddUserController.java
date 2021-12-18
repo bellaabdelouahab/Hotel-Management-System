@@ -76,32 +76,30 @@ public class AddUserController {
     void AddUser(ActionEvent event){
         try {
             String Full_name = First_name.getText() +" "+ Last_name.getText();;
-            System.out.println(Full_name);
             String Adress = Adresse.getText();
-            System.out.println(Adress);
-
             String Mail = Email.getText();
-            System.out.println(Mail);
-
             String Pass = Password.getText();
-            System.out.println(Pass);
-
-            //String Con_pass = Con_password.getText();
+            String Con_pass = Con_password.getText();
             String Natio = Nationality.getText();
             int Ag = Integer.parseInt(Age.getText());;
             int sal = Integer.parseInt(Salary.getText());
             int comm = Integer.parseInt(Commission.getText());
             String Phon = Phone.getText();
             String work = Work_type.getText();
-            connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Ag, Phon, sal, comm, work);
-            SwitchToUser(event);
+            if(!String.valueOf(Pass).equals(String.valueOf(Con_pass))){
+                Message.setText("Invalid ! Please Try Again");
+            }
+            else{
+                connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Ag, Phon, sal, comm, work);
+                SwitchToUser(event);
+            }
+            
         } catch (Exception e) {
             System.out.println("Wtf" +e);
         }
     }
 
     void SwitchToUser(ActionEvent event) throws IOException {
-
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
         Parent root = loder.load();
         UserController controller = loder.getController();
@@ -120,6 +118,5 @@ public class AddUserController {
             ChildPane2=(Pane) root;
             controller.CurrentTab=ChildPane2;
         });
-
     }
 }

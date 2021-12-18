@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.DashBoardController">
    <children>
       <AreaChart fx:id="AREACHART" layoutX="-1.0" layoutY="-1.0" legendVisible="false" prefHeight="327.0" prefWidth="721.0">
@@ -21,9 +20,9 @@
             <NumberAxis fx:id="AXIY" forceZeroInRange="false" prefHeight="278.0" prefWidth="0.0" side="LEFT" tickLabelsVisible="false" />
          </yAxis>
       </AreaChart>
-      <Pane layoutY="306.0" prefHeight="246.0" prefWidth="722.0">
+      <Pane layoutY="306.0" prefHeight="286.0" prefWidth="722.0">
          <children>
-            <Label alignment="CENTER" layoutX="-1.0" layoutY="20.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL AMOUNT" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="20.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL CLIENT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -68,7 +67,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Label alignment="CENTER" layoutX="-2.0" layoutY="209.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL AMOUNT" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="-2.0" layoutY="209.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL CLIENT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

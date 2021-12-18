@@ -55,12 +55,13 @@ public class DataBaseConnection {
         }
         return result;
     }
+    
     // return count of DashBoard
     public ResultSet ReturnCount(String Table) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT COUNT(*) FROM " + Table+" WHERE ID_EMP <> 1";
+            String Sql = "SELECT COUNT(*) FROM " + Table;
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -73,8 +74,7 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',EMAIL = '" + EMAIL + "',PASSWORD = '"
-                    + PASSWORD + "',PHONE_NUMBER = '" + PHONE_NUMBER + "'WHERE ID_EMP = 1";
+            String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',EMAIL = '" + EMAIL + "',PASSWORD = '"+ PASSWORD + "',PHONE_NUMBER = '" + PHONE_NUMBER + "'WHERE ID_EMP = 1";
             statement.executeUpdate(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -132,6 +132,19 @@ public class DataBaseConnection {
         } catch (Exception e) {
             System.out.println("No"+e);
         }
+    }
+
+    //get the modify information
+    public ResultSet ModifyInfo(int ID){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM EMPLOYEE WHERE ID_EMP = "+ID;
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No"+e);
+        }
+        return result;
     }
 
     //Disconnect from the Data Base

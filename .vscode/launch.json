@@ -10,7 +10,6 @@
             "mainClass": "Main.App",
             "projectName": "JAVAPROJECT_2807e46f",
             "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
-
         },
         {
             "type": "java",
