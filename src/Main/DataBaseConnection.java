@@ -3,11 +3,12 @@ package Main;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -41,13 +42,25 @@ public class DataBaseConnection {
         }
         return result;
     }
-
+    public ResultSet GetSearchedRoom(int[] INTData ,String[] StringData) {
+        try {
+            statement = connection.createStatement();
+            String Sql ="SELECT * FROM rooms WHERE NUM_ADUL = "+INTData[0]+"AND NUM_CHILD = "+INTData[1] +"AND CLASSE="+INTData[2]+" AND (PRIX BETWEEN "+INTData[3]+" AND "+INTData[4]+")"+"and DATE_ENTRE between to_date("+StringData[1]+",'MM/DD/YYYY') and to_date("+StringData[1]+",'MM/DD/YYYY'))";
+            result = statement.executeQuery(Sql);
+            while (result.next()) {
+                System.out.println(result.getInt(1)+"\t"+result.getDate(2)+result.getInt(7));
+            }
+        } catch (Exception e) {
+            System.out.println("ach ahda ahmadi"+e);
+        }
+        return result;
+    }
     // return count of DashBoard
     public ResultSet ReturnCount(String Table) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT COUNT(*) FROM " + Table;
+            String Sql = "SELECT COUNT(*) FROM " + Table+" WHERE ID_EMP <> 1";
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -73,7 +86,7 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT * FROM EMPLOYEE";
+            String Sql = "SELECT * FROM EMPLOYEE WHERE ID_EMP <> 1";
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -94,6 +107,43 @@ public class DataBaseConnection {
         } catch (Exception e) {
             System.out.println("No" + e);
         }
+    }
+
+
+    //Delete User From Table
+    public void DeleteUser(int ID_EMP){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "DELETE FROM EMPLOYEE WHERE ID_EMP = "+ID_EMP;
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No"+e);
+        }
+    }
+
+    //Modify User From Table
+    public void ModifyUser(String FULL_NAME , String ADRESSE , String EMAIL ,String PASSWORD , String NATIO , int AGE , String PHONE_NUMBER , int SAL , int COMM , String TYPE , int ID){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "UPDATE employee SET FULL_NAME = '"+FULL_NAME+"',ADRESSE = '"+ADRESSE+"',EMAIL = '"+EMAIL+"',PASSWORD = '"+PASSWORD+"',NATIONNALITY = '"+NATIO+"',SEX = 'h',AGE = '"+AGE+"',PHONE_NUMBER = '"+PHONE_NUMBER+"',SALAIRE = "+SAL+",COMMISSION = "+COMM+",TYPE_TRAVAILLE = '"+TYPE+"'WHERE ID_EMP = "+ID;
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No"+e);
+        }
+    }
+
+    //Disconnect from the Data Base
+    public void Disconnect(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            connection.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Problem");
+        }   
     }
 
     // hamza functions

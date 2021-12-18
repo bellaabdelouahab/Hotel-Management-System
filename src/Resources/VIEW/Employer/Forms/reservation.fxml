@@ -5,18 +5,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="achno_reserv" prefHeight="299.0" prefWidth="800.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.reservation_page">
+<Pane fx:id="achno_reserv" maxHeight="299.0" maxWidth="800.0" prefHeight="299.0" prefWidth="800.0" style="-fx-background-color: #11111199;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.reservation_page">
    <children>
-      <ScrollPane layoutX="-3.0" layoutY="-3.0" prefHeight="312.0" prefWidth="833.0" />
-      <TableView fx:id="table_view" layoutX="-2.0" layoutY="-1.0" prefHeight="298.0" prefWidth="812.0">
-         <columns>
-            <TableColumn fx:id="cinCo" prefWidth="123.33333086967468" text="CIN" />
-            <TableColumn fx:id="nomCo" prefWidth="169.99999237060547" text="nom complet" />
-            <TableColumn fx:id="nbrCo" prefWidth="136.66665649414062" text="nombre de chambre" />
-            <TableColumn fx:id="etoileCo" prefWidth="137.77780151367188" text="classe" />
-            <TableColumn fx:id="entrerCo" prefWidth="134.44439697265625" text="date d'entrer" />
-            <TableColumn fx:id="prixCo" prefWidth="136.0" text="Prix" />
-         </columns>
-      </TableView>
+      <ScrollPane layoutX="-3.0" layoutY="-3.0" maxHeight="299.0" maxWidth="833.0" prefHeight="299.0" prefWidth="833.0">
+         <content>
+            <TableView fx:id="table_view" maxHeight="299.0" maxWidth="833.0" prefHeight="287.0" prefWidth="824.0">
+               <columns>
+                  <TableColumn fx:id="cinCo" prefWidth="112.66665661334991" text="CIN" />
+                  <TableColumn fx:id="nomCo" prefWidth="168.66668701171875" text="nom complet" />
+                  <TableColumn fx:id="nbrCo" prefWidth="133.3333740234375" text="nombre de chambre" />
+                  <TableColumn fx:id="etoileCo" prefWidth="135.33331298828125" text="classe" />
+                  <TableColumn fx:id="entrerCo" prefWidth="152.0" text="date d'entrer" />
+                  <TableColumn fx:id="prixCo" prefWidth="110.66668701171875" text="Prix" />
+               </columns>
+            </TableView>
+         </content></ScrollPane>
    </children>
 </Pane>

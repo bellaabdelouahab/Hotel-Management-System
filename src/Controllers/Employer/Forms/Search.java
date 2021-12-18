@@ -9,16 +9,13 @@ import org.controlsfx.control.Rating;
 
 import Main.DataBaseConnection;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -56,6 +53,8 @@ public class Search implements Initializable {
     private TextField MinPrice;
     @FXML
     private TextField MaxPrice;
+    @FXML
+    private Label Error_Message;
     @FXML
     private Button B_ValidateForm1;
     @FXML 
@@ -185,7 +184,23 @@ public class Search implements Initializable {
         timeline.play();
     }
     private void GetSearchResult() throws IOException{
-        
+        int INTData[]=new int[6];
+        String StringData[]=new String[2];
+        INTData[2]=(int)RatingLable.getRating();
+        StringData[0]= CheckInDate.getValue().toString();
+        StringData[1]= CheckOutDate.getValue().toString();
+        try{
+            System.out.println(StringData[0]);
+            INTData[0]=Integer.parseInt(AdultsNbr.getText());
+            INTData[1]=Integer.parseInt(CheldrenNbr.getText());
+            INTData[5]=Integer.parseInt(RoomsNbr.getText());
+            INTData[3]=Integer.parseInt(MinPrice.getText());
+            INTData[4]=Integer.parseInt(MaxPrice.getText());
+        }catch(NumberFormatException e){
+            Error_Message.setText("Please enter a valid number");
+            return;
+        }
+        connection.GetSearchedRoom(INTData, StringData);
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

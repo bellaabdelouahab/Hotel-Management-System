@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="LeaderBoardData" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.AddUserController">
+<Pane fx:id="LeaderBoardData" prefHeight="595.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.ModifyUserController">
    <children>
-      <Pane fx:id="ChildPane2" prefHeight="574.0" prefWidth="717.0">
+      <Pane fx:id="ChildPane3" prefHeight="574.0" prefWidth="717.0">
          <children>
             <Label contentDisplay="CENTER" layoutY="3.0" prefHeight="72.0" prefWidth="358.0" text="GENERALE INFORMATION" textFill="#909090">
                <font>
@@ -82,7 +82,7 @@
                   <Insets left="20.0" />
                </padding>
             </TextField>
-            <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="ADD USER" />
+            <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#ModifyUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="MODIFY USER" />
             <Label fx:id="Message" layoutX="19.0" layoutY="60.0" prefHeight="22.0" prefWidth="319.0" textFill="#06e812" />
          </children>
       </Pane>

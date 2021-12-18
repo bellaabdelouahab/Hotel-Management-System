@@ -12,12 +12,22 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class AddUserController {
-    
-    DataBaseConnection connection = new DataBaseConnection();
+public class ModifyUserController{
 
+    @FXML
+    private Pane ChildPane3;
+
+    @FXML
+    public Pane ParentPane;
+
+    @FXML
+    public Pane LeaderBoardData;
+
+    DataBaseConnection connection = new DataBaseConnection();
+    
     @FXML
     private TextField Adresse;
 
@@ -59,67 +69,49 @@ public class AddUserController {
 
     @FXML
     private TextField Work_type;
-
-    @FXML
-    public Pane ParentPane;
-
-    @FXML
-    public Pane LeaderBoardData;
-
-    @FXML
-    public Pane ChildPane;
+    public int item;
     
-    @FXML
-    public Pane ChildPane2;
 
     @FXML
-    void AddUser(ActionEvent event){
-        try {
-            String Full_name = First_name.getText() +" "+ Last_name.getText();;
-            System.out.println(Full_name);
-            String Adress = Adresse.getText();
-            System.out.println(Adress);
+    void ModifyUser(ActionEvent event) throws IOException {
 
-            String Mail = Email.getText();
-            System.out.println(Mail);
-
-            String Pass = Password.getText();
-            System.out.println(Pass);
-
-            //String Con_pass = Con_password.getText();
-            String Natio = Nationality.getText();
-            int Ag = Integer.parseInt(Age.getText());;
-            int sal = Integer.parseInt(Salary.getText());
-            int comm = Integer.parseInt(Commission.getText());
-            String Phon = Phone.getText();
-            String work = Work_type.getText();
-            connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Ag, Phon, sal, comm, work);
-            SwitchToUser(event);
-        } catch (Exception e) {
-            System.out.println("Wtf" +e);
-        }
+        String First_names = First_name.getText();
+        String Adress = Adresse.getText();
+        String Mail = Email.getText();
+        String Pass = Password.getText();
+        String Natio = Nationality.getText();
+        int ag = Integer.parseInt(Age.getText());
+        String Phon = Phone.getText();
+        int sal = Integer.parseInt(Salary.getText());
+        int Comm = Integer.parseInt(Commission.getText());
+        String Type = Work_type.getText();
+        connection.ModifyUser(First_names, Adress, Mail, Pass, Natio, ag, Phon, sal, Comm, Type, item);
+        SwitchToUser(event);
     }
-
+    
     void SwitchToUser(ActionEvent event) throws IOException {
-
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
         Parent root = loder.load();
         UserController controller = loder.getController();
         controller.connection=connection;
         controller.init();
-        FadeOutLeft FideOut =new FadeOutLeft(ChildPane2);
+        FadeOutLeft FideOut =new FadeOutLeft(ChildPane3);
         FideOut.play();
         FideOut.setOnFinished(e->{
-            LeaderBoardData.getChildren().remove(ChildPane2);
+            LeaderBoardData.getChildren().remove(ChildPane3);
             
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
         animate.setOnFinished(e->{
-            ChildPane2=(Pane) root;
-            controller.CurrentTab=ChildPane2;
+            ChildPane3=(Pane) root;
+            controller.CurrentTab=ChildPane3;
         });
+    }
+
+    @FXML
+    void SwitchToDashBoard(MouseEvent event) {
 
     }
 }

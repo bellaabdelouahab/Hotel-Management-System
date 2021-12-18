@@ -36,7 +36,11 @@ public class ProfileController{
     
     @FXML
     private VBox AdminMenu;
+    
+    @FXML
     public Pane ParentPane;
+    
+    @FXML
     public Pane LeaderBoardData;
 
     
