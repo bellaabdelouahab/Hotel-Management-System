@@ -16,36 +16,42 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.Node;
 public class UserController{
 
-    DataBaseConnection connection;
+    DataBaseConnection connection = new DataBaseConnection();
 
-    private Parent root;
     @FXML
     private TableView<User> USERSTABLE;
 
     @FXML
-    private TableColumn<User, Integer> ID;
-
-    @FXML
-    private TableColumn<User, String> NAME;
-
-    @FXML
-    private TableColumn<User, String> LAST_NAME;
+    private TableColumn<User, String> FULL_NAME;
 
     @FXML
     private TableColumn<User, String> ADRESSE;
+
+    @FXML
+    private TableColumn<User, String> EMAIL;
 
     @FXML
     private TableColumn<User, Integer> SALARY;
 
     @FXML
     private TableColumn<User, Integer> COMMISSION;
+
+    @FXML
+    private TableColumn<User, String> WORK_TYPE;
+
     public Pane CurrentTab;
+
     @FXML
     public Pane LeaderBoardData;
-    public Pane ChildUser;
+
+    @FXML
+    private Pane ChildPane;
 
     void init() {    
         ResultSet Lest = connection.GetAllEmployers();    
@@ -53,46 +59,85 @@ public class UserController{
         try {
             
             while(Lest.next()){            
-                List.add(new User(Lest.getInt("ID_EMP") , Lest.getString("FULL_NAME") , Lest.getString("PASSWORD") , Lest.getString("ADRESSE") , Lest.getInt("SALAIRE") , Lest.getInt("COMMISSION"))); 
+                List.add(new User(Lest.getInt("ID_EMP") , Lest.getString("FULL_NAME") , Lest.getString("ADRESSE") ,Lest.getString("EMAIL"), Lest.getInt("SALAIRE") , Lest.getInt("COMMISSION") , Lest.getString("type_travaille"))); 
             };  
 
         } catch (SQLException e) {
-            System.out.println("No Data Found");
+            System.out.println("No Data Found"+e);
         }
         
-            // AdminMenu.setVisible(false);
-            ID.setCellValueFactory(new PropertyValueFactory<User , Integer>("id"));
-            NAME.setCellValueFactory(new PropertyValueFactory<User , String>("Name"));
-            LAST_NAME.setCellValueFactory(new PropertyValueFactory<User , String>("Last"));
-            ADRESSE.setCellValueFactory(new PropertyValueFactory<User , String>("Adresse"));
-            SALARY.setCellValueFactory(new PropertyValueFactory<User , Integer>("Salary"));
-            COMMISSION.setCellValueFactory(new PropertyValueFactory<User , Integer>("Commission"));
+        FULL_NAME.setCellValueFactory(new PropertyValueFactory<User , String>("FullName"));
+        ADRESSE.setCellValueFactory(new PropertyValueFactory<User , String>("Adresse"));
+        EMAIL.setCellValueFactory(new PropertyValueFactory<User , String>("Email"));
+        SALARY.setCellValueFactory(new PropertyValueFactory<User , Integer>("Salary"));
+        COMMISSION.setCellValueFactory(new PropertyValueFactory<User , Integer>("Commission"));
+        WORK_TYPE.setCellValueFactory(new PropertyValueFactory<User , String>("WorkType"));
 
-            USERSTABLE.setItems(List);
+        USERSTABLE.setItems(List);
+    }
+    Stage stage;
+    Scene scene;
+
+    public Pane ParentPane;
+
+    @FXML
+    void DeleteUser(MouseEvent event) throws IOException{
+
+        User test = USERSTABLE.getSelectionModel().getSelectedItem();
+        connection.DeleteUser(test.getId());
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
+        Parent root = loder.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        UserController controller = loder.getController();
+        controller.LeaderBoardData = LeaderBoardData;
+        controller.ParentPane = ParentPane;
+        LeaderBoardData.getChildren().remove(root);
+        LeaderBoardData.getChildren().add(root);
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void DeleteUser(MouseEvent event) {
-    }
-
-    @FXML
-    void SwitchToAddUser(MouseEvent event) throws IOException {
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
-        root = loder.load();
-        AddUserController controller = loder.getController();
-        controller.LeaderBoardData=LeaderBoardData;
-        FadeOutLeft FideOut =new FadeOutLeft(ChildUser);
+    public void GoToModify(MouseEvent event) throws IOException{
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
+        Parent root = loder.load();
+        User test = USERSTABLE.getSelectionModel().getSelectedItem();
+        ModifyUserController controller = loder.getController();
+        controller.item = test.getId();
+        controller.connection=connection;
+        FadeOutLeft FideOut =new FadeOutLeft(ChildPane);
         FideOut.play();
         FideOut.setOnFinished(e->{
-            LeaderBoardData.getChildren().remove(ChildUser);
-            
+            LeaderBoardData.getChildren().remove(ChildPane);
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
         animate.setOnFinished(e->{
-            ChildUser=(Pane) root;
-            controller.ChildUser=ChildUser;
+            CurrentTab=(Pane) root; 
+        });
+    
+    }
+
+    @FXML
+    void SwitchToAddUser(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+        Parent root = loder.load();
+        AddUserController controller = loder.getController();
+        controller.ChildPane=ChildPane;
+        controller.connection=connection;
+        FadeOutLeft FideOut =new FadeOutLeft(ChildPane);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(ChildPane);
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root; 
         });
     }
+
 }

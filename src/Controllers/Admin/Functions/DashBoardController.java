@@ -27,15 +27,13 @@ public class DashBoardController{
     @FXML Label EMPLOYER_ID;
 
     @FXML Label ROOM_ID;
-
-    // @FXML
-    // private VBox AdminMenu;
+    
     @FXML
     private AnchorPane ChiledStage;
+    
     public Pane ParentPane;
 
     public DataBaseConnection connection;
-    
     
     public void init(){
         ResultSet Resulta = connection.ReturnCount("employee");
@@ -50,8 +48,6 @@ public class DashBoardController{
             System.out.println("WTF" +e);
         }
         
-        // AdminMenu.setVisible(false);
-
         XYChart.Series<String , Double > serie1 = new XYChart.Series<String , Double>();
         serie1.setName("Amount");
         serie1.getData().add(new XYChart.Data<String , Double>("JAN" , 110.0));

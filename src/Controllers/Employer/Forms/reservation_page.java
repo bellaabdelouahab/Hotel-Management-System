@@ -1,7 +1,6 @@
 package Controllers.Employer.Forms;
 
 import java.sql.*;
-import java.util.Arrays;
 import java.util.Date;
 
 import Main.DataBaseConnection;
