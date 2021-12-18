@@ -69,7 +69,7 @@ public class Home {
         Profile controller = loader.getController();
         controller.connection = connection;
         controller.compte = compte;
-        controller.HomeProfilePicture=ProfilePicture;
+        controller.HomeProfilePicture = ProfilePicture;
         controller.FillProfileData();
         root.translateXProperty().set(1024);
         parentContainer.getChildren().add(root);
@@ -82,7 +82,8 @@ public class Home {
 
     public void ShowSearchForm() throws IOException {
         AcountMenuHide();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../../Resources/VIEW/Employer/Forms/SearchRoom.fxml"));
         this.root = loader.load();
         Search controller = loader.getController();
         controller.connection=connection;
@@ -130,6 +131,9 @@ public class Home {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));
         Parent root = loader.load();
+        if (parentContainer.getChildren().contains(root)) {
+            return;
+        }
         reservation_page controller = loader.getController();
         controller.connection = connection;
         controller.compte = compte;
