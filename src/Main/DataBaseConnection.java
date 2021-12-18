@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import oracle.net.aso.i;
 
 public class DataBaseConnection {
 
@@ -80,7 +83,30 @@ public class DataBaseConnection {
             System.out.println("Not Working");
         }
     }
-
+    //Get emailes History
+    public String[] GetEmailesHistory() throws SQLException{
+        statement = connection.createStatement();
+        String rs = "select * from LOGINLOG";
+        result = statement.executeQuery(rs);
+        ArrayList<String> EmailesHistory = new ArrayList<String>();
+        while (result.next()) {
+        EmailesHistory.add(result.getString("Email"));
+        }
+        for(String Email : EmailesHistory){
+            System.out.println("Email: " + Email);
+        }
+        return EmailesHistory.toArray(new String[EmailesHistory.size()]);
+    }
+    //Add to Emailes History
+    public void AddEmailToHistory(String Email) throws SQLException{
+        statement = connection.createStatement();
+        String[] EmailesHistory = GetEmailesHistory();
+        for (int i = 0; i < EmailesHistory.length;i++){
+            if(EmailesHistory[i].equals(Email))
+            return ;
+        }
+        statement.executeUpdate("INSERT INTO LOGINLOG VALUES('"+ Email+"')");
+    }
     // get all employers accounts
     public ResultSet GetAllEmployers() {
         try {

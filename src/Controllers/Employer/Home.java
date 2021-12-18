@@ -5,11 +5,17 @@ import javafx.scene.Parent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import java.sql.SQLException;
 
+import org.controlsfx.control.textfield.TextFields;
+
+import animatefx.animation.FadeIn;
+import Controllers.Employer.Authentification.Login;
 import Controllers.Employer.Authentification.Profile;
 import Controllers.Employer.Forms.Search;
 import Controllers.Employer.Forms.reservation_page;
@@ -36,6 +42,7 @@ public class Home {
     public String compte;
     @FXML
     public Pane HomePane;
+    public AnchorPane achnopane;
 
     public void AcountMenuShow() {
         AccountMenu.setVisible(true);
@@ -135,5 +142,15 @@ public class Home {
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
+    }
+    public void LogOut() throws IOException, SQLException{
+        achnopane.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        Parent root = loader.load();
+        Login controller = loader.getController();
+        controller.connection=connection;
+        TextFields.bindAutoCompletion(controller.email_text, connection.GetEmailesHistory());
+        achnopane.getChildren().add(root);
+        new FadeIn(root).play();
     }
 }

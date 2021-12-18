@@ -179,6 +179,9 @@ public class Search implements Initializable {
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
+        timeline.setOnFinished(t -> {
+            SearchForm.setStyle("-fx-opacity:0");
+        });
         timeline.play();
     }
     private void GetSearchResult() throws IOException{

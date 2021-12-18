@@ -54,12 +54,12 @@
                   </GNAvatarView>
                </graphic>
             </Button>
-            <Pane fx:id="HomePane" layoutY="200.0" prefHeight="440.0" prefWidth="1024.0" style="-fx-background-color: #11111155;" />
+            <Pane fx:id="HomePane" layoutY="200.0" prefHeight="440.0" prefWidth="1024.0" style="-fx-background-color: #11111108;" />
             <VBox fx:id="AccountMenu" layoutY="63.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="107.0" prefWidth="174.0">
                <children>
                   <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Profile" />
                   <Button fx:id="reservation_label" mnemonicParsing="false" onAction="#reservation" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Effected Reservations" />
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Sign out" />
+                  <Button mnemonicParsing="false" onAction="#LogOut" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Sign out" />
                </children>
             </VBox>
          </children>

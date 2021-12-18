@@ -27,7 +27,7 @@ public class Client implements Initializable{
     public Pane ResultPane;
     public void LoadResultForm(ActionEvent e) throws IOException{
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(ResultPane.translateXProperty(), 0, Interpolator.EASE_OUT);
+        KeyValue kv = new KeyValue(ResultPane.translateXProperty(), 100, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(ChildPaneXS.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
