@@ -20,6 +20,6 @@
         }
     ]
 }
-//  "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml"
+//  "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
 // vmargs pour settinig de git onta ahamza 3ti hadchi btissa3
 
