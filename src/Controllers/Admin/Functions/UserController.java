@@ -19,8 +19,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.Node;
-public class UserController{
+
+public class UserController {
 
     DataBaseConnection connection = new DataBaseConnection();
 
@@ -53,90 +53,97 @@ public class UserController{
     @FXML
     private Pane ChildPane;
 
-    void init() {    
-        ResultSet Lest = connection.GetAllEmployers();    
+    void init() {
+        ResultSet Lest = connection.GetAllEmployers();
         ObservableList<User> List = FXCollections.observableArrayList();
         try {
-            
-            while(Lest.next()){            
-                List.add(new User(Lest.getInt("ID_EMP") , Lest.getString("FULL_NAME") , Lest.getString("ADRESSE") ,Lest.getString("EMAIL"), Lest.getInt("SALAIRE") , Lest.getInt("COMMISSION") , Lest.getString("type_travaille"))); 
-            };  
+
+            while (Lest.next()) {
+                List.add(new User(Lest.getInt("ID_EMP"), Lest.getString("FULL_NAME"), Lest.getString("ADRESSE"),
+                        Lest.getString("EMAIL"), Lest.getInt("SALAIRE"), Lest.getInt("COMMISSION"),
+                        Lest.getString("type_travaille")));
+            }
+            ;
 
         } catch (SQLException e) {
-            System.out.println("No Data Found"+e);
+            System.out.println("No Data Found" + e);
         }
-        
-        FULL_NAME.setCellValueFactory(new PropertyValueFactory<User , String>("FullName"));
-        ADRESSE.setCellValueFactory(new PropertyValueFactory<User , String>("Adresse"));
-        EMAIL.setCellValueFactory(new PropertyValueFactory<User , String>("Email"));
-        SALARY.setCellValueFactory(new PropertyValueFactory<User , Integer>("Salary"));
-        COMMISSION.setCellValueFactory(new PropertyValueFactory<User , Integer>("Commission"));
-        WORK_TYPE.setCellValueFactory(new PropertyValueFactory<User , String>("WorkType"));
+
+        FULL_NAME.setCellValueFactory(new PropertyValueFactory<User, String>("FullName"));
+        ADRESSE.setCellValueFactory(new PropertyValueFactory<User, String>("Adresse"));
+        EMAIL.setCellValueFactory(new PropertyValueFactory<User, String>("Email"));
+        SALARY.setCellValueFactory(new PropertyValueFactory<User, Integer>("Salary"));
+        COMMISSION.setCellValueFactory(new PropertyValueFactory<User, Integer>("Commission"));
+        WORK_TYPE.setCellValueFactory(new PropertyValueFactory<User, String>("WorkType"));
 
         USERSTABLE.setItems(List);
     }
+
     Stage stage;
     Scene scene;
 
     public Pane ParentPane;
 
     @FXML
-    void DeleteUser(MouseEvent event) throws IOException{
+    void DeleteUser(MouseEvent event) throws IOException {
 
         User test = USERSTABLE.getSelectionModel().getSelectedItem();
         connection.DeleteUser(test.getId());
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
-        Parent root = loder.load();
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        UserController controller = loder.getController();
-        controller.LeaderBoardData = LeaderBoardData;
-        controller.ParentPane = ParentPane;
-        LeaderBoardData.getChildren().remove(root);
-        LeaderBoardData.getChildren().add(root);
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        // FXMLLoader loder = new
+        // FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
+        // Parent root = loder.load();
+        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        // UserController controller = loder.getController();
+        // controller.LeaderBoardData = LeaderBoardData;
+        // controller.ParentPane = ParentPane;
+        // LeaderBoardData.getChildren().remove(root);
+        // LeaderBoardData.getChildren().add(root);
+        // scene = new Scene(root);
+        // stage.setScene(scene);
+        // stage.show();
     }
 
     @FXML
-    public void GoToModify(MouseEvent event) throws IOException{
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
+    public void GoToModify(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
         Parent root = loder.load();
         User test = USERSTABLE.getSelectionModel().getSelectedItem();
         ModifyUserController controller = loder.getController();
         controller.item = test.getId();
-        controller.connection=connection;
-        FadeOutLeft FideOut =new FadeOutLeft(ChildPane);
+        controller.connection = connection;
+        FadeOutLeft FideOut = new FadeOutLeft(ChildPane);
         FideOut.play();
-        FideOut.setOnFinished(e->{
+        FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(ChildPane);
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root; 
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
         });
-    
+
     }
 
     @FXML
     void SwitchToAddUser(MouseEvent event) throws IOException {
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         Parent root = loder.load();
         AddUserController controller = loder.getController();
-        controller.ChildPane=ChildPane;
-        controller.connection=connection;
-        FadeOutLeft FideOut =new FadeOutLeft(ChildPane);
+        controller.ChildPane = ChildPane;
+        controller.connection = connection;
+        FadeOutLeft FideOut = new FadeOutLeft(ChildPane);
         FideOut.play();
-        FideOut.setOnFinished(e->{
+        FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(ChildPane);
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root; 
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
         });
     }
 

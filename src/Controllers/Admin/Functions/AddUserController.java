@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 public class AddUserController {
-    
+
     DataBaseConnection connection = new DataBaseConnection();
 
     @FXML
@@ -68,27 +68,21 @@ public class AddUserController {
 
     @FXML
     public Pane ChildPane;
-    
+
     @FXML
     public Pane ChildPane2;
 
     @FXML
-    void AddUser(ActionEvent event){
+    void AddUser(ActionEvent event) {
         try {
-            String Full_name = First_name.getText() +" "+ Last_name.getText();;
+            String Full_name = First_name.getText() + " " + Last_name.getText();
             System.out.println(Full_name);
             String Adress = Adresse.getText();
-            System.out.println(Adress);
-
             String Mail = Email.getText();
-            System.out.println(Mail);
-
             String Pass = Password.getText();
-            System.out.println(Pass);
-
-            //String Con_pass = Con_password.getText();
+            // String Con_pass = Con_password.getText();
             String Natio = Nationality.getText();
-            int Ag = Integer.parseInt(Age.getText());;
+            int Ag = Integer.parseInt(Age.getText());
             int sal = Integer.parseInt(Salary.getText());
             int comm = Integer.parseInt(Commission.getText());
             String Phon = Phone.getText();
@@ -96,7 +90,7 @@ public class AddUserController {
             connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Ag, Phon, sal, comm, work);
             SwitchToUser(event);
         } catch (Exception e) {
-            System.out.println("Wtf" +e);
+            System.out.println("Wtf" + e);
         }
     }
 
@@ -105,20 +99,20 @@ public class AddUserController {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
         Parent root = loder.load();
         UserController controller = loder.getController();
-        controller.connection=connection;
+        controller.connection = connection;
         controller.init();
-        FadeOutLeft FideOut =new FadeOutLeft(ChildPane2);
+        FadeOutLeft FideOut = new FadeOutLeft(ChildPane2);
         FideOut.play();
-        FideOut.setOnFinished(e->{
+        FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(ChildPane2);
-            
+
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            ChildPane2=(Pane) root;
-            controller.CurrentTab=ChildPane2;
+        animate.setOnFinished(e -> {
+            ChildPane2 = (Pane) root;
+            controller.CurrentTab = ChildPane2;
         });
 
     }

@@ -58,7 +58,8 @@ public class FirstPageConroller implements Initializable{
         ParentPane.getChildren().add(root);
         new FadeInRightBig(root).play();
     }
-    public void CloseWindow(){
+    public void CloseWindow() {
+        Connection.Disconnect();
         Stage stage = (Stage)ParentPane.getScene().getWindow();
         stage.close();
     }

@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
 
