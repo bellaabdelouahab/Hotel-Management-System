@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import oracle.net.aso.i;
+
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -48,7 +50,6 @@ public class DataBaseConnection {
             statement = connection.createStatement();
             String Sql ="SELECT * FROM rooms WHERE NUM_ADUL = "+INTData[0]+"AND NUM_CHILD = "+INTData[1] +"AND CLASSE="+INTData[2]+" AND (PRIX BETWEEN "+INTData[3]+" AND "+INTData[4]+")"+"and DATE_ENTRE between to_date("+StringData[1]+",'MM/DD/YYYY') and to_date("+StringData[1]+",'MM/DD/YYYY'))";
             result = statement.executeQuery(Sql);
-            String statment="select id_room,num_adul,num_child,prix from rooms where (PRIX between 0 and 500) and classe=3 and num_child between 0 and 2 and num_adul between 1 and 2";
             while (result.next()) {
                 System.out.println(result.getInt(1)+"\t"+result.getDate(2)+result.getInt(7));
             }

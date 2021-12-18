@@ -13,13 +13,6 @@
         },
         {
             "type": "java",
-            "name": "Launch DataBaseConnection",
-            "request": "launch",
-            "mainClass": "DataBaseConnection",
-            "projectName": "JavaProject_7a54a8d7"
-        },
-        {
-            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
