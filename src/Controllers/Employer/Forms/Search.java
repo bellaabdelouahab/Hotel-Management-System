@@ -3,6 +3,7 @@ package Controllers.Employer.Forms;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 //Make sure you have added the lib from reference library
 import org.controlsfx.control.Rating;
@@ -151,7 +152,6 @@ public class Search implements Initializable {
 
     public void ClearForm1() {
         CheckInDate.setValue(null);
-        ;
         CheckOutDate.setValue(null);
         RatingLable.setRating(0);
         MaxPrice.setText(null);
@@ -162,7 +162,7 @@ public class Search implements Initializable {
     }
     
     public void LoadResult(ActionEvent e) throws IOException{
-        GetSearchResult();
+        ArrayList<String[]> resultat= GetSearchResult();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Parent root = loader.load();
         Result controller = loader.getController();
@@ -183,7 +183,7 @@ public class Search implements Initializable {
         });
         timeline.play();
     }
-    private void GetSearchResult(){
+    private ArrayList<String[]> GetSearchResult(){
         int INTData[]=new int[6];
         String StringData[]=new String[2];
         INTData[2]=(int)RatingLable.getRating();
@@ -198,14 +198,14 @@ public class Search implements Initializable {
             INTData[4]=Integer.parseInt(MaxPrice.getText());
         }catch(NumberFormatException e){
             Error_Message.setText("Please enter a valid number");
-            return;
+            return null;
         }   
         System.out.println("aiduf;ojl;k");
-        connection.GetSearchedRoom(INTData, StringData);
+        return connection.GetSearchedRoom(INTData, StringData);
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        LocalDate date = LocalDate.of(2020, 1, 8);
+        LocalDate date = LocalDate.now();//LocalDate.of(2020, 1, 8);
         CheckInDate.setValue(date);
 
     }

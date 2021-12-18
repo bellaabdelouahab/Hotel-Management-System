@@ -1,15 +1,17 @@
 package Main;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -43,33 +45,37 @@ public class DataBaseConnection {
         }
         return result;
     }
-    public ArrayList<String[]> GetSearchedRoom(int[] INTData ,String[] StringData) {
+
+    public ArrayList<String[]> GetSearchedRoom(int[] INTData, String[] StringData) {
         try {
             statement = connection.createStatement();
-            //String Sql ="SELECT * FROM rooms WHERE NUM_ADUL = "+INTData[0]+"AND NUM_CHILD = "+INTData[1] +"AND CLASSE="+INTData[2]+" AND (PRIX BETWEEN "+INTData[3]+" AND "+INTData[4]+")"+"and DATE_ENTRE between to_date("+StringData[1]+",'MM/DD/YYYY') and to_date("+StringData[1]+",'MM/DD/YYYY'))";
-            String Sql="select id_room,num_adul,num_child,prix from rooms where (PRIX between "+INTData[3]+" and "+INTData[4]+") and classe="+INTData[2]+" and num_child between 0 and "+INTData[1] +" and num_adul between 1 and "+INTData[0];
+            String Sql = "select id_room,num_adul,num_child,prix from rooms where (PRIX between " + INTData[3] + " and "
+                    + INTData[4] + ") and classe=" + INTData[2] + " and (num_child between 0 and " + INTData[1]
+                    + ") and (num_adul between 1 and " + INTData[0] + ")";
             result = statement.executeQuery(Sql);
             ArrayList<String[]> RoomData = new ArrayList<String[]>();
             while (result.next()) {
                 String[] Line = new String[4];
-                Line[0]=(String.valueOf(result.getInt("id_room")));
-                Line[1]=(String.valueOf(result.getInt("num_adul")));
-                Line[2]=(String.valueOf(result.getInt("num_child")));
-                Line[3]=(String.valueOf(result.getInt("prix")));
+                Line[0] = (String.valueOf(result.getInt("id_room")));
+                Line[1] = (String.valueOf(result.getInt("num_adul")));
+                Line[2] = (String.valueOf(result.getInt("num_child")));
+                Line[3] = (String.valueOf(result.getInt("prix")));
                 RoomData.add(Line);
-            }   
+                System.out.println(Arrays.toString(Line));
+            }
             return RoomData;
         } catch (Exception e) {
-            System.out.println("ach ahda ahmadi"+e);
-            return null ;
+            System.out.println("ach ahda ahmadi\t" + e);
+            return null;
         }
     }
+
     // return count of DashBoard
     public ResultSet ReturnCount(String Table) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT COUNT(*) FROM " + Table+" WHERE ID_EMP <> 1";
+            String Sql = "SELECT COUNT(*) FROM " + Table + " WHERE ID_EMP <> 1";
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -89,30 +95,33 @@ public class DataBaseConnection {
             System.out.println("Not Working");
         }
     }
-    //Get emailes History
-    public String[] GetEmailesHistory() throws SQLException{
+
+    // Get emailes History
+    public String[] GetEmailesHistory() throws SQLException {
         statement = connection.createStatement();
         String rs = "select * from LOGINLOG";
         result = statement.executeQuery(rs);
         ArrayList<String> EmailesHistory = new ArrayList<String>();
         while (result.next()) {
-        EmailesHistory.add(result.getString("Email"));
+            EmailesHistory.add(result.getString("Email"));
         }
-        for(String Email : EmailesHistory){
+        for (String Email : EmailesHistory) {
             System.out.println("Email: " + Email);
         }
         return EmailesHistory.toArray(new String[EmailesHistory.size()]);
     }
-    //Add to Emailes History
-    public void AddEmailToHistory(String Email) throws SQLException{
+
+    // Add to Emailes History
+    public void AddEmailToHistory(String Email) throws SQLException {
         statement = connection.createStatement();
         String[] EmailesHistory = GetEmailesHistory();
-        for (int i = 0; i < EmailesHistory.length;i++){
-            if(EmailesHistory[i].equals(Email))
-            return ;
+        for (int i = 0; i < EmailesHistory.length; i++) {
+            if (EmailesHistory[i].equals(Email))
+                return;
         }
-        statement.executeUpdate("INSERT INTO LOGINLOG VALUES('"+ Email+"')");
+        statement.executeUpdate("INSERT INTO LOGINLOG VALUES('" + Email + "')");
     }
+
     // get all employers accounts
     public ResultSet GetAllEmployers() {
         try {
@@ -141,33 +150,36 @@ public class DataBaseConnection {
         }
     }
 
-
-    //Delete User From Table
-    public void DeleteUser(int ID_EMP){
+    // Delete User From Table
+    public void DeleteUser(int ID_EMP) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "DELETE FROM EMPLOYEE WHERE ID_EMP = "+ID_EMP;
+            String Sql = "DELETE FROM EMPLOYEE WHERE ID_EMP = " + ID_EMP;
             statement.executeUpdate(Sql);
         } catch (Exception e) {
-            System.out.println("No"+e);
+            System.out.println("No" + e);
         }
     }
 
-    //Modify User From Table
-    public void ModifyUser(String FULL_NAME , String ADRESSE , String EMAIL ,String PASSWORD , String NATIO , int AGE , String PHONE_NUMBER , int SAL , int COMM , String TYPE , int ID){
+    // Modify User From Table
+    public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, int AGE,
+            String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "UPDATE employee SET FULL_NAME = '"+FULL_NAME+"',ADRESSE = '"+ADRESSE+"',EMAIL = '"+EMAIL+"',PASSWORD = '"+PASSWORD+"',NATIONNALITY = '"+NATIO+"',SEX = 'h',AGE = '"+AGE+"',PHONE_NUMBER = '"+PHONE_NUMBER+"',SALAIRE = "+SAL+",COMMISSION = "+COMM+",TYPE_TRAVAILLE = '"+TYPE+"'WHERE ID_EMP = "+ID;
+            String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',ADRESSE = '" + ADRESSE + "',EMAIL = '"
+                    + EMAIL + "',PASSWORD = '" + PASSWORD + "',NATIONNALITY = '" + NATIO + "',SEX = 'h',AGE = '" + AGE
+                    + "',PHONE_NUMBER = '" + PHONE_NUMBER + "',SALAIRE = " + SAL + ",COMMISSION = " + COMM
+                    + ",TYPE_TRAVAILLE = '" + TYPE + "'WHERE ID_EMP = " + ID;
             statement.executeUpdate(Sql);
         } catch (Exception e) {
-            System.out.println("No"+e);
+            System.out.println("No" + e);
         }
     }
 
-    //Disconnect from the Data Base
-    public void Disconnect(){
+    // Disconnect from the Data Base
+    public void Disconnect() {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
@@ -175,7 +187,7 @@ public class DataBaseConnection {
             statement.close();
         } catch (SQLException e) {
             System.out.println("Problem");
-        }   
+        }
     }
 
     // hamza functions
@@ -271,13 +283,47 @@ public class DataBaseConnection {
                     + "')) and B.id_reserv in (select id_reserv from reservation where id_emp=(select id_emp from employee where lower(email)='"
                     + x + "')) and A.id_emp= (select id_emp from employee where lower(email)='" + x + "')";
             result = statement.executeQuery(rs);
-            // while (result.next()) {
-            // System.out.println(result.getInt(1) + "\n" + result.getString(2) + "\n" +
-            // result.getInt(3));
-            // }
         } catch (Exception e) {
             System.out.println("Aha ahmadi" + e);
         }
         return result;
+    }
+
+    // add client
+    public int addClient(String f_name, String l_name, String natio, String sex, String etat, int age) throws Exception{
+            int y=0, rs;
+            statement = connection.createStatement();
+            ResultSet x = statement.executeQuery("select count(cin) as co from client");
+            while (x.next()) {
+                y = x.getInt("co");
+            }
+            String cmd = "insert into client values(" + (y + 1) + ",'" + f_name.toLowerCase() + "','"
+                    + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" + sex.toLowerCase() + "','"
+                    + etat.toLowerCase() + "'," + age + "," + "hna dyal reservation" + ")";
+            rs = statement.executeUpdate(cmd);
+            return rs;   
+    }
+
+    //add reservation
+    public int addClient(String compt, Date sortir, Date entrer, int cin) throws Exception{
+        int y=0, rs;
+        statement = connection.createStatement();
+        ResultSet x = statement.executeQuery("select Distinct A.id_emp from reservation A,employee B where A.id_emp =B.id_emp and lower(B.email)='"+compt.toLowerCase()+"'");
+        while (x.next()) {
+            y = x.getInt(1);
+        }
+        String cmd = "insert into client values(" + (co() + 1) + "," + y + ","+sortir+ "," +entrer +"," + cin+")";
+        rs = statement.executeUpdate(cmd);
+        return rs;   
+    }
+
+    public int co() throws Exception{
+            int y=0;
+            statement = connection.createStatement();
+            ResultSet x = statement.executeQuery("select count(id_reserv) as co from reservation");
+            while (x.next()) {
+                y = x.getInt("co");
+            }
+            return y;
     }
 }
