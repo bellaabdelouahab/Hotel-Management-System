@@ -1,8 +1,6 @@
 package Controllers.Employer.Forms;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
@@ -12,16 +10,19 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import javafx.scene.control.Label;
 
-public class Result implements Initializable {
+public class Result{
     @FXML private Pane childPanex1;
     public DataBaseConnection connection;
     public Pane ParentPane;
     public Pane SearchFormPane;
+    @FXML private Pane RoomDataPane;
+    @FXML private VBox VboxRoom;
     public void show_data_test(){
         System.out.println(SearchData.checkindate);
     }
@@ -58,8 +59,13 @@ public class Result implements Initializable {
         timeline.getKeyFrames().add(kf1);
         timeline.play();
     }
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        
+    public void init() {
+        VboxRoom.getChildren().remove(RoomDataPane);
+    }
+    public void CreateLineRoom(String[] roomLine) {
+        Pane RoomPane =new Pane();
+        RoomPane = (Pane) RoomDataPane.getChildren().get(0);
+        ((Label)RoomPane.getChildren().get(0)).setText(roomLine[0]);
+        VboxRoom.getChildren().add(RoomPane);
     }
 }

@@ -3,6 +3,7 @@ package Controllers.Employer.Forms;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 //Make sure you have added the lib from reference library
 import org.controlsfx.control.Rating;
@@ -162,12 +163,16 @@ public class Search implements Initializable {
     }
     
     public void LoadResult(ActionEvent e) throws IOException{
-        GetSearchResult();
+        ArrayList<String[]> RoomTableData=GetSearchResult();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Parent root = loader.load();
         Result controller = loader.getController();
         controller.connection=connection;
         controller.ParentPane=ParentPane;
+        controller.init();
+        if(RoomTableData!=null)
+        for (String[] RoomLine : RoomTableData)
+        controller.CreateLineRoom(RoomLine);
         controller.SearchFormPane=SearchForm;
         root.translateXProperty().set(1024);
         ParentPane.getChildren().add(root);
@@ -183,7 +188,7 @@ public class Search implements Initializable {
         });
         timeline.play();
     }
-    private void GetSearchResult(){
+    private ArrayList<String[]> GetSearchResult(){
         int INTData[]=new int[6];
         String StringData[]=new String[2];
         INTData[2]=(int)RatingLable.getRating();
@@ -198,10 +203,10 @@ public class Search implements Initializable {
             INTData[4]=Integer.parseInt(MaxPrice.getText());
         }catch(NumberFormatException e){
             Error_Message.setText("Please enter a valid number");
-            return;
+            return null;
         }   
         System.out.println("aiduf;ojl;k");
-        connection.GetSearchedRoom(INTData, StringData);
+        return connection.GetSearchedRoom(INTData, StringData);
     }
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

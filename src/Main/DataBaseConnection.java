@@ -98,9 +98,6 @@ public class DataBaseConnection {
         while (result.next()) {
         EmailesHistory.add(result.getString("Email"));
         }
-        for(String Email : EmailesHistory){
-            System.out.println("Email: " + Email);
-        }
         return EmailesHistory.toArray(new String[EmailesHistory.size()]);
     }
     //Add to Emailes History
