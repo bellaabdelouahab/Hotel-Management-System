@@ -13,7 +13,6 @@ import Controllers.Employer.Authentification.Login;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeOutLeft;
-import impl.org.controlsfx.skin.AutoCompletePopup;
 import javafx.animation.FadeTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -36,7 +35,6 @@ public class FirstPageConroller implements Initializable{
     private Pane ChiledStage;
     @FXML
     private Pane header;
-    private Login controller;
 
     // Switch To Admin Page
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
@@ -62,7 +60,7 @@ public class FirstPageConroller implements Initializable{
         root = loder.load();
         Login controller = loder.getController();
         controller.connection=Connection;
-        AutoCompletionBinding<Object> autoComplete=TextFields.bindAutoCompletion(controller.email_text, Connection.GetEmailesHistory());
+        AutoCompletionBinding<String> autoComplete=TextFields.bindAutoCompletion(controller.email_text, Connection.GetEmailesHistory());
         autoComplete.prefWidthProperty().bind(controller.email_text.widthProperty());
         FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
         FideOut.play();

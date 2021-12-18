@@ -18,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -184,7 +183,7 @@ public class Search implements Initializable {
         });
         timeline.play();
     }
-    private void GetSearchResult() throws IOException{
+    private void GetSearchResult(){
         int INTData[]=new int[6];
         String StringData[]=new String[2];
         INTData[2]=(int)RatingLable.getRating();
@@ -200,7 +199,8 @@ public class Search implements Initializable {
         }catch(NumberFormatException e){
             Error_Message.setText("Please enter a valid number");
             return;
-        }
+        }   
+        System.out.println("aiduf;ojl;k");
         connection.GetSearchedRoom(INTData, StringData);
     }
     @Override

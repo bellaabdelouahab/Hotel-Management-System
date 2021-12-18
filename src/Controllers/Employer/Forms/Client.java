@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class Client implements Initializable{

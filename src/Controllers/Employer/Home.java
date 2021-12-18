@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -56,7 +55,6 @@ public class Home {
         try {
             ShowSearchForm();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
