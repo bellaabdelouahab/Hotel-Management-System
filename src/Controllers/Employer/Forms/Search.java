@@ -162,12 +162,16 @@ public class Search implements Initializable {
     }
     
     public void LoadResult(ActionEvent e) throws IOException{
-        ArrayList<String[]> resultat= GetSearchResult();
+        ArrayList<String[]> RoomTableData=GetSearchResult();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Parent root = loader.load();
         Result controller = loader.getController();
         controller.connection=connection;
         controller.ParentPane=ParentPane;
+        controller.init();
+        if(RoomTableData!=null)
+        for (String[] RoomLine : RoomTableData)
+        controller.CreateLineRoom(RoomLine);
         controller.SearchFormPane=SearchForm;
         root.translateXProperty().set(1024);
         ParentPane.getChildren().add(root);
