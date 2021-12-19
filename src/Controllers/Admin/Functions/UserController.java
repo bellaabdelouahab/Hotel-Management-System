@@ -16,11 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-
-public class UserController {
+public class UserController{
 
     DataBaseConnection connection = new DataBaseConnection();
 
@@ -53,8 +50,10 @@ public class UserController {
     @FXML
     private Pane ChildPane;
 
-    void init() {
-        ResultSet Lest = connection.GetAllEmployers();
+    public Pane ParentPane;
+
+    void init() {    
+        ResultSet Lest = connection.GetAllEmployers();    
         ObservableList<User> List = FXCollections.observableArrayList();
         try {
 
@@ -79,40 +78,22 @@ public class UserController {
         USERSTABLE.setItems(List);
     }
 
-    Stage stage;
-    Scene scene;
-
-    public Pane ParentPane;
-
     @FXML
-    void DeleteUser(MouseEvent event) throws IOException {
-
+    void DeleteUser(MouseEvent event) throws IOException{
         User test = USERSTABLE.getSelectionModel().getSelectedItem();
         connection.DeleteUser(test.getId());
-        // FXMLLoader loder = new
-        // FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
-        // Parent root = loder.load();
-        // stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        // UserController controller = loder.getController();
-        // controller.LeaderBoardData = LeaderBoardData;
-        // controller.ParentPane = ParentPane;
-        // LeaderBoardData.getChildren().remove(root);
-        // LeaderBoardData.getChildren().add(root);
-        // scene = new Scene(root);
-        // stage.setScene(scene);
-        // stage.show();
     }
 
     @FXML
-    public void GoToModify(MouseEvent event) throws IOException {
-        FXMLLoader loder = new FXMLLoader(
-                getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
+    public void GoToModify(MouseEvent event) throws IOException, SQLException{
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
         Parent root = loder.load();
         User test = USERSTABLE.getSelectionModel().getSelectedItem();
         ModifyUserController controller = loder.getController();
         controller.item = test.getId();
-        controller.connection = connection;
-        FadeOutLeft FideOut = new FadeOutLeft(ChildPane);
+        controller.connection=connection;
+        controller.init();
+        FadeOutLeft FideOut =new FadeOutLeft(ChildPane);
         FideOut.play();
         FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(ChildPane);
@@ -123,7 +104,6 @@ public class UserController {
         animate.setOnFinished(e -> {
             CurrentTab = (Pane) root;
         });
-
     }
 
     @FXML

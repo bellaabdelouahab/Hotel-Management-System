@@ -42,7 +42,7 @@ public class Client implements Initializable{
         final ObservableList<String> checkcomboboxelements = FXCollections.observableArrayList();
         String[] list = {"coffee Morning","Wifi 5G","Sofa","Cushion","Telephone","Television","Speaker","End table","Tea set","Fireplace","Remote","Fan","Floor lamp","Carpet","Tableet Blinds"};
         for(int i = 0; i<list.length; i++){
-        checkcomboboxelements.add(list[i]);
+            checkcomboboxelements.add(list[i]);
         }
         RoomFeatures.getItems().addAll(checkcomboboxelements);
     }

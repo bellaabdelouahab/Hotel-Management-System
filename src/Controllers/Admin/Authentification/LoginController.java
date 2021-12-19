@@ -67,6 +67,6 @@ public class LoginController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Email_Area.setText("admin@gmail.com");
-        Password_Area.setText("admin@1234");
+        Password_Area.setText("admin@2020");
     }
 }

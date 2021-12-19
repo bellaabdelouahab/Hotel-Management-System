@@ -4,7 +4,6 @@
 <?import io.github.gleidson28.GNAvatarView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,28 +24,6 @@
                   <Font name="Gubbi" size="19.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_LEFT">
-               <children>
-                  <FontAwesomeIconView glyphName="SEARCH" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
-                  <TextField prefHeight="35.0" prefWidth="177.0" promptText="Search" style="-fx-background-color: transparent; -fx-text-fill: #7c8184;">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                  </TextField>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </HBox>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ShowDashBoard" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #202332;" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
@@ -94,7 +71,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SwitchToUser" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
-                  <Label text="Users" textFill="#7c8184">
+                  <Label text="Employers" textFill="#7c8184">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -115,13 +92,16 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
-                  <FontAwesomeIconView glyphName="FILE" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
-                  <Label text="Resource" textFill="#7c8184">
+                  <FontAwesomeIconView glyphName="USER" glyphStyle="-fx-fill:#7C8184" size="1.7em">
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin></FontAwesomeIconView>
+                  <Label text="Client" textFill="#7c8184">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="15.0" />
+                        <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -137,8 +117,11 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
-                  <FontAwesomeIconView glyphName="FOLDER" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
-                  <Label text="Documents" textFill="#7c8184">
+                  <FontAwesomeIconView glyphName="FOLDER" glyphStyle="-fx-fill:#7C8184" size="1.7em">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin></FontAwesomeIconView>
+                  <Label text="Reservation" textFill="#7c8184">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -161,7 +144,7 @@
       </VBox>
       <HBox layoutX="300.0" prefHeight="75.0" prefWidth="725.0" style="-fx-border-color: rgb(233, 229, 229); -fx-border-width: 0px 0px 3px 0px;">
          <children>
-            <Label prefHeight="72.0" prefWidth="369.0" text="DASHBOARD" textFill="#909090">
+            <Label prefHeight="72.0" prefWidth="369.0" text="ADMIN MANAGE SYSTEM" textFill="#909090">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -184,8 +167,8 @@
       </HBox>
       <VBox fx:id="AdminMenu" layoutX="842.0" layoutY="66.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="149.0" prefWidth="167.0" style="-fx-border-color: #909090; -fx-border-radius: 3px;">
          <children>
-            <Label alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Hamza Bouslama" />
-            <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Ham.bousa98@gmail.com" textFill="#909090">
+            <Label alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Admin BBBE" />
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: rgb(233, 229, 229);" text="Admin@gmail.com" textFill="#909090">
                <font>
                   <Font size="10.0" />
                </font>
