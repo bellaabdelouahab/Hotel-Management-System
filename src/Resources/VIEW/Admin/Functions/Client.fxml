@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.ClientController">
+   <children>
+      <TableView fx:id="CLIENTTABLE" prefHeight="574.0" prefWidth="717.0">
+        <columns>
+          <TableColumn fx:id="CIN" prefWidth="75.0" text="CIN" />
+          <TableColumn fx:id="FIRST_NAME" prefWidth="106.0" text="FIRST NAME" />
+            <TableColumn fx:id="LAST_NAME" prefWidth="95.0" text="LAST NAME" />
+            <TableColumn fx:id="NATIO" prefWidth="113.0" text="NATIONALITY" />
+            <TableColumn fx:id="GEND" prefWidth="75.0" text="GENDER" />
+            <TableColumn fx:id="SITU" prefWidth="92.0" text="SITUATION" />
+            <TableColumn fx:id="AMOUNT" prefWidth="88.0" text="AMOUNT" />
+            <TableColumn fx:id="AGE" prefWidth="72.0" text="AGE" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>

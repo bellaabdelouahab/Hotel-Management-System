@@ -69,13 +69,13 @@ public class DataBaseConnection {
             return null;
         }
     }
-
+    
     // return count of DashBoard
     public ResultSet ReturnCount(String Table) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT COUNT(*) FROM " + Table + " WHERE ID_EMP <> 1";
+            String Sql = "SELECT COUNT(*) FROM " + Table;
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -83,13 +83,14 @@ public class DataBaseConnection {
         return result;
     }
 
+    
+
     // update admin profile
     public void UpdateProfile(String FULL_NAME, String EMAIL, String PASSWORD, String PHONE_NUMBER) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',EMAIL = '" + EMAIL + "',PASSWORD = '"
-                    + PASSWORD + "',PHONE_NUMBER = '" + PHONE_NUMBER + "'WHERE ID_EMP = 1";
+            String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',EMAIL = '" + EMAIL + "',PASSWORD = '"+ PASSWORD + "',PHONE_NUMBER = '" + PHONE_NUMBER + "'WHERE ID_EMP = 1";
             statement.executeUpdate(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -133,13 +134,13 @@ public class DataBaseConnection {
     }
 
     // Add users to the table
-    public void AddUsers(String Full_name, String Adresse, String Email, String Password, String Natio, int age,
+    public void AddUsers(String Full_name, String Adresse, String Email, String Password, String Natio, String Se, int age,
             String Phone, int salary, int commition, String type) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
             String Sql = "INSERT INTO EMPLOYEE VALUES((SELECT COUNT(*) FROM EMPLOYEE) + 1 , '" + Full_name + "','"
-                    + Adresse + "','" + Email + "','" + Password + "','" + Natio + "','h'," + age + ",'" + Phone + "',"
+                    + Adresse + "','" + Email + "','" + Password + "','" + Natio + "','" + Se + "'," + age + ",'" + Phone + "',"
                     + salary + "," + commition + ",'" + type + "')";
             statement.executeUpdate(Sql);
         } catch (Exception e) {
@@ -159,24 +160,46 @@ public class DataBaseConnection {
         }
     }
 
-    // Modify User From Table
-    public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, int AGE,
-            String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
+    //Modify User From Table
+    public void ModifyUser(String FULL_NAME , String ADRESSE , String EMAIL ,String PASSWORD , String NATIO , String SE , int AGE , String PHONE_NUMBER , int SAL , int COMM , String TYPE , int ID){
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',ADRESSE = '" + ADRESSE + "',EMAIL = '"
-                    + EMAIL + "',PASSWORD = '" + PASSWORD + "',NATIONNALITY = '" + NATIO + "',SEX = 'h',AGE = '" + AGE
-                    + "',PHONE_NUMBER = '" + PHONE_NUMBER + "',SALAIRE = " + SAL + ",COMMISSION = " + COMM
-                    + ",TYPE_TRAVAILLE = '" + TYPE + "'WHERE ID_EMP = " + ID;
+            String Sql = "UPDATE employee SET FULL_NAME = '"+FULL_NAME+"',ADRESSE = '"+ADRESSE+"',EMAIL = '"+EMAIL+"',PASSWORD = '"+PASSWORD+"',NATIONNALITY = '"+NATIO+"',SEX = '"+SE+"',AGE = '"+AGE+"',PHONE_NUMBER = '"+PHONE_NUMBER+"',SALAIRE = "+SAL+",COMMISSION = "+COMM+",TYPE_TRAVAILLE = '"+TYPE+"'WHERE ID_EMP = "+ID;
             statement.executeUpdate(Sql);
         } catch (Exception e) {
             System.out.println("No" + e);
         }
     }
 
-    // Disconnect from the Data Base
-    public void Disconnect() {
+    //get the modify information
+    public ResultSet ModifyInfo(int ID){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM EMPLOYEE WHERE ID_EMP = "+ID;
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No"+e);
+        }
+        return result;
+    }
+
+    //return DashBoard Data
+    public ResultSet DashBoardData(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT DATE_ENTRE , PRIX FROM rooms ORDER BY DATE_ENTRE DESC";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No"+e);
+        }
+        return result;
+    }
+
+    //Disconnect from the Data Base
+    public void Disconnect(){
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
