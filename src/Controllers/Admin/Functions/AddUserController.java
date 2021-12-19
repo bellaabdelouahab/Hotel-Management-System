@@ -1,20 +1,24 @@
 package Controllers.Admin.Functions;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeOutLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
-public class AddUserController {
+public class AddUserController implements Initializable{
 
     DataBaseConnection connection = new DataBaseConnection();
 
@@ -55,7 +59,7 @@ public class AddUserController {
     private TextField Salary;
 
     @FXML
-    private ChoiceBox<?> Sex;
+    private ComboBox<String> Sex;
 
     @FXML
     private TextField Work_type;
@@ -72,6 +76,8 @@ public class AddUserController {
     @FXML
     public Pane ChildPane2;
 
+    public String[] SexType = {"M" , "W"};
+
     @FXML
     void AddUser(ActionEvent event) {
         try {
@@ -81,6 +87,7 @@ public class AddUserController {
             String Pass = Password.getText();
             String Con_pass = Con_password.getText();
             String Natio = Nationality.getText();
+            String Se = Sex.getValue();
             int Ag = Integer.parseInt(Age.getText());
             int sal = Integer.parseInt(Salary.getText());
             int comm = Integer.parseInt(Commission.getText());
@@ -90,7 +97,7 @@ public class AddUserController {
                 Message.setText("Invalid ! Please Try Again");
             }
             else{
-                connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Ag, Phon, sal, comm, work);
+                connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Se,Ag, Phon, sal, comm, work);
                 SwitchToUser(event);
             }
             
@@ -118,5 +125,11 @@ public class AddUserController {
             ChildPane2 = (Pane) root;
             controller.CurrentTab = ChildPane2;
         });
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        Sex.setPromptText("SEX");
+        Sex.getItems().addAll(SexType);
     }
 }

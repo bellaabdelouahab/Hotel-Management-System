@@ -14,7 +14,7 @@ import Main.DataBaseConnection;
 
 public class DashBoardController{
 
-    @FXML AreaChart<String, Double> AREACHART;
+    @FXML AreaChart<String, Integer> AREACHART;
 
     @FXML
     private CategoryAxis AXIX;
@@ -38,11 +38,13 @@ public class DashBoardController{
     public void init(){
         ResultSet EmResult = connection.ReturnCount("employee");
         ResultSet RmResult = connection.ReturnCount("rooms");
+        ResultSet ClResult = connection.ReturnCount("client");
         try {
 
             while(RmResult.next()){
                 ROOM_ID.setText(String.valueOf(RmResult.getInt("count(*)")));
-                AMOUNT_ID.setText("4500");
+                ClResult.next();
+                AMOUNT_ID.setText(String.valueOf(ClResult.getInt("count(*)")));
                 EmResult.next();
                 EMPLOYER_ID.setText(String.valueOf(EmResult.getInt("count(*)")));
             }
@@ -50,21 +52,16 @@ public class DashBoardController{
         } catch (SQLException e) {
             System.out.println("WTF" +e);
         }
-        
-        XYChart.Series<String , Double > serie1 = new XYChart.Series<String , Double>();
+        ResultSet DashResult = connection.DashBoardData();
+        XYChart.Series<String , Integer > serie1 = new XYChart.Series<String , Integer>();
         serie1.setName("Amount");
-        serie1.getData().add(new XYChart.Data<String , Double>("JAN" , 110.0));
-        serie1.getData().add(new XYChart.Data<String , Double>("ASD" , 40.0));
-        serie1.getData().add(new XYChart.Data<String , Double>("QLK" , 76.5));
-        serie1.getData().add(new XYChart.Data<String , Double>("FSD" , 45.9));
-        serie1.getData().add(new XYChart.Data<String , Double>("QWE" , 88.2));
-        serie1.getData().add(new XYChart.Data<String , Double>("GHB" , 12.3));
-        serie1.getData().add(new XYChart.Data<String , Double>("QWE" , 32.4));
-        serie1.getData().add(new XYChart.Data<String , Double>("BGF" , 78.6));
-        serie1.getData().add(new XYChart.Data<String , Double>("WER" , 79.8));
-        serie1.getData().add(new XYChart.Data<String , Double>("JJJ" , 48.0));
-        serie1.getData().add(new XYChart.Data<String , Double>("WER" , 65.12));
-
+        try {
+            while(DashResult.next()){
+                serie1.getData().add(new XYChart.Data<String , Integer>(DashResult.getString("DATE_ENTRE").substring(0,11) , DashResult.getInt("PRIX")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         AREACHART.getData().add(serie1);
     }
 }

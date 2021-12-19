@@ -83,7 +83,7 @@
             </TextField>
             <Button layoutX="436.0" layoutY="505.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="ADD USER" />
             <Label fx:id="Message" layoutX="19.0" layoutY="60.0" prefHeight="22.0" prefWidth="319.0" textFill="#e50707" />
-            <ComboBox fx:id="SEX" layoutX="384.0" layoutY="293.0" prefHeight="43.0" prefWidth="133.0" />
+            <ComboBox fx:id="Sex" layoutX="384.0" layoutY="293.0" prefHeight="43.0" prefWidth="133.0" />
          </children>
       </Pane>
    </children>

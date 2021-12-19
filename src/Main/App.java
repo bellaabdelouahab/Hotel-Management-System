@@ -26,7 +26,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
 
         if (Prop.getProperty("MainPage").equals("1")) {
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/Rooms.fxml"));
+            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
         } else if (Prop.getProperty("MainPage").equals("2")) {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
         } else {
