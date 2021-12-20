@@ -8,16 +8,21 @@ public class info_reserve {
     private String name;
     private int room;
     private int classe;
-    private Date dateentre;
+    private String contentroom;
     private int prix;
+    private Date dateentre;
+    private Date datesortir;
+    
 
-    public info_reserve(int int1, String string, int int2, int int3, Date date, int int4) {
-        this.cin = int1;
-        this.name = string;
-        this.room = int2;
-        this.classe = int3;
-        this.dateentre = date;
-        this.prix = int4;
+    public info_reserve(int client, String name, int rooms, int clase,String content, int prix,Date date_in,Date date_out) {
+        this.cin = client;
+        this.name = name;
+        this.room = rooms;
+        this.classe = clase;
+        this.contentroom=content;
+        this.prix = prix;
+        this.dateentre = date_in;
+        this.datesortir = date_out;
     }
 
     // public void info_reserve(int c, String n, int r, int cl, Date d, int p) {
@@ -42,6 +47,7 @@ public class info_reserve {
         return name;
     }
 
+    
     public int getRoom() {
         return room;
     }
@@ -50,11 +56,21 @@ public class info_reserve {
         return classe;
     }
 
-    public Date getDateentre() {
-        return dateentre;
+    public String getContentroom(){
+         return contentroom;
     }
 
     public int getPrix() {
         return prix;
     }
+
+    public Date getDateentre() {
+        return dateentre;
+    }
+
+    public Date getDatesortir(){
+        return datesortir;
+    }
+
+    
 }

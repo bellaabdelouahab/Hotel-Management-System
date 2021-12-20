@@ -12,7 +12,7 @@
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="368.0" prefWidth="824.0" style="-fx-background: #11111100; -fx-border-color: #11111133; -fx-border-width: 0;">
          <content>
-            <VBox fx:id="VboxRoom" prefHeight="366.0" prefWidth="824.0">
+            <VBox fx:id="VboxRoom" prefHeight="346.0" prefWidth="824.0">
                <children>
                   <Pane fx:id="RoomDataPane">
                      <children>
@@ -23,7 +23,7 @@
                               <Label alignment="CENTER" layoutX="374.0" prefHeight="40.0" prefWidth="112.0" text="**Adults**" />
                               <Label alignment="CENTER" layoutX="374.0" layoutY="40.0" prefHeight="40.0" prefWidth="112.0" text="**Children**" />
                               <Rating layoutX="647.0" />
-                              <Button layoutX="645.0" layoutY="33.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 0;" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Reserve" />
+                              <Button layoutX="645.0" layoutY="33.0" mnemonicParsing="false" onAction="#LoadClientForm" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 0;" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Reserve" />
                               <Label alignment="CENTER" prefHeight="40.0" prefWidth="112.0" text="Room ID" />
                               <Label alignment="CENTER" layoutY="40.0" prefHeight="40.0" prefWidth="112.0" text="Price" />
                               <Label alignment="CENTER" layoutX="224.0" prefHeight="40.0" prefWidth="150.0" text="Number of Adults" />
@@ -38,7 +38,7 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Button layoutX="724.0" layoutY="368.0" mnemonicParsing="false" onAction="#LoadClientForm" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #ad6b13;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Validate &gt;" textFill="#ebdcdc" />
+      <Button layoutX="724.0" layoutY="368.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #ad6b13;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Validate &gt;" textFill="#ebdcdc" />
       <Button layoutY="368.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="&lt; Go Back" textFill="#ebdcdc" />
    </children>
 </Pane>

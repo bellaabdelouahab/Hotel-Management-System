@@ -168,6 +168,8 @@ public class Search implements Initializable {
         Result controller = loader.getController();
         controller.connection=connection;
         controller.ParentPane=ParentPane;
+        controller.datentrer=CheckInDate.getValue();
+        controller.datesortir=CheckOutDate.getValue();
         controller.init();
         if(RoomTableData!=null)
         for (String[] RoomLine : RoomTableData)
@@ -203,8 +205,7 @@ public class Search implements Initializable {
         }catch(NumberFormatException e){
             Error_Message.setText("Please enter a valid number");
             return null;
-        }   
-        System.out.println("aiduf;ojl;k");
+        }
         return connection.GetSearchedRoom(INTData, StringData);
     }
     @Override

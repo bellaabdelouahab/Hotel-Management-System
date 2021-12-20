@@ -33,6 +33,9 @@ public class reservation_page {
     private TableColumn<info_reserve, Integer> etoileCo;
 
     @FXML
+    private TableColumn<info_reserve, String> infoCo;
+
+    @FXML
     private TableColumn<info_reserve, Integer> nbrCo;
 
     @FXML
@@ -40,6 +43,9 @@ public class reservation_page {
 
     @FXML
     private TableColumn<info_reserve, Integer> prixCo;
+
+    @FXML
+    private TableColumn<info_reserve, Date> sortiCo;
 
     public DataBaseConnection connection;
 
@@ -50,7 +56,7 @@ public class reservation_page {
             List_info.clear();
             ResultSet rs = connection.reserv(connection.getCompte().toLowerCase());
             while (rs.next()) {
-                List_info.add(new info_reserve(rs.getInt("CIN"), rs.getString(2),rs.getInt("ID_ROOM"),rs.getInt("CLASSE"),rs.getDate("DATE_ENTRE"), rs.getInt("prix")));
+                List_info.add(new info_reserve(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),rs.getString(5), rs.getInt(6), rs.getDate(7), rs.getDate(8)));
                 table_view.setItems(List_info);
             }
         } catch (Exception e) {
@@ -64,11 +70,12 @@ public class reservation_page {
         nomCo.setCellValueFactory(new PropertyValueFactory<info_reserve, String>("name"));
         nbrCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Integer>("room"));
         etoileCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Integer>("classe"));
-        entrerCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Date>("dateentre"));
+        infoCo.setCellValueFactory(new PropertyValueFactory<info_reserve, String>("contentroom"));
         prixCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Integer>("prix"));
+        entrerCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Date>("dateentre"));
+        sortiCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Date>("datesortir"));
 
         table_view.setItems(List_info);
     }
-
 
 }

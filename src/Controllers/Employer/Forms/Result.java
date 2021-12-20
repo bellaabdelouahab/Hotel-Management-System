@@ -1,6 +1,11 @@
 package Controllers.Employer.Forms;
 
+import javafx.event.EventHandler;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import org.controlsfx.control.Rating;
 
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
@@ -13,20 +18,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class Result {
     @FXML
     private Pane childPanex1;
+    public int nbr_of_room = 0;
+    public String[] x;
     public DataBaseConnection connection;
     public Pane ParentPane;
     public Pane SearchFormPane;
     @FXML
-    private Pane RoomDataPane;
-    @FXML
     private VBox VboxRoom;
-    private Pane DATAPANE;
+    public LocalDate datentrer;
+    public LocalDate datesortir;
 
     public void show_data_test() {
         System.out.println(SearchData.checkindate);
@@ -54,8 +62,14 @@ public class Result {
         Client controller = loader.getController();
         ParentPane.setStyle("-fx-background-color: #11111108");
         controller.connection = connection;
+        controller.datentrer = datentrer;
+        controller.datesortir = datesortir;
         controller.ParentPane = ParentPane;
         controller.ResultPane = childPanex1;
+        // for (int i = 0; i < element_of_room.size(); i++) {
+        //     System.out.println(i+"\t"+element_of_room.get(i));
+        // }
+        controller.nbr_of_room=nbr_of_room;
         root.translateXProperty().set(1024);
         ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
@@ -66,20 +80,64 @@ public class Result {
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.play();
+
     }
 
     public void init() {
-        VboxRoom.getChildren().remove(RoomDataPane);
-        DATAPANE=(Pane) RoomDataPane.getChildren().get(0);
     }
 
     public void CreateLineRoom(String[] roomLine) {
         Pane RoomPane = new Pane();
-        System.out.println(RoomDataPane.getChildren());
-        RoomPane = DATAPANE;
-        System.out.println("asdasdd"+RoomDataPane.getChildren());
-        ((Label) RoomPane.getChildren().get(0)).setText(roomLine[0]);
+        RoomPane.setPrefSize(824, 80);
+        Label IdLabel = Create_Label("Room ID", 112, 40, 0, 0);
+        Label IdData = Create_Label(roomLine[0], 112, 40, 112, 0);
+        Label Price = Create_Label("Room ID", 112, 40, 0, 40);
+        Label PriceData = Create_Label(roomLine[1], 112, 40, 112, 40);
+        Label AdultsNbr = Create_Label("Room ID", 150, 40, 224, 0);
+        Label AdultsNbrData = Create_Label(roomLine[2], 112, 40, 374, 0);
+        Label ChildrenNbr = Create_Label("Room ID", 150, 40, 224, 40);
+        Label ChildrenNbrData = Create_Label(roomLine[3], 112, 40, 374, 40);
+        Button Reserve = new Button("Reserve");
+        Reserve.setPrefSize(179, 46);
+        Reserve.setLayoutX(645);
+        Reserve.setLayoutY(33);
+        Reserve.setStyle("-fx-background-radius:0");
+        Reserve.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                try {
+                    nbr_of_room=Integer.parseInt(IdData.getText());
+                    LoadClientForm(e);
+                } catch (IOException e1) {
+                    e1.getMessage();
+                }
+            }
+        });
+        Rating RatingData = new Rating();
+        // RatingData.setPrefSize(179, 46);
+        RatingData.setLayoutX(645);
+        RatingData.setLayoutY(0);
+        Pane HideRating = new Pane();
+        HideRating.setPrefSize(179, 46);
+        HideRating.setLayoutX(645);
+        HideRating.setLayoutY(0);
+        Line Separatuer = new Line();
+        Separatuer.setStrokeWidth(4);
+        Separatuer.setStartY(80);
+        Separatuer.setEndY(80);
+        Separatuer.setEndX(824);
+        RoomPane.getChildren().addAll(IdLabel, IdData, Price, PriceData, AdultsNbr, AdultsNbrData, ChildrenNbr,
+                ChildrenNbrData, Reserve, RatingData, HideRating, Separatuer);
         VboxRoom.getChildren().add(RoomPane);
-        //RoomDataPane.getChildren().add(RoomPane);
+        // RoomDataPane.getChildren().add(RoomPane);
+    }
+
+    private Label Create_Label(String Name, double Xsize, double Ysize, double Xlayout, double Ylayoyt) {
+        Label IdLabel = new Label(Name);
+        IdLabel.setPrefSize(Xsize, Ysize);
+        IdLabel.setLayoutX(Xlayout);
+        IdLabel.setLayoutY(Ylayoyt);
+        IdLabel.setStyle("-fx-background-color:#eeeeee11;");
+        return IdLabel;
     }
 }
