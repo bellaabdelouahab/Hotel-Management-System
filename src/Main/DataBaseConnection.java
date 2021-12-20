@@ -1,7 +1,6 @@
 package Main;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +11,7 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 

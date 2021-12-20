@@ -2,15 +2,10 @@ package Controllers.Employer.Authentification;
 
 import java.sql.*;
 import javafx.scene.image.Image;
-
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.imageio.ImageIO;
-
 import Controllers.Employer.Forms.Methodes;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;

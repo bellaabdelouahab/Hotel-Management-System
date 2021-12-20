@@ -3,10 +3,7 @@ package Controllers.Employer.Forms;
 import javafx.event.EventHandler;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
 import org.controlsfx.control.Rating;
-
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
