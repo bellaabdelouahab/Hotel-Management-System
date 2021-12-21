@@ -2,13 +2,10 @@ package Controllers.Employer.Forms;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import org.controlsfx.control.CheckComboBox;
-
 import Main.DataBaseConnection;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -56,7 +53,7 @@ public class Client implements Initializable {
 
     @FXML
     private void showAlertWithoutHeaderText() throws NumberFormatException, Exception {
-        int rs, rs2;
+        int rs;
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Est ce que vous pouvez reserver cette chambre");
         // Header Text: null
