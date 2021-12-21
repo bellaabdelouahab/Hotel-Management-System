@@ -13,8 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import javafx.scene.control.Button;
@@ -81,6 +86,9 @@ public class Result {
     }
 
     public void init() {
+        // Stop[] stops = new Stop[] { new Stop(0, Color.BLACK), new Stop(1, Color.RED)};
+        // LinearGradient lg1 = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
+        // childPanex1.setBackground(lg1);
     }
 
     public void CreateLineRoom(String[] roomLine) {
@@ -99,6 +107,7 @@ public class Result {
         Reserve.setLayoutX(645);
         Reserve.setLayoutY(33);
         Reserve.setStyle("-fx-background-radius:0");
+        Reserve.getStyleClass().add("file");
         Reserve.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -135,7 +144,7 @@ public class Result {
         IdLabel.setPrefSize(Xsize, Ysize);
         IdLabel.setLayoutX(Xlayout);
         IdLabel.setLayoutY(Ylayoyt);
-        IdLabel.setStyle("-fx-background-color:#eeeeee11;");
+        IdLabel.setStyle("-fx-background-color:#eeeeee11;-fx-text-fill:#eee");
         return IdLabel;
     }
 }

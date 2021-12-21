@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.Line?>
 <?import org.controlsfx.control.Rating?>
 
-<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" style="-fx-background-color: #11111100;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
+<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" styleClass="column_sd" stylesheets="@../../../CSS/Employer.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="368.0" prefWidth="824.0" style="-fx-background: #11111100; -fx-border-color: #11111133; -fx-border-width: 0;">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="368.0" prefWidth="824.0" styleClass="column_sd" stylesheets="@../../../CSS/Employer.css">
          <content>
-            <VBox fx:id="VboxRoom" prefHeight="346.0" prefWidth="824.0">
+            <VBox fx:id="VboxRoom" prefHeight="366.0" prefWidth="824.0" styleClass="column_sd">
                <children>
                   <Pane fx:id="RoomDataPane">
                      <children>

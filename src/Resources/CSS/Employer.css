@@ -14,6 +14,9 @@
 .Sign_in:hover{
     -fx-background-color: #03f803;
 }
+
+
+
 #textarea_ .content{
     -fx-background-color:#333333;
 }
@@ -101,4 +104,8 @@
 
 .scroll-pane > .corner {
     -fx-background-color: black;
+}
+
+.column_sd{
+     -fx-background-color: linear-gradient( to right,#3F00FF 0%,  #9D29E8 100%);
 }
