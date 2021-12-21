@@ -74,14 +74,15 @@ public class Client implements Initializable {
 
                 rs = connection.addClient(Integer.parseInt(cin.getText()), first_name.getText(), last_name.getText(),natio.getText(), gender.getText(), etat.getText(), age.getText());
                 // connection.reserverRoom(datentrer,datesortir,);
+                System.out.println("jdkjkckusdundus");
                 if (rs > 0) {
                     System.out.println("nice");
-                    // rs2 = connection.reserverRoom(datentrer, datesortir, connection.getCompte(), nbr_of_room);
-                    // if (rs2 > 0) {
-                    //     System.out.println("oh gggg");
-                    // } else {
-                    //     System.out.println("mmmm nony");
-                    // }
+                    rs2 = connection.reserverRoom(datentrer, datesortir, connection.getCompte(), nbr_of_room);
+                    if (rs2 > 0) {
+                        System.out.println("oh gggg");
+                    } else {
+                        System.out.println("mmmm nony");
+                    }
                 }
                 else{
                     System.out.println("ghayad orifolki");
