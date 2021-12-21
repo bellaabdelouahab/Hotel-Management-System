@@ -66,11 +66,7 @@ public class Client implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             ButtonType button = result.orElse(ButtonType.CANCEL);
             if (button == ButtonType.OK) {
-                System.out.println("Ok pressed\n" + connection.getCompte() + nbr_of_room + first_name.getText()
-                        + last_name.getText() + etat.getText() + "\n");
-
-                rs = connection.addClient(Integer.parseInt(cin.getText()), first_name.getText(), last_name.getText(),
-                        natio.getText(), gender.getText(), etat.getText(), age.getText());
+                rs = connection.addClient(cin.getText(), first_name.getText(), last_name.getText(),natio.getText(), gender.getText(), etat.getText(), age.getText());
                 // connection.reserverRoom(datentrer,datesortir,);
                 System.out.println("jdkjkckusdundus");
                 if (rs > 0) {
@@ -84,6 +80,7 @@ public class Client implements Initializable {
                 } else {
                     System.out.println("ghayad orifolki");
                 }
+
             } else {
                 System.out.println("canceled");
             }

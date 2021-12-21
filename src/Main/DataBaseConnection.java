@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -37,7 +38,8 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = LOWER('" + EMAIL.toLowerCase()+ "') AND LOWER(PASSWORD) = LOWER('" + PASSWORD.toLowerCase() + "')";
+            String Sql = "SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = LOWER('" + EMAIL.toLowerCase()
+                    + "') AND LOWER(PASSWORD) = LOWER('" + PASSWORD.toLowerCase() + "')";
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
@@ -48,7 +50,9 @@ public class DataBaseConnection {
     public ArrayList<String[]> GetSearchedRoom(int[] INTData, String[] StringData) {
         try {
             statement = connection.createStatement();
-            String Sql = "select id_room,num_adul,num_child,prix from rooms where (PRIX between " + INTData[3] + " and "+ INTData[4] + ") and classe=" + INTData[2] + " and (num_child between 0 and " + INTData[1]+ ") and (num_adul between 1 and " + INTData[0] + ")";
+            String Sql = "select id_room,num_adul,num_child,prix from rooms where (PRIX between " + INTData[3] + " and "
+                    + INTData[4] + ") and classe=" + INTData[2] + " and (num_child between 0 and " + INTData[1]
+                    + ") and (num_adul between 1 and " + INTData[0] + ")";
             result = statement.executeQuery(Sql);
             ArrayList<String[]> RoomData = new ArrayList<String[]>();
             while (result.next()) {
@@ -130,7 +134,8 @@ public class DataBaseConnection {
     }
 
     // Add users to the table
-    public void AddUsers(String Full_name, String Adresse, String Email, String Password, String Natio, String Se,int age,String Phone, int salary, int commition, String type) {
+    public void AddUsers(String Full_name, String Adresse, String Email, String Password, String Natio, String Se,
+            int age, String Phone, int salary, int commition, String type) {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
@@ -285,7 +290,8 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String rs = "select Distinct A.id_client ,A.first_name||A.last_name as full_name, D.ID_ROOM,D.CLASSE,D.contents_of_room,D.prix,B.date_de_reserver,B.date_de_sortir from client A,rooms D,reservation B,employee C where B.id_room = D.id_room and B.id_client in (select id_client from client) and B.id_emp=C.id_emp and lower(C.email)='"+x.toLowerCase()+"' order by A.id_client";
+            String rs = "select Distinct A.id_client ,A.first_name||A.last_name as full_name, D.ID_ROOM,D.CLASSE,D.contents_of_room,D.prix,B.date_de_reserver,B.date_de_sortir from client A,rooms D,reservation B,employee C where B.id_room = D.id_room and B.id_client in (select id_client from client) and B.id_emp=C.id_emp and lower(C.email)='"
+                    + x.toLowerCase() + "' order by A.id_client";
             result = statement.executeQuery(rs);
         } catch (Exception e) {
             System.out.println("Aha ahmadi" + e);
@@ -295,67 +301,64 @@ public class DataBaseConnection {
 
     // reserver room
 
-    public int reserverRoom(LocalDate date_entrer,LocalDate date_sortir,String emp,int room) throws Exception  {
-        int y=0,h=0;
+    public int reserverRoom(LocalDate date_entrer, LocalDate date_sortir, String emp, int room) throws Exception {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        ResultSet v=statement.executeQuery("select id_emp from employee where lower(email)='"+emp.toLowerCase()+"'");
-        while (v.next()) {
-            h=v.getInt(1);
-        }
-        System.out.println(h+"\t"+co("client")+"\t"+(co("reservation")+1)+"\t"+date_entrer);
-        y=statement.executeUpdate("insert into reservation values ("+(co("reservation")+1)+",to_date('"+date_entrer+"','DD/MM/YYYY'),to_date('"+date_sortir+"','DD/MM/YYYY'),"+co("client")+","+h+","+room+")");
+        String requt="insert into reservation values ((select count(*) as co from reservation)+1,to_date("+date_entrer.format(formatter)+",'DD/MM/YYYY'),to_date("+date_sortir.format(formatter)+",'DD/MM/YYYY'),(select count(*) as co from client),(select id_emp from employee where lower(email)='"+emp.toLowerCase()+"'),"+room+")";
+        int y = statement.executeUpdate(requt);
         return y;
     }
 
     // add client
-    public int addClient(int cin,String f_name,String l_name,String natio,String gender,String etat,String age) throws Exception{
-        int y=0;
+    public int addClient(String cin, String f_name, String l_name, String natio, String gender, String etat, String age) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        y=statement.executeUpdate("insert into client values ("+cin+",'"+f_name+"','"+l_name+"','"+natio+"','"+gender+"','"+etat+"',"+Integer.parseInt(age)+")");
+        int y = statement.executeUpdate("insert into client values (" + Integer.parseInt(cin) + ",'"+ f_name.toLowerCase() + "','" + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" + gender+ "','" + etat + "'," + Integer.parseInt(age) + ")");
         return y;
     }
 
-
-
-
-
-    // public int addClient(String f_name, String l_name, String natio, String sex, String etat, int age)
-    //         throws Exception {
-    //     int y = 0, rs;
-    //     statement = connection.createStatement();
-    //     ResultSet x = statement.executeQuery("select count(cin) as co from client");
-    //     while (x.next()) {
-    //         y = x.getInt("co");
-    //     }
-    //     String cmd = "insert into client values(" + (y + 1) + ",'" + f_name.toLowerCase() + "','"
-    //             + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" + sex.toLowerCase() + "','"
-    //             + etat.toLowerCase() + "'," + age + "," + "hna dyal reservation" + ")";
-    //     rs = statement.executeUpdate(cmd);
-    //     return rs;
+    // public int addClient(String f_name, String l_name, String natio, String sex,
+    // String etat, int age)
+    // throws Exception {
+    // int y = 0, rs;
+    // statement = connection.createStatement();
+    // ResultSet x = statement.executeQuery("select count(cin) as co from client");
+    // while (x.next()) {
+    // y = x.getInt("co");
+    // }
+    // String cmd = "insert into client values(" + (y + 1) + ",'" +
+    // f_name.toLowerCase() + "','"
+    // + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" +
+    // sex.toLowerCase() + "','"
+    // + etat.toLowerCase() + "'," + age + "," + "hna dyal reservation" + ")";
+    // rs = statement.executeUpdate(cmd);
+    // return rs;
     // }
 
     // add reservation
-    // public int addClient(String compt, Date sortir, Date entrer, int cin) throws Exception {
-    //     int y = 0, rs;
-    //     statement = connection.createStatement();
-    //     ResultSet x = statement.executeQuery(
-    //             "select Distinct A.id_emp from reservation A,employee B where A.id_emp =B.id_emp and lower(B.email)='"
-    //                     + compt.toLowerCase() + "'");
-    //     while (x.next()) {
-    //         y = x.getInt(1);
-    //     }
-    //     String cmd = "insert into client values(" + (co() + 1) + "," + y + "," + sortir + "," + entrer + "," + cin
-    //             + ")";
-    //     rs = statement.executeUpdate(cmd);
-    //     return rs;
+    // public int addClient(String compt, Date sortir, Date entrer, int cin) throws
+    // Exception {
+    // int y = 0, rs;
+    // statement = connection.createStatement();
+    // ResultSet x = statement.executeQuery(
+    // "select Distinct A.id_emp from reservation A,employee B where A.id_emp
+    // =B.id_emp and lower(B.email)='"
+    // + compt.toLowerCase() + "'");
+    // while (x.next()) {
+    // y = x.getInt(1);
+    // }
+    // String cmd = "insert into client values(" + (co() + 1) + "," + y + "," +
+    // sortir + "," + entrer + "," + cin
+    // + ")";
+    // rs = statement.executeUpdate(cmd);
+    // return rs;
     // }
 
     public int co(String table) throws Exception {
         int y = 0;
         statement = connection.createStatement();
-        ResultSet x = statement.executeQuery("select count(*) as co from "+table);
+        ResultSet x = statement.executeQuery("select count(*) as co from " + table);
         while (x.next()) {
             y = x.getInt("co");
         }

@@ -110,8 +110,10 @@ SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = 'yassine@gmail.com' AND LOWER(PASSWO
 select id_room,num_adul,num_child,prix from rooms where (PRIX between 300 and 3000) and classe=3 and (num_child between 0 and 2) and (num_adul between 1 and 2);
 select * from reservation;
 select * from client ;
-delete from client where id_client=6;
+delete from client where id_client=20;
 delete from reservation where id_reserv=10;
 select id_emp from employee where lower(email)='yassine@gmail.com';
 
 insert into reservation values (10,to_date('3-4-2021','DD/MM/YYYY'),to_date('5-4-2021','DD/MM/YYYY'),5,3,1);
+
+insert into reservation values ((select count(*) as co from reservation)+1,to_date('3-4-2021','DD/MM/YYYY'),to_date('5-4-2021','DD/MM/YYYY'),(select count(*) as co from client),(select id_emp from employee where lower(email)='yassine@gmail.com'),2);
