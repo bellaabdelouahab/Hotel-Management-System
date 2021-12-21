@@ -85,7 +85,7 @@ insert into employee values (6,'test omar','essaouira','omar@gmail.com','test200
 insert into employee values (7,'test2 khadija','agadir','khadija@gmail.com','khadija2','france','f',25,'0719738492',4500,0,'menage'); 
 
 --  reservation table
-insert into reservation values (1,to_date('3-9-2021','DD/MM/YYYY'),to_date('3-10-2021','DD/MM/YYYY'),2,2,1);
+insert into reservation values (1,to_date('03/09/2021','DD/MM/YYYY'),to_date('3-10-2021','DD/MM/YYYY'),2,2,1);
 insert into reservation values (2,to_date('7-10-2021','DD/MM/YYYY'),to_date('9-10-2021','DD/MM/YYYY'),2,2,3);
 insert into reservation values (3,to_date('9-9-2021','DD/MM/YYYY'),to_date('11-9-2021','DD/MM/YYYY'),3,4,3);
 insert into reservation values (4,to_date('13-9-2021','DD/MM/YYYY'),to_date('3-10-2021','DD/MM/YYYY'),4,4,1);
@@ -115,3 +115,4 @@ delete from reservation where id_reserv=10;
 select id_emp from employee where lower(email)='yassine@gmail.com';
 
 insert into reservation values (10,to_date('3-4-2021','DD/MM/YYYY'),to_date('5-4-2021','DD/MM/YYYY'),5,3,1);
+

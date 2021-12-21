@@ -8,7 +8,6 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-<<<<<<< HEAD
             "projectName": "JAVAPROJECT_2807e46f",
             "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
         },
@@ -17,8 +16,6 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-=======
->>>>>>> d148cff87bf9e84b4117306ad114b6e3b45f5a8b
             "projectName": "JavaProject_bd75dee1",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
         },
