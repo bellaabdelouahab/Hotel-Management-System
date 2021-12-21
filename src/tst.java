@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class tst {
-    public static void main(String[] args) throws Exception {
+    public void main(String[] args) throws Exception {
         String db = "jdbc:oracle:thin:@localhost:1521:orcl";
         String username = "hotel_bd";
         String password = "hotel";

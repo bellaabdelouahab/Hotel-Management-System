@@ -39,7 +39,7 @@ public class Result {
 
     public void LoadSearchForm(ActionEvent e) throws IOException {
         Timeline timeline = new Timeline();
-        SearchFormPane.setStyle("-fx-opacity:1");
+        ParentPane.getChildren().add(SearchFormPane);
         KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 100, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
@@ -114,6 +114,7 @@ public class Result {
         // RatingData.setPrefSize(179, 46);
         RatingData.setLayoutX(645);
         RatingData.setLayoutY(0);
+        RatingData.setRating(3);
         Pane HideRating = new Pane();
         HideRating.setPrefSize(179, 46);
         HideRating.setLayoutX(645);
