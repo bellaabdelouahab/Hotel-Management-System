@@ -1,6 +1,10 @@
 package Controllers.Employer.Authentification;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import Controllers.Admin.Authentification.*;
+import Controllers.Admin.Functions.LeaderBord;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,7 @@ public class SignUp {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private ArrayList<String> requet=new ArrayList<String>();
     
     @FXML
     private TextField mail, user, phone ;
@@ -39,6 +44,21 @@ public class SignUp {
     // add to data base
     @FXML
     public void login_return(ActionEvent event) throws Exception {
+        if(user.getText().length()!=0 && mail.getText().contains("@gmail.com")){
+            requet.add(user.getText());
+            requet.add(mail.getText());
+            if(phone.getText().length()>0 && phone.getText().length()<16){
+                requet.add(phone.getText());
+            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+           
+            
+        }
+
+
+
+
+
         // Class.forName("oracle.jdbc.driver.OracleDriver");
         // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
         //         "hotel");

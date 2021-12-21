@@ -2,6 +2,7 @@ package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import org.controlsfx.control.MaskerPane;
 
@@ -58,6 +59,7 @@ public class Login{
     private Label emai_label;
     public DataBaseConnection connection;
     public Pane ParentPane;
+    public ArrayList<String> request;
 
     // Switch To Sign Up page of Employer
     @FXML

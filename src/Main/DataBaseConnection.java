@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -406,13 +406,14 @@ public class DataBaseConnection {
     // return rs;
     // }
 
-    public int co(String table) throws Exception {
-        int y = 0;
-        statement = connection.createStatement();
-        ResultSet x = statement.executeQuery("select count(*) as co from " + table);
-        while (x.next()) {
-            y = x.getInt("co");
-        }
-        return y;
-    }
+    
+    // public int co(String table) throws Exception {
+    //     int y = 0;
+    //     statement = connection.createStatement();
+    //     ResultSet x = statement.executeQuery("select count(*) as co from " + table);
+    //     while (x.next()) {
+    //         y = x.getInt("co");
+    //     }
+    //     return y;
+    // }
 }
