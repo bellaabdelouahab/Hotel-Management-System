@@ -13,13 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 import javafx.scene.control.Button;
@@ -144,7 +139,7 @@ public class Result {
         IdLabel.setPrefSize(Xsize, Ysize);
         IdLabel.setLayoutX(Xlayout);
         IdLabel.setLayoutY(Ylayoyt);
-        IdLabel.setStyle("-fx-background-color:#eeeeee11;-fx-text-fill:#eee");
+        IdLabel.setStyle("-fx-background-color:#eeeeee01;-fx-text-fill:#eee");
         return IdLabel;
     }
 }

@@ -1,44 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import org.controlsfx.control.Rating?>
 
-<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" styleClass="column_sd" stylesheets="@../../../CSS/Employer.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
+<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" style="-fx-background-color: #00000000;" stylesheets="@../../../CSS/Employer.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="368.0" prefWidth="824.0" styleClass="column_sd" stylesheets="@../../../CSS/Employer.css">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="366.0" prefWidth="824.0" style="-fx-background-color: red;" styleClass="scrollpane" stylesheets="@../../../CSS/Employer.css">
          <content>
-            <VBox fx:id="VboxRoom" prefHeight="366.0" prefWidth="824.0" styleClass="column_sd">
-               <children>
-                  <Pane fx:id="RoomDataPane">
-                     <children>
-                        <Pane layoutX="2.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="824.0">
-                           <children>
-                              <Label alignment="CENTER" layoutX="112.0" prefHeight="40.0" prefWidth="112.0" text="**Room ID**" />
-                              <Label alignment="CENTER" layoutX="112.0" layoutY="40.0" prefHeight="40.0" prefWidth="112.0" text="**Price**" />
-                              <Label alignment="CENTER" layoutX="374.0" prefHeight="40.0" prefWidth="112.0" text="**Adults**" />
-                              <Label alignment="CENTER" layoutX="374.0" layoutY="40.0" prefHeight="40.0" prefWidth="112.0" text="**Children**" />
-                              <Rating layoutX="647.0" />
-                              <Button layoutX="645.0" layoutY="33.0" mnemonicParsing="false" onAction="#LoadClientForm" prefHeight="46.0" prefWidth="179.0" style="-fx-background-radius: 0;" styleClass="file" stylesheets="@../../../CSS/Employer.css" text="Reserve" />
-                              <Label alignment="CENTER" prefHeight="40.0" prefWidth="112.0" text="Room ID" />
-                              <Label alignment="CENTER" layoutY="40.0" prefHeight="40.0" prefWidth="112.0" text="Price" />
-                              <Label alignment="CENTER" layoutX="224.0" prefHeight="40.0" prefWidth="150.0" text="Number of Adults" />
-                              <Label alignment="CENTER" layoutX="224.0" layoutY="40.0" prefHeight="40.0" prefWidth="150.0" text="Number of Children" />
-                              <Pane layoutX="647.0" layoutY="-1.0" prefHeight="35.0" prefWidth="179.0" />
-                              <Line endX="824.0" endY="80.0" startY="80.0" strokeWidth="4.0" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-               </children>
-            </VBox>
+            <VBox fx:id="VboxRoom" prefHeight="364.0" prefWidth="824.0" styleClass="column_sd" />
          </content>
       </ScrollPane>
-      <Button layoutX="724.0" layoutY="368.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #ad6b13;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Validate &gt;" textFill="#ebdcdc" />
-      <Button layoutY="368.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="100.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="&lt; Go Back" textFill="#ebdcdc" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutY="367.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="88.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Go Back" textFill="#ebdcdc" />
+      <FontAwesomeIconView glyphName="FORWARD" layoutX="6.0" layoutY="387.0" rotate="180.0" size="15.0" wrappingWidth="12.0" />
    </children>
 </Pane>

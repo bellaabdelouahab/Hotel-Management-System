@@ -17,7 +17,7 @@
       <Button mnemonicParsing="false" onAction="#Goback" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #11111100;" />
       <Pane layoutX="513.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #111222fe; -fx-opacity: 1;">
          <children>
-            <Button layoutX="50.0" layoutY="130.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="10.0" prefWidth="95.0" style="-fx-background-color: #11111100; -fx-text-fill: #f5f5f5;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Add a Profile Picture">
+            <Button layoutX="50.0" layoutY="130.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="10.0" prefWidth="95.0" style="-fx-background-radius: 50;" styleClass="AddProfilePic" stylesheets="@../../../CSS/Employer.css" text="Add a Profile Picture">
                <font>
                   <Font size="9.0" />
                </font>

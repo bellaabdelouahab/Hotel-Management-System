@@ -22,8 +22,8 @@
             </ImageView>
             <Pane prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="10.0" prefHeight="190.0" prefWidth="624.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #ddd; -fx-font-size: 90; -fx-opacity: 0.6;" text="HOTEL BBBE" />
-                  <Label alignment="CENTER" layoutX="296.0" layoutY="148.0" prefHeight="18.0" prefWidth="376.0" style="-fx-text-fill: #ffffffee;" text="Welcome To The Art That Touches The Heart In Essaouira City" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="10.0" prefHeight="190.0" prefWidth="624.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #ddd; -fx-font-size: 90; -fx-opacity: 0.6;" text="HOTEL BBBE" />
+                  <Label alignment="CENTER" layoutX="324.0" layoutY="148.0" prefHeight="18.0" prefWidth="376.0" style="-fx-text-fill: #ffffffee;" text="Welcome To The Art That Touches The Heart In Essaouira City" />
                   <HBox layoutX="548.0" layoutY="7.0" prefHeight="44.0" prefWidth="468.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#ReturnToHome" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Home">
@@ -55,7 +55,7 @@
                </graphic>
             </Button>
             <Pane fx:id="HomePane" layoutY="200.0" prefHeight="440.0" prefWidth="1024.0" style="-fx-background-color: #11111108;" />
-            <VBox fx:id="AccountMenu" layoutY="63.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="107.0" prefWidth="174.0">
+            <VBox fx:id="AccountMenu" layoutY="63.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="107.0" prefWidth="174.0" visible="false">
                <children>
                   <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Profile" />
                   <Button fx:id="reservation_label" mnemonicParsing="false" onAction="#reservation" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Effected Reservations" />

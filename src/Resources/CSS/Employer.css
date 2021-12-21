@@ -20,8 +20,14 @@
 #textarea_ .content{
     -fx-background-color:#333333;
 }
+.AddProfilePic{
+    -fx-text-fill:#f5f5f5;
+    -fx-background-color:#11111100;
+}
 .AddProfilePic:hover{
-    -fx-text-fill:gray;
+    -fx-text-fill:brown;
+    -fx-background-color:#eee;
+
 }
 .btns:hover{
     -fx-background-color: #202332;
@@ -107,5 +113,9 @@
 }
 
 .column_sd{
-     -fx-background-color: linear-gradient( to right,#3F00FF 0%,  #9D29E8 100%);
+     -fx-background-color: linear-gradient( to right,#3F00FF 0%,  #9D29E899 100%);
+}
+
+.scrollpane .content{
+    -fx-background-color:red;
 }
