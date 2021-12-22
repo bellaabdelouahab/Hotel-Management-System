@@ -57,7 +57,7 @@ public class DashBoardController{
         serie1.setName("Amount");
         try {
             while(DashResult.next()){
-                serie1.getData().add(new XYChart.Data<String , Integer>(DashResult.getString("DATE_ENTRE").substring(0,11) , DashResult.getInt("PRIX")));
+                serie1.getData().add(new XYChart.Data<String , Integer>(DashResult.getString("DATE_DE_RESERVER").substring(0,11) , DashResult.getInt("PRIX")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

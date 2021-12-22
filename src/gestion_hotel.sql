@@ -19,16 +19,14 @@ alter table client add constraint client_check check(age between 1 and 120);
 
 CREATE TABLE rooms(
     ID_ROOM NUMBER ,
---    DATE_ENTRE DATE,
---    DATE_SORTIE DATE,
     NUM_ADUL NUMERIC ,
     NUM_CHILD NUMERIC ,
     CLASSE NUMERIC ,
     PRIX NUMERIC,
     contents_of_room VARCHAR2(170)
---    id_reserv Number(3) 
 );
 alter table rooms add constraint room_pk primary key(ID_ROOM);
+
 CREATE TABLE reservation(
     id_reserv Number(3) constraint pk_reser primary Key, 
     date_de_reserver Date,
@@ -110,9 +108,13 @@ SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = 'yassine@gmail.com' AND LOWER(PASSWO
 select id_room,num_adul,num_child,prix from rooms where (PRIX between 300 and 3000) and classe=3 and (num_child between 0 and 2) and (num_adul between 1 and 2);
 select * from reservation;
 select * from client ;
-delete from client where id_client=6;
+delete from client where id_client=20;
 delete from reservation where id_reserv=10;
 select id_emp from employee where lower(email)='yassine@gmail.com';
 
 insert into reservation values (10,to_date('3-4-2021','DD/MM/YYYY'),to_date('5-4-2021','DD/MM/YYYY'),5,3,1);
 
+SELECT R.DATE_DE_RESERVER , P.PRIX
+FROM RESERVATION R , ROOMS P
+WHERE R.ID_ROOM = P.ID_ROOM
+ORDER BY R.DATE_DE_RESERVER DESC;

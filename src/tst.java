@@ -1,64 +1,35 @@
-
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class tst {
     public static void main(String[] args) throws Exception {
-        // String[] x = {
-        // "insert into employee
-        // values(1,'admin',null,'test@gmail.com','admin',null,null,null,null,null,null,'admin')",
-        // "insert into employee values
-        // (2,'yassineboujrada','casa','yassine@gmail.com','yassine2','marocaine','h',18,null,1000.00,2,'reserve')",
-        // "insert into employee values
-        // (3,'bellaabdelwahab','taroudanet','abdo@gmail.com','abdelwahab','marocaine','h',21,'0765432847',1100.00,1.7,'reserve')",
-        // "insert into employee values
-        // (4,'bousslamahamza','khouribga','hamza@gmail.com','hamza2002','marocaine','h',18,'0645739874',1500.00,3,'reserve')",
-        // "insert into employee values (5,'el_bazzi
-        // hiba','essaouira','hiba@gmail.com','hiiba2002','marocaine','f',18,'0765342310',1500.00,2,'reserve')",
-        // "insert into employee values (6,'test
-        // omar','essaouira','omar@gmail.com','test2002','tunisiene','h',20,'0645789374',5000,1.2,'menage')",
-        // "insert into employee values (7,'test
-        // khadija','agadir','khadija@gmail.com','khadija2','france','f',25,'0719738492',4500,0,'menage')"
-        // };
+        String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+        String username = "hotel_bd";
+        String password = "hotel";
 
-        // Class.forName("oracle.jdbc.driver.OracleDriver");
-        // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
-        //         "hotel_bd",
-        //         "hotel");
-        // Statement st = con.createStatement();
+        Connection connection;
+        Statement statement;
+        connection = DriverManager.getConnection(db, username, password);
+        statement = connection.createStatement();
+        // Date d=java.sql.Date.valueOf(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy")));
+        // Date s = java.sql.Date.valueOf(LocalDate.of(2021, 12, 22).format(DateTimeFormatter.ofPattern("dd-MMM-yy")));
 
-        // for (int i = 0; i < x.length; i++) {
-        // int rs = st.executeUpdate(x[i]);
-        // if (rs > 0) {
-        // System.out.println("oh boy");
-        // } else {
-        // System.out.println("ooh noo");
-        // }
-        // }
-        // String s = "create table employee(" +
-        //         "id_emp NUMBER(4) constraint pk_emp primary Key," +
-        //         "full_name VARCHAR2(45) ," +
-        //         "adresse VARCHAR2(40)," +
-        //         "email VARCHAR2(40) constraint email_unique UNIQUE not null," +
-        //         "password VARCHAR2(11) not null," +
-        //         "nationnality VARCHAR2(20)," +
-        //         "sex VARCHAR2(2)," +
-        //         "age NUMBER(2)," +
-        //         "phone_number VARCHAR2(16)," +
-        //         "salaire NUMBER(6)," +
-        //         "commission NUMBER(4)," +
-        //         "type_travaille VARCHAR2(15))";
-        // st.execute(s);
-        // System.out.println("oh yeah");
-        // ResultSet rs = st.executeQuery("select count(*) as co from employee");
-        // while (rs.next()) {System.out.println(rs.getInt("co"));}
-        // for (int i = 0; i < x.length; i++) {
-        // int rs = st.executeUpdate(x[i]);
-        // if (rs > 0) {
-        // System.out.println("oh boy");
-        // } else {
-        // System.out.println("ooh noo");
-        // }
-        // }
+        LocalDate d = LocalDate.now(); 
+        LocalDate s=LocalDate.of(2021, 12, 22);
+        String DATE_FORMATTER= "dd-MM-YYYY";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
+        String formatDateTime = d.format(formatter);
+        String formatDateTime2 = s.format(formatter);
+        System.out.println("Formatted Time :" +formatDateTime+"\n dat 2"+formatDateTime2);
 
-
+        // System.out.println(d + "\t" + s);
+        String requt = "insert into reservation values ((select count(*) as co from reservation)+1,to_date('" + formatDateTime+ "','DD/MM/YYYY'),to_date('" + formatDateTime2+ "','DD/MM/YYYY'),(select count(*) as co from client),(select id_emp from employee where lower(email)='yassine@gmail.com'),"+ 3 + ")";
+        int y = statement.executeUpdate(requt);
+        if (y > 0) {
+            System.out.println("oh yeah");
+        } else {
+            System.out.println("oh non");
+        }
     }
 }
