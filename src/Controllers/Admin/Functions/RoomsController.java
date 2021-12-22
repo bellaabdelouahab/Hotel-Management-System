@@ -1,18 +1,30 @@
 package Controllers.Admin.Functions;
 
+import Main.DataBaseConnection;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 public class RoomsController {
 
-    @FXML
-    private TableView<?> ROOMTABLE;
+    public DataBaseConnection connection;
+    public Pane ParentPane;
+    public Pane CurrentTab;
 
     @FXML
-    private TableColumn<?, ?> id;
+    void DeleteUser(MouseEvent event) {
+
+    }
 
     @FXML
-    private TableColumn<?, ?> name;
+    void GoToModify(MouseEvent event) {
+
+    }
+
+    @FXML
+    void SwitchToAddUser(MouseEvent event) {
+
+    }
+
 
 }

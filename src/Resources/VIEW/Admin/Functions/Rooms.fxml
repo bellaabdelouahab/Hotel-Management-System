@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.RoomsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="725.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.RoomsController">
    <children>
-      <TableView fx:id="ROOMTABLE" prefHeight="493.0" prefWidth="727.0">
+      <HBox layoutX="29.0" layoutY="82.0" prefHeight="27.0" prefWidth="667.0" style="-fx-background-color: #F3F3F3; -fx-background-radius: 15 15 15 15;">
+         <children>
+            <Label contentDisplay="RIGHT" prefHeight="27.0" prefWidth="112.0" style="-fx-font-family: Oswald;" text=" ROOMS DATA" textAlignment="JUSTIFY" textOverrun="CLIP" />
+            <FontAwesomeIconView fill="RED" glyphName="USER" onMouseClicked="#DeleteUser" size="2em" text="" wrappingWidth="26.2000732421875">
+               <HBox.margin>
+                  <Insets left="460.0" right="9.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" onMouseClicked="#GoToModify" size="2em" text="" wrappingWidth="26.2000732421875">
+               <HBox.margin>
+                  <Insets left="5.0" right="15.0" top="3.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" onMouseClicked="#SwitchToAddUser" size="2em" wrappingWidth="26.2000732421875">
+               <HBox.margin>
+                  <Insets left="5.0" right="15.0" top="3.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </HBox>
+      <HBox layoutX="-112.0" layoutY="-103.0" prefHeight="23.0" prefWidth="650.0" style="-fx-background-color: #F3F3F3;" />
+      <TableView layoutX="29.0" layoutY="123.0" prefHeight="370.0" prefWidth="667.0" style="-fx-background-color: F9E5E5;">
         <columns>
-          <TableColumn fx:id="id" prefWidth="75.0" text="id" />
-          <TableColumn fx:id="name" prefWidth="75.0" text="name" />
+          <TableColumn prefWidth="96.79995346069336" style="-fx-background-colour: #ffffff;" text="ID_ROOM" />
+          <TableColumn prefWidth="91.99993896484375" text="CHECK_IN" />
+            <TableColumn prefWidth="82.39997863769531" text="CHECK_OUT" />
+            <TableColumn prefWidth="75.20001220703125" text="ADULTS" />
+            <TableColumn prefWidth="95.20001220703125" text="CHILDREN" />
+            <TableColumn prefWidth="55.20001220703125" text="CLASS" />
+            <TableColumn prefWidth="56.0" text="PRICE" />
+            <TableColumn prefWidth="111.20000000000005" text="RESERVATION_ID" />
         </columns>
       </TableView>
    </children>
-</Pane>
+</AnchorPane>

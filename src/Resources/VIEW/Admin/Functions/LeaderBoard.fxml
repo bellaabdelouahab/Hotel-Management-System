@@ -46,7 +46,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SwitchToRoom" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="LIST" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
                   <Label text="Rooms" textFill="#7c8184">
