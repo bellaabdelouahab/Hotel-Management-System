@@ -166,4 +166,26 @@ public class LeaderBord implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         AdminMenu.setVisible(false);
     }
+    @FXML
+    void SwitchToRoom(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Rooms.fxml"));
+        Parent root = loder.load();
+        RoomsController controller = loder.getController();
+        controller.connection=connection;
+        controller.ParentPane = ParentPane;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+            controller.CurrentTab=CurrentTab;
+        });
+
+    }
 }

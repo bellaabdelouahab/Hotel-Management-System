@@ -161,6 +161,19 @@ public class DataBaseConnection {
         }
     }
 
+    // GET ALL THE ROOMS INFORMATION
+    public ResultSet GetRoomsInformation(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM ROOMS";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+        return result;
+    }
+
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,
             int AGE, String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
