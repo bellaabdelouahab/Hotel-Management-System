@@ -50,14 +50,14 @@ public class DashBoardController{
             }
 
         } catch (SQLException e) {
-            System.out.println("WTF" +e);
+            System.out.println("WTF" +e); 
         }
         ResultSet DashResult = connection.DashBoardData();
         XYChart.Series<String , Integer > serie1 = new XYChart.Series<String , Integer>();
         serie1.setName("Amount");
         try {
             while(DashResult.next()){
-                serie1.getData().add(new XYChart.Data<String , Integer>(DashResult.getString("DATE_ENTRE").substring(0,11) , DashResult.getInt("PRIX")));
+                serie1.getData().add(new XYChart.Data<String , Integer>(DashResult.getString("DATE_DE_RESERVER").substring(0,11) , DashResult.getInt("PRIX")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -176,11 +176,16 @@ public class Search implements Initializable {
         AdultsNbr.setText("0");
         AdultsNbr.setText("0");
     }
-
-    public void LoadResult(ActionEvent e) throws IOException {
-        ArrayList<String[]> RoomTableData = GetSearchResult();
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
+    
+    public void LoadResult(ActionEvent e) throws IOException{
+        ArrayList<String[]> RoomTableData= new ArrayList<String[]>();
+        try{
+        RoomTableData=GetSearchResult();
+        }
+        catch(Exception er){
+            return;
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Parent root = loader.load();
         Result controller = loader.getController();
         controller.connection = connection;
@@ -202,18 +207,17 @@ public class Search implements Initializable {
         timeline.getKeyFrames().add(kf);
         timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            SearchForm.setStyle("-fx-opacity:0");
+            ParentPane.getChildren().remove(SearchForm);
         });
         timeline.play();
     }
-
-    private ArrayList<String[]> GetSearchResult() {
-        int INTData[] = new int[6];
-        String StringData[] = new String[2];
-        INTData[2] = (int) RatingLable.getRating();
-        StringData[0] = CheckInDate.getValue().toString();
-        StringData[1] = CheckOutDate.getValue().toString();
-        try {
+    private ArrayList<String[]> GetSearchResult() throws Exception {
+        int INTData[]=new int[6];
+        String StringData[]=new String[2];
+        INTData[2]=(int)RatingLable.getRating();
+        StringData[0]= CheckInDate.getValue().toString();
+        StringData[1]= CheckOutDate.getValue().toString();
+        try{
             System.out.println(StringData[0]);
             INTData[0] = Integer.parseInt(AdultsNbr.getText());
             INTData[1] = Integer.parseInt(CheldrenNbr.getText());
@@ -222,15 +226,18 @@ public class Search implements Initializable {
             INTData[4] = Integer.parseInt(MaxPrice.getText());
         } catch (NumberFormatException e) {
             Error_Message.setText("Please enter a valid number");
-            return null;
+            Error_Message.setStyle("-fx-background-color: #96242499;-fx-background-radius:50");
+            throw new RuntimeException("MyError");
         }
         return connection.GetSearchedRoom(INTData, StringData);
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        LocalDate date = LocalDate.now();// LocalDate.of(2020, 1, 8);
-        CheckInDate.setValue(date);
+        LocalDate DateIn = LocalDate.now();//LocalDate.of(2020, 1, 8);
+        CheckInDate.setValue(DateIn);
+        LocalDate DateOut = LocalDate.now().plusDays(1);
+        CheckOutDate.setValue(DateOut);
 
     }
 }

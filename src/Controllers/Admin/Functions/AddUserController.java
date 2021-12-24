@@ -102,7 +102,7 @@ public class AddUserController implements Initializable{
             }
             
         } catch (Exception e) {
-            System.out.println("Wtf" + e);
+            System.out.println("Wtf" + e); 
         }
     }
 

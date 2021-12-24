@@ -87,6 +87,7 @@ public class ModifyUserController implements Initializable{
         String Pass = Password.getText();
         String Natio = Nationality.getText();
         String Se = Sex.getValue();
+        System.out.println(Se);
         int ag = Integer.parseInt(Age.getText());
         String Phon = Phone.getText();
         int sal = Integer.parseInt(Salary.getText());

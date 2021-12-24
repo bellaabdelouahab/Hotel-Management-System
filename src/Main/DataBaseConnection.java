@@ -161,6 +161,19 @@ public class DataBaseConnection {
         }
     }
 
+    // GET ALL THE ROOMS INFORMATION
+    public ResultSet GetRoomsInformation(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM ROOMS";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+        return result;
+    }
+
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,
             int AGE, String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
@@ -195,12 +208,50 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "SELECT DATE_ENTRE , PRIX FROM rooms ORDER BY DATE_ENTRE DESC";
+            String Sql = "SELECT R.DATE_DE_RESERVER , P.PRIX FROM RESERVATION R , ROOMS P WHERE R.ID_ROOM = P.ID_ROOM ORDER BY R.DATE_DE_RESERVER DESC";
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("No" + e);
         }
         return result;
+    }
+
+    // add room function 
+    public void AddRoom(int ADULT , int CHILD , int CLASS , int PRIC , String MORE ){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 10 , "+ADULT+" , "+CHILD+", "+CLASS+" , "+PRIC+" , '"+MORE+"')"; 
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+    }
+
+    // modify a room
+    public void ModifyRoom(int ADUL , int CHILD , int CLASS , int PRIX , String MORE,  int ID){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "UPDATE ROOMS SET NUM_ADUL = "+ADUL+", NUM_CHILD = "+CHILD+" , CLASSE = "+CLASS+" , PRIX = "+PRIX+" , contents_of_room = '"+MORE+"'  WHERE ID_ROOM = "+ID; 
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+    }
+
+    // Delete A room
+    public void DeleteRoom(int ID_ROOM){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql1 = "DELETE FROM RESERVATION WHERE ID_ROOM = (SELECT ID_ROOM FROM ROOMS WHERE ID_ROOM = "+ID_ROOM+")";
+            String Sql2 = "DELETE FROM ROOMS WHERE ID_ROOM = " + ID_ROOM;
+            statement.executeUpdate(Sql1);
+            statement.executeUpdate(Sql2);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
     }
 
     // Disconnect from the Data Base

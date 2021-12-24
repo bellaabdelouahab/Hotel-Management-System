@@ -19,16 +19,18 @@ alter table client add constraint client_check check(age between 1 and 120);
 
 CREATE TABLE rooms(
     ID_ROOM NUMBER ,
---    DATE_ENTRE DATE,
---    DATE_SORTIE DATE,
     NUM_ADUL NUMERIC ,
     NUM_CHILD NUMERIC ,
     CLASSE NUMERIC ,
     PRIX NUMERIC,
     contents_of_room VARCHAR2(170)
---    id_reserv Number(3) 
 );
+UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 1 , CLASSE = 1 , PRIX = 120 , contents_of_room = 'MORE'  WHERE ID_ROOM = 5
+
+UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 4 , CLASSE = 4 , PRIX = 1200 , contents_of_room = "" WHERE ID_ROOM = 5;  
+
 alter table rooms add constraint room_pk primary key(ID_ROOM);
+
 CREATE TABLE reservation(
     id_reserv Number(3) constraint pk_reser primary Key, 
     date_de_reserver Date,
@@ -38,7 +40,8 @@ CREATE TABLE reservation(
     ID_ROOM NUMBER  CONSTRAINT room_fk REFERENCES rooms
 );
 alter table reservation add constraint date_check check(date_de_reserver<date_de_sortir);
-
+DELETE FROM RESERVATION WHERE ID_ROOM = (SELECT ID_ROOM FROM ROOMS WHERE ID_ROOM = 3);
+DELETE FROM ROOMS WHERE ID_ROOM = 3;
 create table employee(
     id_emp NUMBER(4) constraint pk_emp primary Key,  
     full_name VARCHAR2(45) ,
@@ -74,6 +77,7 @@ insert into rooms values (6,4,6,3,5000,'coffee Morning Wifi_5G Cushion Televisio
 insert into rooms values (7,1,0,5,6000,'Tea set Fireplace coffee_Morning');
 insert into rooms values (8,2,0,3,2000,'coffee Morning Wifi_5G');
 insert into rooms values (9,3,1,2,1000,'Television Speaker');
+INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 1 , 2 , 2,4 , 520 , 'WIFI');
 
 -- employee table 
 insert into employee values (1,'admin',null,'test@gmail.com','admin',null,null,null,null,null,null,'admin');
@@ -85,7 +89,7 @@ insert into employee values (6,'test omar','essaouira','omar@gmail.com','test200
 insert into employee values (7,'test2 khadija','agadir','khadija@gmail.com','khadija2','france','f',25,'0719738492',4500,0,'menage'); 
 
 --  reservation table
-insert into reservation values (1,to_date('3-9-2021','DD/MM/YYYY'),to_date('3-10-2021','DD/MM/YYYY'),2,2,1);
+insert into reservation values (1,to_date('03/09/2021','DD/MM/YYYY'),to_date('3-10-2021','DD/MM/YYYY'),2,2,1);
 insert into reservation values (2,to_date('7-10-2021','DD/MM/YYYY'),to_date('9-10-2021','DD/MM/YYYY'),2,2,3);
 insert into reservation values (3,to_date('9-9-2021','DD/MM/YYYY'),to_date('11-9-2021','DD/MM/YYYY'),3,4,3);
 insert into reservation values (4,to_date('13-9-2021','DD/MM/YYYY'),to_date('3-10-2021','DD/MM/YYYY'),4,4,1);
@@ -116,4 +120,17 @@ select id_emp from employee where lower(email)='yassine@gmail.com';
 
 insert into reservation values (10,to_date('3-4-2021','DD/MM/YYYY'),to_date('5-4-2021','DD/MM/YYYY'),5,3,1);
 
-insert into reservation values ((select count(*) as co from reservation)+1,to_date('3-4-2021','DD/MM/YYYY'),to_date('5-4-2021','DD/MM/YYYY'),(select count(*) as co from client),(select id_emp from employee where lower(email)='yassine@gmail.com'),2);
+SELECT R.DATE_DE_RESERVER , P.PRIX
+FROM RESERVATION R , ROOMS P
+WHERE R.ID_ROOM = P.ID_ROOM
+ORDER BY R.DATE_DE_RESERVER DESC;
+
+SELECT * FROM ROOMS;
+
+SELECT ID_ROOM 
+FROM ROOMS 
+ORDER BY ID_ROOM DESC OFFSET 10 ROWS  ;
+
+SELECT *
+FROM ROOMS
+FETCH ID_ROOM 1 ROW;
