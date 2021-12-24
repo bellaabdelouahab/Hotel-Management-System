@@ -25,6 +25,10 @@ CREATE TABLE rooms(
     PRIX NUMERIC,
     contents_of_room VARCHAR2(170)
 );
+UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 1 , CLASSE = 1 , PRIX = 120 , contents_of_room = 'MORE'  WHERE ID_ROOM = 5
+
+UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 4 , CLASSE = 4 , PRIX = 1200 , contents_of_room = "" WHERE ID_ROOM = 5;  
+
 alter table rooms add constraint room_pk primary key(ID_ROOM);
 
 CREATE TABLE reservation(
@@ -72,6 +76,7 @@ insert into rooms values (6,4,6,3,5000,'coffee Morning Wifi_5G Cushion Televisio
 insert into rooms values (7,1,0,5,6000,'Tea set Fireplace coffee_Morning');
 insert into rooms values (8,2,0,3,2000,'coffee Morning Wifi_5G');
 insert into rooms values (9,3,1,2,1000,'Television Speaker');
+INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 1 , 2 , 2,4 , 520 , 'WIFI');
 
 -- employee table 
 insert into employee values (1,'admin',null,'test@gmail.com','admin',null,null,null,null,null,null,'admin');
@@ -120,3 +125,5 @@ WHERE R.ID_ROOM = P.ID_ROOM
 ORDER BY R.DATE_DE_RESERVER DESC;
 
 SELECT * FROM ROOMS;
+
+

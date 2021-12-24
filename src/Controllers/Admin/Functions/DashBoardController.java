@@ -50,7 +50,7 @@ public class DashBoardController{
             }
 
         } catch (SQLException e) {
-            System.out.println("WTF" +e);
+            System.out.println("WTF" +e); 
         }
         ResultSet DashResult = connection.DashBoardData();
         XYChart.Series<String , Integer > serie1 = new XYChart.Series<String , Integer>();

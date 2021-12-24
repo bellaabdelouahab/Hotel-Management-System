@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="LeaderBoardData" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.AddRoomController">
+   <children>
+      <Pane fx:id="ChildPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="724.0">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="10.0" layoutY="13.0" prefHeight="72.0" prefWidth="358.0" text="GENERALE INFORMATION" textFill="#909090">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="NUM_CHILD" layoutX="29.0" layoutY="179.0" prefHeight="43.0" prefWidth="319.0" promptText="NUMBER OF CHILDREN">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="ROOM_CLASS" layoutX="30.0" layoutY="254.0" prefHeight="43.0" prefWidth="319.0" promptText="ROOM CLASSE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="PRIC" layoutX="28.0" layoutY="326.0" prefHeight="43.0" prefWidth="319.0" promptText="COMPLETE PRICE">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <FontAwesomeIconView fill="#333645" glyphName="HOME" layoutX="434.0" layoutY="305.0" size="20em" />
+            <ComboBox fx:id="ROOM_FUTER" layoutX="29.0" layoutY="398.0" prefHeight="43.0" prefWidth="319.0" />
+         </children>
+      </Pane>
+      <TextField fx:id="NUM_ADULT" layoutX="29.0" layoutY="104.0" prefHeight="43.0" prefWidth="319.0" promptText="NUMBER OF ADULT">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </TextField>
+      <Button layoutX="446.0" layoutY="416.0" mnemonicParsing="false" onAction="#AddRoom" prefHeight="42.0" prefWidth="233.0" styleClass="Admin_profile" stylesheets="@../../../CSS/Admin.css" text="ADD ROOM" />
+   </children>
+</Pane>

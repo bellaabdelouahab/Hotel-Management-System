@@ -8,44 +8,50 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="ChildPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="725.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.RoomsController">
+
+<Pane fx:id="LeaderBoardData" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.RoomsController">
    <children>
-      <HBox layoutX="33.0" layoutY="24.0" prefHeight="27.0" prefWidth="667.0" style="-fx-background-color: #F3F3F3; -fx-background-radius: 15 15 15 15;">
+      <AnchorPane fx:id="ChildPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="725.0" style="-fx-background-color: WHITE;">
          <children>
-            <Label prefHeight="41.0" prefWidth="173.0" text="ROOMS">
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </Label>
-            <FontAwesomeIconView fill="RED" glyphName="USER" onMouseClicked="#DeleteUser" size="2em" text="" wrappingWidth="26.2000732421875">
-               <HBox.margin>
-                  <Insets left="460.0" right="9.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
-            <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" onMouseClicked="#GoToModify" size="2em" text="" wrappingWidth="26.2000732421875">
-               <HBox.margin>
-                  <Insets left="5.0" right="15.0" top="3.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
-            <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" onMouseClicked="#SwitchToAddUser" size="2em" wrappingWidth="26.2000732421875">
-               <HBox.margin>
-                  <Insets left="5.0" right="15.0" top="3.0" />
-               </HBox.margin>
-            </FontAwesomeIconView>
+            <HBox layoutX="34.0" layoutY="24.0" prefHeight="27.0" prefWidth="667.0" style="-fx-background-color: #F3F3F3; -fx-background-radius: 15 15 15 15;">
+               <children>
+                  <Label prefHeight="41.0" prefWidth="173.0" text="ROOMS">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <FontAwesomeIconView fill="RED" glyphName="USER" onMouseClicked="#DeleteRoom" size="2em" text="" wrappingWidth="26.2000732421875">
+                     <HBox.margin>
+                        <Insets left="460.0" right="9.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView fill="#ffea00" glyphName="EDIT" onMouseClicked="#SwitchToModifyRoom" size="2em" text="" wrappingWidth="26.2000732421875">
+                     <HBox.margin>
+                        <Insets left="5.0" right="15.0" top="3.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" onMouseClicked="#SwitchToAdd" size="2em" wrappingWidth="26.2000732421875">
+                     <HBox.margin>
+                        <Insets left="5.0" right="15.0" top="3.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </HBox>
+            <TableView fx:id="ROOMSTABLE" layoutX="28.0" layoutY="78.0" prefHeight="497.0" prefWidth="676.0" style="-fx-background-color: F9E5E5;">
+               <columns>
+                  <TableColumn fx:id="ID_ROOM" prefWidth="154.6666717529297" style="-fx-background-colour: #ffffff;" text="ID_ROOM" />
+                  <TableColumn fx:id="ADULT" prefWidth="118.33334350585938" text="ADULT" />
+                  <TableColumn fx:id="CHILDREN" prefWidth="111.66665649414062" text="CHILDREN" />
+                  <TableColumn fx:id="CLASSE" prefWidth="138.0" text="CLASSE" />
+                  <TableColumn fx:id="PRICE" minWidth="0.0" prefWidth="154.33334350585938" text="PRICE" />
+               </columns>
+            </TableView>
          </children>
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor>
-      </HBox>
-      <TableView fx:id="ROOMSTABLE" layoutX="28.0" layoutY="78.0" prefHeight="497.0" prefWidth="676.0" style="-fx-background-color: F9E5E5;">
-         <columns>
-            <TableColumn fx:id="ID_ROOM" prefWidth="154.6666717529297" style="-fx-background-colour: #ffffff;" text="ID_ROOM" />
-            <TableColumn fx:id="ADULT" prefWidth="118.33334350585938" text="ADULT" />
-            <TableColumn fx:id="CHILDREN" prefWidth="111.66665649414062" text="CHILDREN" />
-            <TableColumn fx:id="CLASSE" prefWidth="138.0" text="CLASSE" />
-            <TableColumn fx:id="PRICE" minWidth="0.0" prefWidth="154.33334350585938" text="PRICE" />
-         </columns>
-      </TableView>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</Pane>

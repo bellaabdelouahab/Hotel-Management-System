@@ -1,5 +1,6 @@
 package Controllers.Admin.Functions;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,10 +8,14 @@ import java.util.ResourceBundle;
 
 import Main.DataBaseConnection;
 import Main.Rooms;
+import animatefx.animation.FadeInRightBig;
+import animatefx.animation.FadeOutLeft;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,6 +23,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class RoomsController implements Initializable{
+
+    @FXML Pane ChildPane;
 
     @FXML
     private TableColumn<Rooms, Integer> ADULT;
@@ -41,26 +48,60 @@ public class RoomsController implements Initializable{
 
     ObservableList<Rooms> List = FXCollections.observableArrayList();
 
-    @FXML
-    private Pane ChildPane;
-
     public Pane CurrentTab;
 
     public Pane ParentPane;
 
     @FXML
-    void DeleteUser(MouseEvent event) {
+    private Pane LeaderBoardData;
+
+    @FXML
+    void SwitchToModifyRoom(MouseEvent event) throws IOException, SQLException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyRoom.fxml"));
+        Parent root = loder.load();
+        Rooms test = ROOMSTABLE.getSelectionModel().getSelectedItem();
+        ModifyRoomController controller = loder.getController();
+        controller.item = test.getId_room();
+        controller.connection=connection;
+        controller.init();
+        FadeOutLeft FideOut =new FadeOutLeft(ChildPane);
+        FideOut.play(); 
+        FideOut.setOnFinished(e -> {
+            LeaderBoardData.getChildren().remove(ChildPane);
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
+        });
+    }
+
+
+    @FXML
+    void DeleteRoom(MouseEvent event) {
 
     }
 
     @FXML
-    void GoToModify(MouseEvent event) {
-
-    }
-
-    @FXML
-    void SwitchToAddUser(MouseEvent event) {
-
+    void SwitchToAdd(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddRooms.fxml"));
+        Parent root = loder.load();
+        AddRoomController controller = loder.getController();
+        controller.ChildPane = ChildPane;
+        controller.connection = connection;
+        FadeOutLeft FideOut = new FadeOutLeft(ChildPane);
+        FideOut.play();
+        FideOut.setOnFinished(e -> {
+            LeaderBoardData.getChildren().remove(ChildPane);
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
+        });
     }
 
     @Override

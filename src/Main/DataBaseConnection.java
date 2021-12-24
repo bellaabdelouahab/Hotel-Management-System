@@ -216,6 +216,42 @@ public class DataBaseConnection {
         return result;
     }
 
+    // add room function 
+    public void AddRoom(int ADULT , int CHILD , int CLASS , int PRIC , String MORE ){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 1 , "+ADULT+" , "+CHILD+", "+CLASS+" , "+PRIC+" , '"+MORE+"')"; 
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+    }
+
+    // modify a room
+    public void ModifyRoom(int ADUL , int CHILD , int CLASS , int PRIX , String MORE,  int ID){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "UPDATE ROOMS SET NUM_ADUL = "+ADUL+", NUM_CHILD = "+CHILD+" , CLASSE = "+CLASS+" , PRIX = "+PRIX+" , contents_of_room = '"+MORE+"'  WHERE ID_ROOM = "+ID; 
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+    }
+
+    // Delete A room
+    public void DeleteRoom(int ID_ROOM){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "DELETE FROM ROOMS WHERE ID_ROOM = " + ID_ROOM;
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+    }
+
     // Disconnect from the Data Base
     public void Disconnect() {
         try {
