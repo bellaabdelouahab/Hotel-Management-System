@@ -80,7 +80,8 @@ public class RoomsController implements Initializable{
 
     @FXML
     void DeleteRoom(MouseEvent event) {
-
+        Rooms test = ROOMSTABLE.getSelectionModel().getSelectedItem();
+        connection.DeleteRoom(test.getId_room());
     }
 
     @FXML

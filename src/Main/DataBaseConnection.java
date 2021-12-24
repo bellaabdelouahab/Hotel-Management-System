@@ -221,7 +221,7 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 1 , "+ADULT+" , "+CHILD+", "+CLASS+" , "+PRIC+" , '"+MORE+"')"; 
+            String Sql = "INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 10 , "+ADULT+" , "+CHILD+", "+CLASS+" , "+PRIC+" , '"+MORE+"')"; 
             statement.executeUpdate(Sql);
         } catch (Exception e) {
             System.out.println("No" + e);
@@ -245,8 +245,10 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "DELETE FROM ROOMS WHERE ID_ROOM = " + ID_ROOM;
-            statement.executeUpdate(Sql);
+            String Sql1 = "DELETE FROM RESERVATION WHERE ID_ROOM = (SELECT ID_ROOM FROM ROOMS WHERE ID_ROOM = "+ID_ROOM+")";
+            String Sql2 = "DELETE FROM ROOMS WHERE ID_ROOM = " + ID_ROOM;
+            statement.executeUpdate(Sql1);
+            statement.executeUpdate(Sql2);
         } catch (Exception e) {
             System.out.println("No" + e);
         }

@@ -40,7 +40,8 @@ CREATE TABLE reservation(
     ID_ROOM NUMBER  CONSTRAINT room_fk REFERENCES rooms
 );
 alter table reservation add constraint date_check check(date_de_reserver<date_de_sortir);
-
+DELETE FROM RESERVATION WHERE ID_ROOM = (SELECT ID_ROOM FROM ROOMS WHERE ID_ROOM = 3);
+DELETE FROM ROOMS WHERE ID_ROOM = 3;
 create table employee(
     id_emp NUMBER(4) constraint pk_emp primary Key,  
     full_name VARCHAR2(45) ,
@@ -126,4 +127,10 @@ ORDER BY R.DATE_DE_RESERVER DESC;
 
 SELECT * FROM ROOMS;
 
+SELECT ID_ROOM 
+FROM ROOMS 
+ORDER BY ID_ROOM DESC OFFSET 10 ROWS  ;
 
+SELECT *
+FROM ROOMS
+FETCH ID_ROOM 1 ROW;
