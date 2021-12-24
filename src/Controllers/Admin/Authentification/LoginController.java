@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import Controllers.Admin.Functions.LeaderBord;
 import Main.DataBaseConnection;
@@ -37,6 +38,8 @@ public class LoginController implements Initializable{
     public Pane ParentPane;
     @FXML
     private BorderPane ChiledStage;
+
+    public ArrayList<String> request;
     @FXML
     public void GoToAdminPage(ActionEvent event) throws IOException, SQLException {
 
@@ -66,7 +69,7 @@ public class LoginController implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Email_Area.setText("admin@gmail.com");
-        Password_Area.setText("admin@2020");
+        Email_Area.setText("test@gmail.com");
+        Password_Area.setText("admin");
     }
 }

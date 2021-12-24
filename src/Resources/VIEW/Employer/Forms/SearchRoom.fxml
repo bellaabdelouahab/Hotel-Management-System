@@ -30,7 +30,7 @@
             </HBox>
             <HBox prefHeight="54.0" prefWidth="411.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Check-out Date" />
+                  <Label fx:id="outdate" alignment="CENTER" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="Check-out Date" />
                   <DatePicker fx:id="CheckOutDate" prefHeight="38.0" prefWidth="284.0" promptText="Enter A Date" style="-fx-background-color: #33333300; -fx-text-fill: #fff;" />
                </children>
             </HBox>
@@ -85,7 +85,7 @@
       </GridPane>
       <Label alignment="CENTER" layoutX="468.0" layoutY="75.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Room Class" />
       <Label alignment="CENTER" layoutX="465.0" layoutY="127.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Min price" />
-      <Label alignment="CENTER" layoutX="658.0" layoutY="128.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Max price" />
+      <Label fx:id="max_prix" alignment="CENTER" layoutX="658.0" layoutY="128.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Max price" />
       <TextField fx:id="MinPrice" alignment="CENTER" layoutX="446.0" layoutY="170.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
       <TextField fx:id="MaxPrice" alignment="CENTER" layoutX="643.0" layoutY="170.0" promptText="Enter value" style="-fx-background-color: #11111199; -fx-text-fill: #fff;" />
       <Button fx:id="B_ValidateForm1" layoutX="447.0" layoutY="231.0" mnemonicParsing="false" onAction="#ValidateForm1" prefHeight="39.0" prefWidth="151.6" style="-fx-background-color: #ad6b13;" text="Validate" />

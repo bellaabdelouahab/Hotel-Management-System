@@ -355,13 +355,14 @@ public class DataBaseConnection {
     // return rs;
     // }
 
-    public int co(String table) throws Exception {
-        int y = 0;
-        statement = connection.createStatement();
-        ResultSet x = statement.executeQuery("select count(*) as co from " + table);
-        while (x.next()) {
-            y = x.getInt("co");
-        }
-        return y;
-    }
+    
+    // public int co(String table) throws Exception {
+    //     int y = 0;
+    //     statement = connection.createStatement();
+    //     ResultSet x = statement.executeQuery("select count(*) as co from " + table);
+    //     while (x.next()) {
+    //         y = x.getInt("co");
+    //     }
+    //     return y;
+    // }
 }

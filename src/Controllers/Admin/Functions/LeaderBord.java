@@ -4,12 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Controllers.Admin.Authentification.LoginController;
@@ -17,136 +19,146 @@ import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeOutLeft;
 
-public class LeaderBord implements Initializable{
+public class LeaderBord implements Initializable {
 
-    @FXML private VBox AdminMenu;
+    @FXML
+    private VBox AdminMenu;
 
-    @FXML private Pane LeaderBoardData;
+    @FXML
+    private Pane LeaderBoardData;
 
     private Pane CurrentTab;
 
     public Pane ParentPane;
 
-    @FXML private AnchorPane ChiledStage;
+    @FXML
+    private AnchorPane ChiledStage;
 
     public DataBaseConnection connection;
 
     @FXML
-    public void GoToModify(MouseEvent event) throws IOException{
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
+    public void GoToModify(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/ModifyUser.fxml"));
         Parent root = loder.load();
         ModifyUserController controller = loder.getController();
         controller.LeaderBoardData = LeaderBoardData;
-        controller.connection=connection;
-        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        controller.connection = connection;
+        FadeOutLeft FideOut = new FadeOutLeft(CurrentTab);
         FideOut.play();
-        FideOut.setOnFinished(e->{
+        FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(CurrentTab);
-            CurrentTab=(Pane) root;
+            CurrentTab = (Pane) root;
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root; 
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
         });
     }
 
     @FXML
     void SwitchToAddUser(MouseEvent event) throws IOException {
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         Parent root = loder.load();
         AddUserController controller = loder.getController();
-        controller.connection=connection;
-        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        controller.connection = connection;
+        FadeOutLeft FideOut = new FadeOutLeft(CurrentTab);
         FideOut.play();
-        FideOut.setOnFinished(e->{
+        FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(CurrentTab);
-            CurrentTab=(Pane) root;
+            CurrentTab = (Pane) root;
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root; 
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
         });
     }
 
     @FXML
-    void SwitchToProfile(MouseEvent event) throws IOException{
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
+    void SwitchToProfile(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/Profile.fxml"));
         Parent root = loder.load();
         ProfileController controller = loder.getController();
-        controller.LeaderBoardData=LeaderBoardData;
-        controller.connection=connection;
-        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        controller.LeaderBoardData = LeaderBoardData;
+        controller.connection = connection;
+        FadeOutLeft FideOut = new FadeOutLeft(CurrentTab);
         FideOut.play();
-        FideOut.setOnFinished(e->{
-            LeaderBoardData.getChildren().remove(CurrentTab); 
-            CurrentTab=(Pane) root;
+        FideOut.setOnFinished(e -> {
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            CurrentTab = (Pane) root;
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root;
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
         });
     }
-    public void ShowDashBoard() throws IOException{
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
+
+    public void ShowDashBoard() throws IOException {
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Functions/DashBoard.fxml"));
         Parent root = loder.load();
         DashBoardController controller = loder.getController();
-        controller.connection=connection;
+        controller.connection = connection;
         controller.init();
-        if(CurrentTab != null){
-            FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        if (CurrentTab != null) {
+            FadeOutLeft FideOut = new FadeOutLeft(CurrentTab);
             FideOut.play();
-            FideOut.setOnFinished(e->{
+            FideOut.setOnFinished(e -> {
                 LeaderBoardData.getChildren().remove(CurrentTab);
             });
         }
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root;
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
         });
     }
+
     public void SwitchToUser(MouseEvent event) throws IOException {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/User.fxml"));
         Parent root = loder.load();
         UserController controller = loder.getController();
-        controller.connection=connection;
+        controller.connection = connection;
         controller.ParentPane = ParentPane;
         controller.init();
-        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FadeOutLeft FideOut = new FadeOutLeft(CurrentTab);
         FideOut.play();
-        FideOut.setOnFinished(e->{
+        FideOut.setOnFinished(e -> {
             LeaderBoardData.getChildren().remove(CurrentTab);
-            
+
         });
         LeaderBoardData.getChildren().add(root);
         FadeInRightBig animate = new FadeInRightBig(root);
         animate.play();
-        animate.setOnFinished(e->{
-            CurrentTab=(Pane) root;
-            controller.CurrentTab=CurrentTab;
+        animate.setOnFinished(e -> {
+            CurrentTab = (Pane) root;
+            controller.CurrentTab = CurrentTab;
         });
     }
 
     @FXML
-    void LogOut(MouseEvent event) throws IOException{
-        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
+    void LogOut(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Admin/Authentification/Login.fxml"));
         Parent root = loder.load();
         LoginController controller = loder.getController();
-        controller.ParentPane=ParentPane;
-        controller.connection=connection;
-        if(CurrentTab != null){
-            FadeOutLeft FideOut =new FadeOutLeft(ChiledStage);
+        controller.ParentPane = ParentPane;
+        controller.connection = connection;
+        if (CurrentTab != null) {
+            FadeOutLeft FideOut = new FadeOutLeft(ChiledStage);
             FideOut.play();
-            FideOut.setOnFinished(e->{
+            FideOut.setOnFinished(e -> {
                 ParentPane.getChildren().remove(ChiledStage);
-                CurrentTab=(Pane) root;
+                CurrentTab = (Pane) root;
             });
         }
         ParentPane.getChildren().add(root);
@@ -158,12 +170,16 @@ public class LeaderBord implements Initializable{
         AdminMenu.setVisible(true);
     }
 
+    
+
     @FXML
     void HideMenuBar(MouseEvent event) {
         AdminMenu.setVisible(false);
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         AdminMenu.setVisible(false);
     }
+
 }

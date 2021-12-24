@@ -154,7 +154,7 @@
             </Label>
             <AnchorPane prefHeight="72.0" prefWidth="357.0">
                <children>
-                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="162.0" layoutY="44.0" size="1.6em" />
+                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="154.0" layoutY="48.0" size="2.5em" textAlignment="CENTER" wrappingWidth="35.85714340209961" />
                   <FontAwesomeIconView fill="#909090" glyphName="GEAR" layoutX="230.0" layoutY="45.0" size="1.7em" />
                   <GNAvatarView layoutX="297.0" layoutY="15.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="42.0" prefWidth="43.0" stroke="#909090" strokeWidth="1.0" type="CIRCLE">
                      <image>

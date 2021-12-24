@@ -57,10 +57,12 @@ public class Search implements Initializable {
     private Label Error_Message;
     @FXML
     private Button B_ValidateForm1;
-    @FXML 
+    @FXML
     private Pane SearchForm;
     public DataBaseConnection connection;
     public Pane ParentPane;
+    @FXML
+    private Label max_prix, outdate;
 
     // private String pattern = "dd-MM-yyyy";s
 
@@ -136,17 +138,31 @@ public class Search implements Initializable {
             SearchData.maxprice = Integer.parseInt(MaxPrice.getText());
         if (MinPrice.getText() == "" || MinPrice.getText() == null)
             SearchData.minprice = 0;
-        else
+
+        else {
             SearchData.minprice = Integer.parseInt(MinPrice.getText());
             SearchData.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
             SearchData.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
             SearchData.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
-        /* Put Your Shitey Code Here : form 1 */
+            /* Put Your Shitey Code Here : form 1 */
+            if (SearchData.AdultsCounter == 0 || SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice
+                    || CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
+                System.out.println("hhahhay");
 
-        try {
-            LoadResult(e);
-        } catch (IOException e1) {
-            System.out.println(e1.getMessage());
+                if (SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice) {
+                    max_prix.setStyle("-fx-text-fill:red; -fx-font-size:18;");
+                    MaxPrice.setStyle("-fx-text-fill:red; -fx-background-color: #11111199;");
+                }
+                if (CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
+                    outdate.setStyle("-fx-text-fill:red; -fx-font-size:15; -fx-font-family: Century Gothic W1G Light;");
+                }
+            } else {
+                try {
+                    LoadResult(e);
+                } catch (IOException e1) {
+                    System.out.println(e1.getMessage());
+                }
+            }
         }
     }
 
@@ -160,21 +176,22 @@ public class Search implements Initializable {
         AdultsNbr.setText("0");
         AdultsNbr.setText("0");
     }
-    
-    public void LoadResult(ActionEvent e) throws IOException{
-        ArrayList<String[]> RoomTableData=GetSearchResult();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
+
+    public void LoadResult(ActionEvent e) throws IOException {
+        ArrayList<String[]> RoomTableData = GetSearchResult();
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Employer/Forms/SearchResult.fxml"));
         Parent root = loader.load();
         Result controller = loader.getController();
-        controller.connection=connection;
-        controller.ParentPane=ParentPane;
-        controller.datentrer=CheckInDate.getValue();
-        controller.datesortir=CheckOutDate.getValue();
+        controller.connection = connection;
+        controller.ParentPane = ParentPane;
+        controller.datentrer = CheckInDate.getValue();
+        controller.datesortir = CheckOutDate.getValue();
         controller.init();
-        if(RoomTableData!=null)
-        for (String[] RoomLine : RoomTableData)
-        controller.CreateLineRoom(RoomLine);
-        controller.SearchFormPane=SearchForm;
+        if (RoomTableData != null)
+            for (String[] RoomLine : RoomTableData)
+                controller.CreateLineRoom(RoomLine);
+        controller.SearchFormPane = SearchForm;
         root.translateXProperty().set(1024);
         ParentPane.getChildren().add(root);
         Timeline timeline = new Timeline();
@@ -189,28 +206,30 @@ public class Search implements Initializable {
         });
         timeline.play();
     }
-    private ArrayList<String[]> GetSearchResult(){
-        int INTData[]=new int[6];
-        String StringData[]=new String[2];
-        INTData[2]=(int)RatingLable.getRating();
-        StringData[0]= CheckInDate.getValue().toString();
-        StringData[1]= CheckOutDate.getValue().toString();
-        try{
+
+    private ArrayList<String[]> GetSearchResult() {
+        int INTData[] = new int[6];
+        String StringData[] = new String[2];
+        INTData[2] = (int) RatingLable.getRating();
+        StringData[0] = CheckInDate.getValue().toString();
+        StringData[1] = CheckOutDate.getValue().toString();
+        try {
             System.out.println(StringData[0]);
-            INTData[0]=Integer.parseInt(AdultsNbr.getText());
-            INTData[1]=Integer.parseInt(CheldrenNbr.getText());
-            INTData[5]=Integer.parseInt(RoomsNbr.getText());
-            INTData[3]=Integer.parseInt(MinPrice.getText());
-            INTData[4]=Integer.parseInt(MaxPrice.getText());
-        }catch(NumberFormatException e){
+            INTData[0] = Integer.parseInt(AdultsNbr.getText());
+            INTData[1] = Integer.parseInt(CheldrenNbr.getText());
+            INTData[5] = Integer.parseInt(RoomsNbr.getText());
+            INTData[3] = Integer.parseInt(MinPrice.getText());
+            INTData[4] = Integer.parseInt(MaxPrice.getText());
+        } catch (NumberFormatException e) {
             Error_Message.setText("Please enter a valid number");
             return null;
         }
         return connection.GetSearchedRoom(INTData, StringData);
     }
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        LocalDate date = LocalDate.now();//LocalDate.of(2020, 1, 8);
+        LocalDate date = LocalDate.now();// LocalDate.of(2020, 1, 8);
         CheckInDate.setValue(date);
 
     }
