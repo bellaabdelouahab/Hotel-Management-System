@@ -17,12 +17,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
 import Main.DataBaseConnection;
 import animatefx.animation.FadeIn;
-
 import java.util.*;
-
 public class SignUp implements Initializable{
     
     @FXML
