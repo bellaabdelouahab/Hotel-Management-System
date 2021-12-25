@@ -12,15 +12,11 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-<<<<<<< HEAD
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "System";
-    String password = "password";
-=======
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
->>>>>>> 0875230550433d3e84fd4b4143681e14901bcd5c
+    // String username = "System";
+    // String password = "password";
 
     Connection connection;
     Statement statement;
