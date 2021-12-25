@@ -23,7 +23,8 @@
             "Reference Library/orai18n.jar",
             "Reference Library/simplefan.jar",
             "Reference Library/ucp.jar",
-            "Reference Library/xdb6.jar"
+            "Reference Library/xdb6.jar",
+            "Reference Library/javax.mail.jar"
         ],
         "exclude": [
             "lib/ojdbc6.jar"

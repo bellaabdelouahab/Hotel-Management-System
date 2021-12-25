@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.controlsfx.control.textfield.TextFields;
@@ -61,13 +62,12 @@ public class Home {
 
     public void ShowProfile() throws IOException {
         AcountMenuHide();
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/Profile.fxml"));
         Parent root = loader.load();
         Profile controller = loader.getController();
         controller.connection = connection;
         controller.compte = compte;
-        controller.HomeProfilePicture = ProfilePicture;
+        controller.HomeProfilePicture = ProfilePicture.getImage();
         controller.FillProfileData();
         root.translateXProperty().set(1024);
         parentContainer.getChildren().add(root);
@@ -126,9 +126,8 @@ public class Home {
     public void reservation(ActionEvent e) throws Exception {
         HomePane.getChildren().clear();
         AcountMenuHide();
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));
-        Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Forms/reservation.fxml"));
+        this.root = loader.load();
         if (parentContainer.getChildren().contains(root)) {
             return;
         }
@@ -137,10 +136,9 @@ public class Home {
         controller.compte = compte;
         controller.init();
         root.translateXProperty().set(1024);
-        root.translateYProperty().set(70);
-        parentContainer.getChildren().add(root);
+        HomePane.getChildren().add(root);
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyValue kv = new KeyValue(root.translateXProperty(), 93.5, Interpolator.EASE_IN);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
@@ -150,6 +148,9 @@ public class Home {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
         Parent root = loader.load();
         Login controller = loader.getController();
+        ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
+        rs.next();
+        controller.email_text.setText(rs.getString(4));
         controller.connection=connection;
         TextFields.bindAutoCompletion(controller.email_text, connection.GetEmailesHistory());
         achnopane.getChildren().add(root);

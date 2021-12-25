@@ -40,12 +40,10 @@
       <Label alignment="CENTER" layoutX="-8.0" layoutY="176.0" prefHeight="38.0" prefWidth="128.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #fff; -fx-font-size: 15;" text="X-night stay" />
       <HBox layoutX="58.0" layoutY="222.0" onMouseClicked="#showNbrOfPersons" prefHeight="49.0" prefWidth="351.0" style="-fx-border-color: #aaaaaa99; -fx-border-width: 3;">
          <children>
-            <Label fx:id="AdultsNbr" alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="54.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Adults" />
-            <Label fx:id="CheldrenNbr" alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="62.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Cheldren" />
-            <Label fx:id="RoomsNbr" alignment="CENTER" prefHeight="49.0" prefWidth="42.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="54.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Rooms" />
+            <Label fx:id="AdultsNbr" alignment="CENTER" prefHeight="47.0" prefWidth="100.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
+            <Label alignment="CENTER" prefHeight="47.0" prefWidth="85.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Adults" />
+            <Label fx:id="CheldrenNbr" alignment="CENTER" prefHeight="47.0" prefWidth="56.0" style="-fx-text-fill: #fff; -fx-font-size: 20;" text="0" />
+            <Label alignment="CENTER" prefHeight="47.0" prefWidth="104.0" style="-fx-text-fill: #fff; -fx-font-size: 15;" text="Children" />
             <Button mnemonicParsing="false" onAction="#showNbrOfPersons" prefHeight="53.0" prefWidth="54.0" style="-fx-background-color: #aaaaaa99;">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
@@ -57,7 +55,7 @@
             </Button>
          </children>
       </HBox>
-      <GridPane fx:id="NbrOfPersons" layoutX="67.0" layoutY="274.0" prefHeight="126.0" prefWidth="335.0" visible="false">
+      <GridPane fx:id="NbrOfPersons" layoutX="67.0" layoutY="274.0" prefHeight="89.0" prefWidth="335.0" visible="false">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.33334350585938" minWidth="10.0" prefWidth="186.33334350585938" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.66665649414062" minWidth="10.0" prefWidth="47.0" />
@@ -65,14 +63,12 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.66668701171875" minWidth="10.0" prefWidth="51.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="56.333343505859375" minHeight="10.0" prefHeight="48.33331298828125" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="84.33334350585938" minHeight="10.0" prefHeight="49.66668701171875" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label prefHeight="54.0" prefWidth="198.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Adults" />
             <Label prefHeight="75.0" prefWidth="213.0" style="-fx-font-size: 18; -fx-text-fill: #fff;" text="Cheldren" GridPane.rowIndex="1" />
-            <Label prefHeight="73.0" prefWidth="229.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Rooms" GridPane.rowIndex="2" />
             <Button minWidth="47.0" mnemonicParsing="false" onAction="#decAdultsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" GridPane.columnIndex="1">
                <graphic>
                   <FontAwesomeIconView glyphName="MINUS" />
@@ -90,16 +86,7 @@
                <graphic>
                   <FontAwesomeIconView glyphName="PLUS" />
                </graphic></Button>
-            <Button minWidth="47.0" mnemonicParsing="false" onAction="#decRoomsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <graphic>
-                  <FontAwesomeIconView glyphName="MINUS" />
-               </graphic></Button>
-            <Button minWidth="47.0" mnemonicParsing="false" onAction="#incRoomsNbr" prefHeight="30.0" prefWidth="54.0" style="-fx-background-color: #11111111; -fx-border-color: #11eeee; -fx-border-radius: 5; -fx-font-size: 10;" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <graphic>
-                  <FontAwesomeIconView glyphName="PLUS" />
-               </graphic></Button>
             <Label fx:id="AdultsNbrLable" alignment="CENTER" prefHeight="64.0" prefWidth="74.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" />
-            <Label fx:id="RoomsNbrLable" alignment="CENTER" prefHeight="64.0" prefWidth="62.0" style="-fx-text-fill: #fff;" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Label alignment="CENTER" layoutX="468.0" layoutY="75.0" prefHeight="37.0" prefWidth="117.0" style="-fx-text-fill: #fff; -fx-font-size: 18;" text="Room Class" />

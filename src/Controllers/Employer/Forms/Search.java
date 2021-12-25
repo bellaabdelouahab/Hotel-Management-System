@@ -40,10 +40,6 @@ public class Search implements Initializable {
     @FXML
     private Label CheldrenNbrLable;
     @FXML
-    private Label RoomsNbr;
-    @FXML
-    private Label RoomsNbrLable;
-    @FXML
     private DatePicker CheckInDate;
     @FXML
     private DatePicker CheckOutDate;
@@ -91,15 +87,6 @@ public class Search implements Initializable {
         }
     }
 
-    public void incRoomsNbr() {
-        if (Integer.parseInt(RoomsNbr.getText()) < 10) {
-            int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
-            RoomsCounter++;
-            RoomsNbr.setText("" + RoomsCounter);
-            RoomsNbrLable.setText("" + RoomsCounter);
-        }
-    }
-
     public void decAdultsNbr() {
         if (Integer.parseInt(AdultsNbr.getText()) > 0) {
             int AdultsCounter = Integer.parseInt(AdultsNbr.getText());
@@ -116,15 +103,6 @@ public class Search implements Initializable {
             ChheldrenCounter--;
             CheldrenNbr.setText("" + ChheldrenCounter);
             CheldrenNbrLable.setText("" + ChheldrenCounter);
-        }
-    }
-
-    public void decRoomsNbr() {
-        if (Integer.parseInt(RoomsNbr.getText()) > 0) {
-            int RoomsCounter = Integer.parseInt(RoomsNbr.getText());
-            RoomsCounter--;
-            RoomsNbr.setText("" + RoomsCounter);
-            RoomsNbrLable.setText("" + RoomsCounter);
         }
     }
 
@@ -221,7 +199,6 @@ public class Search implements Initializable {
             System.out.println(StringData[0]);
             INTData[0] = Integer.parseInt(AdultsNbr.getText());
             INTData[1] = Integer.parseInt(CheldrenNbr.getText());
-            INTData[5] = Integer.parseInt(RoomsNbr.getText());
             INTData[3] = Integer.parseInt(MinPrice.getText());
             INTData[4] = Integer.parseInt(MaxPrice.getText());
         } catch (NumberFormatException e) {

@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="824.0" prefHeight="395.0" prefWidth="824.0" style="-fx-background-color: #00000000;" stylesheets="@../../../CSS/Employer.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
+<Pane fx:id="childPanex1" maxHeight="395.0" maxWidth="852.0" prefHeight="394.0" prefWidth="841.0" style="-fx-background-color: #00000000;" stylesheets="@../../../CSS/Employer.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Forms.Result">
    <children>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="366.0" prefWidth="824.0" style="-fx-background-color: red;" styleClass="scrollpane" stylesheets="@../../../CSS/Employer.css">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="366.0" prefWidth="841.0" style="-fx-background-color: #454545;" styleClass="scrollpane" stylesheets="@../../../CSS/Employer.css" vbarPolicy="ALWAYS">
          <content>
             <VBox fx:id="VboxRoom" prefHeight="364.0" prefWidth="824.0" styleClass="column_sd" />
          </content>
       </ScrollPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutY="367.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="88.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Go Back" textFill="#ebdcdc" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutY="366.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="88.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Go Back" textFill="#ebdcdc" />
       <FontAwesomeIconView glyphName="FORWARD" layoutX="6.0" layoutY="387.0" rotate="180.0" size="15.0" wrappingWidth="12.0" />
    </children>
 </Pane>

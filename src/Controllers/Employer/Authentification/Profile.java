@@ -3,9 +3,13 @@ package Controllers.Employer.Authentification;
 import java.sql.*;
 import javafx.scene.image.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
+
 import Controllers.Employer.Forms.Methodes;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
@@ -45,7 +49,7 @@ public class Profile implements Initializable {
     private TextField new_pass, pass, check_pass;
     public String compte;
     BufferedImage ImagebBufferedImage;
-    public GNAvatarView HomeProfilePicture;
+    public Image HomeProfilePicture;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
@@ -102,6 +106,7 @@ public class Profile implements Initializable {
                 this.email.setText(rs.getString(4));
                 this.Nationnality.setText(rs.getString(6));
                 this.Phonenumber.setText(rs.getString(9));
+                ProfilePicture.setImage(HomeProfilePicture);
                 // this.ProfilePicture.setImage(new Image(System.getProperty("user.dir")
                 // + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
                 // "te.png"));
@@ -129,12 +134,11 @@ public class Profile implements Initializable {
             phone = rs.getString(9);
             // sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
-            // ImageIO.write(ImagebBufferedImage, "png", new
-            // File(System.getProperty("user.dir")
-            // + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
-            // "te" + ".png"));
+            ImageIO.write(ImagebBufferedImage, "png", new
+            File(System.getProperty("user.dir")
+            + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
+            "te" + ".png"));
             // Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
-            ProfilePicture.setImage(HomeProfilePicture.getImage());
         }
 
         if (Adress.getText().toLowerCase().equals(adr) == false) {

@@ -2,33 +2,28 @@ package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-import javax.mail.*;
-import javax.mail.internet.*;
 import javafx.scene.layout.AnchorPane;
 
 import Main.DataBaseConnection;
 import animatefx.animation.FadeIn;
 
 import java.util.*;
-import java.sql.*;
 
 public class SignUp implements Initializable{
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     
     @FXML
     private Label sended;

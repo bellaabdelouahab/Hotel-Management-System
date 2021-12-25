@@ -131,6 +131,7 @@ public class Result {
         RoomPane.getChildren().addAll(IdLabel, IdData, Price, PriceData, AdultsNbr, AdultsNbrData, ChildrenNbr,
                 ChildrenNbrData, Reserve, RatingData, HideRating, Separatuer);
         VboxRoom.getChildren().add(RoomPane);
+        VboxRoom.setPrefHeight(VboxRoom.getPrefHeight()+RoomPane.getPrefHeight());
         // RoomDataPane.getChildren().add(RoomPane);
     }
 
