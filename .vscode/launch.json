@@ -3,11 +3,21 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {   "version": "0.2.0",
     "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Launch mail",
+            "request": "launch",
+            "mainClass": "mail",
+            "projectName": "JavaProject_bd75dee1",
+            "vmArgs": "--add-modules java.activation"
+        },
         {
             "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
+<<<<<<< HEAD
             "projectName": "JAVAPROJECT_e3287b37",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
 },
@@ -16,16 +26,22 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
+=======
+<<<<<<< HEAD
+>>>>>>> 0875230550433d3e84fd4b4143681e14901bcd5c
             "projectName": "JAVAPROJECT_2807e46f",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
+            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-            "projectName": "JAVAPROJECT_222b8208",
-            "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
+            "projectName": "JavaProject_bd75dee1",
+=======
+            "projectName": "JAVAPROJECT_3f9e5aaa",
+>>>>>>> 385be8f9f7599fd81c2d51013ae88bff03a0fdb6
+            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
         },
         {
             "type": "java",

@@ -39,7 +39,7 @@ public class Result {
 
     public void LoadSearchForm(ActionEvent e) throws IOException {
         Timeline timeline = new Timeline();
-        SearchFormPane.setStyle("-fx-opacity:1");
+        ParentPane.getChildren().add(SearchFormPane);
         KeyValue kv = new KeyValue(SearchFormPane.translateXProperty(), 100, Interpolator.EASE_OUT);
         KeyValue kv1 = new KeyValue(childPanex1.translateXProperty(), 1024, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
@@ -81,6 +81,9 @@ public class Result {
     }
 
     public void init() {
+        // Stop[] stops = new Stop[] { new Stop(0, Color.BLACK), new Stop(1, Color.RED)};
+        // LinearGradient lg1 = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE, stops);
+        // childPanex1.setBackground(lg1);
     }
 
     public void CreateLineRoom(String[] roomLine) {
@@ -99,6 +102,7 @@ public class Result {
         Reserve.setLayoutX(645);
         Reserve.setLayoutY(33);
         Reserve.setStyle("-fx-background-radius:0");
+        Reserve.getStyleClass().add("file");
         Reserve.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -114,6 +118,7 @@ public class Result {
         // RatingData.setPrefSize(179, 46);
         RatingData.setLayoutX(645);
         RatingData.setLayoutY(0);
+        RatingData.setRating(3);
         Pane HideRating = new Pane();
         HideRating.setPrefSize(179, 46);
         HideRating.setLayoutX(645);
@@ -134,7 +139,7 @@ public class Result {
         IdLabel.setPrefSize(Xsize, Ysize);
         IdLabel.setLayoutX(Xlayout);
         IdLabel.setLayoutY(Ylayoyt);
-        IdLabel.setStyle("-fx-background-color:#eeeeee11;");
+        IdLabel.setStyle("-fx-background-color:#eeeeee01;-fx-text-fill:#eee");
         return IdLabel;
     }
 }

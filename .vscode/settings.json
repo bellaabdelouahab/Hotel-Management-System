@@ -16,6 +16,7 @@
             "Reference Library/GNAvatarView-1.0.5.jar",
             "Reference Library/fontawesomefx-commons-9.1.2.jar",
             "Reference Library/charm-glisten-4.4.1-javadoc.jar",
+<<<<<<< HEAD
             "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
             "Reference Library/ojdbc6.jar",
             "Reference Library/ojdbc7.jar",
@@ -24,6 +25,9 @@
             "Reference Library/simplefan.jar",
             "Reference Library/ucp.jar",
             "Reference Library/xdb6.jar"
+=======
+            "c:\\Users\\DELL XPS\\Desktop\\javax.mail.jar"
+>>>>>>> 0875230550433d3e84fd4b4143681e14901bcd5c
         ],
         "exclude": [
             "lib/ojdbc6.jar"

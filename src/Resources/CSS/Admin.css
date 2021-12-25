@@ -23,6 +23,11 @@
     -fx-background-color :  #333645;
     -fx-text-fill : white ;
 }
+
+.lineargradright{
+    -fx-background-color: linear-gradient(to bottom right, #ff7f50, #6a5acd);
+}
+
 .Admin_profile:hover{
     -fx-background-color : #3a3f58;
 }
