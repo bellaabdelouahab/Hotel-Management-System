@@ -369,6 +369,16 @@ public class DataBaseConnection {
         return y;
     }
 
+    // notiication pour admin
+
+    public int insertdb(String f_name,String adr,String email,String sex,int age,String phone) throws Exception{
+        connection = DriverManager.getConnection(db, username, password);
+        statement = connection.createStatement();
+        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"')");
+        //int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'yassine bou','adr','email@gmail.com','h',19,'0938883')");
+        return y;
+    }
+
     // public int addClient(String f_name, String l_name, String natio, String sex,
     // String etat, int age)
     // throws Exception {

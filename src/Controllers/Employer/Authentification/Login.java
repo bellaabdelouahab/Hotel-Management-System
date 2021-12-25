@@ -47,7 +47,7 @@ public class Login{
     public PasswordField password_label;
 
     @FXML
-    private Button signin_btn;
+    private Button signin_btn,signup_btn;
 
     @FXML
     private AnchorPane achnopane;
@@ -70,6 +70,12 @@ public class Login{
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        // FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/SignUp.fxml"));
+        // Scene scene = signup_btn.getScene();
+        // Parent root = loader.load();
+        // SignUp controller = loader.getController();
+        // controller.connection=connection;
+        // controller.init();
     }
 
     @FXML

@@ -1,32 +1,43 @@
 package Controllers.Employer.Authentification;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import Controllers.Admin.Authentification.*;
-import Controllers.Admin.Functions.LeaderBord;
+import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import javax.mail.*;
+import javax.mail.internet.*;
 
-public class SignUp {
+import Main.DataBaseConnection;
+
+import java.util.*;
+import java.sql.*;
+
+public class SignUp implements Initializable{
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private ArrayList<String> requet=new ArrayList<String>();
     
     @FXML
-    private TextField mail, user, phone ;
-
+    private Label sended;
+    
     @FXML
-    private PasswordField pass , confirme_pass ;
+    private TextField mail, phone ,address,age,first_name,last_name;
+    @FXML
+    private ComboBox<String> sex;
+
+
+    public String[]  x={"Man","Woman"};
+    public DataBaseConnection con = new DataBaseConnection();
 
     // Switch To Sign In page of Employer
     @FXML
@@ -44,46 +55,83 @@ public class SignUp {
     // add to data base
     @FXML
     public void login_return(ActionEvent event) throws Exception {
-        if(user.getText().length()!=0 && mail.getText().contains("@gmail.com")){
-            requet.add(user.getText());
-            requet.add(mail.getText());
-            if(phone.getText().length()>0 && phone.getText().length()<16){
-                requet.add(phone.getText());
+        String gender;
+        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2){
+            System.out.println("let start"+sex.getValue());
+            send_mail(mail.getText(),first_name.getText()+" "+last_name.getText(),phone.getText());
+            if (sex.getValue()=="Man") {
+                gender="h";
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
-           
-            
+            else{
+                gender="f";
+            }
+            int rs=con.insertdb(first_name.getText()+" "+last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText());
+            if (rs>0){
+                System.out.println("hola");    
+            }else{System.out.println("alahoa akbar");   }
         }
-
-
-
-
-
-        // Class.forName("oracle.jdbc.driver.OracleDriver");
-        // Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "hotel_bd",
-        //         "hotel");
-        // Statement st = con.createStatement();
-        // if (mail.getText().contains("@gmail.com") && pass.getText().length() > 2
-        //         && pass.getText().equals(confirme_pass.getText())) {
-        //     int x = 0;
-        //     ResultSet rs = st.executeQuery("select count(id_compte) as nbr from compte_employee");
-        //     while (rs.next()) {
-        //         x = rs.getInt("nbr");
-        //         System.out.println(x);
-        //     }
-        //     int result = st.executeUpdate("insert into compte_employee(id_compte,email,password) values(" + (x + 1)
-        //             + ",'" + mail.getText().toLowerCase() + "','" + pass.getText() + "')");
-        //     if (result > 0) {
-        //         System.out.println("oh boy");
-        //         SwitchToSignIn(event);
-        //     } else {
-        //         System.out.println("finawa ghadi");
-        //     }
-        // }
-
-        
+        else{
+            sended.setVisible(true);
+            sended.setStyle("Erreur informations");
+            sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
+        }
     }
 
 
+    // function for send request to add account 
+
+    void send_mail(String mail,String name,String phone_number){
+            String to = "yassine.boujrada@gmail.com";
+            String from = "centre.declaration@gmail.com";
+            String host = "smtp.gmail.com";
+            final String username ="centre.declaration@gmail.com";
+            final String password = "bouchaib2021";
+    
+            //setup mail server
+    
+            Properties props = System.getProperties();
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.host", host);
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.starttls.required", "true");
+            props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+            Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator(){
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+    
+            try{
+                //create mail
+                MimeMessage m = new MimeMessage(session);
+                m.setFrom(new InternetAddress(from));
+                m.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
+                m.setSubject("add acount");
+                m.setText("there is a new request to add an account of "+name+"\nemail :"+mail+"\nphone number :"+phone_number);
+    
+                //send mail
+                Transport.send(m);
+                sended.setVisible(true);
+                sended.setText("Message sent :)");
+                sended.setStyle("-fx-text-fill:  #009400; -fx-background-color: #292929;");
+                System.out.println("Message sent!");
+    
+            }   catch (MessagingException e){
+               e.getMessage();
+               sended.setText("Message not sent :(");
+               sended.setStyle("-fx-text-fill:  red; -fx-background-color: #292929;");
+            }
+        }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        sex.getItems().addAll(x);
+    }
 
 }
