@@ -2,6 +2,9 @@ package Controllers.Employer.Authentification;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import Main.DataBaseConnection;
+import animatefx.animation.FadeIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javafx.scene.layout.AnchorPane;
 
 import Main.DataBaseConnection;
 
@@ -38,20 +42,23 @@ public class SignUp implements Initializable{
 
     public String[]  x={"Man","Woman"};
     public DataBaseConnection con = new DataBaseConnection();
+    public DataBaseConnection connection;
+    public AnchorPane achnopane;
 
     // Switch To Sign In page of Employer
+
+    // Switch To Sign 
     @FXML
     public void SwitchToSignIn(ActionEvent event) throws IOException {
-
-        root = FXMLLoader.load(getClass()
-                .getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        achnopane.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        Parent root = loader.load();
+        Login controller = loader.getController();
+        controller.connection=connection;
+        controller.achnopane= achnopane;
+        achnopane.getChildren().add(root);
+        new FadeIn(root).play();
     }
-
     // add to data base
     @FXML
     public void login_return(ActionEvent event) throws Exception {

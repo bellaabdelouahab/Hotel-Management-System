@@ -8,6 +8,7 @@ import org.controlsfx.control.MaskerPane;
 
 import Controllers.Employer.Home;
 import Main.DataBaseConnection;
+import animatefx.animation.FadeIn;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -21,17 +22,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.Node;
 public class Login{
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     private String compte;
 
     @FXML
@@ -49,14 +45,15 @@ public class Login{
     @FXML
     private Button signin_btn,signup_btn;
 
-    @FXML
-    private AnchorPane achnopane;
+    @FXML AnchorPane achnopane;
 
     @FXML
     private Label pass_word;
 
     @FXML
     private Label emai_label;
+    @FXML
+    private ImageView image_login;
     public DataBaseConnection connection;
     public Pane ParentPane;
     public ArrayList<String> request;
@@ -64,18 +61,15 @@ public class Login{
     // Switch To Sign Up page of Employer
     @FXML
     public void SwitchToSignUp(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass()
-                .getResource("../../../Resources/VIEW/Employer/Authentification/SignUp.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/SignUp.fxml"));
-        // Scene scene = signup_btn.getScene();
-        // Parent root = loader.load();
-        // SignUp controller = loader.getController();
-        // controller.connection=connection;
-        // controller.init();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/SignUp.fxml"));
+        Parent root = loader.load();
+        SignUp controller = loader.getController();
+        controller.connection=connection;
+        controller.achnopane= achnopane;
+        achnopane.getChildren().clear();
+        achnopane.getChildren().add(root);
+        new FadeIn(root).play();
     }
 
     @FXML

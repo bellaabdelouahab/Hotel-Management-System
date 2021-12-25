@@ -10,11 +10,7 @@
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="366.0" prefWidth="824.0" style="-fx-background-color: red;" styleClass="scrollpane" stylesheets="@../../../CSS/Employer.css">
          <content>
-            <VBox fx:id="VboxRoom" prefHeight="346.0" prefWidth="824.0">
-               <children>
-                  <Pane fx:id="RoomDataPane" />
-               </children>
-            </VBox>
+            <VBox fx:id="VboxRoom" prefHeight="364.0" prefWidth="824.0" styleClass="column_sd" />
          </content>
       </ScrollPane>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutY="367.0" mnemonicParsing="false" onAction="#LoadSearchForm" prefHeight="28.0" prefWidth="88.0" style="-fx-background-radius: 0; -fx-background-color: #886f3d;" styleClass="Employer_page" stylesheets="@../../../CSS/Employer.css" text="Go Back" textFill="#ebdcdc" />
