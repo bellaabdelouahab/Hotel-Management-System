@@ -1,22 +1,19 @@
 package Controllers.Admin.Functions;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Main.Client;
 import Main.DataBaseConnection;
-import javafx.collections.ObservableList;
+//import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ClientController implements Initializable{
 
-    private static final ObservableList<Client> List = null;
+    //private static final ObservableList<Client> List = null;
 
     DataBaseConnection connection = new DataBaseConnection();
     
@@ -51,9 +48,9 @@ public class ClientController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
         try {
-            int x =1/0;
+            System.out.println(1/0);
+            
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             System.out.println("Aji saweb had teb");
             System.exit(1);
         }
