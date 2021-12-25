@@ -11,49 +11,52 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DataBaseConnection {
+<<<<<<< HEAD
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "System";
     String password = "password";
 
+=======
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String username = "hotel_bd";
+    String password = "hotel";
+>>>>>>> 36a78b60564e8d7c4a220a01828774ad75fb53ae
     Connection connection;
     Statement statement;
     ResultSet result;
     private String compte;
-
     // connect to the data base
     public void ConnectToDataBase() {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
             System.out.println("Connection Had Worked");
-
         } catch (Exception e) {
             System.out.println("Data Base Connection Problem" + e);
         }
     }
-
     // login using data base information
     public ResultSet LoginWithDataBase(String EMAIL, String PASSWORD) {
         try {
             connection = DriverManager.getConnection(db, username, password);
-            statement = connection.createStatement();
-            String Sql = "SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = LOWER('" + EMAIL.toLowerCase()
-                    + "') AND LOWER(PASSWORD) = LOWER('" + PASSWORD.toLowerCase() + "')";
-            result = statement.executeQuery(Sql);
-        } catch (Exception e) {
+            statement  = connection.createStatement();
+            String Sql =  "SELECT * FROM EMPLOYEE WHERE LOWER(EMAIL) = LOWER('" + EMAIL.toLowerCase()
+                        + "') AND LOWER(PASSWORD) = LOWER('" + PASSWORD.toLowerCase() + "')";
+            result     = statement.executeQuery(Sql);
+        }
+        catch (Exception e) {
             System.out.println("Not Working");
         }
         return result;
     }
-
     public ArrayList<String[]> GetSearchedRoom(int[] INTData, String[] StringData) {
         try {
-            statement = connection.createStatement();
-            String Sql = "select id_room,num_adul,num_child,prix from rooms where (PRIX between " + INTData[3] + " and "
-                    + INTData[4] + ") and classe=" + INTData[2] + " and (num_child between 0 and " + INTData[1]
-                    + ") and (num_adul between 1 and " + INTData[0] + ")";
-            result = statement.executeQuery(Sql);
+            statement  = connection.createStatement();
+            String Sql =  "select id_room,num_adul,num_child,prix from rooms where (PRIX between " + INTData[3] + " and "
+                        + INTData[4] + ") and classe=" + INTData[2] + " and (num_child between 0 and " + INTData[1]
+                        + ") and (num_adul between 1 and " + INTData[0] + ")";
+            result     = statement.executeQuery(Sql);
             ArrayList<String[]> RoomData = new ArrayList<String[]>();
             while (result.next()) {
                 String[] Line = new String[4];
@@ -70,12 +73,11 @@ public class DataBaseConnection {
             return null;
         }
     }
-
     // return count of DashBoard
     public ResultSet ReturnCount(String Table) {
         try {
             connection = DriverManager.getConnection(db, username, password);
-            statement = connection.createStatement();
+            statement  = connection.createStatement();
             String Sql = "SELECT COUNT(*) FROM " + Table;
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
@@ -83,32 +85,29 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     // update admin profile
     public void UpdateProfile(String FULL_NAME, String EMAIL, String PASSWORD, String PHONE_NUMBER) {
         try {
             connection = DriverManager.getConnection(db, username, password);
-            statement = connection.createStatement();
+            statement  = connection.createStatement();
             String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',EMAIL = '" + EMAIL + "',PASSWORD = '"
-                    + PASSWORD + "',PHONE_NUMBER = '" + PHONE_NUMBER + "'WHERE ID_EMP = 1";
+                        + PASSWORD + "',PHONE_NUMBER = '" + PHONE_NUMBER + "'WHERE ID_EMP = 1";
             statement.executeUpdate(Sql);
         } catch (Exception e) {
             System.out.println("Not Working");
         }
     }
-
     // Get emailes History
     public String[] GetEmailesHistory() throws SQLException {
         statement = connection.createStatement();
         String rs = "select * from LOGINLOG";
-        result = statement.executeQuery(rs);
+        result    = statement.executeQuery(rs);
         ArrayList<String> EmailesHistory = new ArrayList<String>();
         while (result.next()) {
             EmailesHistory.add(result.getString("Email"));
         }
         return EmailesHistory.toArray(new String[EmailesHistory.size()]);
     }
-
     // Add to Emailes History
     public void AddEmailToHistory(String Email) throws SQLException {
         statement = connection.createStatement();
@@ -119,7 +118,6 @@ public class DataBaseConnection {
         }
         statement.executeUpdate("INSERT INTO LOGINLOG VALUES('" + Email + "')");
     }
-
     // get all employers accounts
     public ResultSet GetAllEmployers() {
         try {
@@ -132,7 +130,6 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     // Add users to the table
     public void AddUsers(String Full_name, String Adresse, String Email, String Password, String Natio, String Se,
             int age, String Phone, int salary, int commition, String type) {
@@ -148,7 +145,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-
     // Delete User From Table
     public void DeleteUser(int ID_EMP) {
         try {
@@ -160,7 +156,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-
     // GET ALL THE ROOMS INFORMATION
     public ResultSet GetRoomsInformation(){
         try {
@@ -173,6 +168,7 @@ public class DataBaseConnection {
         }
         return result;
     }
+<<<<<<< HEAD
     
       //GET ALL THE CLIENTS INFORMATIONS
       public ResultSet GetClientInformation(){
@@ -189,12 +185,14 @@ public class DataBaseConnection {
     }
 
     
+=======
+>>>>>>> 36a78b60564e8d7c4a220a01828774ad75fb53ae
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,
             int AGE, String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
         try {
             connection = DriverManager.getConnection(db, username, password);
-            statement = connection.createStatement();
+            statement  = connection.createStatement();
             String Sql = "UPDATE employee SET FULL_NAME = '" + FULL_NAME + "',ADRESSE = '" + ADRESSE + "',EMAIL = '"
                     + EMAIL + "',PASSWORD = '" + PASSWORD + "',NATIONNALITY = '" + NATIO + "',SEX = '" + SE
                     + "',AGE = '" + AGE + "',PHONE_NUMBER = '" + PHONE_NUMBER + "',SALAIRE = " + SAL + ",COMMISSION = "
@@ -204,7 +202,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-
     // get the modify information
     public ResultSet ModifyInfo(int ID) {
         try {
@@ -217,7 +214,6 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     // return DashBoard Data
     public ResultSet DashBoardData() {
         try {
@@ -230,7 +226,6 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     // add room function 
     public void AddRoom(int ADULT , int CHILD , int CLASS , int PRIC , String MORE ){
         try {
@@ -242,7 +237,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-
     // modify a room
     public void ModifyRoom(int ADUL , int CHILD , int CLASS , int PRIX , String MORE,  int ID){
         try {
@@ -254,7 +248,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-
     // Delete A room
     public void DeleteRoom(int ID_ROOM){
         try {
@@ -268,7 +261,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-
     // Disconnect from the Data Base
     public void Disconnect() {
         try {
@@ -280,24 +272,19 @@ public class DataBaseConnection {
             System.out.println("Problem");
         }
     }
-
-    // hamza functions
-
-    // my functions
+    // hamzas functions
     public ResultSet Login_employ(String x) {
         try {
-
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
             String rs = "select * from employee where lower(email)='" + x.toLowerCase() + "'";
             result = statement.executeQuery(rs);
-
         } catch (Exception e) {
             System.out.println("Aha ahmadi");
         }
         return result;
     }
-
+    // Changing Address
     public int adre_profile_change(String x, int y) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
@@ -305,7 +292,7 @@ public class DataBaseConnection {
         int res = statement.executeUpdate(rs);
         return res;
     }
-
+    // Changing Nationality
     public int natio_profile_change(String x, int y) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
@@ -313,7 +300,7 @@ public class DataBaseConnection {
         int res = statement.executeUpdate(rs);
         return res;
     }
-
+    // Changing Phonenumber
     public int phone_profile_change(String x, int y) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
@@ -321,7 +308,7 @@ public class DataBaseConnection {
         int res = statement.executeUpdate(rs);
         return res;
     }
-
+    //Changing Age
     public int age_profile_change(int x, int y) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
@@ -329,7 +316,7 @@ public class DataBaseConnection {
         int res = statement.executeUpdate(rs);
         return res;
     }
-
+    //Changing Client Password
     public int change_password(String x, int y) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
@@ -337,21 +324,20 @@ public class DataBaseConnection {
         int res = statement.executeUpdate(rs);
         return res;
     }
-
-    // arreter connexion
+    // Close connexion
     public void dormir() throws Exception {
         this.connection.close();
         this.statement.close();
     }
-
+    // Keep track of user Account
     public void setCompte(String d) {
         this.compte = d;
     }
-
+    // Get Tracked Account
     public String getCompte() {
         return compte;
     }
-
+    // Get List of reserved Rooms
     public ResultSet reserv(String x) {
         try {
             connection = DriverManager.getConnection(db, username, password);
@@ -364,9 +350,7 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     // reserver room
-
     public int reserverRoom(LocalDate date_entrer, LocalDate date_sortir, String emp, int room) throws Exception {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
         connection = DriverManager.getConnection(db, username, password);
@@ -375,12 +359,21 @@ public class DataBaseConnection {
         int y = statement.executeUpdate(requt);
         return y;
     }
-
     // add client
     public int addClient(String cin, String f_name, String l_name, String natio, String gender, String etat, String age) throws Exception {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
         int y = statement.executeUpdate("insert into client values (" + Integer.parseInt(cin) + ",'"+ f_name.toLowerCase() + "','" + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" + gender+ "','" + etat + "'," + Integer.parseInt(age) + ")");
+        return y;
+    }
+
+    // notiication pour admin
+
+    public int insertdb(String f_name,String adr,String email,String sex,int age,String phone) throws Exception{
+        connection = DriverManager.getConnection(db, username, password);
+        statement = connection.createStatement();
+        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"')");
+        //int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'yassine bou','adr','email@gmail.com','h',19,'0938883')");
         return y;
     }
 

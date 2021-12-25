@@ -16,6 +16,11 @@
             "Reference Library/GNAvatarView-1.0.5.jar",
             "Reference Library/fontawesomefx-commons-9.1.2.jar",
             "Reference Library/charm-glisten-4.4.1-javadoc.jar",
+<<<<<<< HEAD
+=======
+            "Reference Library/activation-1.1.1.jar",
+            "Reference Library/javax.mail.jar",
+>>>>>>> 36a78b60564e8d7c4a220a01828774ad75fb53ae
             "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
             "Reference Library/ojdbc6.jar",
             "Reference Library/ojdbc7.jar",
