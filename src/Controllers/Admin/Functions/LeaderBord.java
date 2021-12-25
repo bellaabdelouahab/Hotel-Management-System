@@ -200,4 +200,26 @@ public class LeaderBord implements Initializable {
         });
 
     }
+
+    @FXML
+    void SwitchToClient(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Client.fxml"));
+        Parent root = loder.load();
+        ClientController controller = loder.getController();
+        controller.connection=connection;
+        controller.ParentPane = ParentPane;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+            controller.CurrentTab=CurrentTab;
+        });
+    }
 }

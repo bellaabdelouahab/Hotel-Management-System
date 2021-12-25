@@ -25,7 +25,7 @@ CREATE TABLE rooms(
     PRIX NUMERIC,
     contents_of_room VARCHAR2(170)
 );
-UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 1 , CLASSE = 1 , PRIX = 120 , contents_of_room = 'MORE'  WHERE ID_ROOM = 5
+UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 1 , CLASSE = 1 , PRIX = 120 , contents_of_room = 'MORE'  WHERE ID_ROOM = 5;
 
 UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 4 , CLASSE = 4 , PRIX = 1200 , contents_of_room = "" WHERE ID_ROOM = 5;  
 
@@ -57,6 +57,19 @@ create table employee(
     type_travaille VARCHAR2(15)
 );
 alter table employee add constraint employe_check check(age between 18 and 70); 
+
+CREATE table sign_up(
+    id_emp Number(4),
+    full_name VARCHAR2(45) ,
+     adresse VARCHAR2(40),
+    email VARCHAR2(40),
+    sex VARCHAR2(2),
+    age NUMBER(2),
+    phone_number VARCHAR2(16)
+);
+
+alter table sign_up rename COLUMN id_emp to id;
+
 
 /*  insert informations to the table  */
 
@@ -134,3 +147,7 @@ ORDER BY ID_ROOM DESC OFFSET 10 ROWS  ;
 SELECT *
 FROM ROOMS
 FETCH ID_ROOM 1 ROW;
+
+insert into sign_up values ((select count(*) from sign_up)+1,'(yassine+""+bou','adr','email@gmail.com','h',19,'0938883');
+select * from sign_up;
+delete from sign_up;

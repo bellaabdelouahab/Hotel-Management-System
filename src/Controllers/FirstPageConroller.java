@@ -13,8 +13,7 @@ import Controllers.Employer.Authentification.Login;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeOutLeft;
-import javafx.animation.FadeTransition;
-import javafx.animation.Timeline;
+import animatefx.animation.Jello;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,10 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
 public class FirstPageConroller implements Initializable{
     DataBaseConnection Connection=new DataBaseConnection();
     private Parent root;
@@ -35,9 +35,13 @@ public class FirstPageConroller implements Initializable{
     private Pane ChiledStage;
     @FXML
     private Pane header;
-
+    @FXML 
+    private Polygon Polygona;
+    @FXML
+    private Rectangle Rectan;
     // Switch To Admin Page
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
+        returnHeaderBlack();
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         root = loder.load();
         LoginController controller = loder.getController();
@@ -54,6 +58,7 @@ public class FirstPageConroller implements Initializable{
 
     // Switch To Employer Page
     public void SwitchToEmployerPage(ActionEvent event) throws IOException, SQLException {
+        returnHeaderBlack();
         Button Btton=(Button)((Node)event.getSource());
         Btton.setDisable(true);
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
@@ -76,22 +81,26 @@ public class FirstPageConroller implements Initializable{
         Stage stage = (Stage)ParentPane.getScene().getWindow();
         stage.close();
     }
+    public void ExitHover(MouseEvent event){
+        new Jello((Node) event.getSource()).play();
+        ((Button) event.getSource()).setStyle("-fx-background-color:red");
+    }
+    public void ExitHoverOut(MouseEvent event){
+        ((Button) event.getSource()).setStyle("-fx-background-color: #00000000");
+    }
     public void MinimizeWindow(){
         Stage stage = (Stage)ParentPane.getScene().getWindow();
         stage.setIconified(true);
     }
-    public void headerAnimation(){
-        FadeTransition ft = new FadeTransition(Duration.millis(2000),header );
-        ft.setFromValue(1.0);
-        ft.setToValue(0.5);
-        ft.setCycleCount(Timeline.INDEFINITE);
-        ft.setAutoReverse(true);
-        ft.play();
+    public void returnHeaderBlack(){
+        new FadeOutLeft(Rectan).play();
+        new FadeOutLeft(Polygona).play();
+        header.getChildren().remove(Rectan);
+        header.getChildren().remove(Polygona);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     /////The only Place To initialize The DataBase connection
     Connection.ConnectToDataBase();
-    headerAnimation();
     }
 }
