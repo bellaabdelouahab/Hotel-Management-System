@@ -63,7 +63,7 @@ public class SignUp implements Initializable{
     @FXML
     public void login_return(ActionEvent event) throws Exception {
         String gender;
-        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2){
+        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2 && Integer.parseInt(age.getText())>18 && Integer.parseInt(age.getText())<45 && phone.getText().length()<16){
             System.out.println("let start"+sex.getValue());
             send_mail(mail.getText(),first_name.getText()+" "+last_name.getText(),phone.getText());
             if (sex.getValue()=="Man") {
@@ -75,7 +75,11 @@ public class SignUp implements Initializable{
             int rs=con.insertdb(first_name.getText()+" "+last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText());
             if (rs>0){
                 System.out.println("hola");    
-            }else{System.out.println("alahoa akbar");   }
+            }else{
+                sended.setVisible(true);
+                sended.setStyle("Erreur in load information");
+                sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
+            }
         }
         else{
             sended.setVisible(true);
