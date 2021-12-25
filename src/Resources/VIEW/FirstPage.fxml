@@ -6,12 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <FlowPane fx:id="ParentPane" maxHeight="640.0" maxWidth="1024.0" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstPageConroller">
    <children>
-      <Pane fx:id="header" prefHeight="25.0" prefWidth="1024.0" style="-fx-background-color: #252525;">
+      <Pane fx:id="header" prefHeight="25.0" prefWidth="1024.0" style="-fx-background-color: #202332;">
          <children>
             <Button layoutX="935.0" mnemonicParsing="false" onAction="#MinimizeWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #00000000;">
                <graphic>
@@ -31,7 +33,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="989.0" mnemonicParsing="false" onAction="#CloseWindow" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #00000000;">
+            <Button layoutX="989.0" mnemonicParsing="false" onAction="#CloseWindow" onMouseEntered="#ExitHover" onMouseExited="#ExitHoverOut" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #00000000;">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,32 +42,34 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Rectangle fx:id="Rectan" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="28.0" layoutX="-6.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="518.0" />
+            <Polygon fx:id="Polygona" fill="#c30000" layoutX="529.0" layoutY="26.0" points="-17.0, -0.9999980926513672, -41.666656494140625, -26.0, 9.66668701171875, -25.999998092651367" stroke="TRANSPARENT" strokeType="INSIDE" />
          </children>
       </Pane>
       <Pane fx:id="ParentPane" prefHeight="640.0" prefWidth="1024.0">
          <children>
             <Pane fx:id="ChiledStage" prefHeight="640.0" prefWidth="512.0">
                <children>
-                  <Pane prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #202332;">
+                  <Pane prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: white;">
                      <children>
-                        <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" layoutX="185.0" layoutY="290.0" size="10em" />
-                        <Button layoutX="133.5" layoutY="360.0" mnemonicParsing="false" onAction="#SwitchToAdminPage" prefHeight="75.0" prefWidth="245.0" styleClass="Admin_page" stylesheets="@../CSS/Admin.css" text="ADMIN PAGE">
+                        <FontAwesomeIconView fill="#202332" glyphName="HOTEL" layoutX="185.0" layoutY="290.0" selectionFill="#202332" size="10em" />
+                        <Button layoutX="133.5" layoutY="360.0" mnemonicParsing="false" onAction="#SwitchToAdminPage" prefHeight="75.0" prefWidth="245.0" style="-fx-background-color: #202332;" styleClass="Admin_page" stylesheets="@../CSS/Admin.css" text="ADMIN PAGE" textFill="WHITE">
                            <font>
                               <Font size="26.0" />
                            </font>
                         </Button>
-                        <QuadCurve controlX="350.0" controlY="160.0" endX="512.0" endY="320.0" fill="WHITE" startX="512.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <QuadCurve controlX="350.0" controlY="160.0" endX="512.0" endY="320.0" fill="#202332" startX="512.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                      </children>
                   </Pane>
-                  <Pane layoutX="512.0" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: white;">
+                  <Pane layoutX="512.0" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #202332;">
                      <children>
-                        <FontAwesomeIconView fill="#202332" glyphName="USERS" layoutX="215.0" layoutY="303.0" size="10em" text="" />
-                        <Button layoutX="133.5" layoutY="360.0" mnemonicParsing="false" onAction="#SwitchToEmployerPage" prefHeight="75.0" prefWidth="296.0" style="-fx-background-color: #202332;" styleClass="Employer_page" stylesheets="@../CSS/Employer.css" text="EMPLOYER PAGE" textFill="WHITE">
+                        <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="215.0" layoutY="303.0" size="10em" text="" />
+                        <Button layoutX="133.5" layoutY="360.0" mnemonicParsing="false" onAction="#SwitchToEmployerPage" prefHeight="75.0" prefWidth="296.0" style="-fx-background-color: white;" styleClass="Employer_page" stylesheets="@../CSS/Employer.css" text="EMPLOYER PAGE" textFill="#202332">
                            <font>
                               <Font size="26.0" />
                            </font>
                         </Button>
-                        <QuadCurve controlX="160.0" controlY="480.0" endY="640.0" fill="#202332" startY="320.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <QuadCurve controlX="160.0" controlY="480.0" endY="640.0" fill="WHITE" startY="320.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                      </children>
                   </Pane>
                </children>

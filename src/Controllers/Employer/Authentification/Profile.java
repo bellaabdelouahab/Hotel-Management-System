@@ -134,7 +134,7 @@ public class Profile implements Initializable {
             // + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
             // "te" + ".png"));
             // Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
-            // HomeProfilePicture.setImage(Image1);
+            ProfilePicture.setImage(HomeProfilePicture.getImage());
         }
 
         if (Adress.getText().toLowerCase().equals(adr) == false) {

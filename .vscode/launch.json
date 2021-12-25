@@ -9,7 +9,7 @@
             "request": "launch",
             "mainClass": "Main.App",
             "projectName": "JAVAPROJECT_3f9e5aaa",
-            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED,javax.mail"
+            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
         },
         {
             "type": "java",
