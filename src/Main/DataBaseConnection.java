@@ -13,8 +13,8 @@ import java.util.Arrays;
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "hotel_bd";
-    String password = "hotel";
+    String username = "System";
+    String password = "password";
 
     Connection connection;
     Statement statement;

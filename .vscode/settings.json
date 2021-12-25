@@ -15,12 +15,18 @@
             "Reference Library/controlsfx-11.1.0.jar",
             "Reference Library/GNAvatarView-1.0.5.jar",
             "Reference Library/fontawesomefx-commons-9.1.2.jar",
-            "Reference Library/charm-glisten-4.4.1-javadoc.jar"
+            "Reference Library/charm-glisten-4.4.1-javadoc.jar",
+            "Reference Library/fontawesomefx-fontawesome-4.7.0-9.1.2.jar",
+            "Reference Library/ojdbc6.jar",
+            "Reference Library/ojdbc7.jar",
+            "Reference Library/ons.jar",
+            "Reference Library/orai18n.jar",
+            "Reference Library/simplefan.jar",
+            "Reference Library/ucp.jar",
+            "Reference Library/xdb6.jar"
         ],
         "exclude": [
-            "lib/ojdbc6.jar",
-            "Reference Library/simplefan.jar",
-            "lib/controlsfx-11.1.0.jar"
+            "lib/ojdbc6.jar"
         ]
     },
     "java.project.sourcePaths": [
