@@ -3,8 +3,6 @@ package Controllers.Employer.Authentification;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Controllers.Admin.Authentification.*;
-import Controllers.Admin.Functions.LeaderBord;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

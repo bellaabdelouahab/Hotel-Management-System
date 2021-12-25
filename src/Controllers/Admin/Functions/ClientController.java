@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Main.Client;
 import Main.DataBaseConnection;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +17,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ClientController implements Initializable{
 
-    private static final ObservableList<Client> List = null;
+    ObservableList<Client> List = FXCollections.observableArrayList();
+
 
     DataBaseConnection connection = new DataBaseConnection();
     
@@ -50,16 +52,17 @@ public class ClientController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
+
         ResultSet Lest = connection.GetClientInformation();
 
         try {
             while (Lest.next()) {
-                List.add(new Client(Lest.getString("id_client"), Lest.getString("first_name"),  Lest.getString(" last_name "), Lest.getString("nationality") , Lest.getString("gender"),Lest.getString(" etat_civil "),Lest.getInt(" age")));
+                List.add(new Client(Lest.getString("id_client"), Lest.getString("first_name"),Lest.getString("last_name"),Lest.getString("nationality") ,Lest.getString("gender"),Lest.getString("etat_civil"),Lest.getInt("age")));
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            System.out.println("not Working "+e);
+        }    
         
         CIN.setCellValueFactory(new PropertyValueFactory<Client , String>("Cin"));
         FIRST_NAME.setCellValueFactory(new PropertyValueFactory<Client ,  String>("Firstname"));

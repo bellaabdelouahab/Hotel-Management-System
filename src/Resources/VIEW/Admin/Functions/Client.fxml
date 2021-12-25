@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.ClientController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="725.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.ClientController">
    <children>
-      <TableView fx:id="CLIENTTABLE" prefHeight="574.0" prefWidth="717.0">
+      <TableView fx:id="CLIENTTABLE" layoutX="41.0" layoutY="95.0" prefHeight="481.0" prefWidth="643.0" style="-fx-background-color: #F9F8CE;">
         <columns>
-          <TableColumn fx:id="CIN" prefWidth="75.0" text="CIN" />
-          <TableColumn fx:id="FIRST_NAME" prefWidth="106.0" text="FIRST NAME" />
-            <TableColumn fx:id="LAST_NAME" prefWidth="95.0" text="LAST NAME" />
-            <TableColumn fx:id="NATIO" prefWidth="113.0" text="NATIONALITY" />
-            <TableColumn fx:id="GEND" prefWidth="75.0" text="GENDER" />
-            <TableColumn fx:id="SITU" prefWidth="92.0" text="SITUATION" />
-            <TableColumn fx:id="AMOUNT" prefWidth="88.0" text="AMOUNT" />
-            <TableColumn fx:id="AGE" prefWidth="72.0" text="AGE" />
+          <TableColumn fx:id="CIN" prefWidth="59.999969482421875" text="CIN" />
+          <TableColumn fx:id="FIRST_NAME" prefWidth="95.99993133544922" text="FIRST NAME" />
+            <TableColumn fx:id="LAST_NAME" prefWidth="96.79998779296875" text="LAST NAME" />
+            <TableColumn fx:id="NATIO" prefWidth="98.39996337890625" text="NATIONALITY" />
+            <TableColumn fx:id="GEND" prefWidth="65.60003662109375" text="GENDER" />
+            <TableColumn fx:id="SITU" prefWidth="88.79995727539062" text="SITUATION" />
+            <TableColumn fx:id="AMOUNT" prefWidth="60.79998779296875" text="AMOUNT" />
+            <TableColumn fx:id="AGE" prefWidth="75.0" text="AGE" />
         </columns>
       </TableView>
+      <HBox layoutX="35.0" layoutY="34.0" prefHeight="27.0" prefWidth="652.0" style="-fx-background-color: #F3F3F3; -fx-background-radius: 15 15 15 15;">
+         <children>
+            <Label prefHeight="41.0" prefWidth="173.0" text="CLIENTS">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </HBox>
    </children>
 </Pane>

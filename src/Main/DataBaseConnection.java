@@ -12,15 +12,9 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-<<<<<<< HEAD
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "System";
     String password = "password";
-=======
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
-    String username = "hotel_bd";
-    String password = "hotel";
->>>>>>> 0875230550433d3e84fd4b4143681e14901bcd5c
 
     Connection connection;
     Statement statement;
@@ -179,7 +173,22 @@ public class DataBaseConnection {
         }
         return result;
     }
+    
+      //GET ALL THE CLIENTS INFORMATIONS
+      public ResultSet GetClientInformation(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM Client";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+        return result;
 
+    }
+
+    
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,
             int AGE, String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
