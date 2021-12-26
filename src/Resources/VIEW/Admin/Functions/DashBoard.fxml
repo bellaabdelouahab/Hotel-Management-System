@@ -5,6 +5,8 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
@@ -50,7 +52,7 @@
             <AnchorPane layoutX="136.0" layoutY="50.0" prefHeight="159.0" prefWidth="144.0" style="-fx-border-color: white; -fx-border-width: 2px 1px 4px 2px; -fx-background-color: rgb(61, 155, 116);">
                <children>
                   <Circle fill="WHITE" layoutX="70.0" layoutY="79.0" radius="63.0" stroke="#69c69f" strokeType="INSIDE" strokeWidth="5.0" />
-                  <Label fx:id="EMPLOYER_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="60.0" prefHeight="40.0" prefWidth="105.0" textFill="#3d9b74">
+                  <Label fx:id="EMPLOYER_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="115.0" textFill="#3d9b74">
                      <font>
                         <Font size="33.0" />
                      </font>
@@ -60,7 +62,7 @@
             <AnchorPane layoutX="278.0" layoutY="50.0" prefHeight="159.0" prefWidth="145.0" style="-fx-border-color: white; -fx-border-width: 2px 1px 4px 4px; -fx-background-color: #53b0cc;">
                <children>
                   <Circle fill="WHITE" layoutX="70.0" layoutY="77.0" radius="63.0" stroke="#9dcfdd" strokeType="INSIDE" strokeWidth="5.0" />
-                  <Label fx:id="ROOM_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="113.0" textFill="#53b0cc">
+                  <Label fx:id="ROOM_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="115.0" textFill="#53b0cc">
                      <font>
                         <Font size="33.0" />
                      </font>
@@ -82,7 +84,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="53.0" prefWidth="292.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: WHITE; -fx-border-width: 0px 4px 2px 2px;" text="LAST MODIFICATION" textAlignment="CENTER" textFill="#1e1d1d">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="29.0" prefWidth="292.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: WHITE; -fx-border-width: 0px 4px 2px 2px;" text="LAST MODIFICATION" textAlignment="CENTER" textFill="#1e1d1d">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -90,7 +92,15 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <AnchorPane layoutX="426.0" layoutY="77.0" prefHeight="164.0" prefWidth="291.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: white; -fx-border-width: 2px 4px 4px 2px;" />
+            <AnchorPane layoutX="426.0" layoutY="50.0" prefHeight="189.0" prefWidth="292.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: white; -fx-border-width: 2px 4px 4px 2px;">
+               <children>
+                  <TableView fx:id="AMOUNTTABLE" layoutX="4.0" layoutY="2.0" prefHeight="182.0" prefWidth="282.0">
+                    <columns>
+                      <TableColumn fx:id="DATE" prefWidth="120.0" text="DATE" />
+                      <TableColumn fx:id="AMOUNT" prefWidth="159.0" text="AMOUNT" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
          </children>
       </Pane>
    </children>
