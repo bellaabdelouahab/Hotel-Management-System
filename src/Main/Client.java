@@ -17,7 +17,7 @@ public class Client {
         this.Natio = Natio;
         this.Gender = Gender ;
         this.Situ = Situ;
-        this.Age = Age; 
+        this.Age = Age;
     }
 
     public String getCin(){

@@ -3,8 +3,6 @@ package Controllers.Employer.Authentification;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import Main.DataBaseConnection;
-import animatefx.animation.FadeIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +19,7 @@ import javax.mail.internet.*;
 import javafx.scene.layout.AnchorPane;
 
 import Main.DataBaseConnection;
+import animatefx.animation.FadeIn;
 
 import java.util.*;
 import java.sql.*;

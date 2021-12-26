@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import Controllers.Admin.Authentification.LoginController;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeInRightBig;
@@ -200,5 +199,27 @@ public class LeaderBord implements Initializable {
             controller.CurrentTab=CurrentTab;
         });
 
+    }
+
+    @FXML
+    void SwitchToClient(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Client.fxml"));
+        Parent root = loder.load();
+        ClientController controller = loder.getController();
+        controller.connection=connection;
+        controller.ParentPane = ParentPane;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+            controller.CurrentTab=CurrentTab;
+        });
     }
 }

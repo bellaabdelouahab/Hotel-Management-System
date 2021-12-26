@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DataBaseConnection {
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
+
     Connection connection;
     Statement statement;
     ResultSet result;
@@ -160,6 +162,22 @@ public class DataBaseConnection {
         }
         return result;
     }
+    
+      //GET ALL THE CLIENTS INFORMATIONS
+      public ResultSet GetClientInformation(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM Client";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+        return result;
+
+    }
+
+    
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,
             int AGE, String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {

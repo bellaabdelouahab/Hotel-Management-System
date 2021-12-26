@@ -43,7 +43,7 @@
                </graphic>
             </Button>
             <Rectangle fx:id="Rectan" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="28.0" layoutX="-6.0" layoutY="-2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="518.0" />
-            <Polygon fx:id="Polygona" fill="#c30000" layoutX="529.0" layoutY="26.0" points="-17.0, -0.9999980926513672, -41.666656494140625, -26.0, 9.66668701171875, -25.999998092651367" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Polygon fx:id="Polygona" fill="WHITE" layoutX="529.0" layoutY="26.0" points="-17.0, -0.9999980926513672, -41.666656494140625, -26.0, 9.66668701171875, -25.999998092651367" stroke="TRANSPARENT" strokeType="INSIDE" />
          </children>
       </Pane>
       <Pane fx:id="ParentPane" prefHeight="640.0" prefWidth="1024.0">
