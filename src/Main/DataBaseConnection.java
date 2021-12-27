@@ -13,8 +13,8 @@ import java.util.Arrays;
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "System";
-    String password = "password";
+    String username = "hotel_bd";
+    String password = "hotel";
 
     Connection connection;
     Statement statement;
@@ -150,6 +150,7 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
+    
     // GET ALL THE ROOMS INFORMATION
     public ResultSet GetRoomsInformation(){
         try {
@@ -176,8 +177,9 @@ public class DataBaseConnection {
         return result;
 
     }
-     //GET ALL THE reservation INFORMATIONS
-      public ResultSet GetReservationInformation(){
+
+    //GET ALL THE reservation INFORMATIONS
+    public ResultSet GetReservationInformation(){
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
@@ -187,9 +189,32 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
         return result;
-
     }
 
+    //Get all sign up information
+    public ResultSet GetSignUpInformation(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM sign_up";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+        return result;
+    }
+
+    // Delete SignUp Information
+    public void DeleteReservation(int ID_SIGNUP){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "DELETE FROM sign_up WHERE id = " + ID_SIGNUP;
+            statement.executeUpdate(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+    }
     
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,

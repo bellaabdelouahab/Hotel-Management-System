@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ChiledStage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.LeaderBord">
@@ -154,13 +155,19 @@
             </Label>
             <AnchorPane prefHeight="72.0" prefWidth="357.0">
                <children>
-                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="154.0" layoutY="45.0" size="1.7em" textAlignment="CENTER" wrappingWidth="35.85714340209961" />
+                  <FontAwesomeIconView fill="#909090" glyphName="BELL" layoutX="154.0" layoutY="45.0" onMouseClicked="#SwitchToSignUp" size="1.7em" textAlignment="CENTER" wrappingWidth="35.85714340209961" />
                   <FontAwesomeIconView fill="#909090" glyphName="GEAR" layoutX="230.0" layoutY="45.0" size="1.7em" />
                   <GNAvatarView layoutX="297.0" layoutY="15.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="42.0" prefWidth="43.0" stroke="#909090" strokeWidth="1.0" type="CIRCLE">
                      <image>
                         <Image url="@../../../IMAGES/user.png" />
                      </image></GNAvatarView>
                   <Pane layoutX="277.0" layoutY="1.0" onMouseEntered="#ShowMenuBar" onMouseExited="#HideMenuBar" prefHeight="68.0" prefWidth="65.0" />
+                  <Circle fx:id="Notification" fill="#ff1f1f" layoutX="182.0" layoutY="46.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Label layoutX="180.0" layoutY="38.0" prefHeight="13.0" prefWidth="9.0" text="!" textFill="WHITE">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

@@ -12,7 +12,7 @@
    <children>
       <TableView fx:id="RESERVATIONTABLE" layoutX="41.0" layoutY="95.0" prefHeight="481.0" prefWidth="643.0" style="-fx-background-color: #D1FBEA;">
          <columns>
-            <TableColumn fx:id="ID_RESERVATION" prefWidth="128.80001068115234" text="ID_RESERVATION" />
+            <TableColumn fx:id="ID_RESERVATION" prefWidth="128.80001068115234" text="ID RESERVATION" />
             <TableColumn fx:id="CHECK_IN" prefWidth="100.79998779296875" text="CHECK IN" />
             <TableColumn fx:id="CHECK_OUT" prefWidth="102.39996337890625" text="CHECK OUT" />
             <TableColumn fx:id="ID_CLIENT" prefWidth="100.800048828125" text="ID CLIENT" />

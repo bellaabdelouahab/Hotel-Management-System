@@ -8,8 +8,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import Controllers.Admin.Authentification.LoginController;
 import Main.DataBaseConnection;
@@ -31,7 +34,10 @@ public class LeaderBord implements Initializable {
     @FXML
     private AnchorPane ChiledStage;
 
-    public DataBaseConnection connection;
+    public DataBaseConnection connection = new DataBaseConnection();
+
+    @FXML
+    private Circle Notification;
 
     @FXML
     public void GoToModify(MouseEvent event) throws IOException {
@@ -176,7 +182,21 @@ public class LeaderBord implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        ResultSet test = connection.GetSignUpInformation();
+        try {
+            if(test.next()){
+                Notification.setVisible(true);
+            }
+            else{
+                Notification.setVisible(false);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         AdminMenu.setVisible(false);
+
     }
     @FXML
     void SwitchToRoom(MouseEvent event) throws IOException {
@@ -242,5 +262,28 @@ public class LeaderBord implements Initializable {
             CurrentTab=(Pane) root;
             controller.CurrentTab=CurrentTab;
         });
+    }
+
+    @FXML
+    void SwitchToSignUp(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/SignUp.fxml"));
+        Parent root = loder.load();
+        SignUpController controller = loder.getController();
+        controller.connection=connection;
+        controller.ParentPane = ParentPane;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+            controller.CurrentTab=CurrentTab;
+        });
+        Notification.setVisible(false);
     }
 }

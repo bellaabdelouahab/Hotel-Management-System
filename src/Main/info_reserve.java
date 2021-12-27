@@ -12,9 +12,8 @@ public class info_reserve {
     private int prix;
     private Date dateentre;
     private Date datesortir;
-    private int id;
+    //private int id;
     
-
     public info_reserve(int client, String name, int rooms, int clase,String content, int prix,Date date_in,Date date_out ) {
         this.cin = client;
         this.name = name;
@@ -26,20 +25,6 @@ public class info_reserve {
         this.datesortir = date_out;
       
     }
-
-    // public void info_reserve(int c, String n, int r, int cl, Date d, int p) {
-    // this.cin = c;
-    // this.name = n;
-    // this.room = r;
-    // this.classe = cl;
-    // this.date_entre = d;
-    // this.prix = p;
-    // }
-
-    // public void affiche() {
-    // System.out.println("test alah"+cin + name + room + classe + dateentre +
-    // prix);
-    // }
 
     public int getCin() {
         return cin;
