@@ -13,8 +13,8 @@ import java.util.Arrays;
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "hotel_bd";
-    String password = "hotel";
+    String username = "System";
+    String password = "password";
 
     Connection connection;
     Statement statement;
@@ -169,6 +169,19 @@ public class DataBaseConnection {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
             String Sql = "SELECT * FROM Client";
+            result = statement.executeQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("No" + e);
+        }
+        return result;
+
+    }
+     //GET ALL THE reservation INFORMATIONS
+      public ResultSet GetReservationInformation(){
+        try {
+            connection = DriverManager.getConnection(db, username, password);
+            statement = connection.createStatement();
+            String Sql = "SELECT * FROM reservation";
             result = statement.executeQuery(Sql);
         } catch (Exception e) {
             System.out.println("No" + e);

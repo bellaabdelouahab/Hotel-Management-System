@@ -3,6 +3,7 @@ package Controllers.Employer.Forms;
 import java.sql.*;
 import java.util.Date;
 
+import Controllers.Admin.Functions.Reservation;
 import Main.DataBaseConnection;
 import Main.info_reserve;
 import javafx.collections.FXCollections;
@@ -76,6 +77,9 @@ public class reservation_page {
         sortiCo.setCellValueFactory(new PropertyValueFactory<info_reserve, Date>("datesortir"));
 
         table_view.setItems(List_info);
+    }
+
+    public static void setItems(ObservableList<Reservation> list) {
     }
 
 }
