@@ -24,7 +24,7 @@
                   <Font name="Gubbi" size="19.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ShowDashBoard" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #202332;" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ShowDashBoard" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="DASHBOARD" glyphStyle="-fx-fill:#7C8184" size="1.7em" />
                   <Label text="DashBoard" textFill="#7c8184">

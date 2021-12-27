@@ -1,18 +1,38 @@
 package Controllers.Admin.Functions;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
+import Main.Amount;
 import Main.DataBaseConnection;
 
-public class DashBoardController{
+public class DashBoardController implements Initializable{
+
+    @FXML
+    private TableView<Amount> AMOUNTTABLE;
+
+    ObservableList<Amount> List = FXCollections.observableArrayList();
+
+    @FXML
+    private TableColumn<Amount, String> DATE;
+
+    @FXML
+    private TableColumn<Amount, Integer> AMOUNT;
 
     @FXML AreaChart<String, Integer> AREACHART;
 
@@ -33,12 +53,14 @@ public class DashBoardController{
     
     public Pane ParentPane;
 
-    public DataBaseConnection connection;
+    DataBaseConnection connection = new DataBaseConnection();
     
     public void init(){
+
         ResultSet EmResult = connection.ReturnCount("employee");
         ResultSet RmResult = connection.ReturnCount("rooms");
         ResultSet ClResult = connection.ReturnCount("client");
+
         try {
 
             while(RmResult.next()){
@@ -64,5 +86,25 @@ public class DashBoardController{
             e.printStackTrace();
         }
         AREACHART.getData().add(serie1);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+        ResultSet AmountResult = connection.DashBoardData();
+
+        try {
+            while (AmountResult.next()) {
+                List.add(new Amount(AmountResult.getString("DATE_DE_RESERVER").substring(0,11) , AmountResult.getInt("PRIX")));
+            }
+        } catch (SQLException e) {
+            System.out.println("not Working "+e);
+        }    
+        
+        DATE.setCellValueFactory(new PropertyValueFactory<Amount , String>("Date"));        
+        AMOUNT.setCellValueFactory(new PropertyValueFactory<Amount , Integer>("Amount"));
+
+        AMOUNTTABLE.setItems(List);
+        
     }
 }
