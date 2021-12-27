@@ -3,7 +3,15 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {   "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "Main.App",
+            "projectName": "JAVAPROJECT_e3287b37",
+            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
+
+        },
         {
             "type": "java",
             "name": "Launch mail",
@@ -20,7 +28,6 @@
             "projectName": "JAVAPROJECT_2807e46f",
             "vmArgs": "--module-path /home/hamza/Downloads/jar_files --add-modules javafx.controls,javafx.fxml"
         },
-
         {
             "type": "java",
             "name": "Launch App",

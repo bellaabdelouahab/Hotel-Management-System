@@ -222,4 +222,25 @@ public class LeaderBord implements Initializable {
             controller.CurrentTab=CurrentTab;
         });
     }
+    @FXML
+    void SwitchToReservation(MouseEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Admin/Functions/Reservation.fxml"));
+        Parent root = loder.load();
+        ReservationController controller = loder.getController();
+        controller.connection=connection;
+        controller.ParentPane = ParentPane;
+        FadeOutLeft FideOut =new FadeOutLeft(CurrentTab);
+        FideOut.play();
+        FideOut.setOnFinished(e->{
+            LeaderBoardData.getChildren().remove(CurrentTab);
+            
+        });
+        LeaderBoardData.getChildren().add(root);
+        FadeInRightBig animate = new FadeInRightBig(root);
+        animate.play();
+        animate.setOnFinished(e->{
+            CurrentTab=(Pane) root;
+            controller.CurrentTab=CurrentTab;
+        });
+    }
 }

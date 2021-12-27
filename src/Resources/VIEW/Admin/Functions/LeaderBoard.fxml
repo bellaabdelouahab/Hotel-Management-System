@@ -115,7 +115,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#SwitchToReservation" prefHeight="40.0" prefWidth="300.0" styleClass="Admin_User" stylesheets="@../../../CSS/Admin.css">
                <children>
                   <FontAwesomeIconView glyphName="FOLDER" glyphStyle="-fx-fill:#7C8184" size="1.7em">
                      <HBox.margin>
