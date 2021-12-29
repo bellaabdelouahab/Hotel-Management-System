@@ -62,10 +62,9 @@ CREATE table sign_up(
     nationality VARCHAR2(45),
     sex VARCHAR2(2),
     age NUMBER(2),
-    phone_number VARCHAR2(16),
-    work_type VARCHAR2(20)
+    phone_number VARCHAR2(16)
 );
-insert into sign_up values ((select count(*) from sign_up)+1,'Hamza','Bouslama','Khouribga','email@gmail.com' ,'Maroc' ,'h',19,'0938883' , 'reserver');
+insert into sign_up values ((select count(*) from sign_up)+1,'Hamza','Bouslama','Khouribga','email@gmail.com' ,'Maroc' ,'h',19,'0938883');
 
 
 Drop Table sign_up;

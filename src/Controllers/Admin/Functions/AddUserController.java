@@ -147,7 +147,6 @@ public class AddUserController implements Initializable{
         Email.setText(item.getEmail());
         Nationality.setText(item.getNatio());
         Phone.setText(item.getNumber());
-        Work_type.setText(item.getWorkType());
 
     }
 }

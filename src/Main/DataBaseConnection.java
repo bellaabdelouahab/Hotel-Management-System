@@ -144,8 +144,10 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "DELETE FROM EMPLOYEE WHERE ID_EMP = " + ID_EMP;
-            statement.executeUpdate(Sql);
+            String Sql1 = "DELETE FROM RESERVATION WHERE ID_EMP = (SELECT ID_EMP FROM EMPLOYEE WHERE ID_EMP = "+ID_EMP+")";
+            String Sql2 = "DELETE FROM EMPLOYEE WHERE ID_EMP = " + ID_EMP;
+            statement.executeUpdate(Sql1);
+            statement.executeUpdate(Sql2);
         } catch (Exception e) {
             System.out.println("No" + e);
         }

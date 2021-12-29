@@ -7,20 +7,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="LeaderBoardData" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.SignUpController">
    <children>
       <Pane fx:id="ChildPane" layoutX="1.0" layoutY="1.0" prefHeight="494.0" prefWidth="724.0">
          <children>
             <TableView fx:id="SIGNUPTABLE" layoutX="2.0" layoutY="64.0" prefHeight="494.0" prefWidth="721.0">
                <columns>
-                  <TableColumn fx:id="FIRST_NAME" prefWidth="111.0" text="FIRST NAME" />
-                  <TableColumn fx:id="LAST_NAME" prefWidth="100.0" text="LAST NAME" />
-                  <TableColumn fx:id="ADRESSE" prefWidth="93.0" text="ADRESSE" />
-                  <TableColumn fx:id="EMAIL" prefWidth="75.0" text="EMAIL" />
-                  <TableColumn fx:id="NATIONALITY" minWidth="0.0" prefWidth="108.0" text="NATIONALITY" />
-                  <TableColumn fx:id="NUMBER" minWidth="0.0" prefWidth="136.6666259765625" text="PHONE NUMBER" />
-                  <TableColumn fx:id="WORK_TYPE" minWidth="0.0" prefWidth="106.3333740234375" text="WORK TYPE" />
+                  <TableColumn fx:id="FIRST_NAME" prefWidth="105.0" text="FIRST NAME" />
+                  <TableColumn fx:id="LAST_NAME" prefWidth="106.0" text="LAST NAME" />
+                  <TableColumn fx:id="ADRESSE" prefWidth="79.0" text="ADRESSE" />
+                  <TableColumn fx:id="EMAIL" prefWidth="171.0" text="EMAIL" />
+                  <TableColumn fx:id="NATIONALITY" minWidth="0.0" prefWidth="120.0" text="NATIONALITY" />
+                  <TableColumn fx:id="NUMBER" minWidth="0.0" prefWidth="139.0" text="PHONE NUMBER" />
                </columns>
             </TableView>
             <Pane layoutX="-1.0" layoutY="-1.0" prefHeight="65.0" prefWidth="375.0">

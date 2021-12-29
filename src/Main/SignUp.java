@@ -9,9 +9,8 @@ public class SignUp {
     private String Email;
     private String Natio;
     private String Number;
-    private String WorkType;
 
-    public SignUp(int id ,String First_Name , String Last_Name , String Adresse , String Email , String Natio , String Number , String WorkType){
+    public SignUp(int id ,String First_Name , String Last_Name , String Adresse , String Email , String Natio , String Number){
 
         this.id = id;
         this.First_Name = First_Name;
@@ -20,8 +19,6 @@ public class SignUp {
         this.Email = Email ;
         this.Natio = Natio;
         this.Number = Number;
-        this.WorkType = WorkType;
-
     }
 
     public int getId(){
@@ -50,9 +47,5 @@ public class SignUp {
 
     public String getNumber(){
         return Number;
-    }
-
-    public String getWorkType(){
-        return WorkType;
     }
 }

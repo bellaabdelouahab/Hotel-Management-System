@@ -52,9 +52,6 @@ public class SignUpController implements Initializable{
     @FXML
     private TableView<SignUp> SIGNUPTABLE;
 
-    @FXML
-    private TableColumn<SignUp, String> WORK_TYPE;
-
     public Pane ParentPane;
 
     public Pane CurrentTab;
@@ -88,7 +85,7 @@ public class SignUpController implements Initializable{
     void DeleteReservation(MouseEvent event) {
         SignUp test = SIGNUPTABLE.getSelectionModel().getSelectedItem();
         connection.DeleteReservation(test.getId());
-    }
+   }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -97,7 +94,7 @@ public class SignUpController implements Initializable{
 
         try {
             while (Lest.next()) {
-                List.add(new SignUp(Lest.getInt("id") , Lest.getString("first_name"), Lest.getString("last_name") ,Lest.getString("adresse") , Lest.getString("email") ,Lest.getString("nationality") , Lest.getString("phone_number") ,Lest.getString("work_type")));
+                List.add(new SignUp(Lest.getInt("id") , Lest.getString("first_name"), Lest.getString("last_name") ,Lest.getString("adresse") , Lest.getString("email") ,Lest.getString("nationality") , Lest.getString("phone_number")));
             }
         } catch (SQLException e) {
             System.out.println("not Working "+e);
@@ -109,7 +106,6 @@ public class SignUpController implements Initializable{
         EMAIL.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Email"));
         NATIONALITY.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Natio"));
         NUMBER.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Number"));
-        WORK_TYPE.setCellValueFactory(new PropertyValueFactory<SignUp , String>("WorkType"));
 
         SIGNUPTABLE.setItems(List);
         
