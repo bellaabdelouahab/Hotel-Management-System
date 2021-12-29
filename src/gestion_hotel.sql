@@ -25,10 +25,6 @@ CREATE TABLE rooms(
     PRIX NUMERIC,
     contents_of_room VARCHAR2(170)
 );
-UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 1 , CLASSE = 1 , PRIX = 120 , contents_of_room = 'MORE'  WHERE ID_ROOM = 5;
-
-UPDATE ROOMS SET NUM_ADUL = 1, NUM_CHILD = 4 , CLASSE = 4 , PRIX = 1200 , contents_of_room = "" WHERE ID_ROOM = 5;  
-
 alter table rooms add constraint room_pk primary key(ID_ROOM);
 
 CREATE TABLE reservation(
@@ -40,8 +36,7 @@ CREATE TABLE reservation(
     ID_ROOM NUMBER  CONSTRAINT room_fk REFERENCES rooms
 );
 alter table reservation add constraint date_check check(date_de_reserver<date_de_sortir);
-DELETE FROM RESERVATION WHERE ID_ROOM = (SELECT ID_ROOM FROM ROOMS WHERE ID_ROOM = 3);
-DELETE FROM ROOMS WHERE ID_ROOM = 3;
+
 create table employee(
     id_emp NUMBER(4) constraint pk_emp primary Key,  
     full_name VARCHAR2(45) ,
@@ -59,17 +54,21 @@ create table employee(
 alter table employee add constraint employe_check check(age between 18 and 70); 
 
 CREATE table sign_up(
-    id_emp Number(4),
-    full_name VARCHAR2(45) ,
-     adresse VARCHAR2(40),
+    id Number(4),
+    first_name VARCHAR2(45),
+    last_name VARCHAR2(45),
+    adresse VARCHAR2(40),
     email VARCHAR2(40),
+    nationality VARCHAR2(45),
     sex VARCHAR2(2),
     age NUMBER(2),
-    phone_number VARCHAR2(16)
+    phone_number VARCHAR2(16),
+    work_type VARCHAR2(20)
 );
+insert into sign_up values ((select count(*) from sign_up)+1,'Hamza','Bouslama','Khouribga','email@gmail.com' ,'Maroc' ,'h',19,'0938883' , 'reserver');
 
-alter table sign_up rename COLUMN id_emp to id;
 
+Drop Table sign_up;
 
 /*  insert informations to the table  */
 
@@ -148,6 +147,5 @@ SELECT *
 FROM ROOMS
 FETCH ID_ROOM 1 ROW;
 
-insert into sign_up values ((select count(*) from sign_up)+1,'(yassine+""+bou','adr','email@gmail.com','h',19,'0938883');
 select * from sign_up;
 delete from sign_up;

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 // Main Class
 public class App extends Application {
     public static void main(String[] args) throws Exception {
@@ -18,8 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        
         Properties Prop = new Properties();
-        System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
         FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
         Prop.load(config);
         Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
@@ -30,6 +31,7 @@ public class App extends Application {
         } else {
             root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
         }
+        
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Hotel BBBE");
