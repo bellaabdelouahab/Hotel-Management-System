@@ -8,9 +8,8 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "Main.App",
-            "projectName": "JAVAPROJECT_e3287b37",
+            "projectName": "JavaProject_3fae83b4",
             "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
-
         },
         {
             "type": "java",

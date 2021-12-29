@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -404,55 +404,6 @@ public class DataBaseConnection {
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
         int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"')");
-        //int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'yassine bou','adr','email@gmail.com','h',19,'0938883')");
         return y;
     }
-
-    // public int addClient(String f_name, String l_name, String natio, String sex,
-    // String etat, int age)
-    // throws Exception {
-    // int y = 0, rs;
-    // statement = connection.createStatement();
-    // ResultSet x = statement.executeQuery("select count(cin) as co from client");
-    // while (x.next()) {
-    // y = x.getInt("co");
-    // }
-    // String cmd = "insert into client values(" + (y + 1) + ",'" +
-    // f_name.toLowerCase() + "','"
-    // + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" +
-    // sex.toLowerCase() + "','"
-    // + etat.toLowerCase() + "'," + age + "," + "hna dyal reservation" + ")";
-    // rs = statement.executeUpdate(cmd);
-    // return rs;
-    // }
-
-    // add reservation
-    // public int addClient(String compt, Date sortir, Date entrer, int cin) throws
-    // Exception {
-    // int y = 0, rs;
-    // statement = connection.createStatement();
-    // ResultSet x = statement.executeQuery(
-    // "select Distinct A.id_emp from reservation A,employee B where A.id_emp
-    // =B.id_emp and lower(B.email)='"
-    // + compt.toLowerCase() + "'");
-    // while (x.next()) {
-    // y = x.getInt(1);
-    // }
-    // String cmd = "insert into client values(" + (co() + 1) + "," + y + "," +
-    // sortir + "," + entrer + "," + cin
-    // + ")";
-    // rs = statement.executeUpdate(cmd);
-    // return rs;
-    // }
-
-    
-    // public int co(String table) throws Exception {
-    //     int y = 0;
-    //     statement = connection.createStatement();
-    //     ResultSet x = statement.executeQuery("select count(*) as co from " + table);
-    //     while (x.next()) {
-    //         y = x.getInt("co");
-    //     }
-    //     return y;
-    // }
 }
