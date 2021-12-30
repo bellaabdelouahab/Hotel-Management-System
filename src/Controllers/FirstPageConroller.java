@@ -71,7 +71,7 @@ public class FirstPageConroller implements Initializable{
         try{
             Properties Prop = new Properties();
             OutputStream config = new FileOutputStream(System.getProperty("user.dir") + "/src/Config.properties");
-            Prop.setProperty("MainPage", "0");
+            Prop.setProperty("MainPage", "2");
             Prop.store(config, "");
         }
         catch(Exception e){

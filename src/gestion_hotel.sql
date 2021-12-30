@@ -148,8 +148,15 @@ FROM ROOMS
 FETCH ID_ROOM 1 ROW;
 
 select * from sign_up;
-delete from sign_up;
+delete from reservation where id_reserv=8;
 alter table sign_up add nationality varchar2(20);
+select * from reservation;
+desc reservation;
 
+insert into reservation values ((select count(id_reserv)+1 as co from reservation),TO_DATE('17-JUN-1987', 'dd-MON-yyyy'),TO_DATE('21-SEP-1989', 'dd-MON-yyyy'),5,(select id_emp from employee where lower(email)='yassine@gmail.com'),3);
+
+update reservation set id_reserv=7 where id_reserv=9;
+
+(select count(id_reserv)+1 as co from reservation)
 
 

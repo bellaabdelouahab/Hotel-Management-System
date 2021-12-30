@@ -71,7 +71,7 @@ public class Client implements Initializable {
                 System.out.println("jdkjkckusdundus");
                 if (rs > 0) {
                     System.out.println("nice");
-                    rs2 = connection.reserverRoom(datentrer, datesortir, connection.getCompte(), nbr_of_room);
+                    rs2 = connection.reserverRoom(datentrer, datesortir, connection.getCompte(), nbr_of_room,cin.getText());
                     if (rs2 > 0) {
                         System.out.println("oh gggg");
                     } else {
