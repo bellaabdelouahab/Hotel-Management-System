@@ -110,31 +110,29 @@ public class Search implements Initializable {
         SearchData.checkindate = CheckInDate.getValue();
         SearchData.checkoutdate = CheckOutDate.getValue();
         SearchData.rating = RatingLable.getRating();
-        if (MaxPrice.getText() == "" || MaxPrice.getText() == null)
-            SearchData.maxprice = 0;
-        else
-            SearchData.maxprice = Integer.parseInt(MaxPrice.getText());
         if (MinPrice.getText() == "" || MinPrice.getText() == null)
             SearchData.minprice = 0;
-
         else {
             SearchData.minprice = Integer.parseInt(MinPrice.getText());
-            SearchData.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
-            SearchData.CheldrenCounter = Integer.parseInt(AdultsNbr.getText());
-            SearchData.RoomsCounter = Integer.parseInt(AdultsNbr.getText());
-            /* Put Your Shitey Code Here : form 1 */
-            if (SearchData.AdultsCounter == 0 || SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice
-                    || CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
-                System.out.println("hhahhay");
-
-                if (SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice) {
-                    max_prix.setStyle("-fx-text-fill:red; -fx-font-size:18;");
-                    MaxPrice.setStyle("-fx-text-fill:red; -fx-background-color: #11111199;");
-                }
-                if (CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
-                    outdate.setStyle("-fx-text-fill:red; -fx-font-size:15; -fx-font-family: Century Gothic W1G Light;");
-                }
-            } else {
+        }
+        if (MaxPrice.getText() == "" || MaxPrice.getText() == null){
+            SearchData.maxprice = SearchData.minprice+1000;
+            MaxPrice.setText(String.valueOf(SearchData.maxprice));
+        }
+        else{
+            SearchData.maxprice = Integer.parseInt(MaxPrice.getText());
+        }
+        SearchData.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
+        SearchData.CheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
+        if (SearchData.AdultsCounter == 0 || SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice || CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
+            if (SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice) {
+                max_prix.setStyle("-fx-text-fill:red; -fx-font-size:18;");
+                MaxPrice.setStyle("-fx-text-fill:red; -fx-background-color: #11111199;");
+            }
+            if (CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
+                outdate.setStyle("-fx-text-fill:red; -fx-font-size:15; -fx-font-family: Century Gothic W1G Light;");
+            }
+            else {
                 try {
                     LoadResult(e);
                 } catch (IOException e1) {

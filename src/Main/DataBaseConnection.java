@@ -386,9 +386,8 @@ public class DataBaseConnection {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-YYYY");
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        String requt="insert into reservation values ((select count(*) as co from reservation)+1,"+"(select id_emp from employee where lower(email)='"+emp.toLowerCase()+"')"+",to_date('"+date_entrer.format(formatter)+"','DD/MM/YYYY'),to_date('"+date_sortir.format(formatter)+"','DD/MM/YYYY'),"+Integer.parseInt(cin)+","+room+")";
-        String rq2="insert into reservation values ((select count(id_reserv)+1 as co from reservation),TO_DATE('"+date_entrer.format(formatter)+"', 'dd-mm-yyyy'),TO_DATE('"+date_sortir.format(formatter)+"', 'dd-mm-yyyy'),"+Integer.parseInt(cin)+",(select id_emp from employee where lower(email)='"+emp.toLowerCase()+"'),"+room+")";
-        int y = statement.executeUpdate(rq2);
+        String SQL="insert into reservation values ((select count(id_reserv)+1 as co from reservation),TO_DATE('"+date_entrer.format(formatter)+"', 'dd-mm-yyyy'),TO_DATE('"+date_sortir.format(formatter)+"', 'dd-mm-yyyy'),"+Integer.parseInt(cin)+",(select id_emp from employee where lower(email)='"+emp.toLowerCase()+"'),"+room+")";
+        int y = statement.executeUpdate(SQL);
         return y;
     }
     // add client
