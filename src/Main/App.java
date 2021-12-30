@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 // Main Class
 public class App extends Application {
     public static void main(String[] args) throws Exception {
@@ -21,7 +22,12 @@ public class App extends Application {
     }
 
     @Override
+<<<<<<< HEAD
     public void start(Stage primaryStage) throws IOException, SQLException {
+=======
+    public void start(Stage primaryStage) throws IOException {
+        
+>>>>>>> f49e43ab8c9a9bf5d6d056329d1aabb3973b2252
         Properties Prop = new Properties();
         FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
         Prop.load(config);
@@ -35,6 +41,7 @@ public class App extends Application {
             FirstPageConroller controller = loader.getController();
             controller.SwitchToAdminPage(new ActionEvent());
         }
+        
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Hotel BBBE");

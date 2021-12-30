@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Main.DataBaseConnection;
+import Main.SignUp;
 import animatefx.animation.FadeInRightBig;
 import animatefx.animation.FadeOutLeft;
 import javafx.event.ActionEvent;
@@ -78,6 +79,8 @@ public class AddUserController implements Initializable{
 
     public String[] SexType = {"M" , "W"};
 
+    public SignUp item;
+
     @FXML
     void AddUser(ActionEvent event) {
         try {
@@ -99,6 +102,9 @@ public class AddUserController implements Initializable{
             else{
                 connection.AddUsers(Full_name, Adress, Mail, Pass, Natio, Se,Ag, Phon, sal, comm, work);
                 SwitchToUser(event);
+            }
+            if(item != null){
+                connection.DeleteReservation(item.getId());
             }
             
         } catch (Exception e) {
@@ -131,5 +137,16 @@ public class AddUserController implements Initializable{
     public void initialize(URL location, ResourceBundle resources){
         Sex.setPromptText("SEX");
         Sex.getItems().addAll(SexType);
+    }
+
+    public void init(){
+
+        First_name.setText(item.getFirst_Name());
+        Last_name.setText(item.getLast_Name());
+        Adresse.setText(item.getAdresse());
+        Email.setText(item.getEmail());
+        Nationality.setText(item.getNatio());
+        Phone.setText(item.getNumber());
+
     }
 }
