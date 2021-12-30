@@ -22,9 +22,9 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="sign" layoutX="61.0" layoutY="61.0" prefHeight="80.0" prefWidth="359.0" style="-fx-font-family: Rockwell;" text="Login" textFill="#8062db">
+                  <Label fx:id="sign" layoutX="61.0" layoutY="61.0" prefHeight="123.0" prefWidth="147.0" style="-fx-font-family: Rockwell;" text="Login" textFill="#8062db">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="33.0" />
                      </font>
                   </Label>
                   <PasswordField fx:id="password_label" layoutX="97.0" layoutY="376.0" onKeyTyped="#lign_input_pass" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
@@ -37,24 +37,24 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line fx:id="email_line" endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="262.0" layoutY="324.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
-                  <Label fx:id="pass_word" layoutX="73.0" layoutY="357.0" style="-fx-font-family: Century Gothic;" text="Password" textFill="WHITE">
+                  <Line fx:id="email_line" endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="262.0" layoutY="325.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
+                  <Label fx:id="pass_word" layoutX="48.0" layoutY="357.0" style="-fx-font-family: Century Gothic;" text="Password" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line fx:id="pass_line" endX="152.0" endY="1.0" layoutX="289.0" layoutY="435.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
-                  <Button fx:id="signin_btn" layoutX="74.0" layoutY="522.0" mnemonicParsing="false" onAction="#login_formule" prefHeight="49.0" prefWidth="139.0" style="-fx-background-radius: 7;" styleClass="Sign_in" stylesheets="@../../../CSS/Employer.css" text="Sign In" textFill="WHITE">
+                  <Line fx:id="pass_line" endX="152.0" endY="-3.0517578125E-5" layoutX="290.0" layoutY="436.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
+                  <Button fx:id="signin_btn" layoutX="74.0" layoutY="523.0" mnemonicParsing="false" onAction="#login_formule" prefHeight="45.0" prefWidth="139.0" style="-fx-background-radius: 7;" styleClass="Sign_in" stylesheets="@../../../CSS/Employer.css" text="Sign In" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="signup_btn" layoutX="302.0" layoutY="521.0" mnemonicParsing="false" onAction="#SwitchToSignUp" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #292929;" text="Sign Up" textFill="WHITE">
+                  <Button fx:id="signup_btn" layoutX="302.0" layoutY="523.0" mnemonicParsing="false" onAction="#SwitchToSignUp" prefHeight="45.0" prefWidth="158.0" style="-fx-background-color: #292929;" text="Sign Up" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Button>
-                  <Line fx:id="line_e" endX="-18.33331298828125" layoutX="464.0" layoutY="559.0" startX="-156.99993896484375" stroke="WHITE" strokeWidth="2.0" />
+                  <Line fx:id="line_e" layoutX="460.0" layoutY="567.0" startX="-156.99993896484375" stroke="WHITE" strokeWidth="2.0" />
                </children>
             </Pane>
          </children>

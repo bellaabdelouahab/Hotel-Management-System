@@ -91,11 +91,11 @@ public class Result {
         RoomPane.setPrefSize(824, 80);
         Label IdLabel = Create_Label("Room ID", 112, 40, 0, 0);
         Label IdData = Create_Label(roomLine[0], 112, 40, 112, 0);
-        Label Price = Create_Label("Room ID", 112, 40, 0, 40);
+        Label Price = Create_Label("Number Of Adults", 112, 40, 0, 40);
         Label PriceData = Create_Label(roomLine[1], 112, 40, 112, 40);
-        Label AdultsNbr = Create_Label("Room ID", 150, 40, 224, 0);
+        Label AdultsNbr = Create_Label("Number Of Children", 150, 40, 224, 0);
         Label AdultsNbrData = Create_Label(roomLine[2], 112, 40, 374, 0);
-        Label ChildrenNbr = Create_Label("Room ID", 150, 40, 224, 40);
+        Label ChildrenNbr = Create_Label("Price", 150, 40, 224, 40);
         Label ChildrenNbrData = Create_Label(roomLine[3], 112, 40, 374, 40);
         Button Reserve = new Button("Reserve");
         Reserve.setPrefSize(179, 46);
@@ -140,7 +140,7 @@ public class Result {
         IdLabel.setPrefSize(Xsize, Ysize);
         IdLabel.setLayoutX(Xlayout);
         IdLabel.setLayoutY(Ylayoyt);
-        IdLabel.setStyle("-fx-background-color:#eeeeee01;-fx-text-fill:#eee");
+        IdLabel.setStyle("-fx-background-color:#eeeeee01;-fx-text-fill:#111");
         return IdLabel;
     }
 }

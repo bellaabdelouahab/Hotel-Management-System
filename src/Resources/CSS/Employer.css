@@ -113,9 +113,12 @@
 }
 
 .column_sd{
-     -fx-background-color: linear-gradient( to right,#3F00FF 0%,  #9D29E899 100%);
+     -fx-background-color: linear-gradient( to left top,#d9aac7 25%,  #3127ab 100%);
 }
 
 .scrollpane .content{
     -fx-background-color:red;
+}
+ .scrollpane .viewport {
+   -fx-background-color: transparent;
 }

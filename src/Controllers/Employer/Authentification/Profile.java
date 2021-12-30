@@ -38,18 +38,16 @@ public class Profile implements Initializable {
     private TextField FullName, Sex, email, Adress, Age, Cin, Nationnality, Phonenumber;
     @FXML
     private GridPane PasswordForm;
+    Image Image1;
     public DataBaseConnection connection;
-
     private String adr = "", natio = "", phone = "", cin = "", age = "", password = "";
-    //// Once You need them enable
-    // private String sex = "", nom = "", mail = "";
     private int result = 0;
 
     @FXML
     private TextField new_pass, pass, check_pass;
     public String compte;
     BufferedImage ImagebBufferedImage;
-    public Image HomeProfilePicture;
+    public GNAvatarView HomeProfilePicture;
 
     public void Goback(ActionEvent e) throws IOException {
         Button backbutton = (Button) e.getSource();
@@ -85,7 +83,7 @@ public class Profile implements Initializable {
         ImagebBufferedImage = Methodes
                 .ImageSaver();
         if (ImagebBufferedImage != null) {
-            Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
+            Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
             ProfilePicture.setImage(Image1);
         } else {
             System.out.println("GMOV");
@@ -100,20 +98,17 @@ public class Profile implements Initializable {
         try {
             ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
             while (rs.next()) {
-                this.Cin.setText(String.valueOf(rs.getInt(1)));
+                this.Cin.setText("JC"+String.valueOf(rs.getInt(1))+"598476");
                 this.FullName.setText(rs.getString(2));
                 this.Adress.setText(rs.getString(3));
                 this.email.setText(rs.getString(4));
                 this.Nationnality.setText(rs.getString(6));
                 this.Phonenumber.setText(rs.getString(9));
-                ProfilePicture.setImage(HomeProfilePicture);
-                // this.ProfilePicture.setImage(new Image(System.getProperty("user.dir")
-                // + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
-                // "te.png"));
-                if (rs.getString(7) == "h") {
-                    this.Sex.setText("femme");
+                this.ProfilePicture.setImage(HomeProfilePicture.getImage());
+                if (rs.getString(7).equals("h")) {
+                    this.Sex.setText("Man");
                 } else {
-                    this.Sex.setText("homme");
+                    this.Sex.setText("Woman");
                 }
                 this.Age.setText(String.valueOf(rs.getInt(8)));
             }
@@ -127,67 +122,55 @@ public class Profile implements Initializable {
         ResultSet rs = connection.Login_employ(connection.getCompte().toLowerCase());
         while (rs.next()) {
             cin = String.valueOf(rs.getInt(1));
-            // nom = rs.getString(2);
             adr = rs.getString(3);
-            // mail = rs.getString(4);
             natio = rs.getString(6);
             phone = rs.getString(9);
-            // sex = rs.getString(7);
             age = String.valueOf(rs.getInt(8));
+            try{
+            HomeProfilePicture.setImage(Image1);
             ImageIO.write(ImagebBufferedImage, "png", new
             File(System.getProperty("user.dir")
             + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
             "te" + ".png"));
-            // Image Image1 = SwingFXUtils.toFXImage(ImagebBufferedImage, null);
+            }catch(Exception e){}
         }
-
         if (Adress.getText().toLowerCase().equals(adr) == false) {
             result = connection.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
-                // System.out.println("oh yeah");
-                Goback(event);
                 result = 0;
             } else {
-                System.out.println("laaaaaaaaaa");
+                return;
             }
         }
         if (Nationnality.getText().toLowerCase().equals(natio) == false) {
             result = connection.natio_profile_change(Nationnality.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
-                // System.out.println("oh yeah");
-                Goback(event);
                 result = 0;
             } else {
-                System.out.println("laaaaaaaaaa");
+                return;
             }
         }
         if (Phonenumber.getText().toLowerCase().equals(phone) == false) {
             result = connection.phone_profile_change(Phonenumber.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
-                // System.out.println("oh yeah");
-                Goback(event);
                 result = 0;
             } else {
-                System.out.println("laaaaaaaaaa");
+                return;
             }
         }
         if (Age.getText().toLowerCase().equals(age) == false) {
             result = connection.age_profile_change(Integer.parseInt(Age.getText()), Integer.parseInt(cin));
             if (result > 0) {
-                // System.out.println("oh yeah");
-                Goback(event);
                 result = 0;
             } else {
-                System.out.println("laaaaaaaaaa");
+                return;
             }
-        } else {
-            System.out.println("oh non");
-        }
+        } 
+        Goback(event);
     }
 
     @FXML
     public void update_password(ActionEvent event) {
-        // conecter p = new conecter();
         System.out.println(connection.getCompte());
         cin = "";
         password = "";

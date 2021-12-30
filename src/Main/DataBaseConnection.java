@@ -373,7 +373,7 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String rs = "select Distinct A.id_client ,A.first_name||A.last_name as full_name, D.ID_ROOM,D.CLASSE,D.contents_of_room,D.prix,B.date_de_reserver,B.date_de_sortir from client A,rooms D,reservation B,employee C where B.id_room = D.id_room and B.id_client in (select id_client from client) and B.id_emp=C.id_emp and lower(C.email)='"
+            String rs = "select Distinct A.id_client ,A.first_name||A.last_name as full_name, D.ID_ROOM,D.CLASSE,D.contents_of_room,D.prix,B.date_de_reserver,B.date_de_sortir from client A,rooms D,reservation B,employee C where B.id_room = D.id_room and B.id_client = A.id_client and B.id_emp=C.id_emp and lower(C.email)='"
                     + x.toLowerCase() + "' order by A.id_client";
             result = statement.executeQuery(rs);
         } catch (Exception e) {

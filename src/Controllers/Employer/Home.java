@@ -67,7 +67,7 @@ public class Home {
         Profile controller = loader.getController();
         controller.connection = connection;
         controller.compte = compte;
-        controller.HomeProfilePicture = ProfilePicture.getImage();
+        controller.HomeProfilePicture = ProfilePicture;
         controller.FillProfileData();
         root.translateXProperty().set(1024);
         parentContainer.getChildren().add(root);

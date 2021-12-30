@@ -124,21 +124,19 @@ public class Search implements Initializable {
         }
         SearchData.AdultsCounter = Integer.parseInt(AdultsNbr.getText());
         SearchData.CheldrenCounter = Integer.parseInt(CheldrenNbr.getText());
-        if (SearchData.AdultsCounter == 0 || SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice || CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
-            if (SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice) {
-                max_prix.setStyle("-fx-text-fill:red; -fx-font-size:18;");
-                MaxPrice.setStyle("-fx-text-fill:red; -fx-background-color: #11111199;");
-            }
-            if (CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
-                outdate.setStyle("-fx-text-fill:red; -fx-font-size:15; -fx-font-family: Century Gothic W1G Light;");
-            }
-            else {
-                try {
-                    LoadResult(e);
-                } catch (IOException e1) {
-                    System.out.println(e1.getMessage());
-                }
-            }
+        if (SearchData.AdultsCounter == 0)return ;
+        else if (CheckInDate.getValue().isAfter(CheckOutDate.getValue())) {
+            CheckOutDate.setStyle(CheckOutDate.getStyle()+"-fx-background-color:#ff3333");
+            return ;
+        }
+        else if (SearchData.maxprice == 0 || SearchData.maxprice < SearchData.minprice) {
+            MaxPrice.setStyle(MaxPrice.getStyle()+"-fx-text-fill:#ff3333;");
+            return ;
+        }
+        try {
+            LoadResult(e);
+        } catch (IOException e1) {
+            System.out.println(e1.getMessage());
         }
     }
 
