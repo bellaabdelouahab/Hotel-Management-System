@@ -2,9 +2,13 @@ package Main;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
+
+import Controllers.FirstPageConroller;
 import animatefx.animation.FadeIn;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,18 +21,19 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, SQLException {
         Properties Prop = new Properties();
-        System.out.println(System.getProperty("user.dir") + "\\src\\Config.properties");
         FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
         Prop.load(config);
-        Parent root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
-        if (Prop.getProperty("MainPage").equals("1")) {
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
-        } else if (Prop.getProperty("MainPage").equals("2")) {
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Employer/HomePage.fxml"));
-        } else {
-            root = FXMLLoader.load(App.class.getResource("../Resources/VIEW/Admin/Functions/AddUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
+        Parent root=loader.load();
+        if (Prop.getProperty("MainPage").equals("null")) {
+        } else if (Prop.getProperty("MainPage").equals("0")) {
+            FirstPageConroller controller = loader.getController();
+            controller.SwitchToEmployerPage(new ActionEvent());
+        } else if (Prop.getProperty("MainPage").equals("1")){
+            FirstPageConroller controller = loader.getController();
+            controller.SwitchToAdminPage(new ActionEvent());
         }
         Scene scene = new Scene(root);
         primaryStage.initStyle(StageStyle.TRANSPARENT);

@@ -17,7 +17,7 @@
          <children>
             <Pane onKeyTyped="#lign_input_mail" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #292929;">
                <children>
-                  <TextField fx:id="email_text" layoutX="92.0" layoutY="228.0" onKeyTyped="#lign_input_mail" prefHeight="64.0" prefWidth="344.0" promptText="Email ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+                  <TextField fx:id="email_text" layoutX="92.0" layoutY="261.0" onKeyTyped="#lign_input_mail" prefHeight="64.0" prefWidth="344.0" promptText="Email ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -27,24 +27,24 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="password_label" layoutX="97.0" layoutY="398.0" onKeyTyped="#lign_input_pass" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+                  <PasswordField fx:id="password_label" layoutX="97.0" layoutY="376.0" onKeyTyped="#lign_input_pass" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </PasswordField>
-                  <Label fx:id="emai_label" layoutX="68.0" layoutY="186.0" prefHeight="29.0" prefWidth="165.0" style="-fx-font-family: Century Gothic;" text="Adresse Email" textFill="WHITE">
+                  <Label fx:id="emai_label" layoutX="48.0" layoutY="226.0" prefHeight="29.0" prefWidth="165.0" style="-fx-font-family: Century Gothic;" text="Adresse Email" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line fx:id="email_line" endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="262.0" layoutY="291.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
+                  <Line fx:id="email_line" endX="173.00006103515625" endY="-3.0517578125E-5" layoutX="262.0" layoutY="324.0" startX="-167.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
                   <Label fx:id="pass_word" layoutX="73.0" layoutY="357.0" style="-fx-font-family: Century Gothic;" text="Password" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Line fx:id="pass_line" endX="141.00006103515625" endY="-3.0517578125E-5" layoutX="289.0" layoutY="457.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
-                  <Button fx:id="signin_btn" layoutX="74.0" layoutY="522.0" mnemonicParsing="false" onAction="#login_formule" prefHeight="49.0" prefWidth="139.0" style="-fx-background-radius: 7; -fx-background-color: #009400;" text="Sign In" textFill="WHITE">
+                  <Line fx:id="pass_line" endX="152.0" endY="1.0" layoutX="289.0" layoutY="435.0" startX="-197.66668701171875" startY="-3.0517578125E-5" stroke="WHITE" strokeWidth="4.0" />
+                  <Button fx:id="signin_btn" layoutX="74.0" layoutY="522.0" mnemonicParsing="false" onAction="#login_formule" prefHeight="49.0" prefWidth="139.0" style="-fx-background-radius: 7;" styleClass="Sign_in" stylesheets="@../../../CSS/Employer.css" text="Sign In" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>

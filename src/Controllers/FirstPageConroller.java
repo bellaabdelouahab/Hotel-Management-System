@@ -1,13 +1,14 @@
 package Controllers;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.ResourceBundle;
-
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
-
 import Controllers.Admin.Authentification.LoginController;
 import Controllers.Employer.Authentification.Login;
 import Main.DataBaseConnection;
@@ -41,6 +42,15 @@ public class FirstPageConroller implements Initializable{
     private Rectangle Rectan;
     // Switch To Admin Page
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
+        try{
+        Properties Prop = new Properties();
+        OutputStream config = new FileOutputStream(System.getProperty("user.dir") + "/src/Config.properties");
+        Prop.setProperty("MainPage", "1");
+        Prop.store(config, "");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         returnHeaderBlack();
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Admin/Authentification/Login.fxml"));
         root = loder.load();
@@ -58,6 +68,15 @@ public class FirstPageConroller implements Initializable{
 
     // Switch To Employer Page
     public void SwitchToEmployerPage(ActionEvent event) throws IOException, SQLException {
+        try{
+            Properties Prop = new Properties();
+            OutputStream config = new FileOutputStream(System.getProperty("user.dir") + "/src/Config.properties");
+            Prop.setProperty("MainPage", "0");
+            Prop.store(config, "");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         returnHeaderBlack();
         Button Btton=(Button)((Node)event.getSource());
         Btton.setDisable(true);
@@ -83,7 +102,7 @@ public class FirstPageConroller implements Initializable{
     }
     public void ExitHover(MouseEvent event){
         new Jello((Node) event.getSource()).play();
-        ((Button) event.getSource()).setStyle("-fx-background-color:red");
+        ((Button) event.getSource()).setStyle("-fx-background-color:#f70a0a");
     }
     public void ExitHoverOut(MouseEvent event){
         ((Button) event.getSource()).setStyle("-fx-background-color: #00000000");
