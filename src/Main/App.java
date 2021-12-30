@@ -29,7 +29,7 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("../Resources/VIEW/FirstPage.fxml"));
         Parent root=loader.load();
         if (Prop.getProperty("MainPage").equals("null")) {
-        } else if (Prop.getProperty("MainPage").equals("2")) {
+        } else if (Prop.getProperty("MainPage").equals("0")) {
             FirstPageConroller controller = loader.getController();
             controller.SwitchToEmployerPage(new ActionEvent());
         } else if (Prop.getProperty("MainPage").equals("1")){

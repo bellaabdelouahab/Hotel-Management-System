@@ -92,7 +92,7 @@ insert into rooms values (9,3,1,2,1000,'Television Speaker');
 INSERT INTO ROOMS VALUES((SELECT COUNT(*) FROM ROOMS) + 1 , 2 , 2,4 , 520 , 'WIFI');
 
 -- employee table 
-insert into employee values (1,'admin',null,'test@gmail.com','admin',null,null,null,null,null,null,'admin');
+insert into employee values (1,'admin',null,'Admin@gmail.com','admin',null,null,null,null,null,null,'admin');
 insert into employee values (2,'yassine boujrada','casa','yassine@gmail.com','yassine2','marocaine','h',18,null,1000.00,2,'reserve');
 insert into employee values (3,'bella abdelwahab','taroudanet','abdo@gmail.com','abdelwahab','marocaine','h',21,'0765432847',1100.00,1.7,'reserve');
 insert into employee values (4,'bousslama hamza','khouribga','hamza@gmail.com','hamza2002','marocaine','h',18,'0645739874',1500.00,3,'reserve');

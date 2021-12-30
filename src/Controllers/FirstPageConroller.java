@@ -40,6 +40,7 @@ public class FirstPageConroller implements Initializable{
     private Polygon Polygona;
     @FXML
     private Rectangle Rectan;
+    Button Btton = new Button();
     // Switch To Admin Page
     public void SwitchToAdminPage(ActionEvent event) throws IOException {
         try{
@@ -71,14 +72,16 @@ public class FirstPageConroller implements Initializable{
         try{
             Properties Prop = new Properties();
             OutputStream config = new FileOutputStream(System.getProperty("user.dir") + "/src/Config.properties");
-            Prop.setProperty("MainPage", "2");
+            Prop.setProperty("MainPage", "0");
             Prop.store(config, "");
         }
         catch(Exception e){
             e.printStackTrace();
         }
         returnHeaderBlack();
-        Button Btton=(Button)((Node)event.getSource());
+        try{
+            Btton=(Button)((Node)event.getSource());
+        }catch(Exception e){}
         Btton.setDisable(true);
         FXMLLoader loder = new FXMLLoader(getClass().getResource("../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
         root = loder.load();
