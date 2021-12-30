@@ -54,35 +54,71 @@ public class Client implements Initializable {
     @FXML
     private void showAlertWithoutHeaderText() throws NumberFormatException, Exception {
         int rs, rs2;
+        String sex = "";
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Est ce que vous pouvez reserver cette chambre");
+        alert.setTitle("Confirme reservation");
         // Header Text: null
         alert.setHeaderText(null);
-        alert.setContentText("test");
+        alert.setContentText("Are you sure that you want complete ?");
 
         // alert.showAndWait();
-        if (!(first_name.getText().isEmpty()) && !(last_name.getText().isEmpty()) && !(etat.getText().isEmpty())
-                && !(gender.getText().isEmpty()) && !(age.getText().isEmpty()) && !(natio.getText().isEmpty())) {
-            Optional<ButtonType> result = alert.showAndWait();
-            ButtonType button = result.orElse(ButtonType.CANCEL);
-            if (button == ButtonType.OK) {
-                rs = connection.addClient(cin.getText(), first_name.getText(), last_name.getText(),natio.getText(), gender.getText(), etat.getText(), age.getText());
-                // connection.reserverRoom(datentrer,datesortir,);
-                System.out.println("jdkjkckusdundus");
-                if (rs > 0) {
-                    System.out.println("nice");
-                    rs2 = connection.reserverRoom(datentrer, datesortir, connection.getCompte(), nbr_of_room,cin.getText());
-                    if (rs2 > 0) {
-                        System.out.println("oh gggg");
-                    } else {
-                        System.out.println("mmmm nony");
+        if (first_name.getText().isEmpty()) {
+            first_name.setStyle("-fx-border-color:red; -fx-text-fill:#fff; -fx-background-color: #11111199;");
+        }
+        if (last_name.getText().isEmpty()) {
+            last_name.setStyle("-fx-border-color:red; -fx-text-fill:red; -fx-background-color: #11111199;");
+        }
+        if (etat.getText().isEmpty()) {
+            etat.setStyle("-fx-border-color:red; -fx-text-fill:red; -fx-background-color: #11111199;");
+        }
+        if (gender.getText().isEmpty() || !(gender.getText().toLowerCase().equals("man"))
+                || !(gender.getText().toLowerCase().equals("woman"))) {
+            gender.setStyle("-fx-border-color:red; -fx-text-fill:red; -fx-background-color: #11111199;");
+        }
+        if (age.getText().isEmpty() || Integer.parseInt(age.getText()) < 18 || Integer.parseInt(age.getText()) > 80) {
+            age.setStyle("-fx-border-color:red; -fx-text-fill:red; -fx-background-color: #11111199;");
+        }
+        if (cin.getText().isEmpty() || cin.getText().length() > 3) {
+            cin.setStyle("-fx-border-color:red; -fx-text-fill:red; -fx-background-color: #11111199;");
+        }
+        if (natio.getText().isEmpty()) {
+            natio.setStyle("-fx-border-color:red; -fx-text-fill:red; -fx-background-color: #11111199;");
+        } else {
+            if (!(first_name.getText().isEmpty()) && !(last_name.getText().isEmpty()) && !(etat.getText().isEmpty())
+                    && !(gender.getText().isEmpty()) && !(age.getText().isEmpty()) && !(natio.getText().isEmpty())) {
+                Optional<ButtonType> result = alert.showAndWait();
+                ButtonType button = result.orElse(ButtonType.CANCEL);
+                if (button == ButtonType.OK) {
+                    if (gender.getText().toLowerCase().equals("man")) {
+                        sex = "h";
+                    } else if (gender.getText().toLowerCase().equals("woman")) {
+                        sex = "f";
                     }
-                } else {
-                    System.out.println("ghayad orifolki");
-                }
+                    rs = connection.addClient(cin.getText(), first_name.getText(), last_name.getText(), natio.getText(),
+                            sex, etat.getText(), age.getText());
+                    // connection.reserverRoom(datentrer,datesortir,);
+                    System.out.println("jdkjkckusdundus");
+                    if (rs > 0) {
+                        System.out.println("nice");
+                        rs2 = connection.reserverRoom(datentrer, datesortir, connection.getCompte(), nbr_of_room,
+                                cin.getText());
+                        if (rs2 > 0) {
+                            System.out.println("oh gggg");
+                        } else {
+                            Alert alert_erreur = new Alert(AlertType.WARNING);
+                            alert_erreur.setTitle("Warning");
+                            alert_erreur.setHeaderText(null);
+                            alert_erreur.setContentText("There's a probleme in database");
+                            alert_erreur.showAndWait();
+                            connection.droped();
+                        }
+                    } else {
+                        System.out.println("ghayad orifolki");
+                    }
 
-            } else {
-                System.out.println("canceled");
+                } else {
+                    System.out.println("canceled");
+                }
             }
         }
     }
