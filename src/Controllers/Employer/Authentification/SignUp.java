@@ -63,7 +63,7 @@ public class SignUp implements Initializable{
             else{
                 gender="f";
             }
-            int rs=con.insertdb(first_name.getText()+" "+last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText());
+            int rs=con.insertdb(first_name.getText(),last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText());
             if (rs>0){
                 System.out.println("hola");    
             }else{

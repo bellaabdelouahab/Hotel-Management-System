@@ -22,12 +22,7 @@ public class App extends Application {
     }
 
     @Override
-<<<<<<< HEAD
     public void start(Stage primaryStage) throws IOException, SQLException {
-=======
-    public void start(Stage primaryStage) throws IOException {
-        
->>>>>>> f49e43ab8c9a9bf5d6d056329d1aabb3973b2252
         Properties Prop = new Properties();
         FileInputStream config = new FileInputStream(System.getProperty("user.dir") + "/src/Config.properties");
         Prop.load(config);

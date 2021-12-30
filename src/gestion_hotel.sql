@@ -64,6 +64,7 @@ CREATE table sign_up(
     age NUMBER(2),
     phone_number VARCHAR2(16)
 );
+
 insert into sign_up values ((select count(*) from sign_up)+1,'Hamza','Bouslama','Khouribga','email@gmail.com' ,'Maroc' ,'h',19,'0938883');
 
 
@@ -148,3 +149,7 @@ FETCH ID_ROOM 1 ROW;
 
 select * from sign_up;
 delete from sign_up;
+alter table sign_up add nationality varchar2(20);
+
+
+

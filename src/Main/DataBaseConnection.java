@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -400,10 +400,10 @@ public class DataBaseConnection {
 
     // notiication pour admin
 
-    public int insertdb(String f_name,String adr,String email,String sex,int age,String phone) throws Exception{
+    public int insertdb(String f_name,String l_name,String adr,String email,String sex,int age,String phone) throws Exception{
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"')");
+        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"')");
         return y;
     }
 }

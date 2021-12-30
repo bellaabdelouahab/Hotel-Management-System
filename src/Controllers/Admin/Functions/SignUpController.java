@@ -85,7 +85,7 @@ public class SignUpController implements Initializable{
     void DeleteReservation(MouseEvent event) {
         SignUp test = SIGNUPTABLE.getSelectionModel().getSelectedItem();
         connection.DeleteReservation(test.getId());
-   }
+}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,14 +99,12 @@ public class SignUpController implements Initializable{
         } catch (SQLException e) {
             System.out.println("not Working "+e);
         }
-  
         FIRST_NAME.setCellValueFactory(new PropertyValueFactory<SignUp , String>("First_Name"));
         LAST_NAME.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Last_Name"));
         ADRESSE.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Adresse"));
         EMAIL.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Email"));
         NATIONALITY.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Natio"));
         NUMBER.setCellValueFactory(new PropertyValueFactory<SignUp , String>("Number"));
-
         SIGNUPTABLE.setItems(List);
         
     }
