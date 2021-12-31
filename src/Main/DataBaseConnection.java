@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:xe";
+    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -401,10 +401,21 @@ public class DataBaseConnection {
 
     // notiication pour admin
 
-    public int insertdb(String f_name,String l_name,String adr,String email,String sex,int age,String phone) throws Exception{
+    public int insertdb(String f_name,String l_name,String adr,String email,String sex,int age,String phone,String natio) throws Exception{
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"')");
+        String v1="insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"')";
+        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"','"+f_name+"','"+l_name+"')");
         return y;
+    }
+    public void droped() throws Exception{
+        statement = connection.createStatement();
+        String v1="delete from client where id_client=(select count(*) from client)";
+        int y=statement.executeUpdate(v1);
+        if (y>0) {
+            System.out.println("COOOOOL");
+        } else {
+            System.out.println("OH shit");
+        }
     }
 }

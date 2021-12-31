@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 import Main.DataBaseConnection;
 import animatefx.animation.FadeIn;
 import java.util.*;
@@ -26,9 +27,11 @@ public class SignUp implements Initializable{
     private Label sended;
     
     @FXML
-    private TextField mail, phone ,address,age,first_name,last_name;
+    private TextField mail, phone ,address,age,first_name,last_name,natio;
     @FXML
     private ComboBox<String> sex;
+    @FXML
+    private Line line1,line2,line3,line4,line5,line6,line7;
 
 
     public String[]  x={"Man","Woman"};
@@ -54,8 +57,33 @@ public class SignUp implements Initializable{
     @FXML
     public void login_return(ActionEvent event) throws Exception {
         String gender;
-        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2 && Integer.parseInt(age.getText())>18 && Integer.parseInt(age.getText())<45 && phone.getText().length()<16){
-            System.out.println("let start"+sex.getValue());
+        if (first_name.getText().length()==0) {
+            line1.setStyle("-fx-stroke:red;");
+        } 
+        if (!(mail.getText().contains("@gmail.com")) || mail.getText().isEmpty()) {
+                line3.setStyle("-fx-stroke:red;");
+            } if(last_name.getText().isEmpty()){
+                line2.setStyle("-fx-stroke:red;");}
+            if(phone.getText().isEmpty() || phone.getText().length()>16 || phone.getText().length()<10){
+                line6.setStyle("-fx-stroke:red;");
+            }
+            if(age.getText().length()==0 || Integer.parseInt(age.getText())<18 || Integer.parseInt(age.getText())>45){
+                line7.setStyle("-fx-stroke:red;");
+            }
+            if(address.getText().length()==0 ){
+                line5.setStyle("-fx-stroke:red;");
+            }
+            if(natio.getText().length()==0 ){
+                line4.setStyle("-fx-stroke:red;");
+            }
+            if(sex.getValue() == "Sex"){
+                sended.setVisible(true);
+                sended.setText("You should identifie your gender");
+                sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
+            }
+        
+        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2 && Integer.parseInt(age.getText())>18 && Integer.parseInt(age.getText())<45 && 10<phone.getText().length() && phone.getText().length()<16){
+            //System.out.println("let start"+sex.getValue());
             send_mail(mail.getText(),first_name.getText()+" "+last_name.getText(),phone.getText());
             if (sex.getValue()=="Man") {
                 gender="h";
@@ -63,18 +91,18 @@ public class SignUp implements Initializable{
             else{
                 gender="f";
             }
-            int rs=con.insertdb(first_name.getText(),last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText());
+            int rs=con.insertdb(first_name.getText(),last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText(),natio.getText());
             if (rs>0){
                 System.out.println("hola");    
             }else{
                 sended.setVisible(true);
-                sended.setStyle("Erreur in load information");
+                sended.setText("Erreur in load information");
                 sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
             }
         }
         else{
             sended.setVisible(true);
-            sended.setStyle("Erreur informations");
+            sended.setText("Erreur informations");
             sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
         }
     }
