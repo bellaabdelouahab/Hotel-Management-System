@@ -35,7 +35,6 @@ public class SignUp implements Initializable{
 
 
     public String[]  x={"Man","Woman"};
-    public DataBaseConnection con = new DataBaseConnection();
     public DataBaseConnection connection;
     public AnchorPane achnopane;
 
@@ -82,16 +81,16 @@ public class SignUp implements Initializable{
                 sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
             }
         
-        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2 && Integer.parseInt(age.getText())>18 && Integer.parseInt(age.getText())<45 && 10<phone.getText().length() && phone.getText().length()<16){
+        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2 && Integer.parseInt(age.getText())>18 && Integer.parseInt(age.getText())<45 && 10<=phone.getText().length() && phone.getText().length()<16){
             //System.out.println("let start"+sex.getValue());
             send_mail(mail.getText(),first_name.getText()+" "+last_name.getText(),phone.getText());
-            if (sex.getValue()=="Man") {
+            if (sex.getValue().equals("Man")) {
                 gender="h";
             }
             else{
                 gender="f";
             }
-            int rs=con.insertdb(first_name.getText(),last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText(),natio.getText());
+            int rs=connection.insertdb(first_name.getText(),last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText(),natio.getText());
             if (rs>0){
                 System.out.println("hola");    
             }else{

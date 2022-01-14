@@ -172,9 +172,6 @@ public class LeaderBord implements Initializable {
     void ShowMenuBar(MouseEvent event) {
         AdminMenu.setVisible(true);
     }
-
-    
-
     @FXML
     void HideMenuBar(MouseEvent event) {
         AdminMenu.setVisible(false);

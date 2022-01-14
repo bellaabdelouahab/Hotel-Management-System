@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class DataBaseConnection {
 
-    String db = "jdbc:oracle:thin:@localhost:1521:orcl";
+    String db = "jdbc:oracle:thin:@localhost:1521:xe";
     String username = "hotel_bd";
     String password = "hotel";
 
@@ -44,6 +44,7 @@ public class DataBaseConnection {
         }
         return result;
     }
+    //GetSearchedRoom
     public ArrayList<String[]> GetSearchedRoom(int[] INTData, String[] StringData) {
         try {
             statement  = connection.createStatement();
@@ -130,7 +131,7 @@ public class DataBaseConnection {
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
-            String Sql = "INSERT INTO EMPLOYEE VALUES((SELECT COUNT(*) FROM EMPLOYEE) + 1 , '" + Full_name + "','"
+            String Sql = "INSERT INTO EMPLOYEE VALUES((SELECT COUNT(*)+30 FROM EMPLOYEE) , '" + Full_name + "','"
                     + Adresse + "','" + Email + "','" + Password + "','" + Natio + "','" + Se + "'," + age + ",'"
                     + Phone + "',"
                     + salary + "," + commition + ",'" + type + "')";
@@ -152,7 +153,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-    
     // GET ALL THE ROOMS INFORMATION
     public ResultSet GetRoomsInformation(){
         try {
@@ -165,9 +165,8 @@ public class DataBaseConnection {
         }
         return result;
     }
-    
       //GET ALL THE CLIENTS INFORMATIONS
-      public ResultSet GetClientInformation(){
+    public ResultSet GetClientInformation(){
         try {
             connection = DriverManager.getConnection(db, username, password);
             statement = connection.createStatement();
@@ -179,7 +178,6 @@ public class DataBaseConnection {
         return result;
 
     }
-
     //GET ALL THE reservation INFORMATIONS
     public ResultSet GetReservationInformation(){
         try {
@@ -192,7 +190,6 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     //Get all sign up information
     public ResultSet GetSignUpInformation(){
         try {
@@ -205,7 +202,6 @@ public class DataBaseConnection {
         }
         return result;
     }
-
     // Delete SignUp Information
     public void DeleteReservation(int ID_SIGNUP){
         try {
@@ -217,7 +213,6 @@ public class DataBaseConnection {
             System.out.println("No" + e);
         }
     }
-    
     // Modify User From Table
     public void ModifyUser(String FULL_NAME, String ADRESSE, String EMAIL, String PASSWORD, String NATIO, String SE,
             int AGE, String PHONE_NUMBER, int SAL, int COMM, String TYPE, int ID) {
@@ -397,16 +392,16 @@ public class DataBaseConnection {
         int y = statement.executeUpdate("insert into client values (" + Integer.parseInt(cin) + ",'"+ f_name.toLowerCase() + "','" + l_name.toLowerCase() + "','" + natio.toLowerCase() + "','" + gender+ "','" + etat + "'," + Integer.parseInt(age) + ")");
         return y;
     }
-
     // notiication pour admin
-
     public int insertdb(String f_name,String l_name,String adr,String email,String sex,int age,String phone,String natio) throws Exception{
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        // String v1="insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"')";
-        int y = statement.executeUpdate("insert into sign_up values ((select count(*) from sign_up)+1,'"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"','"+f_name+"','"+l_name+"')");
+        String v1="insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"')";
+        // "insert into sign_up values ((select count(*) from sign_up)+1,'"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"','"+f_name+"','"+l_name+"')");
+        int y = statement.executeUpdate(v1);
         return y;
     }
+    //Drop
     public void droped() throws Exception{
         statement = connection.createStatement();
         String v1="delete from client where id_client=(select count(*) from client)";

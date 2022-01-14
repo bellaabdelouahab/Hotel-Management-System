@@ -65,7 +65,7 @@ CREATE table sign_up(
     phone_number VARCHAR2(16)
 );
 
-insert into sign_up values ((select count(*) from sign_up)+1,'Hamza','Bouslama','Khouribga','email@gmail.com' ,'Maroc' ,'h',19,'0938883');
+insert into sign_up values ((select count(*)+1 from sign_up),'Hamza','Bouslama','Khouribga','email@gmail.com' ,'h',19,'069383' , 'Maroc');
 
 
 Drop Table sign_up;
@@ -147,8 +147,8 @@ SELECT *
 FROM ROOMS
 FETCH ID_ROOM 1 ROW;
 
-select * from sign_up;
-delete from reservation where id_reserv=8;
+select * from client;
+delete from reservation where id_reserv=9;
 alter table sign_up add nationality varchar2(20);
 select * from reservation;
 desc reservation;

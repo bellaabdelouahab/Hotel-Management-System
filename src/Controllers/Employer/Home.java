@@ -95,19 +95,6 @@ public class Home {
         timeline.play();
     }
 
-    public void ShowAboutPage() throws IOException {
-        HomePane.getChildren().clear();
-        this.root = FXMLLoader.load(getClass().getResource("../../Resources/VIEW/Employer/About.fxml"));
-        this.root.translateXProperty().set(0);
-        this.root.translateYProperty().set(640);
-        HomePane.getChildren().add(root);
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.play();
-    }
-
     public void init() {
         UpdateProfilePic();
     }
