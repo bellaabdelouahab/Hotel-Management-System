@@ -32,7 +32,7 @@ public class FirstPageConroller implements Initializable{
     private Parent root;
     @FXML
     private Pane ParentPane;
-    @FXML
+    @FXML 
     private Pane ChiledStage;
     @FXML
     private Pane header;

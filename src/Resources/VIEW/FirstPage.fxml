@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
+ 
 <FlowPane fx:id="ParentPane" maxHeight="640.0" maxWidth="1024.0" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FirstPageConroller">
    <children>
       <Pane fx:id="header" prefHeight="25.0" prefWidth="1024.0" style="-fx-background-color: #202332;">
