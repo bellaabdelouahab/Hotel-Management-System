@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.DashBoardController">
+   <children>
+      <AreaChart fx:id="AREACHART" layoutX="-1.0" layoutY="-1.0" legendVisible="false" prefHeight="348.0" prefWidth="734.0">
+         <xAxis>
+            <CategoryAxis fx:id="AXIX" side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="AXIY" forceZeroInRange="false" prefHeight="307.0" prefWidth="0.0" side="LEFT" tickLabelsVisible="false" upperBound="2000.0" />
+         </yAxis>
+      </AreaChart>
+      <Pane layoutX="-2.0" layoutY="323.0" prefHeight="258.0" prefWidth="734.0">
+         <children>
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="20.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL CLIENT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="138.0" layoutY="20.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(61, 155, 116); -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL EMPLOYER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="282.0" layoutY="20.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #53b0cc; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL ROOMS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="-1.0" layoutY="50.0" prefHeight="159.0" prefWidth="140.0" style="-fx-border-color: white; -fx-border-width: 2px 4px 4px 2px; -fx-background-color: rgb(243, 180, 64);">
+               <children>
+                  <Circle fill="WHITE" layoutX="70.0" layoutY="76.0" radius="63.0" stroke="#f2c477" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Label fx:id="AMOUNT_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="115.0" textFill="#f3b440">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="136.0" layoutY="50.0" prefHeight="159.0" prefWidth="144.0" style="-fx-border-color: white; -fx-border-width: 2px 1px 4px 2px; -fx-background-color: rgb(61, 155, 116);">
+               <children>
+                  <Circle fill="WHITE" layoutX="70.0" layoutY="79.0" radius="63.0" stroke="#69c69f" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Label fx:id="EMPLOYER_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="115.0" textFill="#3d9b74">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="278.0" layoutY="50.0" prefHeight="159.0" prefWidth="145.0" style="-fx-border-color: white; -fx-border-width: 2px 1px 4px 4px; -fx-background-color: #53b0cc;">
+               <children>
+                  <Circle fill="WHITE" layoutX="70.0" layoutY="77.0" radius="63.0" stroke="#9dcfdd" strokeType="INSIDE" strokeWidth="5.0" />
+                  <Label fx:id="ROOM_ID" alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="55.0" prefHeight="40.0" prefWidth="115.0" textFill="#53b0cc">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label alignment="CENTER" layoutX="-2.0" layoutY="209.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(243, 180, 64); -fx-border-color: white; -fx-border-width: 0px 4px 2px 0px;" text="TOTAL CLIENT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="138.0" layoutY="209.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: rgb(61, 155, 116); -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL EMPLOYER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="282.0" layoutY="209.0" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #53b0cc; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="TOTAL ROOMS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="425.0" layoutY="20.0" prefHeight="29.0" prefWidth="292.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: WHITE; -fx-border-width: 0px 4px 2px 2px;" text="LAST MODIFICATION" textAlignment="CENTER" textFill="#1e1d1d">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+            <AnchorPane layoutX="426.0" layoutY="50.0" prefHeight="189.0" prefWidth="292.0" style="-fx-background-color: rgb(233, 229, 229); -fx-border-color: white; -fx-border-width: 2px 4px 4px 2px;">
+               <children>
+                  <TableView fx:id="AMOUNTTABLE" layoutX="4.0" layoutY="2.0" prefHeight="182.0" prefWidth="282.0">
+                    <columns>
+                      <TableColumn fx:id="DATE" prefWidth="120.0" text="DATE" />
+                      <TableColumn fx:id="AMOUNT" prefWidth="159.0" text="AMOUNT" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

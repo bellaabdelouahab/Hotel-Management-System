@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidson28.GNAvatarView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="parentContainer" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Employer.Home">
+   <children>
+      <Pane fx:id="ChildPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0">
+         <children>
+            <ImageView fitHeight="640.0" fitWidth="1056.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../IMAGES/Home_Background.jpg" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: #11111166;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="10.0" prefHeight="190.0" prefWidth="624.0" style="-fx-font-family: Century Gothic W1G Light; -fx-text-fill: #ddd; -fx-font-size: 90; -fx-opacity: 0.6;" text="HOTEL BBBE" />
+                  <Label alignment="CENTER" layoutX="324.0" layoutY="148.0" prefHeight="18.0" prefWidth="376.0" style="-fx-text-fill: #ffffffee;" text="Welcome To The Art That Touches The Heart In Essaouira City" />
+                  <HBox layoutX="684.0" layoutY="7.0" prefHeight="44.0" prefWidth="332.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#ReturnToHome" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Home">
+                           <font>
+                              <Font name="Century Gothic" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#LogOut" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #eeeeee00;" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Sign out">
+                           <font>
+                              <Font name="Century Gothic" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Button minWidth="53.0" mnemonicParsing="false" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="64.0" prefWidth="80.0" style="-fx-background-color: #33333300;">
+               <graphic>
+                  <GNAvatarView fx:id="ProfilePicture" stroke="#ffffff18" type="CIRCLE">
+                     <image>
+                        <Image url="@../../IMAGES/Down-arrow.png" />
+                     </image>
+                  </GNAvatarView>
+               </graphic>
+            </Button>
+            <Pane fx:id="HomePane" layoutY="200.0" prefHeight="440.0" prefWidth="1024.0" style="-fx-background-color: #11111108;" />
+            <VBox fx:id="AccountMenu" layoutY="63.0" onMouseEntered="#AcountMenuShow" onMouseExited="#AcountMenuHide" prefHeight="107.0" prefWidth="174.0" visible="false">
+               <children>
+                  <Button fx:id="ProfileButton" mnemonicParsing="false" onAction="#ShowProfile" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Profile" />
+                  <Button fx:id="reservation_label" mnemonicParsing="false" onAction="#reservation" prefHeight="35.0" prefWidth="185.0" styleClass="file" stylesheets="@../../CSS/Employer.css" text="Effected Reservations" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

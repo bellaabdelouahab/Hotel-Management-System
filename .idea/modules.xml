@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/JavaProject.iml" filepath="$PROJECT_DIR$/.idea/JavaProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hotel-Management-System.iml" filepath="$PROJECT_DIR$/Hotel-Management-System.iml" />
     </modules>
   </component>
 </project>

@@ -129,9 +129,7 @@ public class Profile implements Initializable {
             try{
             HomeProfilePicture.setImage(Image1);
             ImageIO.write(ImagebBufferedImage, "png", new
-            File(System.getProperty("user.dir")
-            + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +
-            "te" + ".png"));
+            File(System.getProperty("user.dir")+ "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() +".png"));
             }catch(Exception e){}
         }
         if (Adress.getText().toLowerCase().equals(adr) == false) {

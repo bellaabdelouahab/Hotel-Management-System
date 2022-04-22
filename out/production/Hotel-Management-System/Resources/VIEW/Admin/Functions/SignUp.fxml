@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="LeaderBoardData" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.SignUpController">
+   <children>
+      <Pane fx:id="ChildPane" layoutX="1.0" layoutY="1.0" prefHeight="494.0" prefWidth="724.0">
+         <children>
+            <TableView fx:id="SIGNUPTABLE" layoutX="2.0" layoutY="64.0" prefHeight="494.0" prefWidth="721.0">
+               <columns>
+                  <TableColumn fx:id="FIRST_NAME" prefWidth="105.0" text="FIRST NAME" />
+                  <TableColumn fx:id="LAST_NAME" prefWidth="106.0" text="LAST NAME" />
+                  <TableColumn fx:id="ADRESSE" prefWidth="79.0" text="ADRESSE" />
+                  <TableColumn fx:id="EMAIL" prefWidth="171.0" text="EMAIL" />
+                  <TableColumn fx:id="NATIONALITY" minWidth="0.0" prefWidth="120.0" text="NATIONALITY" />
+                  <TableColumn fx:id="NUMBER" minWidth="0.0" prefWidth="139.0" text="PHONE NUMBER" />
+               </columns>
+            </TableView>
+            <Pane layoutX="-1.0" layoutY="-1.0" prefHeight="65.0" prefWidth="375.0">
+               <children>
+                  <FontAwesomeIconView fill="RED" glyphName="USER" layoutX="17.0" layoutY="44.0" onMouseClicked="#DeleteReservation" size="2.8em" wrappingWidth="39.0" />
+                  <FontAwesomeIconView fill="#06ee02" glyphName="PLUS" layoutX="81.0" layoutY="44.0" onMouseClicked="#AddReservation" size="2.8em" wrappingWidth="39.0" />
+               </children>
+            </Pane>
+            <Label layoutX="515.0" layoutY="22.0" text="SIGN UP RESERVATION" textAlignment="CENTER" textFill="#5e5d5d">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

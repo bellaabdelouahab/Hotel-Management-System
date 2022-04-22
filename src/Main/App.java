@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
-
 import Controllers.FirstPageConroller;
 import animatefx.animation.FadeIn;
 import javafx.application.Application;

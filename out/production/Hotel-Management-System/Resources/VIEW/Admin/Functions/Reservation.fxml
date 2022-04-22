@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="725.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Admin.Functions.ReservationController">
+   <children>
+      <TableView fx:id="RESERVATIONTABLE" layoutX="41.0" layoutY="95.0" prefHeight="481.0" prefWidth="643.0" style="-fx-background-color: #D1FBEA;">
+         <columns>
+            <TableColumn fx:id="ID_RESERVATION" prefWidth="128.80001068115234" text="ID RESERVATION" />
+            <TableColumn fx:id="CHECK_IN" prefWidth="100.79998779296875" text="CHECK IN" />
+            <TableColumn fx:id="CHECK_OUT" prefWidth="102.39996337890625" text="CHECK OUT" />
+            <TableColumn fx:id="ID_CLIENT" prefWidth="100.800048828125" text="ID CLIENT" />
+            <TableColumn fx:id="ID_EMP" prefWidth="94.39999389648438" text="ID EMP" />
+            <TableColumn fx:id="ID_ROOM" prefWidth="116.79998779296875" text="ID ROOM" />
+         </columns>
+      </TableView>
+      <HBox layoutX="35.0" layoutY="34.0" prefHeight="27.0" prefWidth="652.0" style="-fx-background-color: #F3F3F3; -fx-background-radius: 15 15 15 15;">
+         <children>
+            <Label prefHeight="41.0" prefWidth="173.0" text="RESERVATION">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</Pane>
