@@ -1,20 +1,19 @@
 package Controllers.Employer.Authentification;
 
-import java.sql.*;
-import javafx.scene.image.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 
 import Controllers.Employer.Forms.Methodes;
+import Main.DataBaseConnection;
 import io.github.gleidson28.GNAvatarView;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -23,11 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
-import Main.DataBaseConnection;
 
 public class Profile implements Initializable {
     @FXML
@@ -136,7 +134,7 @@ public class Profile implements Initializable {
             result = connection.adre_profile_change(Adress.getText().toLowerCase(), Integer.parseInt(cin));
             if (result > 0) {
                 result = 0;
-            } else {
+            } else { 
                 return;
             }
         }
