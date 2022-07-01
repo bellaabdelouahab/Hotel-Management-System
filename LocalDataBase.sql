@@ -1,4 +1,5 @@
 insert into rooms values (1,2,1,3,500,'Cushion Wifi_5G coffee Morning');
+insert into rooms values (501,2,3,3,520,'Cushion Wifi_5G coffee Morning');
 insert into rooms values (2,3,0,4,1000,'Cushion Wifi_5G');
 insert into rooms values (3,1,0,1,250,'Television Tea set Cushion');
 insert into rooms values (4,4,3,5,4000,'End table Tea set Fireplace Floor lamp Tableet Blinds');
