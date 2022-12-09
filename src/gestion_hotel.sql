@@ -36,7 +36,7 @@ CREATE TABLE reservation(
     ID_ROOM NUMBER  CONSTRAINT room_fk REFERENCES rooms
 );
 alter table reservation add constraint date_check check(date_de_reserver<date_de_sortir);
-
+--some hidden code
 create table employee(
     id_emp NUMBER(4) constraint pk_emp primary Key,  
     full_name VARCHAR2(45) ,
