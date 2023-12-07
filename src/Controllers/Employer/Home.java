@@ -102,7 +102,7 @@ public class Home {
     private void UpdateProfilePic() {
         try {
             this.ProfilePicture.setImage(new Image(System.getProperty("user.dir")
-                    + "\\src\\Resources\\IMAGES\\ProfilePictures\\" + connection.getCompte() + "te.png"));
+                    + "\\src\\Resources\\IMAGES\\ProfilePictures\\te.png"));
             ShowSearchForm();
         } catch (IOException e) {
             e.printStackTrace();

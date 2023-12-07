@@ -39,69 +39,82 @@ public class SignUp implements Initializable{
     public AnchorPane achnopane;
 
     // Switch To Sign In page of Employer
-
-    // Switch To Sign 
     @FXML
     public void SwitchToSignIn(ActionEvent event) throws IOException {
         achnopane.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("../../../Resources/VIEW/Employer/Authentification/LogIn.fxml"));
         Parent root = loader.load();
         Login controller = loader.getController();
-        controller.connection=connection;
-        controller.achnopane= achnopane;
+        controller.connection = connection;
+        controller.achnopane = achnopane;
         achnopane.getChildren().add(root);
         new FadeIn(root).play();
     }
     // add to data base
+
+    // Switch To Sign 
     @FXML
     public void login_return(ActionEvent event) throws Exception {
-        String gender;
-        if (first_name.getText().length()==0) {
+        boolean isValid = true;
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (first_name.getText().isEmpty()) {
             line1.setStyle("-fx-stroke:red;");
-        } 
-        if (!(mail.getText().contains("@gmail.com")) || mail.getText().isEmpty()) {
-                line3.setStyle("-fx-stroke:red;");
-            } if(last_name.getText().isEmpty()){
-                line2.setStyle("-fx-stroke:red;");}
-            if(phone.getText().isEmpty() || phone.getText().length()>16 || phone.getText().length()<10){
-                line6.setStyle("-fx-stroke:red;");
-            }
-            if(age.getText().length()==0 || Integer.parseInt(age.getText())<18 || Integer.parseInt(age.getText())>45){
-                line7.setStyle("-fx-stroke:red;");
-            }
-            if(address.getText().length()==0 ){
-                line5.setStyle("-fx-stroke:red;");
-            }
-            if(natio.getText().length()==0 ){
-                line4.setStyle("-fx-stroke:red;");
-            }
-            if(sex.getValue() == "Sex"){
-                sended.setVisible(true);
-                sended.setText("You should identifie your gender");
-                sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
-            }
-        
-        if(first_name.getText().length()!=0 && mail.getText().contains("@gmail.com") && !(last_name.getText().isEmpty()) && !(phone.getText().isEmpty()) && age.getText().length()==2 && Integer.parseInt(age.getText())>18 && Integer.parseInt(age.getText())<45 && 10<=phone.getText().length() && phone.getText().length()<16){
-            //System.out.println("let start"+sex.getValue());
-            send_mail(mail.getText(),first_name.getText()+" "+last_name.getText(),phone.getText());
-            if (sex.getValue().equals("Man")) {
-                gender="h";
-            }
-            else{
-                gender="f";
-            }
-            int rs=connection.insertdb(first_name.getText(),last_name.getText(), address.getText(), mail.getText(),gender, Integer.parseInt(age.getText()), phone.getText(),natio.getText());
-            if (rs>0){
-                System.out.println("hola");    
-            }else{
-                sended.setVisible(true);
-                sended.setText("Erreur in load information");
-                sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
-            }
+            isValid = false;
+            errorMessage.append("First name is required.\n");
         }
-        else{
+        if (!mail.getText().contains("@gmail.com") || mail.getText().isEmpty()) {
+            line3.setStyle("-fx-stroke:red;");
+            isValid = false;
+            errorMessage.append("Invalid email address.\n");
+        }
+        if (last_name.getText().isEmpty()) {
+            line2.setStyle("-fx-stroke:red;");
+            isValid = false;
+            errorMessage.append("Last name is required.\n");
+        }
+        if (phone.getText().isEmpty() || phone.getText().length() > 16 || phone.getText().length() < 10) {
+            line6.setStyle("-fx-stroke:red;");
+            isValid = false;
+            errorMessage.append("Invalid phone number.\n");
+        }
+        if (age.getText().isEmpty() || Integer.parseInt(age.getText()) < 18 || Integer.parseInt(age.getText()) > 45) {
+            line7.setStyle("-fx-stroke:red;");
+            isValid = false;
+            errorMessage.append("Age must be between 18 and 45.\n");
+        }
+        if (address.getText().isEmpty()) {
+            line5.setStyle("-fx-stroke:red;");
+            isValid = false;
+            errorMessage.append("Address is required.\n");
+        }
+        if (natio.getText().isEmpty()) {
+            line4.setStyle("-fx-stroke:red;");
+            isValid = false;
+            errorMessage.append("Nationality is required.\n");
+        }
+        if (sex.getValue() == null || sex.getValue().equals("Sex")) {
             sended.setVisible(true);
-            sended.setText("Erreur informations");
+            sended.setText("You should identify your gender");
+            sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
+            isValid = false;
+        }
+
+        if (isValid) {
+            send_mail(mail.getText(), first_name.getText() + " " + last_name.getText(), phone.getText());
+            String gender = sex.getValue().equals("Man") ? "h" : "f";
+            int rs = connection.insertdb(first_name.getText(), last_name.getText(), address.getText(), mail.getText(), gender, Integer.parseInt(age.getText()), phone.getText(), natio.getText());
+            if (rs > 0) {
+                System.out.println("hola");
+            } else {
+                sended.setVisible(true);
+                sended.setText("Error in loading information");
+                sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
+            }
+        } else {
+            sended.setVisible(true);
+            sended.setText(errorMessage.toString());
             sended.setStyle("-fx-text-fill: red; -fx-background-color: #292929;");
         }
     }

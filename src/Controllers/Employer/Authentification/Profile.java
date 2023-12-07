@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
 
 import Controllers.Employer.Forms.Methodes;
 import Main.DataBaseConnection;
@@ -27,6 +26,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
+import java.awt.image.BufferedImage;
 
 public class Profile implements Initializable {
     @FXML

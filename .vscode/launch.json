@@ -1,22 +1,23 @@
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-{   "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "Main.App",
-            "projectName": "Hotel-Management-System_9a460e93",
-            "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED"
-        
-        },
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        }
-    ]
-}
+
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "java",
+                "name": "App",
+                "request": "launch",
+                "mainClass": "Main.App",
+                "projectName": "Hotel-Management-System_7023f673",
+                "vmArgs": "--module-path \"${workspaceFolder}\\lib\" --add-modules javafx.controls,javafx.fxml --add-exports javafx.base/com.sun.javafx.event=ALL-UNNAMED ",
+                "cwd": "${workspaceFolder}", // Add the current working directory here
+                "startupClass": "Main.App" // Add the startup class here
+            },
+            {
+                "type": "java",
+                "name": "Launch Current File",
+                "request": "launch",
+                "mainClass": "${file}",
+                "cwd": "${workspaceFolder}" // Add the current working directory here
+            }
+        ]
+    }

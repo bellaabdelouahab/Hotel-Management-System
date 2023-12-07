@@ -13,8 +13,8 @@ import java.util.Arrays;
 public class DataBaseConnection {
 
     String db = "jdbc:oracle:thin:@localhost:1521:xe";
-    String username = "hotel_bd";
-    String password = "hotel";
+    String username = "system";
+    String password = "welcome123";
 
     Connection connection;
     Statement statement;
@@ -306,7 +306,7 @@ public class DataBaseConnection {
             String rs = "select * from employee where lower(email)='" + x.toLowerCase() + "'";
             result = statement.executeQuery(rs);
         } catch (Exception e) {
-            System.out.println("Aha ahmadi");
+            System.out.println("Aha ahmadi"); 
         }
         return result;
     }
@@ -396,7 +396,7 @@ public class DataBaseConnection {
     public int insertdb(String f_name,String l_name,String adr,String email,String sex,int age,String phone,String natio) throws Exception{
         connection = DriverManager.getConnection(db, username, password);
         statement = connection.createStatement();
-        String v1="insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"')";
+        String v1="insert into sign_up values ((select count(*) from sign_up)+1,'"+f_name+"','"+l_name+"','"+adr+"','"+email+"','"+natio+"','"+sex+"',"+age+",'"+phone+"')";
         // "insert into sign_up values ((select count(*) from sign_up)+1,'"+adr+"','"+email+"','"+sex+"',"+age+",'"+phone+"','"+natio+"','"+f_name+"','"+l_name+"')");
         int y = statement.executeUpdate(v1);
         return y;

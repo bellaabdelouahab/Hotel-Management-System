@@ -128,6 +128,7 @@ public class Login{
             while (rs.next()) {
                 y = rs.getString(4).toLowerCase();
                 x = rs.getString(5).toLowerCase();
+                System.out.println(x + " " + y);
             }
             if (y.equals(email_text.getText())) {
                 if (x.equals(password_label.getText())) {
@@ -135,6 +136,7 @@ public class Login{
                     connection.setCompte(y);
                     timeline1.setOnFinished(ep->{
                         achnopane.getChildren().remove(login_animation);
+                        System.out.println("Switching to Home Page");
                         SwitchToHomePage();
                     });
                     timeline1.play();
@@ -168,6 +170,7 @@ public class Login{
             controller.init();
             root.translateXProperty().set(scene.getWidth());
             achnopane.getChildren().add(root);
+            System.out.println("Loading Home Page");
             Timeline timeline = new Timeline();
             KeyValue kv = new KeyValue(root.translateXProperty(), 0,Interpolator.EASE_IN);
             KeyValue kv1 = new KeyValue(general_pane.translateXProperty(),
@@ -182,7 +185,8 @@ public class Login{
             
             timeline.play();
         } catch (Exception e) {
-            System.out.println(e);
+            // print error details
+            e.printStackTrace();
         }
     }
 }

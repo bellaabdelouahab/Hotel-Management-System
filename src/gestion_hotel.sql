@@ -1,7 +1,9 @@
--- Create a user
-CREATE USER hotel_bd IDENTIFIED BY hotel;
+alter session set "_ORACLE_SCRIPT"=true; 
+
+-- Create a common user in the CDB
+CREATE USER hotelbd IDENTIFIED BY hotel CONTAINER = ALL;
 --give all permisions to new user
-GRANT CONNECT, RESOURCE, DBA TO hotel_bd;
+GRANT CONNECT, RESOURCE, DBA TO hotelbd;
 
 /*////////////////////////////////////////////////////////*/
 
@@ -65,10 +67,10 @@ CREATE table sign_up(
     phone_number VARCHAR2(16)
 );
 
-insert into sign_up values ((select count(*)+1 from sign_up),'Hamza','Bouslama','Khouribga','email@gmail.com' ,'h',19,'069383' , 'Maroc');
+insert into sign_up values ((select count(*)+1 from sign_up),'Hamza','Bouslama','Khouribga','email@gmail.com' ,'Maroc','h',19,'069383');
 
 
-Drop Table sign_up;
+-- Drop Table sign_up;
 
 /*  insert informations to the table  */
 
@@ -160,3 +162,20 @@ update reservation set id_reserv=7 where id_reserv=9;
 (select count(id_reserv)+1 as co from reservation)
 
 
+-- create LOGINLOG table
+CREATE TABLE LOGINLOG (
+    EMAIL VARCHAR2(100)
+);
+
+INSERT INTO LOGINLOG (EMAIL) VALUES ('admin@gmail.com');
+
+
+
+
+
+-- drop all previous tables
+drop table client;
+drop table rooms;
+drop table reservation;
+drop table employee;
+drop table sign_up;

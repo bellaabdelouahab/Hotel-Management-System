@@ -17,7 +17,7 @@
          <children>
             <Pane onKeyTyped="#lign_input_mail" prefHeight="640.0" prefWidth="512.0" style="-fx-background-color: #292929;">
                <children>
-                  <TextField fx:id="email_text" layoutX="92.0" layoutY="261.0" onKeyTyped="#lign_input_mail" prefHeight="64.0" prefWidth="344.0" promptText="Email ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+                  <TextField fx:id="email_text" layoutX="92.0" layoutY="261.0" text="abdo@gmail.com" onKeyTyped="#lign_input_mail" prefHeight="64.0" prefWidth="344.0" promptText="Email ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -27,7 +27,7 @@
                         <Font size="33.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="password_label" layoutX="97.0" layoutY="376.0" onKeyTyped="#lign_input_pass" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
+                  <PasswordField fx:id="password_label" layoutX="97.0" layoutY="376.0" text="abdelwahab" onKeyTyped="#lign_input_pass" prefHeight="60.0" prefWidth="344.0" promptText="Password ..." style="-fx-background-color: #292929; -fx-text-fill: #fff;">
                      <font>
                         <Font size="18.0" />
                      </font>
